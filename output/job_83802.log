@@ -1,0 +1,102 @@
+Running at /scratch/bgre/83802
+Submitdir is /homevip/bgre/RTM
+Number of nodes: 1
+Number of tasks: 40
+Making SLURM ready at  Wed Oct 29 13:55:05 CET 2025
+Starting slurm job at  Wed Oct 29 13:55:54 CET 2025
+Running Python file at Wed Oct 29 13:55:54 CET 2025
+Run started at 2025-10-29T12:57:04.769457+00:00
+
+
+
+=================================================================================================================
+Nadir Pixel Index    =  151
+SceneName            =  Orbit_06497E
+Specs                =  montecarlo - 3D - _wc
+Latitudes            = 5.00 -> 3.00
+Latitudes            = 5.00 -> 3.00
+Latitudes            = 5.00 -> 3.00
+Latitudes            = 5.00 -> 3.00
+Latitudes            = 5.00 -> 3.00
+Latitudes            = 5.00 -> 3.00
+Latitudes            = 5.00 -> 3.00
+Latitudes            = 5.00 -> 3.00
+Latitudes            = 5.00 -> 3.00
+Latitudes            = 5.00 -> 3.00
+Latitudes            = 5.00 -> 3.00
+Latitudes            = 5.00 -> 3.00
+Latitudes            = 5.00 -> 3.00
+Latitudes            = 5.00 -> 3.00
+Latitudes            = 5.00 -> 3.00
+Latitudes            = 5.00 -> 3.00
+Latitudes            = 5.00 -> 3.00
+Latitudes            = 5.00 -> 3.00
+Latitudes            = 5.00 -> 3.00
+Latitudes            = 5.00 -> 3.00
+Latitudes            = 5.00 -> 3.00
+Latitudes            = 5.00 -> 3.00
+Latitudes            = 5.00 -> 3.00
+Latitudes            = 5.00 -> 3.00
+Latitudes            = 5.00 -> 3.00
+Latitudes            = 5.00 -> 3.00
+Latitudes            = 5.00 -> 3.00
+     Process 1 started calculating ia=150
+[WORKER 3] Received termination signal. Exiting.
+[WORKER 6] Received termination signal. Exiting.
+[WORKER 9] Received termination signal. Exiting.
+[WORKER 10] Received termination signal. Exiting.
+[WORKER 12] Received termination signal. Exiting.
+[WORKER 14] Received termination signal. Exiting.
+[WORKER 16] Received termination signal. Exiting.
+[WORKER 17] Received termination signal. Exiting.
+[WORKER 20] Received termination signal. Exiting.
+[WORKER 23] Received termination signal. Exiting.
+[WORKER 24] Received termination signal. Exiting.
+[WORKER 26] Received termination signal. Exiting.
+[WORKER 27] Received termination signal. Exiting.
+[WORKER 28] Received termination signal. Exiting.
+[WORKER 30] Received termination signal. Exiting.
+[WORKER 31] Received termination signal. Exiting.
+[WORKER 32] Received termination signal. Exiting.
+[WORKER 33] Received termination signal. Exiting.
+[WORKER 34] Received termination signal. Exiting.
+[WORKER 35] Received termination signal. Exiting.
+[WORKER 36] Received termination signal. Exiting.
+[WORKER 37] Received termination signal. Exiting.
+[WORKER 38] Received termination signal. Exiting.
+[WORKER 39] Received termination signal. Exiting.
+[WORKER 2] Received termination signal. Exiting.
+Latitudes            = 5.00 -> 3.00
+[WORKER 8] Received termination signal. Exiting.
+Latitudes            = 5.00 -> 3.00
+[WORKER 5] Received termination signal. Exiting.
+Latitudes            = 5.00 -> 3.00
+[WORKER 15] Received termination signal. Exiting.
+Latitudes            = 5.00 -> 3.00
+[WORKER 11] Received termination signal. Exiting.
+Latitudes            = 5.00 -> 3.00
+[WORKER 29] Received termination signal. Exiting.
+Latitudes            = 5.00 -> 3.00
+[WORKER 25] Received termination signal. Exiting.
+Latitudes            = 5.00 -> 3.00
+[WORKER 19] Received termination signal. Exiting.
+Latitudes            = 5.00 -> 3.00
+[WORKER 18] Received termination signal. Exiting.
+Latitudes            = 5.00 -> 3.00
+[WORKER 21] Received termination signal. Exiting.
+Latitudes            = 5.00 -> 3.00
+Latitudes            = 5.00 -> 3.00
+[WORKER 4] Received termination signal. Exiting.
+[WORKER 7] Received termination signal. Exiting.
+Latitudes            = 5.00 -> 3.00
+[WORKER 13] Received termination signal. Exiting.
+Latitudes            = 5.00 -> 3.00
+[WORKER 22] Received termination signal. Exiting.
+                                            [WORKER  1] ia= 150, solar   , zout=65.3, eup=  365.04 +- 2.41166138
+                                            [WORKER  1] ia= 150, thermal , zout=65.3, eup=  313.36 +- 0.855187287
+Writing libRadtran output to netcdf file:  ./RESULTS/libRad_v01_montecarlo_3D_SWIA_solar,thermal_Orbit_06497E_wc.nc
+[WORKER 1] Received termination signal. Exiting.
+Run finished. It took 0.020 hours 
+
+
+Finished running Python file at Wed Oct 29 13:58:33 CET 2025

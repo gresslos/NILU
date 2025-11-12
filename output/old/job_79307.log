@@ -1,0 +1,8 @@
+Running at /scratch/bgre/79307
+Submitdir is /homevip/bgre/RTM
+Number of nodes: 1
+Number of tasks: 40
+Making SLURM ready at  Tue Sep 30 17:13:47 CEST 2025
+Starting slurm job at  Tue Sep 30 17:14:26 CEST 2025
+Running Python file at Tue Sep 30 17:14:27 CEST 2025
+Finished running Python file at Tue Sep 30 17:15:06 CEST 2025

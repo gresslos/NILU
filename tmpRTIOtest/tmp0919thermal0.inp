@@ -1,0 +1,27 @@
+rte_solver montecarlo
+data_files_path /xnilu_wrk2/projects/NEVAR/libRadtran/data/
+mc_std 
+mc_basename ./tmpRTIOtest/mc_0919_thermal
+mc_randomseed 6050338
+mc_photons 100
+mol_abs_param fu
+source thermal
+wavelength 4500 100000
+mc_backward 
+mc_backward_output eup
+output_process sum
+zout TOA
+output_user sza zout edir eup
+quiet 
+atmosphere_file ./tmpRTIOtest/tmp0919atm.dat
+wc_properties mie
+wc_file 3D ./tmpRTIOtest/tmp0919wc3D.dat
+ic_properties baum_v36 interpolate
+ic_habit solid-column
+ic_file 3D ./tmpRTIOtest/tmp0919ic3D.dat
+aerosol_default 
+mc_albedo_spectral_file ./tmpRTIOtest/tmp0919mc_albedo_spectral_filethermal.dat
+mc_albedo_type ./tmpRTIOtest/tmp0919mc_albedo_typethermal.dat
+mc_elevation_file ./tmpRTIOtest/tmp0919elevation.dat
+sza 87.28116607666016
+phi0 244.22425222699542

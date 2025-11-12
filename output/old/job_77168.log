@@ -1,0 +1,2934 @@
+Running at /scratch/bgre/77168
+Submitdir is /homevip/bgre/RTM
+Number of nodes: 1
+Number of tasks: 40
+Making SLURM ready at  Fri Sep 19 16:14:22 CEST 2025
+Starting slurm job at  Fri Sep 19 16:14:43 CEST 2025
+Running Python file at Fri Sep 19 16:14:43 CEST 2025
+Run started at 2025-09-19T14:15:01.596068+00:00
+
+
+
+=================================================================================================================
+Nadir Pixel Index    =  151
+SceneName            =  Orbit_06888C
+Specs                =  montecarlo - 3D - _GHM_1e5
+     Process 35 started calculating ia=490
+     Process 37 started calculating ia=510
+     Process 38 started calculating ia=520
+     Process 12 started calculating ia=260
+     Process 14 started calculating ia=280
+     Process 36 started calculating ia=500
+     Process 29 started calculating ia=430
+     Process 32 started calculating ia=460
+     Process 34 started calculating ia=480
+     Process 33 started calculating ia=470
+     Process 22 started calculating ia=360
+     Process 39 started calculating ia=530
+     Process 23 started calculating ia=370
+     Process 25 started calculating ia=390
+     Process 27 started calculating ia=410
+     Process 31 started calculating ia=450
+     Process 15 started calculating ia=290
+     Process 13 started calculating ia=270
+     Process 30 started calculating ia=440
+     Process 26 started calculating ia=400
+     Process 28 started calculating ia=420
+     Process 24 started calculating ia=380
+     Process 18 started calculating ia=320
+     Process 5 started calculating ia=190
+     Process 20 started calculating ia=340
+     Process 3 started calculating ia=170
+     Process 4 started calculating ia=180
+     Process 6 started calculating ia=200
+     Process 1 started calculating ia=150
+     Process 17 started calculating ia=310
+     Process 8 started calculating ia=220
+     Process 2 started calculating ia=160
+     Process 19 started calculating ia=330
+     Process 21 started calculating ia=350
+     Process 7 started calculating ia=210
+     Process 10 started calculating ia=240
+     Process 9 started calculating ia=230
+     Process 11 started calculating ia=250
+     Process 16 started calculating ia=300
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+                                            [WORKER 35] ia= 490, solar   , zout=65.3, eup=  198.05 +- 0.756677702
+                                            [WORKER 37] ia= 510, solar   , zout=65.3, eup=  206.66 +- 0.740539206
+                                            [WORKER 12] ia= 260, solar   , zout=65.3, eup=  211.29 +- 0.533304645
+                                            [WORKER 36] ia= 500, solar   , zout=65.3, eup=  215.09 +- 0.715396605
+                                            [WORKER 14] ia= 280, solar   , zout=65.3, eup=  181.87 +- 0.639121594
+                                            [WORKER 38] ia= 520, solar   , zout=65.3, eup=  189.65 +- 0.783191101
+                                            [WORKER 34] ia= 480, solar   , zout=65.3, eup=  200.07 +- 0.724407404
+
+   mc_photons =  100000
+                                            [WORKER 39] ia= 530, solar   , zout=65.3, eup=  206.76 +- 0.76095018
+                                            [WORKER 33] ia= 470, solar   , zout=65.3, eup=  202.68 +- 0.718057838
+
+   mc_photons =  100000
+                                            [WORKER 15] ia= 290, solar   , zout=65.3, eup=  182.23 +- 0.637570286
+                                            [WORKER 16] ia= 300, solar   , zout=65.3, eup=  177.78 +- 0.654584998
+                                            [WORKER 10] ia= 240, solar   , zout=65.3, eup=  199.05 +- 0.59221282
+                                            [WORKER 13] ia= 270, solar   , zout=65.3, eup=  201.52 +- 0.580286573
+                                            [WORKER  9] ia= 230, solar   , zout=65.3, eup=  199.40 +- 0.604264742
+                                            [WORKER 29] ia= 430, solar   , zout=65.3, eup=  187.71 +- 0.709492315
+                                            [WORKER 11] ia= 250, solar   , zout=65.3, eup=  201.21 +- 0.572643715
+                                            [WORKER 32] ia= 460, solar   , zout=65.3, eup=  204.23 +- 0.698630165
+
+   mc_photons =  100000
+                                            [WORKER 22] ia= 360, solar   , zout=65.3, eup=  201.09 +- 0.631502633
+                                            [WORKER 17] ia= 310, solar   , zout=65.3, eup=  180.66 +- 0.633144621
+                                            [WORKER  1] ia= 150, solar   , zout=65.3, eup=  154.82 +- 0.63532242
+                                            [WORKER 19] ia= 330, solar   , zout=65.3, eup=  180.78 +- 0.637805549
+                                            [WORKER 20] ia= 340, solar   , zout=65.3, eup=  194.18 +- 0.654069981
+                                            [WORKER  4] ia= 180, solar   , zout=65.3, eup=  159.66 +- 0.643007384
+                                            [WORKER  5] ia= 190, solar   , zout=65.3, eup=  167.14 +- 0.631952856
+                                            [WORKER 18] ia= 320, solar   , zout=65.3, eup=  180.21 +- 0.626357821
+                                            [WORKER 21] ia= 350, solar   , zout=65.3, eup=  195.60 +- 0.642423826
+                                            [WORKER  2] ia= 160, solar   , zout=65.3, eup=  167.35 +- 0.604717157
+                                            [WORKER 35] ia= 490, thermal , zout=65.3, eup=  234.54 +- 0.219627214
+                                            [WORKER 25] ia= 390, solar   , zout=65.3, eup=  202.21 +- 0.663751238
+                                            [WORKER  3] ia= 170, solar   , zout=65.3, eup=  169.74 +- 0.608193965
+                                            [WORKER  8] ia= 220, solar   , zout=65.3, eup=  199.23 +- 0.597674924
+                                            [WORKER 30] ia= 440, solar   , zout=65.3, eup=  183.24 +- 0.731139013
+                                            [WORKER  6] ia= 200, solar   , zout=65.3, eup=  187.04 +- 0.614301307
+                                            [WORKER 31] ia= 450, solar   , zout=65.3, eup=  182.15 +- 0.736300521
+                                            [WORKER  7] ia= 210, solar   , zout=65.3, eup=  192.99 +- 0.611560984
+                                            [WORKER 27] ia= 410, solar   , zout=65.3, eup=  207.16 +- 0.680889207
+                                            [WORKER 24] ia= 380, solar   , zout=65.3, eup=  208.81 +- 0.616085469
+
+   mc_photons =  100000
+                                            [WORKER 26] ia= 400, solar   , zout=65.3, eup=  202.70 +- 0.675326972
+
+   mc_photons =  100000
+                                            [WORKER 28] ia= 420, solar   , zout=65.3, eup=  202.46 +- 0.67841281
+                                            [WORKER 23] ia= 370, solar   , zout=65.3, eup=  229.11 +- 0.505731869
+                                            [WORKER 37] ia= 510, thermal , zout=65.3, eup=  233.29 +- 0.214231112
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+                                            [WORKER 12] ia= 260, thermal , zout=65.3, eup=  217.10 +- 0.373402052
+                                            [WORKER 14] ia= 280, thermal , zout=65.3, eup=  234.21 +- 0.284713846
+                                            [WORKER 36] ia= 500, thermal , zout=65.3, eup=  231.52 +- 0.197245568
+                                            [WORKER 34] ia= 480, thermal , zout=65.3, eup=  236.92 +- 0.248025788
+     Process 35 started calculating ia=540
+                                            [WORKER 38] ia= 520, thermal , zout=65.3, eup=  238.81 +- 0.244382845
+     Process 37 started calculating ia=550
+                                            [WORKER 33] ia= 470, thermal , zout=65.3, eup=  236.95 +- 0.256608855
+                                            [WORKER 39] ia= 530, thermal , zout=65.3, eup=  233.96 +- 0.225257048
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+     Process 12 started calculating ia=560
+
+   mc_photons =  100000
+                                            [WORKER 15] ia= 290, thermal , zout=65.3, eup=  233.79 +- 0.297892371
+     Process 36 started calculating ia=570
+     Process 14 started calculating ia=580
+     Process 34 started calculating ia=590
+     Process 38 started calculating ia=600
+                                            [WORKER 16] ia= 300, thermal , zout=65.3, eup=  232.16 +- 0.300346903
+                                            [WORKER 10] ia= 240, thermal , zout=65.3, eup=  203.66 +- 0.35583584
+     Process 33 started calculating ia=610
+     Process 39 started calculating ia=620
+                                            [WORKER 13] ia= 270, thermal , zout=65.3, eup=  223.20 +- 0.356254025
+                                            [WORKER  9] ia= 230, thermal , zout=65.3, eup=  178.62 +- 0.285302947
+                                            [WORKER 29] ia= 430, thermal , zout=65.3, eup=  240.88 +- 0.30044222
+
+   mc_photons =  100000
+                                            [WORKER 11] ia= 250, thermal , zout=65.3, eup=  219.54 +- 0.342244917
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+     Process 15 started calculating ia=630
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+     Process 16 started calculating ia=640
+     Process 10 started calculating ia=650
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+     Process 13 started calculating ia=660
+     Process 9 started calculating ia=670
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+     Process 29 started calculating ia=680
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+     Process 11 started calculating ia=690
+                                            [WORKER 32] ia= 460, thermal , zout=65.3, eup=  239.38 +- 0.259418026
+
+   mc_photons =  100000
+     Process 32 started calculating ia=700
+                                            [WORKER 22] ia= 360, thermal , zout=65.3, eup=  233.68 +- 0.284449512
+                                            [WORKER 17] ia= 310, thermal , zout=65.3, eup=  236.23 +- 0.271981833
+                                            [WORKER  1] ia= 150, thermal , zout=65.3, eup=  233.38 +- 0.31119362
+                                            [WORKER 20] ia= 340, thermal , zout=65.3, eup=  232.79 +- 0.285212838
+                                            [WORKER 19] ia= 330, thermal , zout=65.3, eup=  232.32 +- 0.275588877
+
+   mc_photons =  100000
+                                            [WORKER  4] ia= 180, thermal , zout=65.3, eup=  226.88 +- 0.322039461
+     Process 22 started calculating ia=710
+                                            [WORKER  5] ia= 190, thermal , zout=65.3, eup=  223.91 +- 0.328606105
+     Process 17 started calculating ia=720
+                                            [WORKER 18] ia= 320, thermal , zout=65.3, eup=  233.64 +- 0.273524761
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+     Process 1 started calculating ia=730
+                                            [WORKER 21] ia= 350, thermal , zout=65.3, eup=  233.21 +- 0.283327588
+     Process 20 started calculating ia=740
+                                            [WORKER  2] ia= 160, thermal , zout=65.3, eup=  229.59 +- 0.311265055
+
+   mc_photons =  100000
+     Process 19 started calculating ia=750
+
+   mc_photons =  100000
+                                            [WORKER 25] ia= 390, thermal , zout=65.3, eup=  235.56 +- 0.246997838
+                                            [WORKER  8] ia= 220, thermal , zout=65.3, eup=  174.31 +- 0.262098663
+                                            [WORKER  3] ia= 170, thermal , zout=65.3, eup=  233.23 +- 0.28304127
+                                            [WORKER  7] ia= 210, thermal , zout=65.3, eup=  179.15 +- 0.270181824
+     Process 4 started calculating ia=760
+                                            [WORKER  6] ia= 200, thermal , zout=65.3, eup=  192.67 +- 0.349740531
+                                            [WORKER 30] ia= 440, thermal , zout=65.3, eup=  240.13 +- 0.339851862
+                                            [WORKER 31] ia= 450, thermal , zout=65.3, eup=  244.27 +- 0.269590316
+                                            [WORKER 27] ia= 410, thermal , zout=65.3, eup=  228.57 +- 0.293771914
+                                            [WORKER 24] ia= 380, thermal , zout=65.3, eup=  233.01 +- 0.28144668
+                                            [WORKER 28] ia= 420, thermal , zout=65.3, eup=  231.62 +- 0.329558895
+                                            [WORKER 26] ia= 400, thermal , zout=65.3, eup=  227.81 +- 0.293195726
+                                            [WORKER 23] ia= 370, thermal , zout=65.3, eup=  231.75 +- 0.264726297
+     Process 5 started calculating ia=770
+     Process 18 started calculating ia=780
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+     Process 21 started calculating ia=790
+     Process 2 started calculating ia=800
+
+   mc_photons =  100000
+     Process 8 started calculating ia=810
+     Process 25 started calculating ia=820
+     Process 3 started calculating ia=830
+     Process 7 started calculating ia=840
+     Process 6 started calculating ia=850
+     Process 31 started calculating ia=860
+     Process 30 started calculating ia=870
+     Process 27 started calculating ia=880
+     Process 24 started calculating ia=890
+     Process 28 started calculating ia=900
+     Process 23 started calculating ia=910
+     Process 26 started calculating ia=920
+                                            [WORKER 35] ia= 540, solar   , zout=65.3, eup=  210.98 +- 0.763463297
+                                            [WORKER 37] ia= 550, solar   , zout=65.3, eup=  191.08 +- 0.793232728
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+                                            [WORKER 12] ia= 560, solar   , zout=65.3, eup=  156.44 +- 0.827885359
+                                            [WORKER 36] ia= 570, solar   , zout=65.3, eup=  131.68 +- 0.834463942
+                                            [WORKER 38] ia= 600, solar   , zout=65.3, eup=  151.65 +- 0.848881377
+                                            [WORKER 39] ia= 620, solar   , zout=65.3, eup=  164.24 +- 0.855950973
+                                            [WORKER 34] ia= 590, solar   , zout=65.3, eup=  181.82 +- 0.830024556
+                                            [WORKER 14] ia= 580, solar   , zout=65.3, eup=  152.89 +- 0.842400708
+                                            [WORKER 33] ia= 610, solar   , zout=65.3, eup=  165.66 +- 0.848392255
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+                                            [WORKER 16] ia= 640, solar   , zout=65.3, eup=  187.20 +- 0.841686658
+                                            [WORKER 15] ia= 630, solar   , zout=65.3, eup=  182.02 +- 0.845633982
+                                            [WORKER 10] ia= 650, solar   , zout=65.3, eup=  162.94 +- 0.869495414
+                                            [WORKER 13] ia= 660, solar   , zout=65.3, eup=  157.20 +- 0.845029849
+                                            [WORKER 29] ia= 680, solar   , zout=65.3, eup=  244.58 +- 0.525723178
+                                            [WORKER  9] ia= 670, solar   , zout=65.3, eup=  232.19 +- 0.577929644
+                                            [WORKER 11] ia= 690, solar   , zout=65.3, eup=  248.26 +- 0.58511483
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+                                            [WORKER 32] ia= 700, solar   , zout=65.3, eup=  255.34 +- 0.541733551
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+                                            [WORKER 22] ia= 710, solar   , zout=65.3, eup=  243.04 +- 0.644493703
+                                            [WORKER 17] ia= 720, solar   , zout=65.3, eup=  242.57 +- 0.760635427
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+                                            [WORKER  4] ia= 760, solar   , zout=65.3, eup=  219.20 +- 0.861824221
+                                            [WORKER 19] ia= 750, solar   , zout=65.3, eup=  237.94 +- 0.79464942
+                                            [WORKER 20] ia= 740, solar   , zout=65.3, eup=  245.22 +- 0.77459176
+                                            [WORKER  1] ia= 730, solar   , zout=65.3, eup=  241.19 +- 0.783257005
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+                                            [WORKER  5] ia= 770, solar   , zout=65.3, eup=  257.99 +- 0.750947751
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+                                            [WORKER 18] ia= 780, solar   , zout=65.3, eup=  290.36 +- 0.566436451
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+                                            [WORKER 35] ia= 540, thermal , zout=65.3, eup=  232.25 +- 0.21149668
+                                            [WORKER 37] ia= 550, thermal , zout=65.3, eup=  238.48 +- 0.261451143
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+                                            [WORKER 21] ia= 790, solar   , zout=65.3, eup=  288.88 +- 0.568191608
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+                                            [WORKER  2] ia= 800, solar   , zout=65.3, eup=  280.16 +- 0.647819799
+     Process 35 started calculating ia=930
+     Process 37 started calculating ia=940
+                                            [WORKER 36] ia= 570, thermal , zout=65.3, eup=  245.44 +- 0.312830357
+                                            [WORKER 34] ia= 590, thermal , zout=65.3, eup=  235.95 +- 0.258414966
+                                            [WORKER 12] ia= 560, thermal , zout=65.3, eup=  245.01 +- 0.281973967
+                                            [WORKER 25] ia= 820, solar   , zout=65.3, eup=  152.10 +- 0.940936403
+                                            [WORKER 38] ia= 600, thermal , zout=65.3, eup=  242.78 +- 0.265886851
+                                            [WORKER 39] ia= 620, thermal , zout=65.3, eup=  238.12 +- 0.283551193
+                                            [WORKER 14] ia= 580, thermal , zout=65.3, eup=  240.38 +- 0.281618592
+                                            [WORKER  8] ia= 810, solar   , zout=65.3, eup=  195.76 +- 0.915877993
+                                            [WORKER  3] ia= 830, solar   , zout=65.3, eup=  135.66 +- 0.931816356
+                                            [WORKER  7] ia= 840, solar   , zout=65.3, eup=  139.13 +- 0.940168303
+                                            [WORKER 33] ia= 610, thermal , zout=65.3, eup=  238.62 +- 0.256309303
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+                                            [WORKER 24] ia= 890, solar   , zout=65.3, eup=  234.35 +- 0.797894518
+                                            [WORKER 27] ia= 880, solar   , zout=65.3, eup=  224.91 +- 0.854642948
+                                            [WORKER 31] ia= 860, solar   , zout=65.3, eup=  190.23 +- 0.93421309
+                                            [WORKER 23] ia= 910, solar   , zout=65.3, eup=  247.82 +- 0.784007204
+                                            [WORKER 28] ia= 900, solar   , zout=65.3, eup=  255.63 +- 0.75860071
+                                            [WORKER 26] ia= 920, solar   , zout=65.3, eup=  235.96 +- 0.871687853
+                                            [WORKER 30] ia= 870, solar   , zout=65.3, eup=  210.59 +- 0.885596519
+                                            [WORKER  6] ia= 850, solar   , zout=65.3, eup=  125.38 +- 0.920292741
+                                            [WORKER 15] ia= 630, thermal , zout=65.3, eup=  236.02 +- 0.257069268
+                                            [WORKER 16] ia= 640, thermal , zout=65.3, eup=  234.75 +- 0.256354138
+                                            [WORKER 10] ia= 650, thermal , zout=65.3, eup=  239.41 +- 0.288373164
+                                            [WORKER 13] ia= 660, thermal , zout=65.3, eup=  247.16 +- 0.285958794
+                                            [WORKER 29] ia= 680, thermal , zout=65.3, eup=  247.13 +- 0.244867943
+                                            [WORKER  9] ia= 670, thermal , zout=65.3, eup=  243.76 +- 0.22910701
+                                            [WORKER 11] ia= 690, thermal , zout=65.3, eup=  244.62 +- 0.246025189
+                                            [WORKER 32] ia= 700, thermal , zout=65.3, eup=  244.78 +- 0.260008362
+     Process 36 started calculating ia=950
+     Process 34 started calculating ia=960
+     Process 12 started calculating ia=970
+     Process 39 started calculating ia=980
+     Process 38 started calculating ia=990
+     Process 14 started calculating ia=1000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+     Process 33 started calculating ia=1010
+                                            [WORKER 22] ia= 710, thermal , zout=65.3, eup=  243.28 +- 0.27101017
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+                                            [WORKER 17] ia= 720, thermal , zout=65.3, eup=  234.79 +- 0.329739154
+     Process 15 started calculating ia=1020
+     Process 16 started calculating ia=1030
+     Process 10 started calculating ia=1040
+     Process 13 started calculating ia=1050
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+                                            [WORKER  4] ia= 760, thermal , zout=65.3, eup=  217.18 +- 0.365911723
+                                            [WORKER 19] ia= 750, thermal , zout=65.3, eup=  226.87 +- 0.350638277
+     Process 29 started calculating ia=1060
+                                            [WORKER  1] ia= 730, thermal , zout=65.3, eup=  236.55 +- 0.328894326
+                                            [WORKER 20] ia= 740, thermal , zout=65.3, eup=  232.75 +- 0.320833399
+     Process 9 started calculating ia=1070
+     Process 11 started calculating ia=1080
+                                            [WORKER  5] ia= 770, thermal , zout=65.3, eup=  194.96 +- 0.375760896
+     Process 32 started calculating ia=1090
+                                            [WORKER 18] ia= 780, thermal , zout=65.3, eup=  182.07 +- 0.329032608
+
+   mc_photons =  100000
+     Process 22 started calculating ia=1100
+
+   mc_photons =  100000
+     Process 17 started calculating ia=1110
+                                            [WORKER 21] ia= 790, thermal , zout=65.3, eup=  196.39 +- 0.327559324
+
+   mc_photons =  100000
+     Process 4 started calculating ia=1120
+     Process 19 started calculating ia=1130
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+     Process 1 started calculating ia=1140
+     Process 20 started calculating ia=1150
+
+   mc_photons =  100000
+     Process 5 started calculating ia=1160
+     Process 18 started calculating ia=1170
+
+   mc_photons =  100000
+                                            [WORKER 35] ia= 930, solar   , zout=65.3, eup=  194.77 +- 0.976696097
+                                            [WORKER 37] ia= 940, solar   , zout=65.3, eup=  227.59 +- 0.943071657
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+                                            [WORKER  2] ia= 800, thermal , zout=65.3, eup=  194.09 +- 0.324394064
+     Process 21 started calculating ia=1180
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+     Process 2 started calculating ia=1190
+                                            [WORKER 25] ia= 820, thermal , zout=65.3, eup=  234.58 +- 0.375424225
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+                                            [WORKER  3] ia= 830, thermal , zout=65.3, eup=  244.42 +- 0.312338704
+                                            [WORKER  8] ia= 810, thermal , zout=65.3, eup=  210.91 +- 0.376488731
+                                            [WORKER  7] ia= 840, thermal , zout=65.3, eup=  239.76 +- 0.323916869
+
+   mc_photons =  100000
+     Process 25 started calculating ia=1200
+     Process 3 started calculating ia=1210
+     Process 7 started calculating ia=1220
+     Process 8 started calculating ia=1230
+
+   mc_photons =  100000
+                                            [WORKER 24] ia= 890, thermal , zout=65.3, eup=  246.44 +- 0.285372143
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+                                            [WORKER 23] ia= 910, thermal , zout=65.3, eup=  241.31 +- 0.251081971
+                                            [WORKER 27] ia= 880, thermal , zout=65.3, eup=  250.45 +- 0.284838434
+                                            [WORKER 31] ia= 860, thermal , zout=65.3, eup=  246.82 +- 0.276703041
+
+   mc_photons =  100000
+                                            [WORKER 28] ia= 900, thermal , zout=65.3, eup=  245.76 +- 0.245878398
+
+   mc_photons =  100000
+                                            [WORKER 30] ia= 870, thermal , zout=65.3, eup=  249.30 +- 0.28145474
+                                            [WORKER 26] ia= 920, thermal , zout=65.3, eup=  242.59 +- 0.25802537
+                                            [WORKER  6] ia= 850, thermal , zout=65.3, eup=  250.14 +- 0.315485627
+                                            [WORKER 36] ia= 950, solar   , zout=65.3, eup=  240.21 +- 0.925476249
+
+   mc_photons =  100000
+                                            [WORKER 34] ia= 960, solar   , zout=65.3, eup=  247.38 +- 0.912743881
+     Process 24 started calculating ia=1240
+                                            [WORKER 12] ia= 970, solar   , zout=65.3, eup=  252.00 +- 0.875798746
+                                            [WORKER 38] ia= 990, solar   , zout=65.3, eup=  257.22 +- 0.897139599
+     Process 23 started calculating ia=1250
+     Process 27 started calculating ia=1260
+     Process 31 started calculating ia=1270
+                                            [WORKER 14] ia=1000, solar   , zout=65.3, eup=  257.21 +- 0.903380191
+     Process 28 started calculating ia=1280
+                                            [WORKER 39] ia= 980, solar   , zout=65.3, eup=  269.72 +- 0.851729945
+     Process 30 started calculating ia=1290
+     Process 6 started calculating ia=1300
+     Process 26 started calculating ia=1310
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+                                            [WORKER 33] ia=1010, solar   , zout=65.3, eup=  262.22 +- 0.908233412
+
+   mc_photons =  100000
+                                            [WORKER 15] ia=1020, solar   , zout=65.3, eup=  263.26 +- 0.932539213
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+                                            [WORKER 10] ia=1040, solar   , zout=65.3, eup=  304.46 +- 0.847039381
+                                            [WORKER 16] ia=1030, solar   , zout=65.3, eup=  301.61 +- 0.84407973
+                                            [WORKER 35] ia= 930, thermal , zout=65.3, eup=  242.86 +- 0.255773792
+                                            [WORKER 37] ia= 940, thermal , zout=65.3, eup=  236.99 +- 0.233640083
+                                            [WORKER 29] ia=1060, solar   , zout=65.3, eup=  295.08 +- 0.827085526
+                                            [WORKER 11] ia=1080, solar   , zout=65.3, eup=  276.00 +- 0.904519171
+                                            [WORKER 13] ia=1050, solar   , zout=65.3, eup=  291.13 +- 0.861872979
+                                            [WORKER 32] ia=1090, solar   , zout=65.3, eup=  288.01 +- 0.881914036
+                                            [WORKER  9] ia=1070, solar   , zout=65.3, eup=  290.13 +- 0.861478866
+                                            [WORKER 17] ia=1110, solar   , zout=65.3, eup=  289.32 +- 0.880174527
+                                            [WORKER 22] ia=1100, solar   , zout=65.3, eup=  293.37 +- 0.842784223
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+     Process 35 started calculating ia=1320
+                                            [WORKER  4] ia=1120, solar   , zout=65.3, eup=  283.49 +- 0.921305335
+     Process 37 started calculating ia=1330
+
+   mc_photons =  100000
+                                            [WORKER  1] ia=1140, solar   , zout=65.3, eup=  285.58 +- 0.916861723
+                                            [WORKER 19] ia=1130, solar   , zout=65.3, eup=  279.83 +- 0.916162215
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+                                            [WORKER 20] ia=1150, solar   , zout=65.3, eup=  304.60 +- 0.896170734
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+                                            [WORKER  5] ia=1160, solar   , zout=65.3, eup=  325.10 +- 0.787198651
+
+   mc_photons =  100000
+                                            [WORKER 18] ia=1170, solar   , zout=65.3, eup=  338.35 +- 0.713189217
+                                            [WORKER 21] ia=1180, solar   , zout=65.3, eup=  341.04 +- 0.699277715
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+                                            [WORKER  2] ia=1190, solar   , zout=65.3, eup=  348.84 +- 0.662672855
+
+   mc_photons =  100000
+                                            [WORKER 36] ia= 950, thermal , zout=65.3, eup=  234.97 +- 0.238474142
+                                            [WORKER 25] ia=1200, solar   , zout=65.3, eup=  351.74 +- 0.645340521
+                                            [WORKER 34] ia= 960, thermal , zout=65.3, eup=  234.26 +- 0.238481609
+
+   mc_photons =  100000
+                                            [WORKER 38] ia= 990, thermal , zout=65.3, eup=  228.43 +- 0.256170055
+                                            [WORKER  8] ia=1230, solar   , zout=65.3, eup=  343.30 +- 0.761531474
+                                            [WORKER 12] ia= 970, thermal , zout=65.3, eup=  221.88 +- 0.303103855
+                                            [WORKER 14] ia=1000, thermal , zout=65.3, eup=  227.75 +- 0.2666748
+                                            [WORKER 39] ia= 980, thermal , zout=65.3, eup=  227.33 +- 0.253362528
+                                            [WORKER  3] ia=1210, solar   , zout=65.3, eup=  356.77 +- 0.606395701
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+     Process 36 started calculating ia=1340
+
+   mc_photons =  100000
+                                            [WORKER  7] ia=1220, solar   , zout=65.3, eup=  360.32 +- 0.606140011
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+     Process 34 started calculating ia=1350
+
+   mc_photons =  100000
+     Process 38 started calculating ia=1360
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+     Process 12 started calculating ia=1370
+                                            [WORKER 33] ia=1010, thermal , zout=65.3, eup=  216.61 +- 0.295209252
+     Process 14 started calculating ia=1380
+     Process 39 started calculating ia=1390
+                                            [WORKER 28] ia=1280, solar   , zout=65.3, eup=  301.41 +- 0.92377767
+                                            [WORKER 24] ia=1240, solar   , zout=65.3, eup=  336.31 +- 0.819411228
+                                            [WORKER 26] ia=1310, solar   , zout=65.3, eup=  288.08 +- 1.0052706
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+                                            [WORKER 30] ia=1290, solar   , zout=65.3, eup=  285.19 +- 1.01076766
+                                            [WORKER  6] ia=1300, solar   , zout=65.3, eup=  290.55 +- 1.01865972
+                                            [WORKER 23] ia=1250, solar   , zout=65.3, eup=  338.52 +- 0.805895852
+                                            [WORKER 31] ia=1270, solar   , zout=65.3, eup=  314.43 +- 0.899097897
+                                            [WORKER 27] ia=1260, solar   , zout=65.3, eup=  331.61 +- 0.820890967
+                                            [WORKER 15] ia=1020, thermal , zout=65.3, eup=  205.94 +- 0.298239371
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+                                            [WORKER 10] ia=1040, thermal , zout=65.3, eup=  189.05 +- 0.197212004
+                                            [WORKER 16] ia=1030, thermal , zout=65.3, eup=  190.67 +- 0.207449634
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+     Process 33 started calculating ia=1400
+                                            [WORKER 11] ia=1080, thermal , zout=65.3, eup=  217.18 +- 0.316189668
+
+   mc_photons =  100000
+                                            [WORKER 29] ia=1060, thermal , zout=65.3, eup=  209.70 +- 0.338385071
+                                            [WORKER 13] ia=1050, thermal , zout=65.3, eup=  201.87 +- 0.305219089
+                                            [WORKER  9] ia=1070, thermal , zout=65.3, eup=  207.70 +- 0.323083522
+                                            [WORKER 32] ia=1090, thermal , zout=65.3, eup=  206.22 +- 0.267173545
+
+   mc_photons =  100000
+     Process 15 started calculating ia=1410
+                                            [WORKER 22] ia=1100, thermal , zout=65.3, eup=  205.50 +- 0.254229267
+                                            [WORKER 17] ia=1110, thermal , zout=65.3, eup=  213.15 +- 0.275246467
+
+   mc_photons =  100000
+     Process 10 started calculating ia=1420
+     Process 16 started calculating ia=1430
+                                            [WORKER  4] ia=1120, thermal , zout=65.3, eup=  213.27 +- 0.275033516
+                                            [WORKER 19] ia=1130, thermal , zout=65.3, eup=  207.94 +- 0.267584181
+                                            [WORKER  1] ia=1140, thermal , zout=65.3, eup=  206.47 +- 0.23243287
+                                            [WORKER 20] ia=1150, thermal , zout=65.3, eup=  188.79 +- 0.200672558
+                                            [WORKER  5] ia=1160, thermal , zout=65.3, eup=  188.91 +- 0.181933505
+
+   mc_photons =  100000
+                                            [WORKER 18] ia=1170, thermal , zout=65.3, eup=  187.79 +- 0.172027515
+
+   mc_photons =  100000
+     Process 11 started calculating ia=1440
+
+   mc_photons =  100000
+                                            [WORKER 37] ia=1330, solar   , zout=65.3, eup=  240.68 +- 1.09997509
+
+   mc_photons =  100000
+                                            [WORKER 21] ia=1180, thermal , zout=65.3, eup=  183.49 +- 0.142048859
+     Process 13 started calculating ia=1450
+     Process 29 started calculating ia=1460
+
+   mc_photons =  100000
+                                            [WORKER 35] ia=1320, solar   , zout=65.3, eup=  284.44 +- 1.01738856
+     Process 9 started calculating ia=1470
+     Process 32 started calculating ia=1480
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+                                            [WORKER  2] ia=1190, thermal , zout=65.3, eup=  182.19 +- 0.147234098
+
+   mc_photons =  100000
+     Process 22 started calculating ia=1490
+     Process 17 started calculating ia=1500
+                                            [WORKER 25] ia=1200, thermal , zout=65.3, eup=  181.15 +- 0.139668997
+     Process 4 started calculating ia=1510
+     Process 19 started calculating ia=1520
+     Process 1 started calculating ia=1530
+     Process 20 started calculating ia=1540
+     Process 5 started calculating ia=1550
+                                            [WORKER  8] ia=1230, thermal , zout=65.3, eup=  180.10 +- 0.133572626
+     Process 18 started calculating ia=1560
+
+   mc_photons =  100000
+     Process 21 started calculating ia=1570
+                                            [WORKER  3] ia=1210, thermal , zout=65.3, eup=  182.23 +- 0.127978505
+                                            [WORKER  7] ia=1220, thermal , zout=65.3, eup=  179.22 +- 0.138486019
+
+   mc_photons =  100000
+     Process 2 started calculating ia=1580
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+     Process 25 started calculating ia=1590
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+     Process 8 started calculating ia=1600
+                                            [WORKER 36] ia=1340, solar   , zout=65.3, eup=  314.07 +- 0.93114175
+     Process 3 started calculating ia=1610
+                                            [WORKER 12] ia=1370, solar   , zout=65.3, eup=  256.14 +- 1.11947531
+                                            [WORKER 38] ia=1360, solar   , zout=65.3, eup=  252.94 +- 1.0855088
+
+   mc_photons =  100000
+     Process 7 started calculating ia=1620
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+                                            [WORKER 28] ia=1280, thermal , zout=65.3, eup=  213.99 +- 0.236412498
+
+   mc_photons =  100000
+                                            [WORKER 34] ia=1350, solar   , zout=65.3, eup=  311.88 +- 0.954517598
+
+   mc_photons =  100000
+                                            [WORKER 24] ia=1240, thermal , zout=65.3, eup=  178.94 +- 0.132648205
+                                            [WORKER 39] ia=1390, solar   , zout=65.3, eup=  244.66 +- 1.14861104
+                                            [WORKER 30] ia=1290, thermal , zout=65.3, eup=  217.47 +- 0.234067692
+                                            [WORKER 26] ia=1310, thermal , zout=65.3, eup=  219.27 +- 0.250964272
+                                            [WORKER  6] ia=1300, thermal , zout=65.3, eup=  212.23 +- 0.25333662
+                                            [WORKER 14] ia=1380, solar   , zout=65.3, eup=  299.46 +- 1.06523358
+                                            [WORKER 23] ia=1250, thermal , zout=65.3, eup=  179.34 +- 0.153166512
+                                            [WORKER 27] ia=1260, thermal , zout=65.3, eup=  189.45 +- 0.179005521
+                                            [WORKER 31] ia=1270, thermal , zout=65.3, eup=  201.54 +- 0.216832966
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+     Process 28 started calculating ia=1630
+
+   mc_photons =  100000
+     Process 24 started calculating ia=1640
+     Process 30 started calculating ia=1650
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+     Process 26 started calculating ia=1660
+
+   mc_photons =  100000
+     Process 6 started calculating ia=1670
+                                            [WORKER 33] ia=1400, solar   , zout=65.3, eup=  205.53 +- 1.16735875
+
+   mc_photons =  100000
+     Process 23 started calculating ia=1680
+     Process 27 started calculating ia=1690
+     Process 31 started calculating ia=1700
+                                            [WORKER 15] ia=1410, solar   , zout=65.3, eup=  147.74 +- 1.13485292
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+                                            [WORKER 16] ia=1430, solar   , zout=65.3, eup=  154.34 +- 1.14045411
+                                            [WORKER 10] ia=1420, solar   , zout=65.3, eup=  133.20 +- 1.11412916
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+                                            [WORKER 37] ia=1330, thermal , zout=65.3, eup=  234.54 +- 0.264005746
+                                            [WORKER 35] ia=1320, thermal , zout=65.3, eup=  226.30 +- 0.249155563
+                                            [WORKER 11] ia=1440, solar   , zout=65.3, eup=  201.03 +- 1.17648031
+                                            [WORKER 29] ia=1460, solar   , zout=65.3, eup=  249.87 +- 1.14907653
+                                            [WORKER  9] ia=1470, solar   , zout=65.3, eup=  241.46 +- 1.16726102
+                                            [WORKER 32] ia=1480, solar   , zout=65.3, eup=  229.00 +- 1.18062988
+
+   mc_photons =  100000
+                                            [WORKER 13] ia=1450, solar   , zout=65.3, eup=  245.51 +- 1.13905435
+     Process 37 started calculating ia=1710
+     Process 35 started calculating ia=1720
+                                            [WORKER 22] ia=1490, solar   , zout=65.3, eup=  229.17 +- 1.20083683
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+                                            [WORKER 19] ia=1520, solar   , zout=65.3, eup=  200.98 +- 1.2130347
+                                            [WORKER  5] ia=1550, solar   , zout=65.3, eup=  146.66 +- 1.15420005
+
+   mc_photons =  100000
+                                            [WORKER 18] ia=1560, solar   , zout=65.3, eup=  104.56 +- 1.08747809
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+                                            [WORKER 17] ia=1500, solar   , zout=65.3, eup=  331.67 +- 1.03784814
+                                            [WORKER 21] ia=1570, solar   , zout=65.3, eup=   80.34 +- 1.04606409
+
+   mc_photons =  100000
+                                            [WORKER  1] ia=1530, solar   , zout=65.3, eup=  243.77 +- 1.20963858
+
+   mc_photons =  100000
+                                            [WORKER  2] ia=1580, solar   , zout=65.3, eup=  144.76 +- 1.17900156
+                                            [WORKER 20] ia=1540, solar   , zout=65.3, eup=  232.80 +- 1.22810311
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+                                            [WORKER  4] ia=1510, solar   , zout=65.3, eup=  280.24 +- 1.15074497
+
+   mc_photons =  100000
+                                            [WORKER 36] ia=1340, thermal , zout=65.3, eup=  214.42 +- 0.292531845
+                                            [WORKER 25] ia=1590, solar   , zout=65.3, eup=  242.33 +- 1.23188081
+                                            [WORKER  8] ia=1600, solar   , zout=65.3, eup=  269.03 +- 1.20574552
+                                            [WORKER 12] ia=1370, thermal , zout=65.3, eup=  221.60 +- 0.307906448
+                                            [WORKER 38] ia=1360, thermal , zout=65.3, eup=  229.07 +- 0.257903141
+                                            [WORKER  7] ia=1620, solar   , zout=65.3, eup=  254.71 +- 1.21985669
+                                            [WORKER  3] ia=1610, solar   , zout=65.3, eup=  262.75 +- 1.21423344
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+                                            [WORKER 34] ia=1350, thermal , zout=65.3, eup=  216.65 +- 0.280584714
+                                            [WORKER 39] ia=1390, thermal , zout=65.3, eup=  216.81 +- 0.366742636
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+                                            [WORKER 14] ia=1380, thermal , zout=65.3, eup=  190.23 +- 0.32377027
+     Process 36 started calculating ia=1730
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+     Process 12 started calculating ia=1740
+     Process 38 started calculating ia=1750
+
+   mc_photons =  100000
+                                            [WORKER 33] ia=1400, thermal , zout=65.3, eup=  233.64 +- 0.302083343
+                                            [WORKER 15] ia=1410, thermal , zout=65.3, eup=  239.21 +- 0.371839557
+                                            [WORKER 28] ia=1630, solar   , zout=65.3, eup=  257.43 +- 1.2280206
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+                                            [WORKER 16] ia=1430, thermal , zout=65.3, eup=  243.63 +- 0.319158371
+     Process 34 started calculating ia=1760
+                                            [WORKER 10] ia=1420, thermal , zout=65.3, eup=  244.41 +- 0.368131702
+     Process 39 started calculating ia=1770
+
+   mc_photons =  100000
+                                            [WORKER 26] ia=1660, solar   , zout=65.3, eup=  246.89 +- 1.2433264
+                                            [WORKER 24] ia=1640, solar   , zout=65.3, eup=  274.00 +- 1.22047566
+                                            [WORKER  6] ia=1670, solar   , zout=65.3, eup=  253.68 +- 1.25445502
+                                            [WORKER 30] ia=1650, solar   , zout=65.3, eup=  294.63 +- 1.19187293
+
+   mc_photons =  100000
+     Process 14 started calculating ia=1780
+                                            [WORKER 31] ia=1700, solar   , zout=65.3, eup=  260.54 +- 1.24958499
+                                            [WORKER 27] ia=1690, solar   , zout=65.3, eup=  320.33 +- 1.16751713
+                                            [WORKER 23] ia=1680, solar   , zout=65.3, eup=  308.89 +- 1.21032547
+
+   mc_photons =  100000
+                                            [WORKER 11] ia=1440, thermal , zout=65.3, eup=  238.70 +- 0.299370828
+     Process 33 started calculating ia=1790
+     Process 15 started calculating ia=1800
+                                            [WORKER 29] ia=1460, thermal , zout=65.3, eup=  226.86 +- 0.243823372
+                                            [WORKER  9] ia=1470, thermal , zout=65.3, eup=  226.34 +- 0.240003584
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+                                            [WORKER 32] ia=1480, thermal , zout=65.3, eup=  222.93 +- 0.290012166
+     Process 16 started calculating ia=1810
+
+   mc_photons =  100000
+     Process 10 started calculating ia=1820
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+                                            [WORKER 13] ia=1450, thermal , zout=65.3, eup=  231.11 +- 0.259798894
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+                                            [WORKER 22] ia=1490, thermal , zout=65.3, eup=  209.59 +- 0.330053882
+                                            [WORKER 35] ia=1720, solar   , zout=65.3, eup=  262.32 +- 1.22484775
+                                            [WORKER 37] ia=1710, solar   , zout=65.3, eup=  281.00 +- 1.21882023
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+     Process 11 started calculating ia=1830
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+                                            [WORKER  5] ia=1550, thermal , zout=65.3, eup=  243.47 +- 0.378652114
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+                                            [WORKER 19] ia=1520, thermal , zout=65.3, eup=  223.82 +- 0.346694086
+     Process 29 started calculating ia=1840
+                                            [WORKER 21] ia=1570, thermal , zout=65.3, eup=  249.72 +- 0.461026749
+     Process 9 started calculating ia=1850
+                                            [WORKER 18] ia=1560, thermal , zout=65.3, eup=  243.66 +- 0.443766554
+                                            [WORKER 17] ia=1500, thermal , zout=65.3, eup=  184.82 +- 0.176275533
+                                            [WORKER  1] ia=1530, thermal , zout=65.3, eup=  220.70 +- 0.308077755
+
+   mc_photons =  100000
+                                            [WORKER  2] ia=1580, thermal , zout=65.3, eup=  246.66 +- 0.351133424
+     Process 32 started calculating ia=1860
+
+   mc_photons =  100000
+                                            [WORKER 20] ia=1540, thermal , zout=65.3, eup=  221.25 +- 0.345464851
+                                            [WORKER  4] ia=1510, thermal , zout=65.3, eup=  208.97 +- 0.302316624
+     Process 13 started calculating ia=1870
+
+   mc_photons =  100000
+                                            [WORKER 25] ia=1590, thermal , zout=65.3, eup=  240.91 +- 0.225200563
+     Process 22 started calculating ia=1880
+                                            [WORKER  8] ia=1600, thermal , zout=65.3, eup=  240.48 +- 0.212734401
+                                            [WORKER  7] ia=1620, thermal , zout=65.3, eup=  239.30 +- 0.286828195
+                                            [WORKER  3] ia=1610, thermal , zout=65.3, eup=  238.96 +- 0.241805267
+     Process 5 started calculating ia=1890
+
+   mc_photons =  100000
+     Process 19 started calculating ia=1900
+     Process 21 started calculating ia=1910
+
+   mc_photons =  100000
+     Process 18 started calculating ia=1920
+     Process 17 started calculating ia=1930
+     Process 1 started calculating ia=1940
+     Process 2 started calculating ia=1950
+     Process 20 started calculating ia=1960
+     Process 4 started calculating ia=1970
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+     Process 25 started calculating ia=1980
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+                                            [WORKER 36] ia=1730, solar   , zout=65.3, eup=  264.64 +- 1.26162124
+     Process 8 started calculating ia=1990
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+                                            [WORKER 12] ia=1740, solar   , zout=65.3, eup=  241.08 +- 1.25652688
+
+   mc_photons =  100000
+     Process 3 started calculating ia=2000
+     Process 7 started calculating ia=2010
+                                            [WORKER 38] ia=1750, solar   , zout=65.3, eup=  255.73 +- 1.2724437
+
+   mc_photons =  100000
+                                            [WORKER 34] ia=1760, solar   , zout=65.3, eup=  258.14 +- 1.26753251
+
+   mc_photons =  100000
+                                            [WORKER 28] ia=1630, thermal , zout=65.3, eup=  238.27 +- 0.298148773
+
+   mc_photons =  100000
+                                            [WORKER 39] ia=1770, solar   , zout=65.3, eup=  291.79 +- 1.22186556
+
+   mc_photons =  100000
+                                            [WORKER 26] ia=1660, thermal , zout=65.3, eup=  238.33 +- 0.322301204
+                                            [WORKER 14] ia=1780, solar   , zout=65.3, eup=  296.99 +- 1.22704247
+                                            [WORKER 30] ia=1650, thermal , zout=65.3, eup=  215.82 +- 0.367841483
+     Process 28 started calculating ia=2020
+
+   mc_photons =  100000
+                                            [WORKER  6] ia=1670, thermal , zout=65.3, eup=  211.22 +- 0.388126739
+                                            [WORKER 27] ia=1690, thermal , zout=65.3, eup=  199.24 +- 0.281253497
+                                            [WORKER 24] ia=1640, thermal , zout=65.3, eup=  224.14 +- 0.360824812
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+                                            [WORKER 31] ia=1700, thermal , zout=65.3, eup=  222.83 +- 0.343164118
+                                            [WORKER 23] ia=1680, thermal , zout=65.3, eup=  184.02 +- 0.230416397
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+     Process 26 started calculating ia=2030
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+                                            [WORKER 15] ia=1800, solar   , zout=65.3, eup=  296.37 +- 1.27550984
+
+   mc_photons =  100000
+     Process 30 started calculating ia=2040
+
+   mc_photons =  100000
+     Process 6 started calculating ia=2050
+     Process 27 started calculating ia=2060
+     Process 24 started calculating ia=2070
+     Process 23 started calculating ia=2080
+     Process 31 started calculating ia=2090
+                                            [WORKER 33] ia=1790, solar   , zout=65.3, eup=  300.88 +- 1.24666365
+
+   mc_photons =  100000
+                                            [WORKER 16] ia=1810, solar   , zout=65.3, eup=  306.66 +- 1.25942634
+
+   mc_photons =  100000
+                                            [WORKER 10] ia=1820, solar   , zout=65.3, eup=  320.89 +- 1.22495368
+                                            [WORKER 35] ia=1720, thermal , zout=65.3, eup=  236.24 +- 0.31260702
+                                            [WORKER 37] ia=1710, thermal , zout=65.3, eup=  229.10 +- 0.331230972
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+                                            [WORKER 11] ia=1830, solar   , zout=65.3, eup=  322.50 +- 1.20662957
+
+   mc_photons =  100000
+                                            [WORKER 29] ia=1840, solar   , zout=65.3, eup=  310.26 +- 1.2102119
+                                            [WORKER  9] ia=1850, solar   , zout=65.3, eup=  312.14 +- 1.27355456
+
+   mc_photons =  100000
+     Process 35 started calculating ia=2100
+     Process 37 started calculating ia=2110
+                                            [WORKER 32] ia=1860, solar   , zout=65.3, eup=  333.39 +- 1.25568817
+                                            [WORKER 13] ia=1870, solar   , zout=65.3, eup=  345.98 +- 1.23856411
+
+   mc_photons =  100000
+                                            [WORKER 36] ia=1730, thermal , zout=65.3, eup=  231.54 +- 0.360843519
+                                            [WORKER 22] ia=1880, solar   , zout=65.3, eup=  343.18 +- 1.24780534
+                                            [WORKER 12] ia=1740, thermal , zout=65.3, eup=  245.88 +- 0.291077972
+                                            [WORKER 38] ia=1750, thermal , zout=65.3, eup=  249.19 +- 0.279827401
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+                                            [WORKER 34] ia=1760, thermal , zout=65.3, eup=  246.50 +- 0.301711884
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+     Process 36 started calculating ia=2120
+                                            [WORKER  5] ia=1890, solar   , zout=65.3, eup=  342.01 +- 1.23593799
+                                            [WORKER 19] ia=1900, solar   , zout=65.3, eup=  324.76 +- 1.28219969
+                                            [WORKER 39] ia=1770, thermal , zout=65.3, eup=  247.82 +- 0.255942382
+     Process 12 started calculating ia=2130
+                                            [WORKER 21] ia=1910, solar   , zout=65.3, eup=  320.77 +- 1.29600923
+     Process 38 started calculating ia=2140
+                                            [WORKER 25] ia=1980, solar   , zout=65.3, eup=  259.48 +- 1.35174674
+                                            [WORKER  2] ia=1950, solar   , zout=65.3, eup=  350.65 +- 1.24373152
+                                            [WORKER 17] ia=1930, solar   , zout=65.3, eup=  325.24 +- 1.27929767
+                                            [WORKER  4] ia=1970, solar   , zout=65.3, eup=  280.97 +- 1.33112692
+                                            [WORKER  8] ia=1990, solar   , zout=65.3, eup=  262.53 +- 1.36788757
+                                            [WORKER  7] ia=2010, solar   , zout=65.3, eup=  283.69 +- 1.37371732
+                                            [WORKER  3] ia=2000, solar   , zout=65.3, eup=  304.61 +- 1.35753757
+                                            [WORKER 20] ia=1960, solar   , zout=65.3, eup=  343.76 +- 1.2573593
+                                            [WORKER 18] ia=1920, solar   , zout=65.3, eup=  326.97 +- 1.27472505
+                                            [WORKER  1] ia=1940, solar   , zout=65.3, eup=  339.60 +- 1.25271678
+
+   mc_photons =  100000
+     Process 34 started calculating ia=2150
+                                            [WORKER 14] ia=1780, thermal , zout=65.3, eup=  244.56 +- 0.2604122
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+                                            [WORKER 28] ia=2020, solar   , zout=65.3, eup=  243.35 +- 1.3860761
+     Process 39 started calculating ia=2160
+
+   mc_photons =  100000
+                                            [WORKER 15] ia=1800, thermal , zout=65.3, eup=  243.96 +- 0.222170107
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+[WORKER 14] Received termination signal. Exiting.
+                                            [WORKER 16] ia=1810, thermal , zout=65.3, eup=  243.71 +- 0.230440922
+                                            [WORKER 26] ia=2030, solar   , zout=65.3, eup=  217.71 +- 1.39130184
+                                            [WORKER 33] ia=1790, thermal , zout=65.3, eup=  245.69 +- 0.207807113
+                                            [WORKER 30] ia=2040, solar   , zout=65.3, eup=  273.18 +- 1.41686801
+
+   mc_photons =  100000
+                                            [WORKER 10] ia=1820, thermal , zout=65.3, eup=  243.62 +- 0.205264724
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+                                            [WORKER 27] ia=2060, solar   , zout=65.3, eup=  319.20 +- 1.38422115
+                                            [WORKER 24] ia=2070, solar   , zout=65.3, eup=  301.25 +- 1.39657622
+                                            [WORKER 23] ia=2080, solar   , zout=65.3, eup=  333.27 +- 1.35055213
+                                            [WORKER 11] ia=1830, thermal , zout=65.3, eup=  244.08 +- 0.231150548
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+                                            [WORKER  6] ia=2050, solar   , zout=65.3, eup=  330.31 +- 1.35999801
+
+   mc_photons =  100000
+                                            [WORKER 31] ia=2090, solar   , zout=65.3, eup=  371.61 +- 1.26993899
+                                            [WORKER  9] ia=1850, thermal , zout=65.3, eup=  238.91 +- 0.213279465
+                                            [WORKER 29] ia=1840, thermal , zout=65.3, eup=  243.02 +- 0.214368416
+[WORKER 15] Received termination signal. Exiting.
+
+   mc_photons =  100000
+[WORKER 16] Received termination signal. Exiting.
+                                            [WORKER 32] ia=1860, thermal , zout=65.3, eup=  233.90 +- 0.206579102
+[WORKER 33] Received termination signal. Exiting.
+[WORKER 10] Received termination signal. Exiting.
+                                            [WORKER 13] ia=1870, thermal , zout=65.3, eup=  233.06 +- 0.205922975
+[WORKER 11] Received termination signal. Exiting.
+                                            [WORKER 22] ia=1880, thermal , zout=65.3, eup=  232.43 +- 0.231830365
+
+   mc_photons =  100000
+                                            [WORKER 35] ia=2100, solar   , zout=65.3, eup=  391.22 +- 1.21395665
+
+   mc_photons =  100000
+[WORKER 29] Received termination signal. Exiting.
+[WORKER 9] Received termination signal. Exiting.
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+                                            [WORKER 37] ia=2110, solar   , zout=65.3, eup=  431.36 +- 1.07882762
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+[WORKER 32] Received termination signal. Exiting.
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+[WORKER 13] Received termination signal. Exiting.
+[WORKER 22] Received termination signal. Exiting.
+
+   mc_photons =  100000
+                                            [WORKER 19] ia=1900, thermal , zout=65.3, eup=  236.77 +- 0.205410642
+                                            [WORKER  5] ia=1890, thermal , zout=65.3, eup=  236.03 +- 0.202032185
+                                            [WORKER 21] ia=1910, thermal , zout=65.3, eup=  234.16 +- 0.239559046
+                                            [WORKER 25] ia=1980, thermal , zout=65.3, eup=  233.76 +- 0.315911955
+                                            [WORKER  2] ia=1950, thermal , zout=65.3, eup=  234.43 +- 0.25119794
+[WORKER 19] Received termination signal. Exiting.
+[WORKER 21] Received termination signal. Exiting.
+[WORKER 5] Received termination signal. Exiting.
+
+   mc_photons =  100000
+                                            [WORKER 38] ia=2140, solar   , zout=65.3, eup=  401.90 +- 1.19744006
+                                            [WORKER  4] ia=1970, thermal , zout=65.3, eup=  229.44 +- 0.310900002
+                                            [WORKER  7] ia=2010, thermal , zout=65.3, eup=  219.47 +- 0.407263208
+                                            [WORKER 17] ia=1930, thermal , zout=65.3, eup=  231.01 +- 0.280785561
+                                            [WORKER  8] ia=1990, thermal , zout=65.3, eup=  236.88 +- 0.301994095
+                                            [WORKER  3] ia=2000, thermal , zout=65.3, eup=  208.57 +- 0.436118004
+                                            [WORKER 20] ia=1960, thermal , zout=65.3, eup=  235.36 +- 0.240593456
+
+   mc_photons =  100000
+                                            [WORKER 18] ia=1920, thermal , zout=65.3, eup=  232.45 +- 0.25402923
+                                            [WORKER  1] ia=1940, thermal , zout=65.3, eup=  232.81 +- 0.249269461
+[WORKER 25] Received termination signal. Exiting.
+                                            [WORKER 36] ia=2120, solar   , zout=65.3, eup=  450.48 +- 0.970189164
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+                                            [WORKER 28] ia=2020, thermal , zout=65.3, eup=  237.38 +- 0.307045942
+                                            [WORKER 12] ia=2130, solar   , zout=65.3, eup=  440.82 +- 1.01148495
+[WORKER 2] Received termination signal. Exiting.
+
+   mc_photons =  100000
+                                            [WORKER 34] ia=2150, solar   , zout=65.3, eup=  420.46 +- 1.14251651
+[WORKER 4] Received termination signal. Exiting.
+[WORKER 7] Received termination signal. Exiting.
+[WORKER 17] Received termination signal. Exiting.
+[WORKER 8] Received termination signal. Exiting.
+[WORKER 3] Received termination signal. Exiting.
+[WORKER 20] Received termination signal. Exiting.
+[WORKER 18] Received termination signal. Exiting.
+[WORKER 1] Received termination signal. Exiting.
+[WORKER 28] Received termination signal. Exiting.
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+                                            [WORKER 30] ia=2040, thermal , zout=65.3, eup=  211.92 +- 0.344225349
+                                            [WORKER 26] ia=2030, thermal , zout=65.3, eup=  230.59 +- 0.361635088
+                                            [WORKER 39] ia=2160, solar   , zout=65.3, eup=  413.47 +- 1.19622085
+[WORKER 30] Received termination signal. Exiting.
+[WORKER 26] Received termination signal. Exiting.
+                                            [WORKER 27] ia=2060, thermal , zout=65.3, eup=  207.97 +- 0.242371704
+                                            [WORKER 23] ia=2080, thermal , zout=65.3, eup=  195.65 +- 0.259069269
+                                            [WORKER 24] ia=2070, thermal , zout=65.3, eup=  212.51 +- 0.298331278
+                                            [WORKER  6] ia=2050, thermal , zout=65.3, eup=  202.77 +- 0.232914291
+                                            [WORKER 31] ia=2090, thermal , zout=65.3, eup=  188.64 +- 0.212287363
+[WORKER 27] Received termination signal. Exiting.
+[WORKER 23] Received termination signal. Exiting.
+[WORKER 24] Received termination signal. Exiting.
+[WORKER 6] Received termination signal. Exiting.
+[WORKER 31] Received termination signal. Exiting.
+                                            [WORKER 35] ia=2100, thermal , zout=65.3, eup=  182.02 +- 0.203983501
+                                            [WORKER 37] ia=2110, thermal , zout=65.3, eup=  172.95 +- 0.164850974
+
+   mc_photons =  100000
+[WORKER 35] Received termination signal. Exiting.
+[WORKER 37] Received termination signal. Exiting.
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+                                            [WORKER 38] ia=2140, thermal , zout=65.3, eup=  186.97 +- 0.188693678
+                                            [WORKER 12] ia=2130, thermal , zout=65.3, eup=  167.69 +- 0.170255875
+                                            [WORKER 36] ia=2120, thermal , zout=65.3, eup=  163.11 +- 0.157081448
+                                            [WORKER 34] ia=2150, thermal , zout=65.3, eup=  178.15 +- 0.175445092
+[WORKER 38] Received termination signal. Exiting.
+[WORKER 12] Received termination signal. Exiting.
+[WORKER 36] Received termination signal. Exiting.
+[WORKER 34] Received termination signal. Exiting.
+                                            [WORKER 39] ia=2160, thermal , zout=65.3, eup=  181.50 +- 0.183340923
+Writing libRadtran output to netcdf file:  ./RESULTS/libRad_v01_montecarlo_3D_SWIA_solar,thermal_Orbit_06888C_GHM_1e5.nc
+[WORKER 39] Received termination signal. Exiting.
+
+
+
+=================================================================================================================
+Nadir Pixel Index    =  151
+SceneName            =  Orbit_07277C
+Specs                =  montecarlo - 3D - _GHM_1e5
+     Process 1 started calculating ia=150
+     Process 2 started calculating ia=160
+     Process 3 started calculating ia=170
+     Process 4 started calculating ia=180
+     Process 5 started calculating ia=190
+     Process 6 started calculating ia=200
+     Process 7 started calculating ia=210
+     Process 8 started calculating ia=220
+     Process 9 started calculating ia=230
+     Process 10 started calculating ia=240
+     Process 11 started calculating ia=250
+     Process 12 started calculating ia=260
+     Process 13 started calculating ia=270
+     Process 14 started calculating ia=280
+     Process 15 started calculating ia=290
+     Process 16 started calculating ia=300
+     Process 17 started calculating ia=310
+     Process 18 started calculating ia=320
+     Process 20 started calculating ia=340
+     Process 21 started calculating ia=350
+     Process 22 started calculating ia=360
+     Process 23 started calculating ia=370
+     Process 24 started calculating ia=380
+     Process 25 started calculating ia=390
+     Process 26 started calculating ia=400
+     Process 27 started calculating ia=410
+     Process 28 started calculating ia=420
+     Process 29 started calculating ia=430
+     Process 30 started calculating ia=440
+     Process 31 started calculating ia=450
+     Process 32 started calculating ia=460
+     Process 33 started calculating ia=470
+     Process 34 started calculating ia=480
+     Process 35 started calculating ia=490
+     Process 36 started calculating ia=500
+     Process 37 started calculating ia=510
+     Process 38 started calculating ia=520
+     Process 39 started calculating ia=530
+     Process 19 started calculating ia=330
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+                                            [WORKER 34] ia= 480, solar   , zout=65.3, eup=   68.41 +- 0.324961765
+                                            [WORKER 35] ia= 490, solar   , zout=65.3, eup=   63.47 +- 0.333678859
+                                            [WORKER 37] ia= 510, solar   , zout=65.3, eup=   77.05 +- 0.329125593
+                                            [WORKER 39] ia= 530, solar   , zout=65.3, eup=   90.48 +- 0.315750278
+                                            [WORKER 36] ia= 500, solar   , zout=65.3, eup=   64.82 +- 0.336250514
+                                            [WORKER 38] ia= 520, solar   , zout=65.3, eup=   90.16 +- 0.31119198
+                                            [WORKER 33] ia= 470, solar   , zout=65.3, eup=   69.80 +- 0.321844265
+                                            [WORKER 16] ia= 300, solar   , zout=65.3, eup=   55.15 +- 0.248553749
+                                            [WORKER  9] ia= 230, solar   , zout=65.3, eup=   54.92 +- 0.210508104
+
+   mc_photons =  100000
+                                            [WORKER  3] ia= 170, solar   , zout=65.3, eup=   54.01 +- 0.180921443
+                                            [WORKER 19] ia= 330, solar   , zout=65.3, eup=   39.90 +- 0.265226612
+                                            [WORKER 24] ia= 380, solar   , zout=65.3, eup=   37.00 +- 0.284551829
+                                            [WORKER 23] ia= 370, solar   , zout=65.3, eup=   46.89 +- 0.28417856
+                                            [WORKER 18] ia= 320, solar   , zout=65.3, eup=   33.58 +- 0.260136247
+                                            [WORKER 15] ia= 290, solar   , zout=65.3, eup=   58.13 +- 0.237423
+                                            [WORKER  5] ia= 190, solar   , zout=65.3, eup=   51.94 +- 0.192385407
+                                            [WORKER 25] ia= 390, solar   , zout=65.3, eup=   40.86 +- 0.290613806
+                                            [WORKER 17] ia= 310, solar   , zout=65.3, eup=   45.89 +- 0.260530121
+                                            [WORKER 21] ia= 350, solar   , zout=65.3, eup=   52.76 +- 0.271382251
+                                            [WORKER 22] ia= 360, solar   , zout=65.3, eup=   50.56 +- 0.278289432
+                                            [WORKER  8] ia= 220, solar   , zout=65.3, eup=   55.06 +- 0.206413761
+                                            [WORKER 26] ia= 400, solar   , zout=65.3, eup=   60.92 +- 0.295271761
+                                            [WORKER 20] ia= 340, solar   , zout=65.3, eup=   45.03 +- 0.270894542
+                                            [WORKER 11] ia= 250, solar   , zout=65.3, eup=   58.24 +- 0.214297719
+                                            [WORKER  7] ia= 210, solar   , zout=65.3, eup=   56.22 +- 0.203094407
+
+   mc_photons =  100000
+                                            [WORKER 10] ia= 240, solar   , zout=65.3, eup=   56.29 +- 0.214903121
+                                            [WORKER  4] ia= 180, solar   , zout=65.3, eup=   52.55 +- 0.186331895
+                                            [WORKER 27] ia= 410, solar   , zout=65.3, eup=   62.52 +- 0.298221109
+                                            [WORKER 32] ia= 460, solar   , zout=65.3, eup=   70.25 +- 0.312239658
+                                            [WORKER 29] ia= 430, solar   , zout=65.3, eup=   66.57 +- 0.304607699
+                                            [WORKER 30] ia= 440, solar   , zout=65.3, eup=   69.14 +- 0.30450051
+                                            [WORKER 28] ia= 420, solar   , zout=65.3, eup=   65.60 +- 0.300257673
+                                            [WORKER  2] ia= 160, solar   , zout=65.3, eup=   55.04 +- 0.174342947
+                                            [WORKER 13] ia= 270, solar   , zout=65.3, eup=   61.17 +- 0.219668571
+                                            [WORKER  6] ia= 200, solar   , zout=65.3, eup=   53.81 +- 0.194371215
+                                            [WORKER  1] ia= 150, solar   , zout=65.3, eup=   54.65 +- 0.173021772
+                                            [WORKER 31] ia= 450, solar   , zout=65.3, eup=   73.01 +- 0.299109931
+                                            [WORKER 14] ia= 280, solar   , zout=65.3, eup=   62.20 +- 0.223398919
+                                            [WORKER 12] ia= 260, solar   , zout=65.3, eup=   60.68 +- 0.213431249
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+                                            [WORKER 34] ia= 480, thermal , zout=65.3, eup=  235.63 +- 0.339122544
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+                                            [WORKER 35] ia= 490, thermal , zout=65.3, eup=  234.59 +- 0.383027697
+                                            [WORKER 37] ia= 510, thermal , zout=65.3, eup=  231.38 +- 0.307376016
+
+   mc_photons =  100000
+                                            [WORKER 39] ia= 530, thermal , zout=65.3, eup=  232.93 +- 0.231876977
+                                            [WORKER 36] ia= 500, thermal , zout=65.3, eup=  235.76 +- 0.361482041
+                                            [WORKER 33] ia= 470, thermal , zout=65.3, eup=  236.46 +- 0.314245369
+                                            [WORKER 38] ia= 520, thermal , zout=65.3, eup=  228.72 +- 0.250828265
+
+   mc_photons =  100000
+     Process 34 started calculating ia=540
+                                            [WORKER 16] ia= 300, thermal , zout=65.3, eup=  235.80 +- 0.312019981
+
+   mc_photons =  100000
+     Process 35 started calculating ia=550
+                                            [WORKER  9] ia= 230, thermal , zout=65.3, eup=  232.66 +- 0.252804154
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+     Process 37 started calculating ia=560
+     Process 39 started calculating ia=570
+     Process 36 started calculating ia=580
+     Process 33 started calculating ia=590
+     Process 38 started calculating ia=600
+
+   mc_photons =  100000
+                                            [WORKER  3] ia= 170, thermal , zout=65.3, eup=  229.58 +- 0.220970422
+     Process 16 started calculating ia=610
+     Process 9 started calculating ia=620
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+                                            [WORKER 19] ia= 330, thermal , zout=65.3, eup=  227.61 +- 0.421211321
+                                            [WORKER 24] ia= 380, thermal , zout=65.3, eup=  233.43 +- 0.41608167
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+     Process 3 started calculating ia=630
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+                                            [WORKER 23] ia= 370, thermal , zout=65.3, eup=  234.08 +- 0.382908595
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+     Process 19 started calculating ia=640
+
+   mc_photons =  100000
+     Process 24 started calculating ia=650
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+     Process 23 started calculating ia=660
+
+   mc_photons =  100000
+                                            [WORKER 18] ia= 320, thermal , zout=65.3, eup=  231.69 +- 0.442816717
+                                            [WORKER 15] ia= 290, thermal , zout=65.3, eup=  237.17 +- 0.247900048
+
+   mc_photons =  100000
+     Process 18 started calculating ia=670
+                                            [WORKER 25] ia= 390, thermal , zout=65.3, eup=  232.03 +- 0.403321606
+     Process 15 started calculating ia=680
+                                            [WORKER  5] ia= 190, thermal , zout=65.3, eup=  231.31 +- 0.21486336
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+                                            [WORKER 17] ia= 310, thermal , zout=65.3, eup=  233.29 +- 0.389135305
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+                                            [WORKER 22] ia= 360, thermal , zout=65.3, eup=  235.40 +- 0.335808751
+                                            [WORKER 21] ia= 350, thermal , zout=65.3, eup=  235.67 +- 0.342708005
+
+   mc_photons =  100000
+     Process 25 started calculating ia=690
+                                            [WORKER  8] ia= 220, thermal , zout=65.3, eup=  229.19 +- 0.289551643
+     Process 5 started calculating ia=700
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+     Process 17 started calculating ia=710
+                                            [WORKER 20] ia= 340, thermal , zout=65.3, eup=  229.67 +- 0.384697826
+
+   mc_photons =  100000
+     Process 21 started calculating ia=720
+     Process 22 started calculating ia=730
+                                            [WORKER 11] ia= 250, thermal , zout=65.3, eup=  236.08 +- 0.216303961
+                                            [WORKER 26] ia= 400, thermal , zout=65.3, eup=  230.54 +- 0.349120347
+                                            [WORKER  4] ia= 180, thermal , zout=65.3, eup=  231.43 +- 0.21996293
+                                            [WORKER  7] ia= 210, thermal , zout=65.3, eup=  233.69 +- 0.22564864
+                                            [WORKER  2] ia= 160, thermal , zout=65.3, eup=  222.86 +- 0.222589156
+                                            [WORKER 10] ia= 240, thermal , zout=65.3, eup=  228.52 +- 0.298702139
+                                            [WORKER 13] ia= 270, thermal , zout=65.3, eup=  238.28 +- 0.209823022
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+                                            [WORKER 28] ia= 420, thermal , zout=65.3, eup=  230.90 +- 0.341341958
+                                            [WORKER  1] ia= 150, thermal , zout=65.3, eup=  216.89 +- 0.202172872
+                                            [WORKER 30] ia= 440, thermal , zout=65.3, eup=  237.20 +- 0.278216373
+                                            [WORKER 32] ia= 460, thermal , zout=65.3, eup=  237.37 +- 0.301782934
+                                            [WORKER 27] ia= 410, thermal , zout=65.3, eup=  228.25 +- 0.365722228
+                                            [WORKER 29] ia= 430, thermal , zout=65.3, eup=  234.03 +- 0.296238468
+                                            [WORKER  6] ia= 200, thermal , zout=65.3, eup=  232.77 +- 0.22458554
+                                            [WORKER 14] ia= 280, thermal , zout=65.3, eup=  238.00 +- 0.225770611
+                                            [WORKER 12] ia= 260, thermal , zout=65.3, eup=  237.40 +- 0.209420293
+                                            [WORKER 31] ia= 450, thermal , zout=65.3, eup=  232.87 +- 0.304782449
+
+   mc_photons =  100000
+     Process 8 started calculating ia=740
+
+   mc_photons =  100000
+     Process 20 started calculating ia=750
+     Process 26 started calculating ia=760
+     Process 11 started calculating ia=770
+
+   mc_photons =  100000
+     Process 4 started calculating ia=780
+     Process 7 started calculating ia=790
+     Process 2 started calculating ia=800
+     Process 10 started calculating ia=810
+     Process 13 started calculating ia=820
+     Process 32 started calculating ia=830
+     Process 29 started calculating ia=840
+     Process 1 started calculating ia=850
+     Process 28 started calculating ia=860
+     Process 27 started calculating ia=870
+     Process 30 started calculating ia=880
+     Process 14 started calculating ia=890
+     Process 12 started calculating ia=900
+     Process 6 started calculating ia=910
+     Process 31 started calculating ia=920
+                                            [WORKER 34] ia= 540, solar   , zout=65.3, eup=   88.39 +- 0.330894724
+                                            [WORKER 35] ia= 550, solar   , zout=65.3, eup=   87.65 +- 0.337569785
+                                            [WORKER 37] ia= 560, solar   , zout=65.3, eup=   89.37 +- 0.341288237
+                                            [WORKER 39] ia= 570, solar   , zout=65.3, eup=   92.32 +- 0.337976566
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+                                            [WORKER 36] ia= 580, solar   , zout=65.3, eup=   96.27 +- 0.332208631
+                                            [WORKER 38] ia= 600, solar   , zout=65.3, eup=   92.35 +- 0.359587213
+
+   mc_photons =  100000
+                                            [WORKER 33] ia= 590, solar   , zout=65.3, eup=   94.58 +- 0.349293667
+                                            [WORKER 16] ia= 610, solar   , zout=65.3, eup=   98.28 +- 0.357157729
+                                            [WORKER  9] ia= 620, solar   , zout=65.3, eup=  103.02 +- 0.357709071
+                                            [WORKER  3] ia= 630, solar   , zout=65.3, eup=  104.62 +- 0.351376442
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+                                            [WORKER 19] ia= 640, solar   , zout=65.3, eup=  103.11 +- 0.345012136
+                                            [WORKER 24] ia= 650, solar   , zout=65.3, eup=  111.30 +- 0.354259783
+                                            [WORKER 23] ia= 660, solar   , zout=65.3, eup=  115.06 +- 0.323501944
+
+   mc_photons =  100000
+                                            [WORKER 18] ia= 670, solar   , zout=65.3, eup=  128.42 +- 0.230754618
+                                            [WORKER 15] ia= 680, solar   , zout=65.3, eup=  128.22 +- 0.224114171
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+                                            [WORKER  5] ia= 700, solar   , zout=65.3, eup=  131.62 +- 0.257161228
+
+   mc_photons =  100000
+                                            [WORKER 25] ia= 690, solar   , zout=65.3, eup=  130.41 +- 0.239899681
+                                            [WORKER 17] ia= 710, solar   , zout=65.3, eup=  129.94 +- 0.307168603
+                                            [WORKER 22] ia= 730, solar   , zout=65.3, eup=  119.13 +- 0.384565543
+                                            [WORKER 21] ia= 720, solar   , zout=65.3, eup=  120.02 +- 0.370423786
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+                                            [WORKER  8] ia= 740, solar   , zout=65.3, eup=  119.61 +- 0.38633607
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+                                            [WORKER 34] ia= 540, thermal , zout=65.3, eup=  231.96 +- 0.242489972
+                                            [WORKER 35] ia= 550, thermal , zout=65.3, eup=  230.32 +- 0.250192211
+                                            [WORKER 20] ia= 750, solar   , zout=65.3, eup=  116.53 +- 0.38079902
+     Process 34 started calculating ia=930
+     Process 35 started calculating ia=940
+                                            [WORKER 37] ia= 560, thermal , zout=65.3, eup=  232.43 +- 0.245069492
+                                            [WORKER 39] ia= 570, thermal , zout=65.3, eup=  230.24 +- 0.230385976
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+                                            [WORKER 36] ia= 580, thermal , zout=65.3, eup=  232.20 +- 0.214963689
+                                            [WORKER 26] ia= 760, solar   , zout=65.3, eup=  120.43 +- 0.36725914
+                                            [WORKER 11] ia= 770, solar   , zout=65.3, eup=  130.05 +- 0.303226809
+                                            [WORKER 38] ia= 600, thermal , zout=65.3, eup=  232.38 +- 0.250866491
+
+   mc_photons =  100000
+                                            [WORKER 16] ia= 610, thermal , zout=65.3, eup=  229.03 +- 0.270567973
+                                            [WORKER  9] ia= 620, thermal , zout=65.3, eup=  221.13 +- 0.30446662
+                                            [WORKER  2] ia= 800, solar   , zout=65.3, eup=  137.24 +- 0.308642637
+     Process 37 started calculating ia=950
+                                            [WORKER  7] ia= 790, solar   , zout=65.3, eup=  138.98 +- 0.286919486
+                                            [WORKER 19] ia= 640, thermal , zout=65.3, eup=  224.67 +- 0.243090868
+     Process 39 started calculating ia=960
+                                            [WORKER  3] ia= 630, thermal , zout=65.3, eup=  223.63 +- 0.268714427
+                                            [WORKER 24] ia= 650, thermal , zout=65.3, eup=  218.30 +- 0.209221928
+                                            [WORKER 23] ia= 660, thermal , zout=65.3, eup=  223.10 +- 0.231380824
+                                            [WORKER 33] ia= 590, thermal , zout=65.3, eup=  232.54 +- 0.245549766
+                                            [WORKER  4] ia= 780, solar   , zout=65.3, eup=  137.26 +- 0.287321298
+                                            [WORKER 10] ia= 810, solar   , zout=65.3, eup=  126.44 +- 0.412056526
+     Process 36 started calculating ia=970
+
+   mc_photons =  100000
+                                            [WORKER 13] ia= 820, solar   , zout=65.3, eup=  127.96 +- 0.423165432
+                                            [WORKER 18] ia= 670, thermal , zout=65.3, eup=  223.04 +- 0.214989275
+                                            [WORKER 15] ia= 680, thermal , zout=65.3, eup=  227.65 +- 0.218379593
+                                            [WORKER  5] ia= 700, thermal , zout=65.3, eup=  226.15 +- 0.256015904
+                                            [WORKER 25] ia= 690, thermal , zout=65.3, eup=  228.13 +- 0.237351487
+     Process 38 started calculating ia=980
+                                            [WORKER 29] ia= 840, solar   , zout=65.3, eup=  136.70 +- 0.406538641
+                                            [WORKER 28] ia= 860, solar   , zout=65.3, eup=  141.49 +- 0.380883534
+                                            [WORKER 12] ia= 900, solar   , zout=65.3, eup=  144.69 +- 0.328230285
+                                            [WORKER  6] ia= 910, solar   , zout=65.3, eup=  140.72 +- 0.381823469
+                                            [WORKER 30] ia= 880, solar   , zout=65.3, eup=  132.18 +- 0.413059585
+     Process 16 started calculating ia=990
+                                            [WORKER 31] ia= 920, solar   , zout=65.3, eup=  139.80 +- 0.369196388
+                                            [WORKER 14] ia= 890, solar   , zout=65.3, eup=  139.64 +- 0.357198301
+                                            [WORKER 27] ia= 870, solar   , zout=65.3, eup=  139.91 +- 0.393849038
+                                            [WORKER  1] ia= 850, solar   , zout=65.3, eup=  142.98 +- 0.366568592
+                                            [WORKER 32] ia= 830, solar   , zout=65.3, eup=  137.58 +- 0.388601613
+     Process 9 started calculating ia=1000
+                                            [WORKER 22] ia= 730, thermal , zout=65.3, eup=  217.32 +- 0.192708084
+                                            [WORKER 17] ia= 710, thermal , zout=65.3, eup=  216.82 +- 0.211989736
+     Process 19 started calculating ia=1010
+                                            [WORKER 21] ia= 720, thermal , zout=65.3, eup=  215.40 +- 0.184821024
+
+   mc_photons =  100000
+     Process 3 started calculating ia=1020
+     Process 24 started calculating ia=1030
+     Process 23 started calculating ia=1040
+     Process 33 started calculating ia=1050
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+                                            [WORKER  8] ia= 740, thermal , zout=65.3, eup=  219.26 +- 0.208496505
+     Process 18 started calculating ia=1060
+     Process 15 started calculating ia=1070
+     Process 5 started calculating ia=1080
+     Process 25 started calculating ia=1090
+
+   mc_photons =  100000
+                                            [WORKER 20] ia= 750, thermal , zout=65.3, eup=  226.59 +- 0.269013211
+
+   mc_photons =  100000
+     Process 22 started calculating ia=1100
+
+   mc_photons =  100000
+     Process 17 started calculating ia=1110
+     Process 21 started calculating ia=1120
+
+   mc_photons =  100000
+     Process 8 started calculating ia=1130
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+                                            [WORKER 34] ia= 930, solar   , zout=65.3, eup=  144.96 +- 0.376993266
+                                            [WORKER 35] ia= 940, solar   , zout=65.3, eup=  142.17 +- 0.41185107
+     Process 20 started calculating ia=1140
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+                                            [WORKER 26] ia= 760, thermal , zout=65.3, eup=  229.16 +- 0.28412941
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+                                            [WORKER 11] ia= 770, thermal , zout=65.3, eup=  229.65 +- 0.267891415
+
+   mc_photons =  100000
+     Process 26 started calculating ia=1150
+     Process 11 started calculating ia=1160
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+                                            [WORKER 37] ia= 950, solar   , zout=65.3, eup=  140.61 +- 0.432039362
+
+   mc_photons =  100000
+                                            [WORKER 39] ia= 960, solar   , zout=65.3, eup=  137.24 +- 0.468331404
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+                                            [WORKER 36] ia= 970, solar   , zout=65.3, eup=  132.56 +- 0.507835798
+
+   mc_photons =  100000
+                                            [WORKER  2] ia= 800, thermal , zout=65.3, eup=  227.78 +- 0.256895762
+                                            [WORKER  7] ia= 790, thermal , zout=65.3, eup=  227.40 +- 0.290806612
+     Process 2 started calculating ia=1170
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+     Process 7 started calculating ia=1180
+                                            [WORKER 10] ia= 810, thermal , zout=65.3, eup=  216.72 +- 0.256710936
+                                            [WORKER  4] ia= 780, thermal , zout=65.3, eup=  228.94 +- 0.265162388
+
+   mc_photons =  100000
+                                            [WORKER 13] ia= 820, thermal , zout=65.3, eup=  215.58 +- 0.239114189
+                                            [WORKER 38] ia= 980, solar   , zout=65.3, eup=  149.13 +- 0.4842819
+
+   mc_photons =  100000
+     Process 10 started calculating ia=1190
+     Process 4 started calculating ia=1200
+                                            [WORKER 16] ia= 990, solar   , zout=65.3, eup=  161.22 +- 0.449051337
+     Process 13 started calculating ia=1210
+                                            [WORKER 29] ia= 840, thermal , zout=65.3, eup=  218.50 +- 0.193223048
+                                            [WORKER 12] ia= 900, thermal , zout=65.3, eup=  238.15 +- 0.204872646
+                                            [WORKER  9] ia=1000, solar   , zout=65.3, eup=  157.15 +- 0.476568144
+     Process 29 started calculating ia=1220
+
+   mc_photons =  100000
+                                            [WORKER 28] ia= 860, thermal , zout=65.3, eup=  222.14 +- 0.194594599
+                                            [WORKER  6] ia= 910, thermal , zout=65.3, eup=  235.74 +- 0.194194301
+                                            [WORKER 30] ia= 880, thermal , zout=65.3, eup=  234.63 +- 0.233451725
+                                            [WORKER 14] ia= 890, thermal , zout=65.3, eup=  239.56 +- 0.229435277
+     Process 12 started calculating ia=1230
+                                            [WORKER 31] ia= 920, thermal , zout=65.3, eup=  236.44 +- 0.200105573
+                                            [WORKER 27] ia= 870, thermal , zout=65.3, eup=  228.92 +- 0.201354305
+                                            [WORKER  1] ia= 850, thermal , zout=65.3, eup=  225.79 +- 0.195045565
+                                            [WORKER 32] ia= 830, thermal , zout=65.3, eup=  218.11 +- 0.207017025
+                                            [WORKER 19] ia=1010, solar   , zout=65.3, eup=  155.14 +- 0.486694795
+                                            [WORKER 34] ia= 930, thermal , zout=65.3, eup=  236.16 +- 0.196627927
+                                            [WORKER 35] ia= 940, thermal , zout=65.3, eup=  236.69 +- 0.206964698
+
+   mc_photons =  100000
+                                            [WORKER  3] ia=1020, solar   , zout=65.3, eup=  158.46 +- 0.477520933
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+                                            [WORKER 23] ia=1040, solar   , zout=65.3, eup=  162.94 +- 0.46798647
+                                            [WORKER 24] ia=1030, solar   , zout=65.3, eup=  162.66 +- 0.470711403
+
+   mc_photons =  100000
+     Process 28 started calculating ia=1240
+     Process 30 started calculating ia=1250
+     Process 6 started calculating ia=1260
+                                            [WORKER 33] ia=1050, solar   , zout=65.3, eup=  170.32 +- 0.44999914
+     Process 14 started calculating ia=1270
+     Process 27 started calculating ia=1280
+     Process 31 started calculating ia=1290
+     Process 1 started calculating ia=1300
+     Process 32 started calculating ia=1310
+                                            [WORKER 18] ia=1060, solar   , zout=65.3, eup=  169.08 +- 0.452938814
+     Process 34 started calculating ia=1320
+                                            [WORKER 15] ia=1070, solar   , zout=65.3, eup=  167.77 +- 0.475387124
+                                            [WORKER 25] ia=1090, solar   , zout=65.3, eup=  158.55 +- 0.515042033
+     Process 35 started calculating ia=1330
+
+   mc_photons =  100000
+                                            [WORKER  5] ia=1080, solar   , zout=65.3, eup=  168.12 +- 0.483039276
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+                                            [WORKER 37] ia= 950, thermal , zout=65.3, eup=  236.84 +- 0.210957915
+                                            [WORKER 39] ia= 960, thermal , zout=65.3, eup=  234.10 +- 0.227791691
+                                            [WORKER 17] ia=1110, solar   , zout=65.3, eup=  147.59 +- 0.568985768
+                                            [WORKER 21] ia=1120, solar   , zout=65.3, eup=  141.43 +- 0.578967228
+                                            [WORKER  8] ia=1130, solar   , zout=65.3, eup=  151.97 +- 0.57531983
+                                            [WORKER 22] ia=1100, solar   , zout=65.3, eup=  150.53 +- 0.552808319
+                                            [WORKER 36] ia= 970, thermal , zout=65.3, eup=  225.74 +- 0.274982515
+                                            [WORKER 20] ia=1140, solar   , zout=65.3, eup=  157.58 +- 0.562605239
+
+   mc_photons =  100000
+                                            [WORKER 11] ia=1160, solar   , zout=65.3, eup=  127.23 +- 0.600798729
+                                            [WORKER 26] ia=1150, solar   , zout=65.3, eup=  148.34 +- 0.571271195
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+                                            [WORKER 38] ia= 980, thermal , zout=65.3, eup=  216.59 +- 0.247781792
+                                            [WORKER 16] ia= 990, thermal , zout=65.3, eup=  211.95 +- 0.253188822
+     Process 37 started calculating ia=1340
+     Process 39 started calculating ia=1350
+     Process 36 started calculating ia=1360
+                                            [WORKER  2] ia=1170, solar   , zout=65.3, eup=  128.93 +- 0.604527289
+                                            [WORKER  7] ia=1180, solar   , zout=65.3, eup=  140.85 +- 0.599624137
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+                                            [WORKER  9] ia=1000, thermal , zout=65.3, eup=  212.42 +- 0.242409604
+
+   mc_photons =  100000
+     Process 38 started calculating ia=1370
+
+   mc_photons =  100000
+     Process 16 started calculating ia=1380
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+                                            [WORKER 10] ia=1190, solar   , zout=65.3, eup=  159.64 +- 0.579721412
+
+   mc_photons =  100000
+                                            [WORKER 13] ia=1210, solar   , zout=65.3, eup=  160.44 +- 0.586082339
+
+   mc_photons =  100000
+                                            [WORKER  4] ia=1200, solar   , zout=65.3, eup=  173.29 +- 0.542897858
+     Process 9 started calculating ia=1390
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+                                            [WORKER 29] ia=1220, solar   , zout=65.3, eup=  161.13 +- 0.592639537
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+                                            [WORKER 12] ia=1230, solar   , zout=65.3, eup=  167.36 +- 0.568025052
+                                            [WORKER 19] ia=1010, thermal , zout=65.3, eup=  214.07 +- 0.253163601
+
+   mc_photons =  100000
+     Process 19 started calculating ia=1400
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+                                            [WORKER  3] ia=1020, thermal , zout=65.3, eup=  215.70 +- 0.205288498
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+                                            [WORKER 24] ia=1030, thermal , zout=65.3, eup=  215.44 +- 0.215613849
+                                            [WORKER 23] ia=1040, thermal , zout=65.3, eup=  216.24 +- 0.183553742
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+     Process 3 started calculating ia=1410
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+     Process 23 started calculating ia=1420
+     Process 24 started calculating ia=1430
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+                                            [WORKER 18] ia=1060, thermal , zout=65.3, eup=  216.13 +- 0.191189117
+
+   mc_photons =  100000
+                                            [WORKER 33] ia=1050, thermal , zout=65.3, eup=  214.59 +- 0.181347816
+                                            [WORKER 15] ia=1070, thermal , zout=65.3, eup=  217.33 +- 0.193780537
+                                            [WORKER 25] ia=1090, thermal , zout=65.3, eup=  219.61 +- 0.205084401
+                                            [WORKER  5] ia=1080, thermal , zout=65.3, eup=  217.92 +- 0.190298211
+     Process 18 started calculating ia=1440
+
+   mc_photons =  100000
+     Process 33 started calculating ia=1450
+                                            [WORKER 14] ia=1270, solar   , zout=65.3, eup=  140.44 +- 0.645345486
+                                            [WORKER  6] ia=1260, solar   , zout=65.3, eup=  130.61 +- 0.646771624
+                                            [WORKER 30] ia=1250, solar   , zout=65.3, eup=  140.08 +- 0.635552116
+     Process 25 started calculating ia=1460
+     Process 15 started calculating ia=1470
+     Process 5 started calculating ia=1480
+                                            [WORKER 17] ia=1110, thermal , zout=65.3, eup=  217.37 +- 0.207169621
+                                            [WORKER 28] ia=1240, solar   , zout=65.3, eup=  173.36 +- 0.55780435
+                                            [WORKER 21] ia=1120, thermal , zout=65.3, eup=  215.86 +- 0.250749849
+                                            [WORKER  8] ia=1130, thermal , zout=65.3, eup=  203.57 +- 0.281364802
+                                            [WORKER 22] ia=1100, thermal , zout=65.3, eup=  219.62 +- 0.224989942
+
+   mc_photons =  100000
+                                            [WORKER 20] ia=1140, thermal , zout=65.3, eup=  204.91 +- 0.350556694
+                                            [WORKER 27] ia=1280, solar   , zout=65.3, eup=  146.10 +- 0.653603964
+
+   mc_photons =  100000
+                                            [WORKER 34] ia=1320, solar   , zout=65.3, eup=  153.19 +- 0.651711392
+                                            [WORKER 35] ia=1330, solar   , zout=65.3, eup=  155.67 +- 0.683906593
+                                            [WORKER 32] ia=1310, solar   , zout=65.3, eup=  160.29 +- 0.646284528
+                                            [WORKER 31] ia=1290, solar   , zout=65.3, eup=  165.46 +- 0.629879855
+                                            [WORKER  1] ia=1300, solar   , zout=65.3, eup=  181.31 +- 0.593528631
+                                            [WORKER 11] ia=1160, thermal , zout=65.3, eup=  235.46 +- 0.323657216
+                                            [WORKER 26] ia=1150, thermal , zout=65.3, eup=  220.46 +- 0.354892704
+
+   mc_photons =  100000
+                                            [WORKER  2] ia=1170, thermal , zout=65.3, eup=  234.66 +- 0.320013872
+                                            [WORKER  7] ia=1180, thermal , zout=65.3, eup=  227.72 +- 0.318386369
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+                                            [WORKER 13] ia=1210, thermal , zout=65.3, eup=  223.71 +- 0.308250719
+                                            [WORKER 10] ia=1190, thermal , zout=65.3, eup=  216.88 +- 0.270737575
+                                            [WORKER  4] ia=1200, thermal , zout=65.3, eup=  214.59 +- 0.269855746
+     Process 17 started calculating ia=1490
+                                            [WORKER 29] ia=1220, thermal , zout=65.3, eup=  227.13 +- 0.247465255
+     Process 21 started calculating ia=1500
+     Process 8 started calculating ia=1510
+     Process 22 started calculating ia=1520
+                                            [WORKER 37] ia=1340, solar   , zout=65.3, eup=  174.53 +- 0.671327057
+     Process 20 started calculating ia=1530
+                                            [WORKER 12] ia=1230, thermal , zout=65.3, eup=  229.47 +- 0.216358868
+                                            [WORKER 39] ia=1350, solar   , zout=65.3, eup=  190.09 +- 0.646619869
+                                            [WORKER 36] ia=1360, solar   , zout=65.3, eup=  186.65 +- 0.650840672
+     Process 11 started calculating ia=1540
+     Process 26 started calculating ia=1550
+                                            [WORKER 38] ia=1370, solar   , zout=65.3, eup=  169.89 +- 0.691944732
+                                            [WORKER 16] ia=1380, solar   , zout=65.3, eup=  161.47 +- 0.698300915
+
+   mc_photons =  100000
+     Process 2 started calculating ia=1560
+     Process 7 started calculating ia=1570
+                                            [WORKER  9] ia=1390, solar   , zout=65.3, eup=  151.20 +- 0.712363688
+
+   mc_photons =  100000
+     Process 13 started calculating ia=1580
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+     Process 10 started calculating ia=1590
+     Process 4 started calculating ia=1600
+     Process 29 started calculating ia=1610
+                                            [WORKER 19] ia=1400, solar   , zout=65.3, eup=  145.38 +- 0.721913466
+     Process 12 started calculating ia=1620
+                                            [WORKER  3] ia=1410, solar   , zout=65.3, eup=  159.06 +- 0.720165642
+                                            [WORKER 23] ia=1420, solar   , zout=65.3, eup=  166.82 +- 0.71467409
+                                            [WORKER 24] ia=1430, solar   , zout=65.3, eup=  178.51 +- 0.700730613
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+                                            [WORKER 18] ia=1440, solar   , zout=65.3, eup=  181.28 +- 0.705532129
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+                                            [WORKER 14] ia=1270, thermal , zout=65.3, eup=  236.35 +- 0.316178605
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+                                            [WORKER 33] ia=1450, solar   , zout=65.3, eup=  176.77 +- 0.717296831
+                                            [WORKER  6] ia=1260, thermal , zout=65.3, eup=  240.44 +- 0.289674858
+                                            [WORKER 30] ia=1250, thermal , zout=65.3, eup=  237.63 +- 0.281568466
+     Process 14 started calculating ia=1630
+                                            [WORKER 25] ia=1460, solar   , zout=65.3, eup=  185.26 +- 0.699825386
+
+   mc_photons =  100000
+     Process 6 started calculating ia=1640
+
+   mc_photons =  100000
+     Process 30 started calculating ia=1650
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+                                            [WORKER 28] ia=1240, thermal , zout=65.3, eup=  231.27 +- 0.215836434
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+     Process 28 started calculating ia=1660
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+                                            [WORKER 27] ia=1280, thermal , zout=65.3, eup=  226.62 +- 0.372920689
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+                                            [WORKER 34] ia=1320, thermal , zout=65.3, eup=  231.39 +- 0.301719317
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+                                            [WORKER 15] ia=1470, solar   , zout=65.3, eup=  227.34 +- 0.528955582
+                                            [WORKER 35] ia=1330, thermal , zout=65.3, eup=  215.81 +- 0.319116873
+     Process 27 started calculating ia=1670
+                                            [WORKER 32] ia=1310, thermal , zout=65.3, eup=  230.26 +- 0.277921893
+     Process 34 started calculating ia=1680
+                                            [WORKER 31] ia=1290, thermal , zout=65.3, eup=  217.36 +- 0.298878497
+                                            [WORKER  1] ia=1300, thermal , zout=65.3, eup=  216.71 +- 0.237821385
+
+   mc_photons =  100000
+     Process 35 started calculating ia=1690
+                                            [WORKER  5] ia=1480, solar   , zout=65.3, eup=  237.44 +- 0.421369462
+     Process 32 started calculating ia=1700
+
+   mc_photons =  100000
+     Process 31 started calculating ia=1710
+     Process 1 started calculating ia=1720
+                                            [WORKER 37] ia=1340, thermal , zout=65.3, eup=  202.24 +- 0.265510226
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+                                            [WORKER 39] ia=1350, thermal , zout=65.3, eup=  195.51 +- 0.1831453
+                                            [WORKER 36] ia=1360, thermal , zout=65.3, eup=  198.96 +- 0.21529164
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+                                            [WORKER  8] ia=1510, solar   , zout=65.3, eup=   77.77 +- 0.722567826
+                                            [WORKER 22] ia=1520, solar   , zout=65.3, eup=   79.68 +- 0.723319167
+                                            [WORKER 38] ia=1370, thermal , zout=65.3, eup=  209.29 +- 0.268505397
+                                            [WORKER 16] ia=1380, thermal , zout=65.3, eup=  215.42 +- 0.304825947
+                                            [WORKER 17] ia=1490, solar   , zout=65.3, eup=  202.84 +- 0.651583771
+                                            [WORKER  9] ia=1390, thermal , zout=65.3, eup=  218.50 +- 0.285372704
+
+   mc_photons =  100000
+                                            [WORKER 21] ia=1500, solar   , zout=65.3, eup=  142.76 +- 0.75604644
+                                            [WORKER 19] ia=1400, thermal , zout=65.3, eup=  225.85 +- 0.307807052
+                                            [WORKER  3] ia=1410, thermal , zout=65.3, eup=  219.47 +- 0.270629126
+                                            [WORKER 20] ia=1530, solar   , zout=65.3, eup=  126.30 +- 0.77396733
+                                            [WORKER 23] ia=1420, thermal , zout=65.3, eup=  216.82 +- 0.254313597
+                                            [WORKER 24] ia=1430, thermal , zout=65.3, eup=  210.70 +- 0.240198629
+     Process 37 started calculating ia=1730
+                                            [WORKER 18] ia=1440, thermal , zout=65.3, eup=  210.71 +- 0.234118051
+     Process 39 started calculating ia=1740
+     Process 36 started calculating ia=1750
+     Process 38 started calculating ia=1760
+
+   mc_photons =  100000
+     Process 16 started calculating ia=1770
+     Process 9 started calculating ia=1780
+                                            [WORKER 11] ia=1540, solar   , zout=65.3, eup=  212.74 +- 0.677607918
+
+   mc_photons =  100000
+     Process 19 started calculating ia=1790
+                                            [WORKER 13] ia=1580, solar   , zout=65.3, eup=  204.21 +- 0.715245952
+
+   mc_photons =  100000
+                                            [WORKER  7] ia=1570, solar   , zout=65.3, eup=  209.33 +- 0.700389287
+                                            [WORKER 29] ia=1610, solar   , zout=65.3, eup=  168.09 +- 0.792251827
+     Process 3 started calculating ia=1800
+
+   mc_photons =  100000
+                                            [WORKER 25] ia=1460, thermal , zout=65.3, eup=  211.55 +- 0.215073134
+                                            [WORKER 33] ia=1450, thermal , zout=65.3, eup=  213.72 +- 0.250145244
+                                            [WORKER  4] ia=1600, solar   , zout=65.3, eup=  175.07 +- 0.791884635
+     Process 23 started calculating ia=1810
+     Process 24 started calculating ia=1820
+                                            [WORKER 12] ia=1620, solar   , zout=65.3, eup=  199.85 +- 0.76495141
+                                            [WORKER 10] ia=1590, solar   , zout=65.3, eup=  217.40 +- 0.667576234
+
+   mc_photons =  100000
+                                            [WORKER  2] ia=1560, solar   , zout=65.3, eup=  232.85 +- 0.584911873
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+     Process 18 started calculating ia=1830
+                                            [WORKER 26] ia=1550, solar   , zout=65.3, eup=  248.40 +- 0.447629955
+
+   mc_photons =  100000
+                                            [WORKER 30] ia=1650, solar   , zout=65.3, eup=  114.06 +- 0.808130177
+                                            [WORKER 14] ia=1630, solar   , zout=65.3, eup=  207.58 +- 0.745312506
+                                            [WORKER 15] ia=1470, thermal , zout=65.3, eup=  207.44 +- 0.189675338
+                                            [WORKER  6] ia=1640, solar   , zout=65.3, eup=  208.03 +- 0.763239746
+     Process 25 started calculating ia=1840
+     Process 33 started calculating ia=1850
+                                            [WORKER 28] ia=1660, solar   , zout=65.3, eup=   92.69 +- 0.791340891
+
+   mc_photons =  100000
+                                            [WORKER  5] ia=1480, thermal , zout=65.3, eup=  211.41 +- 0.195724073
+                                            [WORKER 27] ia=1670, solar   , zout=65.3, eup=   90.35 +- 0.788407838
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+     Process 15 started calculating ia=1860
+                                            [WORKER 34] ia=1680, solar   , zout=65.3, eup=   79.73 +- 0.777544964
+
+   mc_photons =  100000
+                                            [WORKER 35] ia=1690, solar   , zout=65.3, eup=   91.15 +- 0.796057188
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+                                            [WORKER 32] ia=1700, solar   , zout=65.3, eup=   86.40 +- 0.791425585
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+                                            [WORKER  1] ia=1720, solar   , zout=65.3, eup=  116.57 +- 0.841449321
+                                            [WORKER 31] ia=1710, solar   , zout=65.3, eup=   73.24 +- 0.773188503
+
+   mc_photons =  100000
+     Process 5 started calculating ia=1870
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+                                            [WORKER  8] ia=1510, thermal , zout=65.3, eup=  234.96 +- 0.439227881
+                                            [WORKER 22] ia=1520, thermal , zout=65.3, eup=  236.27 +- 0.429283438
+     Process 8 started calculating ia=1880
+
+   mc_photons =  100000
+     Process 22 started calculating ia=1890
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+                                            [WORKER 17] ia=1490, thermal , zout=65.3, eup=  216.63 +- 0.198657001
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+     Process 17 started calculating ia=1900
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+                                            [WORKER 21] ia=1500, thermal , zout=65.3, eup=  230.31 +- 0.298083931
+                                            [WORKER 20] ia=1530, thermal , zout=65.3, eup=  229.87 +- 0.383627918
+
+   mc_photons =  100000
+     Process 21 started calculating ia=1910
+     Process 20 started calculating ia=1920
+                                            [WORKER 37] ia=1730, solar   , zout=65.3, eup=  157.57 +- 0.869631442
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+                                            [WORKER 39] ia=1740, solar   , zout=65.3, eup=  153.65 +- 0.874481456
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+                                            [WORKER 36] ia=1750, solar   , zout=65.3, eup=  209.03 +- 0.847424348
+
+   mc_photons =  100000
+                                            [WORKER 11] ia=1540, thermal , zout=65.3, eup=  208.91 +- 0.239898773
+                                            [WORKER 13] ia=1580, thermal , zout=65.3, eup=  206.54 +- 0.226780975
+                                            [WORKER  7] ia=1570, thermal , zout=65.3, eup=  204.12 +- 0.254010766
+
+   mc_photons =  100000
+                                            [WORKER 29] ia=1610, thermal , zout=65.3, eup=  216.47 +- 0.277072935
+
+   mc_photons =  100000
+                                            [WORKER 12] ia=1620, thermal , zout=65.3, eup=  201.59 +- 0.243943623
+                                            [WORKER  2] ia=1560, thermal , zout=65.3, eup=  202.09 +- 0.229219234
+                                            [WORKER 10] ia=1590, thermal , zout=65.3, eup=  205.28 +- 0.217166603
+                                            [WORKER  4] ia=1600, thermal , zout=65.3, eup=  216.70 +- 0.25509785
+                                            [WORKER 26] ia=1550, thermal , zout=65.3, eup=  207.08 +- 0.205774578
+                                            [WORKER 38] ia=1760, solar   , zout=65.3, eup=  255.61 +- 0.71190749
+
+   mc_photons =  100000
+     Process 11 started calculating ia=1930
+                                            [WORKER 16] ia=1770, solar   , zout=65.3, eup=  262.27 +- 0.684093925
+                                            [WORKER  9] ia=1780, solar   , zout=65.3, eup=  257.04 +- 0.707824052
+     Process 13 started calculating ia=1940
+     Process 7 started calculating ia=1950
+                                            [WORKER 14] ia=1630, thermal , zout=65.3, eup=  203.27 +- 0.236927541
+                                            [WORKER 30] ia=1650, thermal , zout=65.3, eup=  233.17 +- 0.429220952
+                                            [WORKER 24] ia=1820, solar   , zout=65.3, eup=  243.24 +- 0.796197154
+                                            [WORKER  6] ia=1640, thermal , zout=65.3, eup=  211.44 +- 0.267388548
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+                                            [WORKER  3] ia=1800, solar   , zout=65.3, eup=  266.40 +- 0.681773678
+                                            [WORKER 23] ia=1810, solar   , zout=65.3, eup=  253.21 +- 0.755641659
+                                            [WORKER 19] ia=1790, solar   , zout=65.3, eup=  265.23 +- 0.691428836
+     Process 29 started calculating ia=1960
+                                            [WORKER 28] ia=1660, thermal , zout=65.3, eup=  236.59 +- 0.459859023
+                                            [WORKER 18] ia=1830, solar   , zout=65.3, eup=  236.16 +- 0.82454093
+
+   mc_photons =  100000
+                                            [WORKER 27] ia=1670, thermal , zout=65.3, eup=  237.12 +- 0.4522911
+                                            [WORKER 34] ia=1680, thermal , zout=65.3, eup=  238.37 +- 0.473821197
+                                            [WORKER 35] ia=1690, thermal , zout=65.3, eup=  231.43 +- 0.495744718
+                                            [WORKER 32] ia=1700, thermal , zout=65.3, eup=  234.77 +- 0.503307016
+     Process 12 started calculating ia=1970
+     Process 10 started calculating ia=1980
+     Process 2 started calculating ia=1990
+     Process 4 started calculating ia=2000
+                                            [WORKER  1] ia=1720, thermal , zout=65.3, eup=  221.66 +- 0.492659116
+                                            [WORKER 31] ia=1710, thermal , zout=65.3, eup=  241.54 +- 0.493290437
+     Process 26 started calculating ia=2010
+                                            [WORKER 25] ia=1840, solar   , zout=65.3, eup=  201.96 +- 0.892052861
+
+   mc_photons =  100000
+                                            [WORKER 33] ia=1850, solar   , zout=65.3, eup=  206.93 +- 0.898059865
+                                            [WORKER 15] ia=1860, solar   , zout=65.3, eup=  119.83 +- 0.89061553
+                                            [WORKER  5] ia=1870, solar   , zout=65.3, eup=   79.80 +- 0.826071767
+     Process 14 started calculating ia=2020
+     Process 30 started calculating ia=2030
+                                            [WORKER 37] ia=1730, thermal , zout=65.3, eup=  199.84 +- 0.445251595
+     Process 6 started calculating ia=2040
+
+   mc_photons =  100000
+     Process 28 started calculating ia=2050
+                                            [WORKER  8] ia=1880, solar   , zout=65.3, eup=   92.66 +- 0.858440689
+                                            [WORKER 22] ia=1890, solar   , zout=65.3, eup=  108.35 +- 0.877426869
+     Process 27 started calculating ia=2060
+     Process 35 started calculating ia=2070
+     Process 34 started calculating ia=2080
+     Process 32 started calculating ia=2090
+                                            [WORKER 17] ia=1900, solar   , zout=65.3, eup=  176.82 +- 0.939409283
+     Process 1 started calculating ia=2100
+                                            [WORKER 39] ia=1740, thermal , zout=65.3, eup=  199.36 +- 0.447635365
+     Process 31 started calculating ia=2110
+
+   mc_photons =  100000
+                                            [WORKER 21] ia=1910, solar   , zout=65.3, eup=  206.05 +- 0.92926673
+                                            [WORKER 20] ia=1920, solar   , zout=65.3, eup=  218.87 +- 0.921634125
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+                                            [WORKER 36] ia=1750, thermal , zout=65.3, eup=  177.07 +- 0.303683264
+     Process 37 started calculating ia=2120
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+     Process 39 started calculating ia=2130
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+     Process 36 started calculating ia=2140
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+                                            [WORKER 11] ia=1930, solar   , zout=65.3, eup=  251.19 +- 0.868080916
+                                            [WORKER 38] ia=1760, thermal , zout=65.3, eup=  168.32 +- 0.181769633
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+     Process 38 started calculating ia=2150
+                                            [WORKER  7] ia=1950, solar   , zout=65.3, eup=  110.17 +- 0.903700102
+                                            [WORKER 13] ia=1940, solar   , zout=65.3, eup=  176.94 +- 0.951727922
+
+   mc_photons =  100000
+                                            [WORKER 16] ia=1770, thermal , zout=65.3, eup=  176.96 +- 0.184831606
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+                                            [WORKER  9] ia=1780, thermal , zout=65.3, eup=  179.43 +- 0.183901124
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+                                            [WORKER 29] ia=1960, solar   , zout=65.3, eup=  104.45 +- 0.894841536
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+     Process 16 started calculating ia=2160
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+[WORKER 9] Received termination signal. Exiting.
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+                                            [WORKER 24] ia=1820, thermal , zout=65.3, eup=  185.76 +- 0.203023381
+                                            [WORKER  3] ia=1800, thermal , zout=65.3, eup=  176.41 +- 0.153846421
+                                            [WORKER 23] ia=1810, thermal , zout=65.3, eup=  179.64 +- 0.177577599
+                                            [WORKER 19] ia=1790, thermal , zout=65.3, eup=  176.18 +- 0.161112813
+[WORKER 24] Received termination signal. Exiting.
+                                            [WORKER 18] ia=1830, thermal , zout=65.3, eup=  196.56 +- 0.201538372
+[WORKER 3] Received termination signal. Exiting.
+                                            [WORKER 12] ia=1970, solar   , zout=65.3, eup=  120.95 +- 0.919654143
+                                            [WORKER 10] ia=1980, solar   , zout=65.3, eup=  133.29 +- 0.925427752
+[WORKER 23] Received termination signal. Exiting.
+                                            [WORKER  2] ia=1990, solar   , zout=65.3, eup=  187.00 +- 0.962571097
+[WORKER 19] Received termination signal. Exiting.
+[WORKER 18] Received termination signal. Exiting.
+                                            [WORKER 26] ia=2010, solar   , zout=65.3, eup=  220.73 +- 0.949576134
+                                            [WORKER  4] ia=2000, solar   , zout=65.3, eup=  223.24 +- 0.946626963
+                                            [WORKER 25] ia=1840, thermal , zout=65.3, eup=  207.83 +- 0.313276827
+                                            [WORKER 15] ia=1860, thermal , zout=65.3, eup=  236.32 +- 0.444658938
+                                            [WORKER  5] ia=1870, thermal , zout=65.3, eup=  247.28 +- 0.443253088
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+[WORKER 25] Received termination signal. Exiting.
+[WORKER 15] Received termination signal. Exiting.
+                                            [WORKER  8] ia=1880, thermal , zout=65.3, eup=  244.27 +- 0.462280354
+                                            [WORKER 33] ia=1850, thermal , zout=65.3, eup=  207.16 +- 0.308323984
+                                            [WORKER 22] ia=1890, thermal , zout=65.3, eup=  237.98 +- 0.446514231
+[WORKER 5] Received termination signal. Exiting.
+                                            [WORKER 17] ia=1900, thermal , zout=65.3, eup=  217.21 +- 0.380849085
+                                            [WORKER 20] ia=1920, thermal , zout=65.3, eup=  205.99 +- 0.288648696
+                                            [WORKER 21] ia=1910, thermal , zout=65.3, eup=  208.27 +- 0.317681498
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+[WORKER 8] Received termination signal. Exiting.
+[WORKER 33] Received termination signal. Exiting.
+[WORKER 22] Received termination signal. Exiting.
+                                            [WORKER 14] ia=2020, solar   , zout=65.3, eup=  236.91 +- 0.937227718
+[WORKER 17] Received termination signal. Exiting.
+[WORKER 20] Received termination signal. Exiting.
+                                            [WORKER 30] ia=2030, solar   , zout=65.3, eup=  262.20 +- 0.887016885
+[WORKER 21] Received termination signal. Exiting.
+
+   mc_photons =  100000
+                                            [WORKER  6] ia=2040, solar   , zout=65.3, eup=  216.28 +- 0.959368813
+
+   mc_photons =  100000
+                                            [WORKER 28] ia=2050, solar   , zout=65.3, eup=  241.06 +- 0.934869605
+                                            [WORKER 27] ia=2060, solar   , zout=65.3, eup=  248.15 +- 0.92241921
+                                            [WORKER 35] ia=2070, solar   , zout=65.3, eup=  235.47 +- 0.942668338
+                                            [WORKER 34] ia=2080, solar   , zout=65.3, eup=  249.87 +- 0.919401277
+                                            [WORKER 11] ia=1930, thermal , zout=65.3, eup=  197.95 +- 0.198523186
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+                                            [WORKER 32] ia=2090, solar   , zout=65.3, eup=  254.84 +- 0.873387179
+
+   mc_photons =  100000
+                                            [WORKER  1] ia=2100, solar   , zout=65.3, eup=  283.78 +- 0.814485106
+
+   mc_photons =  100000
+[WORKER 11] Received termination signal. Exiting.
+                                            [WORKER 13] ia=1940, thermal , zout=65.3, eup=  219.30 +- 0.387994166
+                                            [WORKER  7] ia=1950, thermal , zout=65.3, eup=  240.32 +- 0.429593509
+
+   mc_photons =  100000
+                                            [WORKER 31] ia=2110, solar   , zout=65.3, eup=  303.94 +- 0.734696582
+                                            [WORKER 37] ia=2120, solar   , zout=65.3, eup=  291.31 +- 0.789173458
+[WORKER 13] Received termination signal. Exiting.
+                                            [WORKER 29] ia=1960, thermal , zout=65.3, eup=  243.44 +- 0.414109515
+[WORKER 7] Received termination signal. Exiting.
+[WORKER 29] Received termination signal. Exiting.
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+                                            [WORKER 39] ia=2130, solar   , zout=65.3, eup=  306.69 +- 0.746663899
+
+   mc_photons =  100000
+                                            [WORKER 36] ia=2140, solar   , zout=65.3, eup=  302.78 +- 0.730401388
+                                            [WORKER 12] ia=1970, thermal , zout=65.3, eup=  236.81 +- 0.413867383
+
+   mc_photons =  100000
+                                            [WORKER 10] ia=1980, thermal , zout=65.3, eup=  239.30 +- 0.393401142
+                                            [WORKER  2] ia=1990, thermal , zout=65.3, eup=  225.91 +- 0.334755871
+                                            [WORKER 26] ia=2010, thermal , zout=65.3, eup=  219.58 +- 0.240121784
+[WORKER 12] Received termination signal. Exiting.
+[WORKER 10] Received termination signal. Exiting.
+[WORKER 2] Received termination signal. Exiting.
+[WORKER 26] Received termination signal. Exiting.
+                                            [WORKER  4] ia=2000, thermal , zout=65.3, eup=  218.33 +- 0.241159959
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+[WORKER 4] Received termination signal. Exiting.
+                                            [WORKER 38] ia=2150, solar   , zout=65.3, eup=  286.05 +- 0.793586941
+
+   mc_photons =  100000
+
+   mc_photons =  100000
+                                            [WORKER 14] ia=2020, thermal , zout=65.3, eup=  217.61 +- 0.226807601
+                                            [WORKER 30] ia=2030, thermal , zout=65.3, eup=  216.20 +- 0.19958372
+
+   mc_photons =  100000
+[WORKER 14] Received termination signal. Exiting.
+[WORKER 30] Received termination signal. Exiting.
+                                            [WORKER  6] ia=2040, thermal , zout=65.3, eup=  228.00 +- 0.268974157
+
+   mc_photons =  100000
+[WORKER 6] Received termination signal. Exiting.
+
+   mc_photons =  100000
+                                            [WORKER 16] ia=2160, solar   , zout=65.3, eup=  285.86 +- 0.820698057
+
+   mc_photons =  100000
+                                            [WORKER 28] ia=2050, thermal , zout=65.3, eup=  221.26 +- 0.242430811
+[WORKER 28] Received termination signal. Exiting.
+                                            [WORKER 27] ia=2060, thermal , zout=65.3, eup=  222.21 +- 0.25884514
+                                            [WORKER 35] ia=2070, thermal , zout=65.3, eup=  231.16 +- 0.265059936
+
+   mc_photons =  100000
+[WORKER 27] Received termination signal. Exiting.
+[WORKER 35] Received termination signal. Exiting.
+                                            [WORKER 34] ia=2080, thermal , zout=65.3, eup=  223.85 +- 0.257266405
+[WORKER 34] Received termination signal. Exiting.
+                                            [WORKER 32] ia=2090, thermal , zout=65.3, eup=  230.03 +- 0.304193463
+
+   mc_photons =  100000
+[WORKER 32] Received termination signal. Exiting.
+                                            [WORKER  1] ia=2100, thermal , zout=65.3, eup=  218.29 +- 0.289069936
+[WORKER 1] Received termination signal. Exiting.
+                                            [WORKER 37] ia=2120, thermal , zout=65.3, eup=  218.06 +- 0.259697138
+                                            [WORKER 31] ia=2110, thermal , zout=65.3, eup=  214.38 +- 0.255442024
+                                            [WORKER 39] ia=2130, thermal , zout=65.3, eup=  221.86 +- 0.217559436
+[WORKER 31] Received termination signal. Exiting.
+[WORKER 37] Received termination signal. Exiting.
+[WORKER 39] Received termination signal. Exiting.
+
+   mc_photons =  100000
+                                            [WORKER 36] ia=2140, thermal , zout=65.3, eup=  229.21 +- 0.213933621
+[WORKER 36] Received termination signal. Exiting.
+                                            [WORKER 38] ia=2150, thermal , zout=65.3, eup=  233.12 +- 0.200968723
+[WORKER 38] Received termination signal. Exiting.
+                                            [WORKER 16] ia=2160, thermal , zout=65.3, eup=  231.33 +- 0.199232914
+Writing libRadtran output to netcdf file:  ./RESULTS/libRad_v01_montecarlo_3D_SWIA_solar,thermal_Orbit_07277C_GHM_1e5.nc
+[WORKER 16] Received termination signal. Exiting.
+Run finished. It took 0.204 hours 
+
+
+Finished running Python file at Fri Sep 19 16:27:30 CEST 2025

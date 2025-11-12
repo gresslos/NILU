@@ -1,0 +1,29 @@
+rte_solver montecarlo
+data_files_path /xnilu_wrk2/projects/NEVAR/libRadtran/data/
+mc_std 
+mc_basename ./tmpRTIOtest/Orbit_06888C_mc_1084_solar
+mc_randomseed 7135453
+mc_photons 100
+mol_abs_param kato2
+source solar
+wavelength 300 4000
+output_process sum
+zout TOA
+output_user sza zout edir eup
+quiet 
+atmosphere_file ./tmpRTIOtest/Orbit_06888C_tmp1084atm.dat
+wc_properties mie
+wc_file 3D ./tmpRTIOtest/Orbit_06888C_tmp1084wc3D.dat
+ic_properties baum_v36 interpolate
+ic_habit solid-column
+ic_file 3D ./tmpRTIOtest/Orbit_06888C_tmp1084ic3D.dat
+aerosol_default 
+aerosol_file tau ./tmpRTIOtest/Orbit_06888C_tmp1084aero1D.dat
+aerosol_angstrom 1.100000 0.136926
+aerosol_set_tau_at_wvl 355 0.13692646058272268
+brdf_cam u10 10.020956993103027
+mc_albedo_spectral_file ./tmpRTIOtest/Orbit_06888C_tmp1084mc_albedo_spectral_filesolar.dat
+mc_albedo_type ./tmpRTIOtest/Orbit_06888C_tmp1084mc_albedo_typesolar.dat
+mc_elevation_file ./tmpRTIOtest/Orbit_06888C_tmp1084elevation.dat
+sza 69.7075424194336
+phi0 -7.623691304443412

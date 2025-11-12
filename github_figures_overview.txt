@@ -1,0 +1,9 @@
+
+--------------------------------- GITHUB - FIGURES -----------------------------------------------------
+
+------------ 3D Buffer --------------------
+    - Flux Difference per pixel (Orbits: 06888C, 07277C, 06518D, 06886E, and 06331C)
+    - Info Plot (all properties, for comparison of dependen factors)
+------------ SWIA --------------------------
+
+------------- Ice Habit --------------------

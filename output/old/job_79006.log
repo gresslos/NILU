@@ -1,0 +1,1318 @@
+Running at /scratch/bgre/79006
+Submitdir is /homevip/bgre/RTM
+Number of nodes: 1
+Number of tasks: 40
+Making SLURM ready at  Sun Sep 28 17:07:37 CEST 2025
+Starting slurm job at  Sun Sep 28 17:07:56 CEST 2025
+Running Python file at Sun Sep 28 17:07:57 CEST 2025
+Run started at 2025-09-28T15:08:35.668037+00:00
+
+
+
+=================================================================================================================
+Nadir Pixel Index    =  151
+SceneName            =  Orbit_06888C
+Specs                =  montecarlo - 3D - 
+     Process 2 started calculating ia=160
+     Process 4 started calculating ia=180
+     Process 6 started calculating ia=200
+     Process 8 started calculating ia=220
+     Process 9 started calculating ia=230
+     Process 10 started calculating ia=240
+     Process 11 started calculating ia=250
+     Process 12 started calculating ia=260
+     Process 13 started calculating ia=270
+     Process 14 started calculating ia=280
+     Process 16 started calculating ia=300
+     Process 17 started calculating ia=310
+     Process 18 started calculating ia=320
+     Process 22 started calculating ia=360
+     Process 24 started calculating ia=380
+     Process 25 started calculating ia=390
+     Process 26 started calculating ia=400
+     Process 27 started calculating ia=410
+     Process 28 started calculating ia=420
+     Process 29 started calculating ia=430
+     Process 31 started calculating ia=450
+     Process 34 started calculating ia=480
+     Process 36 started calculating ia=500
+     Process 37 started calculating ia=510
+     Process 38 started calculating ia=520
+     Process 30 started calculating ia=440
+     Process 15 started calculating ia=290
+     Process 1 started calculating ia=150
+     Process 33 started calculating ia=470
+     Process 3 started calculating ia=170
+     Process 39 started calculating ia=530
+     Process 5 started calculating ia=190
+     Process 35 started calculating ia=490
+     Process 23 started calculating ia=370
+     Process 32 started calculating ia=460
+     Process 21 started calculating ia=350
+     Process 20 started calculating ia=340
+     Process 19 started calculating ia=330
+     Process 7 started calculating ia=210
+                                            [WORKER  4] ia= 180, solar   , zout=65.3, eup=  156.58 +- 0.645457625
+                                            [WORKER  1] ia= 150, solar   , zout=65.3, eup=  152.20 +- 0.635947995
+                                            [WORKER  5] ia= 190, solar   , zout=65.3, eup=  164.46 +- 0.629528141
+                                            [WORKER  2] ia= 160, solar   , zout=65.3, eup=  165.18 +- 0.608449404
+                                            [WORKER  3] ia= 170, solar   , zout=65.3, eup=  168.18 +- 0.613629916
+                                            [WORKER  7] ia= 210, solar   , zout=65.3, eup=  177.50 +- 0.622895369
+                                            [WORKER 38] ia= 520, solar   , zout=65.3, eup=  185.69 +- 0.790607036
+                                            [WORKER 39] ia= 530, solar   , zout=65.3, eup=  200.14 +- 0.77870056
+                                            [WORKER  6] ia= 200, solar   , zout=65.3, eup=  174.04 +- 0.624264427
+                                            [WORKER 14] ia= 280, solar   , zout=65.3, eup=  181.74 +- 0.635845194
+                                            [WORKER 37] ia= 510, solar   , zout=65.3, eup=  198.23 +- 0.766745973
+                                            [WORKER 15] ia= 290, solar   , zout=65.3, eup=  180.41 +- 0.649725153
+                                            [WORKER  8] ia= 220, solar   , zout=65.3, eup=  181.10 +- 0.618799013
+                                            [WORKER 16] ia= 300, solar   , zout=65.3, eup=  177.38 +- 0.654612018
+                                            [WORKER 17] ia= 310, solar   , zout=65.3, eup=  179.30 +- 0.638877136
+                                            [WORKER 35] ia= 490, solar   , zout=65.3, eup=  194.11 +- 0.767358918
+                                            [WORKER  9] ia= 230, solar   , zout=65.3, eup=  182.14 +- 0.622584731
+                                            [WORKER 30] ia= 440, solar   , zout=65.3, eup=  183.54 +- 0.725921307
+                                            [WORKER 31] ia= 450, solar   , zout=65.3, eup=  180.50 +- 0.74265363
+                                            [WORKER 19] ia= 330, solar   , zout=65.3, eup=  181.08 +- 0.634389255
+                                            [WORKER 18] ia= 320, solar   , zout=65.3, eup=  180.21 +- 0.629848036
+                                            [WORKER 34] ia= 480, solar   , zout=65.3, eup=  197.21 +- 0.744621542
+                                            [WORKER 26] ia= 400, solar   , zout=65.3, eup=  202.46 +- 0.676772367
+                                            [WORKER 10] ia= 240, solar   , zout=65.3, eup=  190.77 +- 0.596002197
+                                            [WORKER 27] ia= 410, solar   , zout=65.3, eup=  207.24 +- 0.67414939
+                                            [WORKER 36] ia= 500, solar   , zout=65.3, eup=  212.96 +- 0.721463389
+                                            [WORKER 29] ia= 430, solar   , zout=65.3, eup=  187.97 +- 0.709269821
+                                            [WORKER 20] ia= 340, solar   , zout=65.3, eup=  194.41 +- 0.653092258
+                                            [WORKER 13] ia= 270, solar   , zout=65.3, eup=  197.62 +- 0.584912739
+                                            [WORKER 21] ia= 350, solar   , zout=65.3, eup=  194.80 +- 0.654588071
+                                            [WORKER 11] ia= 250, solar   , zout=65.3, eup=  197.63 +- 0.564045135
+                                            [WORKER 32] ia= 460, solar   , zout=65.3, eup=  202.84 +- 0.707912591
+                                            [WORKER 33] ia= 470, solar   , zout=65.3, eup=  203.96 +- 0.707701181
+                                            [WORKER 28] ia= 420, solar   , zout=65.3, eup=  198.62 +- 0.684519658
+                                            [WORKER 25] ia= 390, solar   , zout=65.3, eup=  202.17 +- 0.664005703
+                                            [WORKER 12] ia= 260, solar   , zout=65.3, eup=  206.35 +- 0.530022831
+                                            [WORKER 22] ia= 360, solar   , zout=65.3, eup=  201.41 +- 0.637655307
+                                            [WORKER 24] ia= 380, solar   , zout=65.3, eup=  209.49 +- 0.612668187
+                                            [WORKER 23] ia= 370, solar   , zout=65.3, eup=  229.96 +- 0.503917724
+                                            [WORKER  4] ia= 180, thermal , zout=65.3, eup=  235.53 +- 0.304702172
+     Process 4 started calculating ia=540
+                                            [WORKER  1] ia= 150, thermal , zout=65.3, eup=  240.04 +- 0.299460185
+     Process 1 started calculating ia=550
+                                            [WORKER  5] ia= 190, thermal , zout=65.3, eup=  234.59 +- 0.303785493
+     Process 5 started calculating ia=560
+                                            [WORKER  3] ia= 170, thermal , zout=65.3, eup=  237.91 +- 0.27196478
+     Process 3 started calculating ia=570
+                                            [WORKER  2] ia= 160, thermal , zout=65.3, eup=  234.17 +- 0.336260518
+                                            [WORKER  7] ia= 210, thermal , zout=65.3, eup=  238.00 +- 0.264033359
+     Process 2 started calculating ia=580
+                                            [WORKER  6] ia= 200, thermal , zout=65.3, eup=  239.17 +- 0.256398223
+     Process 7 started calculating ia=590
+     Process 6 started calculating ia=600
+                                            [WORKER 15] ia= 290, thermal , zout=65.3, eup=  236.08 +- 0.348577586
+                                            [WORKER 14] ia= 280, thermal , zout=65.3, eup=  236.41 +- 0.316749775
+                                            [WORKER 37] ia= 510, thermal , zout=65.3, eup=  233.03 +- 0.265965888
+                                            [WORKER 35] ia= 490, thermal , zout=65.3, eup=  234.91 +- 0.268694436
+                                            [WORKER 38] ia= 520, thermal , zout=65.3, eup=  238.62 +- 0.292104094
+                                            [WORKER  8] ia= 220, thermal , zout=65.3, eup=  238.18 +- 0.260432041
+                                            [WORKER  9] ia= 230, thermal , zout=65.3, eup=  238.22 +- 0.258692036
+                                            [WORKER 17] ia= 310, thermal , zout=65.3, eup=  237.41 +- 0.303073484
+                                            [WORKER 19] ia= 330, thermal , zout=65.3, eup=  232.45 +- 0.324430959
+                                            [WORKER 10] ia= 240, thermal , zout=65.3, eup=  237.55 +- 0.280968711
+                                            [WORKER 39] ia= 530, thermal , zout=65.3, eup=  234.67 +- 0.272140602
+                                            [WORKER 34] ia= 480, thermal , zout=65.3, eup=  237.92 +- 0.276174336
+                                            [WORKER 36] ia= 500, thermal , zout=65.3, eup=  231.41 +- 0.257441022
+                                            [WORKER 16] ia= 300, thermal , zout=65.3, eup=  233.85 +- 0.345573498
+                                            [WORKER 11] ia= 250, thermal , zout=65.3, eup=  238.14 +- 0.254310448
+                                            [WORKER 27] ia= 410, thermal , zout=65.3, eup=  234.90 +- 0.298100814
+                                            [WORKER 26] ia= 400, thermal , zout=65.3, eup=  229.68 +- 0.349696729
+                                            [WORKER 18] ia= 320, thermal , zout=65.3, eup=  234.08 +- 0.336795443
+                                            [WORKER 31] ia= 450, thermal , zout=65.3, eup=  245.29 +- 0.310250555
+                                            [WORKER 20] ia= 340, thermal , zout=65.3, eup=  232.83 +- 0.338210093
+                                            [WORKER 21] ia= 350, thermal , zout=65.3, eup=  233.27 +- 0.331682269
+                                            [WORKER 29] ia= 430, thermal , zout=65.3, eup=  241.92 +- 0.352983992
+                                            [WORKER 30] ia= 440, thermal , zout=65.3, eup=  241.57 +- 0.400157768
+                                            [WORKER 25] ia= 390, thermal , zout=65.3, eup=  236.10 +- 0.299166656
+                                            [WORKER 13] ia= 270, thermal , zout=65.3, eup=  238.49 +- 0.269370363
+                                            [WORKER 12] ia= 260, thermal , zout=65.3, eup=  237.42 +- 0.282109127
+                                            [WORKER 33] ia= 470, thermal , zout=65.3, eup=  237.74 +- 0.316404896
+                                            [WORKER 22] ia= 360, thermal , zout=65.3, eup=  234.21 +- 0.341803458
+                                            [WORKER 23] ia= 370, thermal , zout=65.3, eup=  232.02 +- 0.314249115
+                                            [WORKER 32] ia= 460, thermal , zout=65.3, eup=  240.73 +- 0.292973226
+                                            [WORKER 28] ia= 420, thermal , zout=65.3, eup=  240.46 +- 0.304322232
+                                            [WORKER 24] ia= 380, thermal , zout=65.3, eup=  233.89 +- 0.339772403
+                                            [WORKER  4] ia= 540, solar   , zout=65.3, eup=  208.84 +- 0.766230947
+                                            [WORKER  1] ia= 550, solar   , zout=65.3, eup=  189.51 +- 0.800198264
+     Process 37 started calculating ia=610
+     Process 15 started calculating ia=620
+     Process 14 started calculating ia=630
+     Process 35 started calculating ia=640
+     Process 38 started calculating ia=650
+     Process 9 started calculating ia=660
+     Process 8 started calculating ia=670
+     Process 39 started calculating ia=680
+     Process 36 started calculating ia=690
+     Process 17 started calculating ia=700
+     Process 19 started calculating ia=710
+     Process 10 started calculating ia=720
+     Process 34 started calculating ia=730
+     Process 16 started calculating ia=740
+     Process 11 started calculating ia=750
+     Process 27 started calculating ia=760
+                                            [WORKER  5] ia= 560, solar   , zout=65.3, eup=  155.86 +- 0.827770733
+     Process 26 started calculating ia=770
+     Process 18 started calculating ia=780
+     Process 31 started calculating ia=790
+     Process 25 started calculating ia=800
+     Process 20 started calculating ia=810
+     Process 21 started calculating ia=820
+     Process 29 started calculating ia=830
+     Process 12 started calculating ia=840
+     Process 22 started calculating ia=850
+     Process 30 started calculating ia=860
+     Process 13 started calculating ia=870
+     Process 33 started calculating ia=880
+     Process 23 started calculating ia=890
+     Process 32 started calculating ia=900
+     Process 28 started calculating ia=910
+     Process 24 started calculating ia=920
+                                            [WORKER  3] ia= 570, solar   , zout=65.3, eup=  131.74 +- 0.834670024
+                                            [WORKER  2] ia= 580, solar   , zout=65.3, eup=  152.81 +- 0.84189837
+                                            [WORKER  7] ia= 590, solar   , zout=65.3, eup=  181.65 +- 0.827037889
+                                            [WORKER  6] ia= 600, solar   , zout=65.3, eup=  151.51 +- 0.848364503
+                                            [WORKER  4] ia= 540, thermal , zout=65.3, eup=  232.24 +- 0.267182454
+                                            [WORKER 38] ia= 650, solar   , zout=65.3, eup=  161.48 +- 0.87131323
+                                            [WORKER  1] ia= 550, thermal , zout=65.3, eup=  238.81 +- 0.313384913
+                                            [WORKER 14] ia= 630, solar   , zout=65.3, eup=  182.70 +- 0.845214103
+                                            [WORKER 37] ia= 610, solar   , zout=65.3, eup=  163.47 +- 0.849546408
+                                            [WORKER  5] ia= 560, thermal , zout=65.3, eup=  245.25 +- 0.337506589
+                                            [WORKER  3] ia= 570, thermal , zout=65.3, eup=  245.17 +- 0.387599289
+                                            [WORKER  2] ia= 580, thermal , zout=65.3, eup=  240.25 +- 0.352732439
+                                            [WORKER  7] ia= 590, thermal , zout=65.3, eup=  236.65 +- 0.311897149
+                                            [WORKER 15] ia= 620, solar   , zout=65.3, eup=  162.01 +- 0.858308477
+                                            [WORKER  6] ia= 600, thermal , zout=65.3, eup=  242.72 +- 0.345615775
+                                            [WORKER 35] ia= 640, solar   , zout=65.3, eup=  186.53 +- 0.841676318
+                                            [WORKER  9] ia= 660, solar   , zout=65.3, eup=  157.48 +- 0.845774518
+     Process 4 started calculating ia=930
+                                            [WORKER  8] ia= 670, solar   , zout=65.3, eup=  232.79 +- 0.570353415
+                                            [WORKER 11] ia= 750, solar   , zout=65.3, eup=  234.53 +- 0.791621035
+                                            [WORKER 36] ia= 690, solar   , zout=65.3, eup=  248.41 +- 0.572240367
+                                            [WORKER 39] ia= 680, solar   , zout=65.3, eup=  243.53 +- 0.531164752
+                                            [WORKER 10] ia= 720, solar   , zout=65.3, eup=  240.52 +- 0.744428524
+                                            [WORKER 34] ia= 730, solar   , zout=65.3, eup=  239.08 +- 0.779079627
+                                            [WORKER 12] ia= 840, solar   , zout=65.3, eup=  126.69 +- 0.926121484
+                                            [WORKER 27] ia= 760, solar   , zout=65.3, eup=  214.24 +- 0.860425203
+                                            [WORKER 21] ia= 820, solar   , zout=65.3, eup=  119.87 +- 0.911202088
+                                            [WORKER 22] ia= 850, solar   , zout=65.3, eup=  116.47 +- 0.907475728
+                                            [WORKER 26] ia= 770, solar   , zout=65.3, eup=  241.33 +- 0.764742128
+                                            [WORKER 19] ia= 710, solar   , zout=65.3, eup=  240.40 +- 0.655772421
+                                            [WORKER 29] ia= 830, solar   , zout=65.3, eup=  121.10 +- 0.916171551
+                                            [WORKER 17] ia= 700, solar   , zout=65.3, eup=  254.83 +- 0.535874296
+                                            [WORKER 20] ia= 810, solar   , zout=65.3, eup=  161.30 +- 0.92208152
+                                            [WORKER 16] ia= 740, solar   , zout=65.3, eup=  243.36 +- 0.767963924
+                                            [WORKER 25] ia= 800, solar   , zout=65.3, eup=  269.63 +- 0.66584111
+                                            [WORKER 13] ia= 870, solar   , zout=65.3, eup=  207.62 +- 0.896540322
+                                            [WORKER 18] ia= 780, solar   , zout=65.3, eup=  274.87 +- 0.557848453
+                                            [WORKER 30] ia= 860, solar   , zout=65.3, eup=  189.80 +- 0.927290029
+                                            [WORKER 33] ia= 880, solar   , zout=65.3, eup=  228.02 +- 0.819107151
+                                            [WORKER 23] ia= 890, solar   , zout=65.3, eup=  233.95 +- 0.802361543
+                                            [WORKER 32] ia= 900, solar   , zout=65.3, eup=  256.72 +- 0.748088826
+                                            [WORKER 31] ia= 790, solar   , zout=65.3, eup=  276.87 +- 0.572697968
+     Process 1 started calculating ia=940
+                                            [WORKER 24] ia= 920, solar   , zout=65.3, eup=  233.41 +- 0.87806054
+                                            [WORKER 28] ia= 910, solar   , zout=65.3, eup=  249.12 +- 0.76999298
+     Process 5 started calculating ia=950
+     Process 3 started calculating ia=960
+     Process 2 started calculating ia=970
+     Process 7 started calculating ia=980
+     Process 6 started calculating ia=990
+                                            [WORKER  4] ia= 930, solar   , zout=65.3, eup=  196.57 +- 0.973367638
+                                            [WORKER 38] ia= 650, thermal , zout=65.3, eup=  240.43 +- 0.336579652
+                                            [WORKER 14] ia= 630, thermal , zout=65.3, eup=  235.58 +- 0.316671331
+                                            [WORKER 37] ia= 610, thermal , zout=65.3, eup=  238.45 +- 0.329292729
+     Process 38 started calculating ia=1000
+     Process 14 started calculating ia=1010
+     Process 37 started calculating ia=1020
+                                            [WORKER 15] ia= 620, thermal , zout=65.3, eup=  239.76 +- 0.338741774
+                                            [WORKER 35] ia= 640, thermal , zout=65.3, eup=  234.63 +- 0.321961612
+     Process 15 started calculating ia=1030
+     Process 35 started calculating ia=1040
+                                            [WORKER  1] ia= 940, solar   , zout=65.3, eup=  224.74 +- 0.955479107
+                                            [WORKER  9] ia= 660, thermal , zout=65.3, eup=  248.07 +- 0.314555844
+     Process 9 started calculating ia=1050
+                                            [WORKER  8] ia= 670, thermal , zout=65.3, eup=  243.89 +- 0.27160709
+     Process 8 started calculating ia=1060
+                                            [WORKER  2] ia= 970, solar   , zout=65.3, eup=  245.88 +- 0.899063589
+                                            [WORKER  5] ia= 950, solar   , zout=65.3, eup=  238.72 +- 0.924083005
+                                            [WORKER  3] ia= 960, solar   , zout=65.3, eup=  243.43 +- 0.925669023
+                                            [WORKER 11] ia= 750, thermal , zout=65.3, eup=  239.94 +- 0.297313705
+                                            [WORKER 36] ia= 690, thermal , zout=65.3, eup=  246.41 +- 0.258681955
+                                            [WORKER 39] ia= 680, thermal , zout=65.3, eup=  247.95 +- 0.28099817
+                                            [WORKER  6] ia= 990, solar   , zout=65.3, eup=  254.97 +- 0.907027372
+                                            [WORKER 10] ia= 720, thermal , zout=65.3, eup=  244.34 +- 0.277203834
+                                            [WORKER  7] ia= 980, solar   , zout=65.3, eup=  269.91 +- 0.839796659
+                                            [WORKER 34] ia= 730, thermal , zout=65.3, eup=  244.35 +- 0.283809447
+     Process 11 started calculating ia=1070
+                                            [WORKER 12] ia= 840, thermal , zout=65.3, eup=  248.06 +- 0.321290547
+     Process 36 started calculating ia=1080
+     Process 39 started calculating ia=1090
+                                            [WORKER 21] ia= 820, thermal , zout=65.3, eup=  253.73 +- 0.341564525
+     Process 10 started calculating ia=1100
+                                            [WORKER 22] ia= 850, thermal , zout=65.3, eup=  254.17 +- 0.316012833
+                                            [WORKER 27] ia= 760, thermal , zout=65.3, eup=  235.57 +- 0.297016424
+                                            [WORKER 19] ia= 710, thermal , zout=65.3, eup=  246.91 +- 0.261433645
+                                            [WORKER 29] ia= 830, thermal , zout=65.3, eup=  250.82 +- 0.350494522
+                                            [WORKER 20] ia= 810, thermal , zout=65.3, eup=  241.62 +- 0.301098656
+                                            [WORKER 26] ia= 770, thermal , zout=65.3, eup=  238.25 +- 0.297927271
+                                            [WORKER 16] ia= 740, thermal , zout=65.3, eup=  240.99 +- 0.289677816
+                                            [WORKER 13] ia= 870, thermal , zout=65.3, eup=  252.77 +- 0.276381044
+                                            [WORKER 25] ia= 800, thermal , zout=65.3, eup=  227.00 +- 0.274387195
+                                            [WORKER 17] ia= 700, thermal , zout=65.3, eup=  246.81 +- 0.263214308
+                                            [WORKER 33] ia= 880, thermal , zout=65.3, eup=  253.86 +- 0.292504184
+                                            [WORKER 18] ia= 780, thermal , zout=65.3, eup=  233.32 +- 0.298913146
+                                            [WORKER 32] ia= 900, thermal , zout=65.3, eup=  246.93 +- 0.292631604
+                                            [WORKER 31] ia= 790, thermal , zout=65.3, eup=  234.59 +- 0.262676806
+                                            [WORKER 30] ia= 860, thermal , zout=65.3, eup=  251.45 +- 0.257526644
+                                            [WORKER 23] ia= 890, thermal , zout=65.3, eup=  249.23 +- 0.3018978
+     Process 34 started calculating ia=1110
+                                            [WORKER 24] ia= 920, thermal , zout=65.3, eup=  243.70 +- 0.296782454
+                                            [WORKER 28] ia= 910, thermal , zout=65.3, eup=  242.02 +- 0.289940788
+                                            [WORKER  4] ia= 930, thermal , zout=65.3, eup=  242.98 +- 0.30852544
+     Process 12 started calculating ia=1120
+                                            [WORKER  1] ia= 940, thermal , zout=65.3, eup=  238.40 +- 0.253464608
+                                            [WORKER 14] ia=1010, solar   , zout=65.3, eup=  260.44 +- 0.906082894
+     Process 21 started calculating ia=1130
+                                            [WORKER 37] ia=1020, solar   , zout=65.3, eup=  259.26 +- 0.950457859
+                                            [WORKER 38] ia=1000, solar   , zout=65.3, eup=  254.47 +- 0.901988897
+     Process 22 started calculating ia=1140
+     Process 27 started calculating ia=1150
+     Process 19 started calculating ia=1160
+     Process 29 started calculating ia=1170
+     Process 26 started calculating ia=1180
+     Process 20 started calculating ia=1190
+     Process 16 started calculating ia=1200
+     Process 13 started calculating ia=1210
+     Process 25 started calculating ia=1220
+     Process 33 started calculating ia=1230
+     Process 17 started calculating ia=1240
+     Process 18 started calculating ia=1250
+     Process 31 started calculating ia=1260
+     Process 32 started calculating ia=1270
+     Process 30 started calculating ia=1280
+     Process 23 started calculating ia=1290
+     Process 24 started calculating ia=1300
+     Process 28 started calculating ia=1310
+                                            [WORKER 35] ia=1040, solar   , zout=65.3, eup=  302.23 +- 0.870987171
+     Process 4 started calculating ia=1320
+                                            [WORKER 15] ia=1030, solar   , zout=65.3, eup=  302.03 +- 0.853090438
+                                            [WORKER  2] ia= 970, thermal , zout=65.3, eup=  224.49 +- 0.363704783
+                                            [WORKER  5] ia= 950, thermal , zout=65.3, eup=  237.67 +- 0.258737149
+                                            [WORKER  9] ia=1050, solar   , zout=65.3, eup=  285.62 +- 0.888531617
+                                            [WORKER  8] ia=1060, solar   , zout=65.3, eup=  288.93 +- 0.863867686
+                                            [WORKER  3] ia= 960, thermal , zout=65.3, eup=  237.79 +- 0.238546966
+     Process 1 started calculating ia=1330
+                                            [WORKER  6] ia= 990, thermal , zout=65.3, eup=  235.53 +- 0.262494674
+                                            [WORKER  7] ia= 980, thermal , zout=65.3, eup=  233.29 +- 0.268242742
+     Process 2 started calculating ia=1340
+                                            [WORKER 11] ia=1070, solar   , zout=65.3, eup=  283.21 +- 0.869703886
+     Process 5 started calculating ia=1350
+     Process 3 started calculating ia=1360
+                                            [WORKER 36] ia=1080, solar   , zout=65.3, eup=  269.29 +- 0.915912386
+                                            [WORKER 39] ia=1090, solar   , zout=65.3, eup=  279.58 +- 0.882217848
+                                            [WORKER 10] ia=1100, solar   , zout=65.3, eup=  281.41 +- 0.881158714
+     Process 6 started calculating ia=1370
+     Process 7 started calculating ia=1380
+                                            [WORKER 34] ia=1110, solar   , zout=65.3, eup=  285.55 +- 0.895691964
+                                            [WORKER 12] ia=1120, solar   , zout=65.3, eup=  275.69 +- 0.940553366
+                                            [WORKER 21] ia=1130, solar   , zout=65.3, eup=  265.93 +- 0.943097949
+                                            [WORKER 22] ia=1140, solar   , zout=65.3, eup=  263.95 +- 0.983235259
+                                            [WORKER 27] ia=1150, solar   , zout=65.3, eup=  273.03 +- 0.988581043
+                                            [WORKER 14] ia=1010, thermal , zout=65.3, eup=  226.11 +- 0.344519729
+                                            [WORKER 37] ia=1020, thermal , zout=65.3, eup=  219.47 +- 0.408462077
+                                            [WORKER 38] ia=1000, thermal , zout=65.3, eup=  237.70 +- 0.263566017
+                                            [WORKER 19] ia=1160, solar   , zout=65.3, eup=  292.85 +- 0.948347437
+                                            [WORKER 29] ia=1170, solar   , zout=65.3, eup=  291.60 +- 0.935866586
+                                            [WORKER 35] ia=1040, thermal , zout=65.3, eup=  190.31 +- 0.258493233
+                                            [WORKER 20] ia=1190, solar   , zout=65.3, eup=  290.43 +- 0.957964913
+                                            [WORKER 15] ia=1030, thermal , zout=65.3, eup=  194.67 +- 0.293280639
+                                            [WORKER 25] ia=1220, solar   , zout=65.3, eup=  282.54 +- 0.956430052
+                                            [WORKER 26] ia=1180, solar   , zout=65.3, eup=  287.25 +- 0.953490578
+     Process 14 started calculating ia=1390
+                                            [WORKER 13] ia=1210, solar   , zout=65.3, eup=  290.51 +- 0.939593648
+                                            [WORKER 16] ia=1200, solar   , zout=65.3, eup=  288.23 +- 0.968065759
+     Process 37 started calculating ia=1400
+     Process 38 started calculating ia=1410
+                                            [WORKER 23] ia=1290, solar   , zout=65.3, eup=  274.44 +- 1.03721788
+                                            [WORKER 33] ia=1230, solar   , zout=65.3, eup=  283.81 +- 0.985222316
+                                            [WORKER 30] ia=1280, solar   , zout=65.3, eup=  284.01 +- 0.996971133
+                                            [WORKER  8] ia=1060, thermal , zout=65.3, eup=  225.56 +- 0.43413951
+                                            [WORKER  4] ia=1320, solar   , zout=65.3, eup=  279.76 +- 1.03008968
+                                            [WORKER  9] ia=1050, thermal , zout=65.3, eup=  211.02 +- 0.424298601
+                                            [WORKER 24] ia=1300, solar   , zout=65.3, eup=  282.86 +- 1.03729402
+                                            [WORKER 17] ia=1240, solar   , zout=65.3, eup=  291.73 +- 0.984208411
+                                            [WORKER 28] ia=1310, solar   , zout=65.3, eup=  278.94 +- 1.03807865
+                                            [WORKER 18] ia=1250, solar   , zout=65.3, eup=  296.59 +- 0.97160359
+                                            [WORKER 32] ia=1270, solar   , zout=65.3, eup=  290.73 +- 0.977361124
+                                            [WORKER  1] ia=1330, solar   , zout=65.3, eup=  239.83 +- 1.09656598
+                                            [WORKER 31] ia=1260, solar   , zout=65.3, eup=  304.76 +- 0.921241219
+                                            [WORKER 11] ia=1070, thermal , zout=65.3, eup=  229.67 +- 0.406484555
+                                            [WORKER 36] ia=1080, thermal , zout=65.3, eup=  237.69 +- 0.354476655
+                                            [WORKER 39] ia=1090, thermal , zout=65.3, eup=  237.38 +- 0.299111363
+                                            [WORKER 10] ia=1100, thermal , zout=65.3, eup=  236.44 +- 0.292926353
+                                            [WORKER 34] ia=1110, thermal , zout=65.3, eup=  236.57 +- 0.28105989
+                                            [WORKER 12] ia=1120, thermal , zout=65.3, eup=  234.34 +- 0.291911557
+     Process 35 started calculating ia=1420
+                                            [WORKER  3] ia=1360, solar   , zout=65.3, eup=  250.32 +- 1.08372684
+     Process 15 started calculating ia=1430
+                                            [WORKER  6] ia=1370, solar   , zout=65.3, eup=  245.75 +- 1.12319224
+                                            [WORKER  2] ia=1340, solar   , zout=65.3, eup=  302.42 +- 0.989773615
+                                            [WORKER  5] ia=1350, solar   , zout=65.3, eup=  306.15 +- 0.974999848
+                                            [WORKER  7] ia=1380, solar   , zout=65.3, eup=  276.38 +- 1.07815458
+                                            [WORKER 21] ia=1130, thermal , zout=65.3, eup=  229.74 +- 0.324736354
+                                            [WORKER 22] ia=1140, thermal , zout=65.3, eup=  230.38 +- 0.311843803
+     Process 8 started calculating ia=1440
+     Process 9 started calculating ia=1450
+                                            [WORKER 27] ia=1150, thermal , zout=65.3, eup=  203.63 +- 0.383033105
+     Process 11 started calculating ia=1460
+     Process 36 started calculating ia=1470
+     Process 39 started calculating ia=1480
+     Process 10 started calculating ia=1490
+     Process 34 started calculating ia=1500
+     Process 12 started calculating ia=1510
+     Process 21 started calculating ia=1520
+     Process 22 started calculating ia=1530
+     Process 27 started calculating ia=1540
+                                            [WORKER 19] ia=1160, thermal , zout=65.3, eup=  207.08 +- 0.349732021
+                                            [WORKER 38] ia=1410, solar   , zout=65.3, eup=  141.73 +- 1.12807542
+                                            [WORKER 14] ia=1390, solar   , zout=65.3, eup=  240.87 +- 1.13622176
+                                            [WORKER 37] ia=1400, solar   , zout=65.3, eup=  198.79 +- 1.16308373
+                                            [WORKER 29] ia=1170, thermal , zout=65.3, eup=  210.93 +- 0.323637994
+     Process 19 started calculating ia=1550
+                                            [WORKER 20] ia=1190, thermal , zout=65.3, eup=  218.99 +- 0.295110074
+     Process 29 started calculating ia=1560
+                                            [WORKER 25] ia=1220, thermal , zout=65.3, eup=  233.91 +- 0.29604779
+                                            [WORKER 26] ia=1180, thermal , zout=65.3, eup=  216.19 +- 0.291436537
+                                            [WORKER 13] ia=1210, thermal , zout=65.3, eup=  225.41 +- 0.318356321
+                                            [WORKER 16] ia=1200, thermal , zout=65.3, eup=  221.38 +- 0.298247478
+     Process 20 started calculating ia=1570
+                                            [WORKER 35] ia=1420, solar   , zout=65.3, eup=  134.42 +- 1.11970823
+     Process 25 started calculating ia=1580
+     Process 26 started calculating ia=1590
+     Process 13 started calculating ia=1600
+     Process 16 started calculating ia=1610
+                                            [WORKER 15] ia=1430, solar   , zout=65.3, eup=  150.27 +- 1.13478721
+                                            [WORKER 23] ia=1290, thermal , zout=65.3, eup=  230.57 +- 0.243972942
+                                            [WORKER 33] ia=1230, thermal , zout=65.3, eup=  226.30 +- 0.324578637
+                                            [WORKER 30] ia=1280, thermal , zout=65.3, eup=  230.29 +- 0.243940752
+                                            [WORKER  4] ia=1320, thermal , zout=65.3, eup=  234.60 +- 0.243639737
+                                            [WORKER 17] ia=1240, thermal , zout=65.3, eup=  212.09 +- 0.276013218
+                                            [WORKER 32] ia=1270, thermal , zout=65.3, eup=  226.44 +- 0.245198597
+                                            [WORKER 24] ia=1300, thermal , zout=65.3, eup=  225.22 +- 0.291258065
+                                            [WORKER 28] ia=1310, thermal , zout=65.3, eup=  229.11 +- 0.257931321
+                                            [WORKER 18] ia=1250, thermal , zout=65.3, eup=  217.94 +- 0.304253844
+                                            [WORKER  1] ia=1330, thermal , zout=65.3, eup=  239.55 +- 0.273160222
+                                            [WORKER 31] ia=1260, thermal , zout=65.3, eup=  224.71 +- 0.258631143
+     Process 23 started calculating ia=1620
+     Process 33 started calculating ia=1630
+     Process 30 started calculating ia=1640
+                                            [WORKER  3] ia=1360, thermal , zout=65.3, eup=  234.88 +- 0.252728459
+     Process 4 started calculating ia=1650
+                                            [WORKER  6] ia=1370, thermal , zout=65.3, eup=  236.61 +- 0.250110304
+                                            [WORKER  8] ia=1440, solar   , zout=65.3, eup=  180.09 +- 1.17199834
+     Process 17 started calculating ia=1660
+     Process 32 started calculating ia=1670
+                                            [WORKER  5] ia=1350, thermal , zout=65.3, eup=  231.10 +- 0.242283448
+                                            [WORKER  2] ia=1340, thermal , zout=65.3, eup=  232.31 +- 0.231055781
+     Process 24 started calculating ia=1680
+                                            [WORKER  7] ia=1380, thermal , zout=65.3, eup=  235.64 +- 0.253275425
+     Process 28 started calculating ia=1690
+     Process 18 started calculating ia=1700
+     Process 1 started calculating ia=1710
+     Process 31 started calculating ia=1720
+                                            [WORKER  9] ia=1450, solar   , zout=65.3, eup=  215.14 +- 1.1611419
+                                            [WORKER 36] ia=1470, solar   , zout=65.3, eup=  144.60 +- 1.1443237
+                                            [WORKER 10] ia=1490, solar   , zout=65.3, eup=  135.35 +- 1.14704749
+                                            [WORKER 39] ia=1480, solar   , zout=65.3, eup=  165.68 +- 1.16553767
+                                            [WORKER 11] ia=1460, solar   , zout=65.3, eup=  188.19 +- 1.1756828
+                                            [WORKER 14] ia=1390, thermal , zout=65.3, eup=  239.42 +- 0.307339085
+                                            [WORKER 38] ia=1410, thermal , zout=65.3, eup=  244.10 +- 0.419617849
+                                            [WORKER 37] ia=1400, thermal , zout=65.3, eup=  241.08 +- 0.289747175
+                                            [WORKER 21] ia=1520, solar   , zout=65.3, eup=  159.15 +- 1.17828407
+                                            [WORKER 12] ia=1510, solar   , zout=65.3, eup=  256.10 +- 1.17906344
+                                            [WORKER 34] ia=1500, solar   , zout=65.3, eup=  283.90 +- 1.13228321
+                                            [WORKER 22] ia=1530, solar   , zout=65.3, eup=  218.35 +- 1.21643365
+                                            [WORKER 27] ia=1540, solar   , zout=65.3, eup=  198.56 +- 1.22141581
+     Process 3 started calculating ia=1730
+                                            [WORKER 19] ia=1550, solar   , zout=65.3, eup=  139.25 +- 1.13852404
+                                            [WORKER 29] ia=1560, solar   , zout=65.3, eup=  103.81 +- 1.09834854
+     Process 6 started calculating ia=1740
+     Process 5 started calculating ia=1750
+     Process 2 started calculating ia=1760
+     Process 7 started calculating ia=1770
+                                            [WORKER 20] ia=1570, solar   , zout=65.3, eup=   79.57 +- 1.04290623
+                                            [WORKER 35] ia=1420, thermal , zout=65.3, eup=  244.10 +- 0.464878594
+     Process 14 started calculating ia=1780
+     Process 38 started calculating ia=1790
+     Process 37 started calculating ia=1800
+                                            [WORKER 25] ia=1580, solar   , zout=65.3, eup=  146.32 +- 1.19098849
+                                            [WORKER 26] ia=1590, solar   , zout=65.3, eup=  241.53 +- 1.23267702
+                                            [WORKER 13] ia=1600, solar   , zout=65.3, eup=  267.25 +- 1.20692429
+                                            [WORKER 16] ia=1610, solar   , zout=65.3, eup=  262.52 +- 1.20975225
+                                            [WORKER 15] ia=1430, thermal , zout=65.3, eup=  245.38 +- 0.38352569
+     Process 35 started calculating ia=1810
+                                            [WORKER 23] ia=1620, solar   , zout=65.3, eup=  252.63 +- 1.21762801
+     Process 15 started calculating ia=1820
+                                            [WORKER 33] ia=1630, solar   , zout=65.3, eup=  255.66 +- 1.22772822
+                                            [WORKER 30] ia=1640, solar   , zout=65.3, eup=  263.80 +- 1.22030672
+                                            [WORKER  4] ia=1650, solar   , zout=65.3, eup=  281.64 +- 1.19753488
+                                            [WORKER 32] ia=1670, solar   , zout=65.3, eup=  226.58 +- 1.24248285
+                                            [WORKER 17] ia=1660, solar   , zout=65.3, eup=  245.36 +- 1.23765726
+                                            [WORKER 18] ia=1700, solar   , zout=65.3, eup=  243.69 +- 1.25252635
+                                            [WORKER 31] ia=1720, solar   , zout=65.3, eup=  258.48 +- 1.2229145
+                                            [WORKER 24] ia=1680, solar   , zout=65.3, eup=  225.77 +- 1.26292386
+                                            [WORKER  1] ia=1710, solar   , zout=65.3, eup=  273.54 +- 1.23208207
+                                            [WORKER 28] ia=1690, solar   , zout=65.3, eup=  289.56 +- 1.20209712
+                                            [WORKER  8] ia=1440, thermal , zout=65.3, eup=  243.81 +- 0.353253821
+                                            [WORKER  9] ia=1450, thermal , zout=65.3, eup=  242.53 +- 0.379498422
+                                            [WORKER 36] ia=1470, thermal , zout=65.3, eup=  247.14 +- 0.44162247
+                                            [WORKER 10] ia=1490, thermal , zout=65.3, eup=  241.87 +- 0.506257508
+                                            [WORKER  3] ia=1730, solar   , zout=65.3, eup=  261.83 +- 1.25982779
+                                            [WORKER 39] ia=1480, thermal , zout=65.3, eup=  243.06 +- 0.434433956
+                                            [WORKER 11] ia=1460, thermal , zout=65.3, eup=  243.82 +- 0.406820612
+                                            [WORKER  6] ia=1740, solar   , zout=65.3, eup=  240.53 +- 1.2543051
+                                            [WORKER 21] ia=1520, thermal , zout=65.3, eup=  244.36 +- 0.422371219
+                                            [WORKER 12] ia=1510, thermal , zout=65.3, eup=  227.02 +- 0.39466814
+                                            [WORKER 34] ia=1500, thermal , zout=65.3, eup=  216.44 +- 0.416606179
+                                            [WORKER 22] ia=1530, thermal , zout=65.3, eup=  237.04 +- 0.357546008
+                                            [WORKER 27] ia=1540, thermal , zout=65.3, eup=  233.08 +- 0.4286889
+                                            [WORKER 19] ia=1550, thermal , zout=65.3, eup=  246.21 +- 0.487099736
+                                            [WORKER 29] ia=1560, thermal , zout=65.3, eup=  245.01 +- 0.549671137
+                                            [WORKER  5] ia=1750, solar   , zout=65.3, eup=  255.50 +- 1.26964777
+                                            [WORKER  2] ia=1760, solar   , zout=65.3, eup=  259.55 +- 1.26301513
+                                            [WORKER 20] ia=1570, thermal , zout=65.3, eup=  249.94 +- 0.557324816
+     Process 8 started calculating ia=1830
+                                            [WORKER  7] ia=1770, solar   , zout=65.3, eup=  290.66 +- 1.22875198
+                                            [WORKER 25] ia=1580, thermal , zout=65.3, eup=  246.84 +- 0.434177607
+                                            [WORKER 26] ia=1590, thermal , zout=65.3, eup=  241.31 +- 0.26568837
+                                            [WORKER 13] ia=1600, thermal , zout=65.3, eup=  241.17 +- 0.263682697
+                                            [WORKER 16] ia=1610, thermal , zout=65.3, eup=  242.26 +- 0.249616329
+                                            [WORKER 14] ia=1780, solar   , zout=65.3, eup=  296.70 +- 1.22642857
+     Process 9 started calculating ia=1840
+                                            [WORKER 37] ia=1800, solar   , zout=65.3, eup=  298.45 +- 1.26677421
+                                            [WORKER 38] ia=1790, solar   , zout=65.3, eup=  298.16 +- 1.25357693
+     Process 36 started calculating ia=1850
+     Process 10 started calculating ia=1860
+     Process 39 started calculating ia=1870
+     Process 11 started calculating ia=1880
+     Process 21 started calculating ia=1890
+     Process 12 started calculating ia=1900
+     Process 34 started calculating ia=1910
+                                            [WORKER 35] ia=1810, solar   , zout=65.3, eup=  304.51 +- 1.27032019
+     Process 22 started calculating ia=1920
+     Process 27 started calculating ia=1930
+     Process 19 started calculating ia=1940
+     Process 29 started calculating ia=1950
+                                            [WORKER 23] ia=1620, thermal , zout=65.3, eup=  243.81 +- 0.291993986
+     Process 20 started calculating ia=1960
+                                            [WORKER 33] ia=1630, thermal , zout=65.3, eup=  244.20 +- 0.288196775
+                                            [WORKER 30] ia=1640, thermal , zout=65.3, eup=  245.17 +- 0.267037688
+                                            [WORKER 15] ia=1820, solar   , zout=65.3, eup=  320.85 +- 1.22646268
+     Process 25 started calculating ia=1970
+                                            [WORKER  4] ia=1650, thermal , zout=65.3, eup=  244.71 +- 0.26185243
+     Process 26 started calculating ia=1980
+     Process 13 started calculating ia=1990
+     Process 16 started calculating ia=2000
+                                            [WORKER 32] ia=1670, thermal , zout=65.3, eup=  246.71 +- 0.308072096
+                                            [WORKER 17] ia=1660, thermal , zout=65.3, eup=  246.94 +- 0.279169614
+                                            [WORKER 18] ia=1700, thermal , zout=65.3, eup=  245.94 +- 0.243002988
+                                            [WORKER 31] ia=1720, thermal , zout=65.3, eup=  243.19 +- 0.319219492
+                                            [WORKER  1] ia=1710, thermal , zout=65.3, eup=  245.11 +- 0.264706341
+                                            [WORKER 24] ia=1680, thermal , zout=65.3, eup=  247.36 +- 0.266217678
+                                            [WORKER 28] ia=1690, thermal , zout=65.3, eup=  244.34 +- 0.265448975
+     Process 23 started calculating ia=2010
+     Process 33 started calculating ia=2020
+     Process 30 started calculating ia=2030
+     Process 4 started calculating ia=2040
+     Process 32 started calculating ia=2050
+     Process 17 started calculating ia=2060
+     Process 18 started calculating ia=2070
+     Process 31 started calculating ia=2080
+     Process 1 started calculating ia=2090
+     Process 24 started calculating ia=2100
+     Process 28 started calculating ia=2110
+                                            [WORKER  8] ia=1830, solar   , zout=65.3, eup=  319.81 +- 1.22010259
+                                            [WORKER  3] ia=1730, thermal , zout=65.3, eup=  247.37 +- 0.267814031
+     Process 3 started calculating ia=2120
+                                            [WORKER  6] ia=1740, thermal , zout=65.3, eup=  250.44 +- 0.290064839
+                                            [WORKER  9] ia=1840, solar   , zout=65.3, eup=  310.22 +- 1.20517195
+     Process 6 started calculating ia=2130
+                                            [WORKER 36] ia=1850, solar   , zout=65.3, eup=  308.40 +- 1.29034125
+                                            [WORKER 10] ia=1860, solar   , zout=65.3, eup=  327.49 +- 1.27165725
+                                            [WORKER  5] ia=1750, thermal , zout=65.3, eup=  253.30 +- 0.275678119
+                                            [WORKER  2] ia=1760, thermal , zout=65.3, eup=  249.17 +- 0.340237379
+                                            [WORKER  7] ia=1770, thermal , zout=65.3, eup=  250.29 +- 0.267803668
+     Process 5 started calculating ia=2140
+     Process 2 started calculating ia=2150
+                                            [WORKER 39] ia=1870, solar   , zout=65.3, eup=  341.45 +- 1.25752416
+                                            [WORKER 14] ia=1780, thermal , zout=65.3, eup=  247.03 +- 0.276713017
+                                            [WORKER 11] ia=1880, solar   , zout=65.3, eup=  339.83 +- 1.26113562
+                                            [WORKER 37] ia=1800, thermal , zout=65.3, eup=  244.10 +- 0.264795931
+                                            [WORKER 38] ia=1790, thermal , zout=65.3, eup=  246.35 +- 0.247703329
+     Process 7 started calculating ia=2160
+                                            [WORKER 12] ia=1900, solar   , zout=65.3, eup=  322.57 +- 1.29186711
+                                            [WORKER 34] ia=1910, solar   , zout=65.3, eup=  320.10 +- 1.28541637
+                                            [WORKER 27] ia=1930, solar   , zout=65.3, eup=  321.04 +- 1.29731022
+                                            [WORKER 22] ia=1920, solar   , zout=65.3, eup=  320.63 +- 1.29695713
+                                            [WORKER 35] ia=1810, thermal , zout=65.3, eup=  243.94 +- 0.265895509
+                                            [WORKER 21] ia=1890, solar   , zout=65.3, eup=  336.76 +- 1.26355777
+                                            [WORKER 19] ia=1940, solar   , zout=65.3, eup=  336.43 +- 1.26701613
+                                            [WORKER 29] ia=1950, solar   , zout=65.3, eup=  351.69 +- 1.23387884
+                                            [WORKER 20] ia=1960, solar   , zout=65.3, eup=  346.44 +- 1.23915344
+                                            [WORKER 25] ia=1970, solar   , zout=65.3, eup=  280.45 +- 1.32833008
+                                            [WORKER 15] ia=1820, thermal , zout=65.3, eup=  243.57 +- 0.262361378
+                                            [WORKER 13] ia=1990, solar   , zout=65.3, eup=  263.59 +- 1.36319931
+                                            [WORKER 26] ia=1980, solar   , zout=65.3, eup=  258.41 +- 1.35274507
+[WORKER 14] Received termination signal. Exiting.
+[WORKER 37] Received termination signal. Exiting.
+                                            [WORKER 16] ia=2000, solar   , zout=65.3, eup=  296.31 +- 1.35022127
+[WORKER 38] Received termination signal. Exiting.
+                                            [WORKER  8] ia=1830, thermal , zout=65.3, eup=  244.45 +- 0.264857699
+[WORKER 35] Received termination signal. Exiting.
+                                            [WORKER 23] ia=2010, solar   , zout=65.3, eup=  279.87 +- 1.36344847
+                                            [WORKER 33] ia=2020, solar   , zout=65.3, eup=  243.13 +- 1.38066892
+                                            [WORKER 30] ia=2030, solar   , zout=65.3, eup=  210.82 +- 1.38160023
+                                            [WORKER  9] ia=1840, thermal , zout=65.3, eup=  242.58 +- 0.294287194
+                                            [WORKER  4] ia=2040, solar   , zout=65.3, eup=  250.78 +- 1.41522489
+[WORKER 15] Received termination signal. Exiting.
+                                            [WORKER 32] ia=2050, solar   , zout=65.3, eup=  294.60 +- 1.41344696
+                                            [WORKER 31] ia=2080, solar   , zout=65.3, eup=  277.18 +- 1.40627357
+                                            [WORKER 18] ia=2070, solar   , zout=65.3, eup=  277.10 +- 1.41569366
+                                            [WORKER 17] ia=2060, solar   , zout=65.3, eup=  282.05 +- 1.41962305
+                                            [WORKER  1] ia=2090, solar   , zout=65.3, eup=  289.43 +- 1.39311321
+                                            [WORKER 28] ia=2110, solar   , zout=65.3, eup=  273.55 +- 1.42471575
+                                            [WORKER 24] ia=2100, solar   , zout=65.3, eup=  275.54 +- 1.41478782
+                                            [WORKER  3] ia=2120, solar   , zout=65.3, eup=  261.17 +- 1.4242194
+                                            [WORKER 36] ia=1850, thermal , zout=65.3, eup=  238.69 +- 0.276850759
+                                            [WORKER  6] ia=2130, solar   , zout=65.3, eup=  312.93 +- 1.39021874
+[WORKER 8] Received termination signal. Exiting.
+                                            [WORKER 10] ia=1860, thermal , zout=65.3, eup=  233.39 +- 0.283603674
+[WORKER 9] Received termination signal. Exiting.
+[WORKER 36] Received termination signal. Exiting.
+                                            [WORKER  5] ia=2140, solar   , zout=65.3, eup=  291.27 +- 1.42866655
+[WORKER 10] Received termination signal. Exiting.
+                                            [WORKER 39] ia=1870, thermal , zout=65.3, eup=  232.98 +- 0.259459624
+                                            [WORKER  2] ia=2150, solar   , zout=65.3, eup=  313.15 +- 1.39368385
+                                            [WORKER 11] ia=1880, thermal , zout=65.3, eup=  232.35 +- 0.275019619
+                                            [WORKER  7] ia=2160, solar   , zout=65.3, eup=  275.26 +- 1.43476766
+[WORKER 39] Received termination signal. Exiting.
+[WORKER 11] Received termination signal. Exiting.
+                                            [WORKER 12] ia=1900, thermal , zout=65.3, eup=  237.56 +- 0.243007579
+                                            [WORKER 34] ia=1910, thermal , zout=65.3, eup=  235.63 +- 0.280257288
+                                            [WORKER 27] ia=1930, thermal , zout=65.3, eup=  232.09 +- 0.331240475
+                                            [WORKER 22] ia=1920, thermal , zout=65.3, eup=  232.93 +- 0.308187664
+                                            [WORKER 21] ia=1890, thermal , zout=65.3, eup=  236.22 +- 0.253992653
+                                            [WORKER 19] ia=1940, thermal , zout=65.3, eup=  233.58 +- 0.293971875
+                                            [WORKER 29] ia=1950, thermal , zout=65.3, eup=  234.77 +- 0.295304764
+                                            [WORKER 20] ia=1960, thermal , zout=65.3, eup=  235.63 +- 0.28818867
+                                            [WORKER 25] ia=1970, thermal , zout=65.3, eup=  230.12 +- 0.371457133
+                                            [WORKER 13] ia=1990, thermal , zout=65.3, eup=  242.13 +- 0.297048342
+                                            [WORKER 26] ia=1980, thermal , zout=65.3, eup=  234.33 +- 0.385937354
+[WORKER 12] Received termination signal. Exiting.
+[WORKER 34] Received termination signal. Exiting.
+                                            [WORKER 16] ia=2000, thermal , zout=65.3, eup=  242.93 +- 0.279331592
+[WORKER 27] Received termination signal. Exiting.
+[WORKER 22] Received termination signal. Exiting.
+[WORKER 21] Received termination signal. Exiting.
+[WORKER 19] Received termination signal. Exiting.
+[WORKER 29] Received termination signal. Exiting.
+[WORKER 20] Received termination signal. Exiting.
+[WORKER 25] Received termination signal. Exiting.
+[WORKER 13] Received termination signal. Exiting.
+[WORKER 26] Received termination signal. Exiting.
+[WORKER 16] Received termination signal. Exiting.
+                                            [WORKER 23] ia=2010, thermal , zout=65.3, eup=  242.88 +- 0.279930942
+                                            [WORKER 33] ia=2020, thermal , zout=65.3, eup=  242.11 +- 0.299425488
+[WORKER 23] Received termination signal. Exiting.
+[WORKER 33] Received termination signal. Exiting.
+                                            [WORKER  4] ia=2040, thermal , zout=65.3, eup=  231.47 +- 0.375863789
+                                            [WORKER 30] ia=2030, thermal , zout=65.3, eup=  241.72 +- 0.339515023
+[WORKER 4] Received termination signal. Exiting.
+[WORKER 30] Received termination signal. Exiting.
+                                            [WORKER 32] ia=2050, thermal , zout=65.3, eup=  214.54 +- 0.370941733
+[WORKER 32] Received termination signal. Exiting.
+                                            [WORKER 31] ia=2080, thermal , zout=65.3, eup=  233.05 +- 0.356641449
+                                            [WORKER 18] ia=2070, thermal , zout=65.3, eup=  233.38 +- 0.344524984
+                                            [WORKER  1] ia=2090, thermal , zout=65.3, eup=  240.88 +- 0.249039361
+                                            [WORKER  3] ia=2120, thermal , zout=65.3, eup=  241.90 +- 0.272239212
+                                            [WORKER 17] ia=2060, thermal , zout=65.3, eup=  225.35 +- 0.378541673
+                                            [WORKER 28] ia=2110, thermal , zout=65.3, eup=  236.31 +- 0.327860249
+                                            [WORKER  6] ia=2130, thermal , zout=65.3, eup=  238.73 +- 0.272215374
+                                            [WORKER 24] ia=2100, thermal , zout=65.3, eup=  240.28 +- 0.29860704
+[WORKER 31] Received termination signal. Exiting.
+[WORKER 18] Received termination signal. Exiting.
+[WORKER 1] Received termination signal. Exiting.
+[WORKER 3] Received termination signal. Exiting.
+[WORKER 17] Received termination signal. Exiting.
+[WORKER 28] Received termination signal. Exiting.
+[WORKER 6] Received termination signal. Exiting.
+[WORKER 24] Received termination signal. Exiting.
+                                            [WORKER  5] ia=2140, thermal , zout=65.3, eup=  234.84 +- 0.309515422
+[WORKER 5] Received termination signal. Exiting.
+                                            [WORKER  2] ia=2150, thermal , zout=65.3, eup=  237.30 +- 0.318407816
+                                            [WORKER  7] ia=2160, thermal , zout=65.3, eup=  236.50 +- 0.314548573
+[WORKER 2] Received termination signal. Exiting.
+Writing libRadtran output to netcdf file:  ./RESULTS/libRad_v01_montecarlo_3D_SWNA_solar,thermal_Orbit_06888C.nc
+[WORKER 7] Received termination signal. Exiting.
+
+
+
+=================================================================================================================
+Nadir Pixel Index    =  151
+SceneName            =  Orbit_07277C
+Specs                =  montecarlo - 3D - 
+     Process 1 started calculating ia=150
+     Process 2 started calculating ia=160
+     Process 3 started calculating ia=170
+     Process 4 started calculating ia=180
+     Process 5 started calculating ia=190
+     Process 6 started calculating ia=200
+     Process 7 started calculating ia=210
+     Process 8 started calculating ia=220
+     Process 9 started calculating ia=230
+     Process 10 started calculating ia=240
+     Process 11 started calculating ia=250
+     Process 12 started calculating ia=260
+     Process 13 started calculating ia=270
+     Process 14 started calculating ia=280
+     Process 15 started calculating ia=290
+     Process 16 started calculating ia=300
+     Process 17 started calculating ia=310
+     Process 18 started calculating ia=320
+     Process 19 started calculating ia=330
+     Process 20 started calculating ia=340
+     Process 21 started calculating ia=350
+     Process 22 started calculating ia=360
+     Process 23 started calculating ia=370
+     Process 24 started calculating ia=380
+     Process 25 started calculating ia=390
+     Process 26 started calculating ia=400
+     Process 27 started calculating ia=410
+     Process 28 started calculating ia=420
+     Process 29 started calculating ia=430
+     Process 30 started calculating ia=440
+     Process 31 started calculating ia=450
+     Process 32 started calculating ia=460
+     Process 33 started calculating ia=470
+     Process 34 started calculating ia=480
+     Process 35 started calculating ia=490
+     Process 36 started calculating ia=500
+     Process 37 started calculating ia=510
+     Process 38 started calculating ia=520
+     Process 39 started calculating ia=530
+                                            [WORKER 27] ia= 410, solar   , zout=65.3, eup=   61.04 +- 0.29669799
+                                            [WORKER  5] ia= 190, solar   , zout=65.3, eup=   51.85 +- 0.192061277
+                                            [WORKER 25] ia= 390, solar   , zout=65.3, eup=   40.32 +- 0.290075473
+                                            [WORKER  4] ia= 180, solar   , zout=65.3, eup=   52.53 +- 0.187363863
+                                            [WORKER  3] ia= 170, solar   , zout=65.3, eup=   53.41 +- 0.184244191
+                                            [WORKER  1] ia= 150, solar   , zout=65.3, eup=   54.52 +- 0.171466217
+                                            [WORKER  6] ia= 200, solar   , zout=65.3, eup=   53.86 +- 0.194093572
+                                            [WORKER 29] ia= 430, solar   , zout=65.3, eup=   65.26 +- 0.304063219
+                                            [WORKER 31] ia= 450, solar   , zout=65.3, eup=   71.95 +- 0.299053045
+                                            [WORKER 34] ia= 480, solar   , zout=65.3, eup=   65.81 +- 0.324844148
+                                            [WORKER 36] ia= 500, solar   , zout=65.3, eup=   63.58 +- 0.3363739
+                                            [WORKER  7] ia= 210, solar   , zout=65.3, eup=   56.11 +- 0.203174227
+                                            [WORKER  2] ia= 160, solar   , zout=65.3, eup=   54.01 +- 0.17911174
+                                            [WORKER 19] ia= 330, solar   , zout=65.3, eup=   38.65 +- 0.26486881
+                                            [WORKER 18] ia= 320, solar   , zout=65.3, eup=   32.48 +- 0.25871401
+                                            [WORKER 23] ia= 370, solar   , zout=65.3, eup=   46.45 +- 0.284307353
+                                            [WORKER 30] ia= 440, solar   , zout=65.3, eup=   67.23 +- 0.305858148
+                                            [WORKER 22] ia= 360, solar   , zout=65.3, eup=   50.53 +- 0.278144419
+                                            [WORKER 24] ia= 380, solar   , zout=65.3, eup=   37.18 +- 0.28462588
+                                            [WORKER 20] ia= 340, solar   , zout=65.3, eup=   44.51 +- 0.271115746
+                                            [WORKER 33] ia= 470, solar   , zout=65.3, eup=   67.91 +- 0.319796728
+                                            [WORKER 16] ia= 300, solar   , zout=65.3, eup=   54.50 +- 0.247951324
+                                            [WORKER 21] ia= 350, solar   , zout=65.3, eup=   52.27 +- 0.27284595
+                                            [WORKER 26] ia= 400, solar   , zout=65.3, eup=   59.86 +- 0.29420009
+                                            [WORKER 35] ia= 490, solar   , zout=65.3, eup=   61.47 +- 0.331878964
+                                            [WORKER 32] ia= 460, solar   , zout=65.3, eup=   68.61 +- 0.310704233
+                                            [WORKER 17] ia= 310, solar   , zout=65.3, eup=   45.31 +- 0.259359817
+                                            [WORKER 10] ia= 240, solar   , zout=65.3, eup=   56.32 +- 0.214166501
+                                            [WORKER 13] ia= 270, solar   , zout=65.3, eup=   60.85 +- 0.221281602
+                                            [WORKER 28] ia= 420, solar   , zout=65.3, eup=   63.99 +- 0.297627286
+                                            [WORKER 14] ia= 280, solar   , zout=65.3, eup=   62.37 +- 0.223870696
+                                            [WORKER  8] ia= 220, solar   , zout=65.3, eup=   54.72 +- 0.204754429
+                                            [WORKER 12] ia= 260, solar   , zout=65.3, eup=   60.10 +- 0.215685323
+                                            [WORKER 37] ia= 510, solar   , zout=65.3, eup=   76.57 +- 0.328381869
+                                            [WORKER 15] ia= 290, solar   , zout=65.3, eup=   57.94 +- 0.237415767
+                                            [WORKER 39] ia= 530, solar   , zout=65.3, eup=   89.97 +- 0.318569278
+                                            [WORKER 11] ia= 250, solar   , zout=65.3, eup=   58.43 +- 0.212462958
+                                            [WORKER 38] ia= 520, solar   , zout=65.3, eup=   90.01 +- 0.312061933
+                                            [WORKER  9] ia= 230, solar   , zout=65.3, eup=   53.88 +- 0.211891287
+                                            [WORKER 27] ia= 410, thermal , zout=65.3, eup=  231.44 +- 0.411539434
+     Process 27 started calculating ia=540
+                                            [WORKER  5] ia= 190, thermal , zout=65.3, eup=  231.44 +- 0.270180583
+                                            [WORKER  4] ia= 180, thermal , zout=65.3, eup=  231.89 +- 0.280858443
+                                            [WORKER 25] ia= 390, thermal , zout=65.3, eup=  232.44 +- 0.502164062
+                                            [WORKER  3] ia= 170, thermal , zout=65.3, eup=  230.30 +- 0.277268843
+                                            [WORKER  1] ia= 150, thermal , zout=65.3, eup=  216.97 +- 0.25479946
+                                            [WORKER  6] ia= 200, thermal , zout=65.3, eup=  232.97 +- 0.270967293
+     Process 5 started calculating ia=550
+     Process 4 started calculating ia=560
+     Process 25 started calculating ia=570
+     Process 3 started calculating ia=580
+                                            [WORKER 29] ia= 430, thermal , zout=65.3, eup=  234.98 +- 0.353226338
+                                            [WORKER 31] ia= 450, thermal , zout=65.3, eup=  234.91 +- 0.343853989
+     Process 1 started calculating ia=590
+                                            [WORKER 34] ia= 480, thermal , zout=65.3, eup=  239.82 +- 0.389879125
+     Process 6 started calculating ia=600
+                                            [WORKER 36] ia= 500, thermal , zout=65.3, eup=  237.25 +- 0.436037138
+                                            [WORKER  7] ia= 210, thermal , zout=65.3, eup=  234.44 +- 0.262160867
+     Process 29 started calculating ia=610
+     Process 31 started calculating ia=620
+                                            [WORKER  2] ia= 160, thermal , zout=65.3, eup=  224.35 +- 0.28306725
+     Process 34 started calculating ia=630
+     Process 36 started calculating ia=640
+                                            [WORKER 19] ia= 330, thermal , zout=65.3, eup=  227.89 +- 0.514511293
+                                            [WORKER 18] ia= 320, thermal , zout=65.3, eup=  232.32 +- 0.538425041
+     Process 7 started calculating ia=650
+                                            [WORKER 23] ia= 370, thermal , zout=65.3, eup=  234.75 +- 0.45370875
+                                            [WORKER 30] ia= 440, thermal , zout=65.3, eup=  238.44 +- 0.345537965
+     Process 2 started calculating ia=660
+                                            [WORKER 22] ia= 360, thermal , zout=65.3, eup=  235.61 +- 0.420169066
+     Process 19 started calculating ia=670
+     Process 18 started calculating ia=680
+     Process 23 started calculating ia=690
+                                            [WORKER 20] ia= 340, thermal , zout=65.3, eup=  229.39 +- 0.504822482
+     Process 30 started calculating ia=700
+                                            [WORKER 33] ia= 470, thermal , zout=65.3, eup=  239.53 +- 0.356160905
+                                            [WORKER 24] ia= 380, thermal , zout=65.3, eup=  233.13 +- 0.517989172
+                                            [WORKER 21] ia= 350, thermal , zout=65.3, eup=  235.86 +- 0.411272546
+                                            [WORKER 16] ia= 300, thermal , zout=65.3, eup=  237.49 +- 0.343549193
+                                            [WORKER 35] ia= 490, thermal , zout=65.3, eup=  238.76 +- 0.411091184
+                                            [WORKER 26] ia= 400, thermal , zout=65.3, eup=  231.74 +- 0.423229005
+                                            [WORKER 32] ia= 460, thermal , zout=65.3, eup=  239.92 +- 0.345065644
+                                            [WORKER 10] ia= 240, thermal , zout=65.3, eup=  228.69 +- 0.360216917
+                                            [WORKER 14] ia= 280, thermal , zout=65.3, eup=  237.84 +- 0.270264292
+                                            [WORKER 15] ia= 290, thermal , zout=65.3, eup=  237.24 +- 0.314650302
+     Process 22 started calculating ia=710
+                                            [WORKER 12] ia= 260, thermal , zout=65.3, eup=  237.27 +- 0.261380461
+                                            [WORKER 17] ia= 310, thermal , zout=65.3, eup=  235.35 +- 0.4633549
+                                            [WORKER 13] ia= 270, thermal , zout=65.3, eup=  238.23 +- 0.268789432
+                                            [WORKER  8] ia= 220, thermal , zout=65.3, eup=  230.38 +- 0.332642632
+                                            [WORKER  9] ia= 230, thermal , zout=65.3, eup=  233.85 +- 0.303061499
+                                            [WORKER 11] ia= 250, thermal , zout=65.3, eup=  236.68 +- 0.268001653
+                                            [WORKER 37] ia= 510, thermal , zout=65.3, eup=  232.70 +- 0.367977571
+                                            [WORKER 38] ia= 520, thermal , zout=65.3, eup=  228.31 +- 0.315788042
+                                            [WORKER 39] ia= 530, thermal , zout=65.3, eup=  233.79 +- 0.266849347
+                                            [WORKER 28] ia= 420, thermal , zout=65.3, eup=  234.78 +- 0.363805454
+     Process 20 started calculating ia=720
+     Process 33 started calculating ia=730
+     Process 24 started calculating ia=740
+                                            [WORKER 27] ia= 540, solar   , zout=65.3, eup=   87.65 +- 0.330464616
+     Process 21 started calculating ia=750
+     Process 16 started calculating ia=760
+     Process 35 started calculating ia=770
+     Process 26 started calculating ia=780
+     Process 32 started calculating ia=790
+     Process 10 started calculating ia=800
+     Process 14 started calculating ia=810
+     Process 15 started calculating ia=820
+                                            [WORKER  5] ia= 550, solar   , zout=65.3, eup=   87.13 +- 0.338115287
+     Process 12 started calculating ia=830
+     Process 17 started calculating ia=840
+     Process 13 started calculating ia=850
+     Process 8 started calculating ia=860
+     Process 9 started calculating ia=870
+     Process 11 started calculating ia=880
+     Process 37 started calculating ia=890
+     Process 38 started calculating ia=900
+     Process 28 started calculating ia=910
+     Process 39 started calculating ia=920
+                                            [WORKER 25] ia= 570, solar   , zout=65.3, eup=   92.33 +- 0.335671575
+                                            [WORKER  4] ia= 560, solar   , zout=65.3, eup=   89.32 +- 0.338870068
+                                            [WORKER  3] ia= 580, solar   , zout=65.3, eup=   95.14 +- 0.339213466
+                                            [WORKER  1] ia= 590, solar   , zout=65.3, eup=   92.08 +- 0.356102975
+                                            [WORKER  6] ia= 600, solar   , zout=65.3, eup=   91.48 +- 0.359847028
+                                            [WORKER 29] ia= 610, solar   , zout=65.3, eup=   96.94 +- 0.353070617
+                                            [WORKER 34] ia= 630, solar   , zout=65.3, eup=  102.42 +- 0.355171834
+                                            [WORKER 31] ia= 620, solar   , zout=65.3, eup=   99.89 +- 0.353816984
+                                            [WORKER 36] ia= 640, solar   , zout=65.3, eup=  101.38 +- 0.350643047
+                                            [WORKER  7] ia= 650, solar   , zout=65.3, eup=  109.84 +- 0.356060521
+                                            [WORKER  2] ia= 660, solar   , zout=65.3, eup=  112.97 +- 0.334242704
+                                            [WORKER 19] ia= 670, solar   , zout=65.3, eup=  128.31 +- 0.233939951
+                                            [WORKER 18] ia= 680, solar   , zout=65.3, eup=  128.49 +- 0.221698357
+                                            [WORKER 23] ia= 690, solar   , zout=65.3, eup=  130.05 +- 0.248774505
+                                            [WORKER 30] ia= 700, solar   , zout=65.3, eup=  131.92 +- 0.259355336
+                                            [WORKER 22] ia= 710, solar   , zout=65.3, eup=  129.88 +- 0.303274976
+                                            [WORKER 20] ia= 720, solar   , zout=65.3, eup=  119.91 +- 0.371649437
+                                            [WORKER 33] ia= 730, solar   , zout=65.3, eup=  119.16 +- 0.388741683
+                                            [WORKER 24] ia= 740, solar   , zout=65.3, eup=  118.94 +- 0.386472103
+                                            [WORKER 27] ia= 540, thermal , zout=65.3, eup=  233.26 +- 0.28623609
+     Process 27 started calculating ia=930
+                                            [WORKER  5] ia= 550, thermal , zout=65.3, eup=  230.41 +- 0.308455001
+                                            [WORKER 16] ia= 760, solar   , zout=65.3, eup=  118.51 +- 0.357824339
+                                            [WORKER 35] ia= 770, solar   , zout=65.3, eup=  128.40 +- 0.311759274
+                                            [WORKER 21] ia= 750, solar   , zout=65.3, eup=  115.56 +- 0.376166556
+                                            [WORKER 26] ia= 780, solar   , zout=65.3, eup=  136.19 +- 0.277953297
+     Process 5 started calculating ia=940
+                                            [WORKER 25] ia= 570, thermal , zout=65.3, eup=  230.38 +- 0.277268225
+                                            [WORKER  4] ia= 560, thermal , zout=65.3, eup=  233.48 +- 0.287981318
+                                            [WORKER  3] ia= 580, thermal , zout=65.3, eup=  232.25 +- 0.261664712
+                                            [WORKER  1] ia= 590, thermal , zout=65.3, eup=  233.08 +- 0.28678832
+                                            [WORKER  6] ia= 600, thermal , zout=65.3, eup=  233.56 +- 0.265118537
+                                            [WORKER 10] ia= 800, solar   , zout=65.3, eup=  135.47 +- 0.308193672
+                                            [WORKER 14] ia= 810, solar   , zout=65.3, eup=  125.93 +- 0.409331883
+                                            [WORKER 29] ia= 610, thermal , zout=65.3, eup=  232.54 +- 0.27385402
+                                            [WORKER 31] ia= 620, thermal , zout=65.3, eup=  230.34 +- 0.267440914
+                                            [WORKER 34] ia= 630, thermal , zout=65.3, eup=  227.56 +- 0.298765338
+                                            [WORKER 32] ia= 790, solar   , zout=65.3, eup=  135.98 +- 0.284025209
+                                            [WORKER 15] ia= 820, solar   , zout=65.3, eup=  125.09 +- 0.430079022
+                                            [WORKER 36] ia= 640, thermal , zout=65.3, eup=  227.26 +- 0.296139949
+                                            [WORKER  7] ia= 650, thermal , zout=65.3, eup=  220.05 +- 0.25894559
+                                            [WORKER  2] ia= 660, thermal , zout=65.3, eup=  225.06 +- 0.276096926
+                                            [WORKER  8] ia= 860, solar   , zout=65.3, eup=  140.78 +- 0.394883442
+                                            [WORKER 19] ia= 670, thermal , zout=65.3, eup=  224.38 +- 0.268782959
+                                            [WORKER  9] ia= 870, solar   , zout=65.3, eup=  139.90 +- 0.392563682
+                                            [WORKER 39] ia= 920, solar   , zout=65.3, eup=  140.03 +- 0.368121076
+                                            [WORKER 37] ia= 890, solar   , zout=65.3, eup=  139.68 +- 0.360827765
+                                            [WORKER 17] ia= 840, solar   , zout=65.3, eup=  136.52 +- 0.402544472
+                                            [WORKER 38] ia= 900, solar   , zout=65.3, eup=  144.86 +- 0.329621581
+                                            [WORKER 28] ia= 910, solar   , zout=65.3, eup=  140.48 +- 0.38277511
+                                            [WORKER 11] ia= 880, solar   , zout=65.3, eup=  132.69 +- 0.409684846
+                                            [WORKER 18] ia= 680, thermal , zout=65.3, eup=  228.91 +- 0.275678565
+                                            [WORKER 12] ia= 830, solar   , zout=65.3, eup=  136.68 +- 0.389830487
+                                            [WORKER 13] ia= 850, solar   , zout=65.3, eup=  142.46 +- 0.372330282
+                                            [WORKER 23] ia= 690, thermal , zout=65.3, eup=  229.81 +- 0.297562644
+                                            [WORKER 30] ia= 700, thermal , zout=65.3, eup=  228.58 +- 0.3132583
+                                            [WORKER 22] ia= 710, thermal , zout=65.3, eup=  216.57 +- 0.270360983
+     Process 25 started calculating ia=950
+                                            [WORKER 20] ia= 720, thermal , zout=65.3, eup=  215.46 +- 0.231345529
+     Process 4 started calculating ia=960
+     Process 3 started calculating ia=970
+     Process 1 started calculating ia=980
+     Process 6 started calculating ia=990
+                                            [WORKER 33] ia= 730, thermal , zout=65.3, eup=  217.69 +- 0.240701175
+     Process 29 started calculating ia=1000
+     Process 31 started calculating ia=1010
+     Process 34 started calculating ia=1020
+                                            [WORKER 24] ia= 740, thermal , zout=65.3, eup=  220.07 +- 0.245469202
+     Process 36 started calculating ia=1030
+     Process 7 started calculating ia=1040
+     Process 2 started calculating ia=1050
+     Process 19 started calculating ia=1060
+     Process 18 started calculating ia=1070
+     Process 23 started calculating ia=1080
+     Process 30 started calculating ia=1090
+     Process 22 started calculating ia=1100
+                                            [WORKER 27] ia= 930, solar   , zout=65.3, eup=  143.64 +- 0.392713647
+     Process 20 started calculating ia=1110
+     Process 33 started calculating ia=1120
+     Process 24 started calculating ia=1130
+                                            [WORKER  5] ia= 940, solar   , zout=65.3, eup=  141.36 +- 0.419434038
+                                            [WORKER 16] ia= 760, thermal , zout=65.3, eup=  233.04 +- 0.301806943
+                                            [WORKER 35] ia= 770, thermal , zout=65.3, eup=  232.56 +- 0.309431749
+                                            [WORKER 21] ia= 750, thermal , zout=65.3, eup=  229.08 +- 0.289807571
+                                            [WORKER 26] ia= 780, thermal , zout=65.3, eup=  232.75 +- 0.273049147
+     Process 16 started calculating ia=1140
+     Process 35 started calculating ia=1150
+     Process 21 started calculating ia=1160
+     Process 26 started calculating ia=1170
+                                            [WORKER 10] ia= 800, thermal , zout=65.3, eup=  231.41 +- 0.27136608
+                                            [WORKER 14] ia= 810, thermal , zout=65.3, eup=  218.85 +- 0.301753652
+     Process 10 started calculating ia=1180
+     Process 14 started calculating ia=1190
+                                            [WORKER 32] ia= 790, thermal , zout=65.3, eup=  234.14 +- 0.265568587
+                                            [WORKER 15] ia= 820, thermal , zout=65.3, eup=  217.14 +- 0.294984546
+     Process 32 started calculating ia=1200
+     Process 15 started calculating ia=1210
+                                            [WORKER 25] ia= 950, solar   , zout=65.3, eup=  140.33 +- 0.430335839
+                                            [WORKER  4] ia= 960, solar   , zout=65.3, eup=  135.77 +- 0.475988324
+                                            [WORKER  3] ia= 970, solar   , zout=65.3, eup=  132.79 +- 0.505923558
+                                            [WORKER  8] ia= 860, thermal , zout=65.3, eup=  222.48 +- 0.225003328
+                                            [WORKER  1] ia= 980, solar   , zout=65.3, eup=  149.83 +- 0.479462259
+                                            [WORKER  6] ia= 990, solar   , zout=65.3, eup=  159.67 +- 0.457471163
+     Process 8 started calculating ia=1220
+                                            [WORKER  9] ia= 870, thermal , zout=65.3, eup=  229.07 +- 0.248551524
+                                            [WORKER 38] ia= 900, thermal , zout=65.3, eup=  238.57 +- 0.260066711
+                                            [WORKER 37] ia= 890, thermal , zout=65.3, eup=  239.18 +- 0.283733844
+                                            [WORKER 39] ia= 920, thermal , zout=65.3, eup=  236.71 +- 0.220882141
+                                            [WORKER 31] ia=1010, solar   , zout=65.3, eup=  155.54 +- 0.489399842
+                                            [WORKER 17] ia= 840, thermal , zout=65.3, eup=  218.53 +- 0.230964725
+                                            [WORKER 29] ia=1000, solar   , zout=65.3, eup=  157.21 +- 0.476605773
+                                            [WORKER 34] ia=1020, solar   , zout=65.3, eup=  158.18 +- 0.478824282
+                                            [WORKER 12] ia= 830, thermal , zout=65.3, eup=  218.85 +- 0.262887098
+                                            [WORKER 11] ia= 880, thermal , zout=65.3, eup=  234.48 +- 0.297783603
+                                            [WORKER 13] ia= 850, thermal , zout=65.3, eup=  226.31 +- 0.239473277
+                                            [WORKER 28] ia= 910, thermal , zout=65.3, eup=  236.15 +- 0.231965041
+                                            [WORKER 36] ia=1030, solar   , zout=65.3, eup=  162.36 +- 0.472369272
+                                            [WORKER  7] ia=1040, solar   , zout=65.3, eup=  163.73 +- 0.463234158
+                                            [WORKER 27] ia= 930, thermal , zout=65.3, eup=  235.95 +- 0.247007045
+                                            [WORKER  2] ia=1050, solar   , zout=65.3, eup=  170.33 +- 0.452087135
+                                            [WORKER  5] ia= 940, thermal , zout=65.3, eup=  237.09 +- 0.252014271
+                                            [WORKER 19] ia=1060, solar   , zout=65.3, eup=  169.13 +- 0.454565652
+     Process 9 started calculating ia=1230
+     Process 38 started calculating ia=1240
+                                            [WORKER 33] ia=1120, solar   , zout=65.3, eup=  140.26 +- 0.576534506
+                                            [WORKER 22] ia=1100, solar   , zout=65.3, eup=  150.02 +- 0.553599405
+                                            [WORKER 30] ia=1090, solar   , zout=65.3, eup=  159.31 +- 0.510691478
+                                            [WORKER 18] ia=1070, solar   , zout=65.3, eup=  168.56 +- 0.474429454
+                                            [WORKER 20] ia=1110, solar   , zout=65.3, eup=  148.62 +- 0.562977535
+     Process 39 started calculating ia=1250
+     Process 37 started calculating ia=1260
+     Process 17 started calculating ia=1270
+                                            [WORKER 23] ia=1080, solar   , zout=65.3, eup=  169.08 +- 0.473654206
+     Process 12 started calculating ia=1280
+     Process 11 started calculating ia=1290
+     Process 13 started calculating ia=1300
+     Process 28 started calculating ia=1310
+                                            [WORKER 24] ia=1130, solar   , zout=65.3, eup=  142.58 +- 0.590825735
+                                            [WORKER 21] ia=1160, solar   , zout=65.3, eup=  119.44 +- 0.598609687
+                                            [WORKER 26] ia=1170, solar   , zout=65.3, eup=  121.74 +- 0.603049113
+     Process 27 started calculating ia=1320
+                                            [WORKER 35] ia=1150, solar   , zout=65.3, eup=  135.10 +- 0.570099438
+                                            [WORKER 16] ia=1140, solar   , zout=65.3, eup=  137.72 +- 0.585532519
+     Process 5 started calculating ia=1330
+                                            [WORKER 10] ia=1180, solar   , zout=65.3, eup=  129.42 +- 0.604224323
+                                            [WORKER 14] ia=1190, solar   , zout=65.3, eup=  150.09 +- 0.59893699
+                                            [WORKER 25] ia= 950, thermal , zout=65.3, eup=  236.97 +- 0.261582909
+                                            [WORKER  4] ia= 960, thermal , zout=65.3, eup=  234.38 +- 0.267078072
+                                            [WORKER 15] ia=1210, solar   , zout=65.3, eup=  154.91 +- 0.594245904
+                                            [WORKER 32] ia=1200, solar   , zout=65.3, eup=  166.69 +- 0.563376697
+                                            [WORKER  3] ia= 970, thermal , zout=65.3, eup=  227.35 +- 0.328968474
+                                            [WORKER  1] ia= 980, thermal , zout=65.3, eup=  218.50 +- 0.303303633
+                                            [WORKER  8] ia=1220, solar   , zout=65.3, eup=  160.48 +- 0.58749744
+     Process 25 started calculating ia=1340
+     Process 4 started calculating ia=1350
+     Process 3 started calculating ia=1360
+                                            [WORKER  6] ia= 990, thermal , zout=65.3, eup=  214.53 +- 0.292175746
+     Process 1 started calculating ia=1370
+     Process 6 started calculating ia=1380
+                                            [WORKER 29] ia=1000, thermal , zout=65.3, eup=  213.41 +- 0.295719773
+                                            [WORKER 34] ia=1020, thermal , zout=65.3, eup=  215.82 +- 0.253075753
+                                            [WORKER 31] ia=1010, thermal , zout=65.3, eup=  215.39 +- 0.316390296
+                                            [WORKER 36] ia=1030, thermal , zout=65.3, eup=  216.37 +- 0.236542691
+     Process 29 started calculating ia=1390
+                                            [WORKER  7] ia=1040, thermal , zout=65.3, eup=  216.54 +- 0.24342301
+     Process 34 started calculating ia=1400
+     Process 31 started calculating ia=1410
+                                            [WORKER  9] ia=1230, solar   , zout=65.3, eup=  166.17 +- 0.581084384
+                                            [WORKER  2] ia=1050, thermal , zout=65.3, eup=  215.17 +- 0.233657669
+                                            [WORKER 19] ia=1060, thermal , zout=65.3, eup=  216.76 +- 0.22264729
+                                            [WORKER 38] ia=1240, solar   , zout=65.3, eup=  174.59 +- 0.552274236
+     Process 36 started calculating ia=1420
+     Process 7 started calculating ia=1430
+                                            [WORKER 37] ia=1260, solar   , zout=65.3, eup=  124.47 +- 0.64189413
+                                            [WORKER 33] ia=1120, thermal , zout=65.3, eup=  221.34 +- 0.28233404
+                                            [WORKER 22] ia=1100, thermal , zout=65.3, eup=  220.25 +- 0.26854015
+     Process 2 started calculating ia=1440
+                                            [WORKER 39] ia=1250, solar   , zout=65.3, eup=  135.23 +- 0.640518412
+                                            [WORKER 18] ia=1070, thermal , zout=65.3, eup=  217.52 +- 0.231664522
+                                            [WORKER 12] ia=1280, solar   , zout=65.3, eup=  140.59 +- 0.643219602
+                                            [WORKER 20] ia=1110, thermal , zout=65.3, eup=  219.04 +- 0.252080397
+                                            [WORKER 30] ia=1090, thermal , zout=65.3, eup=  219.75 +- 0.259089558
+                                            [WORKER 17] ia=1270, solar   , zout=65.3, eup=  133.32 +- 0.640803336
+                                            [WORKER 23] ia=1080, thermal , zout=65.3, eup=  218.72 +- 0.246730609
+                                            [WORKER 11] ia=1290, solar   , zout=65.3, eup=  160.74 +- 0.628435184
+                                            [WORKER 13] ia=1300, solar   , zout=65.3, eup=  180.60 +- 0.589935094
+                                            [WORKER 27] ia=1320, solar   , zout=65.3, eup=  142.81 +- 0.651010167
+                                            [WORKER 24] ia=1130, thermal , zout=65.3, eup=  222.07 +- 0.292001386
+                                            [WORKER 21] ia=1160, thermal , zout=65.3, eup=  246.69 +- 0.304165956
+                                            [WORKER 28] ia=1310, solar   , zout=65.3, eup=  155.76 +- 0.645724192
+                                            [WORKER 35] ia=1150, thermal , zout=65.3, eup=  245.76 +- 0.290365543
+                                            [WORKER  5] ia=1330, solar   , zout=65.3, eup=  139.01 +- 0.698277677
+                                            [WORKER 26] ia=1170, thermal , zout=65.3, eup=  244.40 +- 0.357962944
+                                            [WORKER 16] ia=1140, thermal , zout=65.3, eup=  239.75 +- 0.324964332
+     Process 19 started calculating ia=1450
+                                            [WORKER 10] ia=1180, thermal , zout=65.3, eup=  243.23 +- 0.341172143
+                                            [WORKER 14] ia=1190, thermal , zout=65.3, eup=  232.13 +- 0.296448301
+                                            [WORKER 15] ia=1210, thermal , zout=65.3, eup=  240.01 +- 0.316898281
+                                            [WORKER 32] ia=1200, thermal , zout=65.3, eup=  231.48 +- 0.258742317
+                                            [WORKER  8] ia=1220, thermal , zout=65.3, eup=  233.70 +- 0.304811416
+     Process 33 started calculating ia=1460
+     Process 22 started calculating ia=1470
+     Process 18 started calculating ia=1480
+     Process 20 started calculating ia=1490
+     Process 30 started calculating ia=1500
+     Process 23 started calculating ia=1510
+                                            [WORKER 25] ia=1340, solar   , zout=65.3, eup=  161.27 +- 0.693795983
+     Process 24 started calculating ia=1520
+                                            [WORKER  4] ia=1350, solar   , zout=65.3, eup=  173.16 +- 0.688209038
+     Process 21 started calculating ia=1530
+                                            [WORKER  3] ia=1360, solar   , zout=65.3, eup=  168.45 +- 0.697188515
+     Process 35 started calculating ia=1540
+     Process 26 started calculating ia=1550
+     Process 16 started calculating ia=1560
+                                            [WORKER  1] ia=1370, solar   , zout=65.3, eup=  158.93 +- 0.706245534
+                                            [WORKER  6] ia=1380, solar   , zout=65.3, eup=  147.95 +- 0.717800633
+     Process 10 started calculating ia=1570
+     Process 14 started calculating ia=1580
+     Process 15 started calculating ia=1590
+     Process 32 started calculating ia=1600
+     Process 8 started calculating ia=1610
+                                            [WORKER 29] ia=1390, solar   , zout=65.3, eup=  144.89 +- 0.714143462
+                                            [WORKER 34] ia=1400, solar   , zout=65.3, eup=  141.44 +- 0.723369391
+                                            [WORKER 31] ia=1410, solar   , zout=65.3, eup=  156.16 +- 0.725010147
+                                            [WORKER  9] ia=1230, thermal , zout=65.3, eup=  231.65 +- 0.264614793
+                                            [WORKER 36] ia=1420, solar   , zout=65.3, eup=  163.70 +- 0.72070449
+                                            [WORKER 38] ia=1240, thermal , zout=65.3, eup=  233.15 +- 0.260196515
+                                            [WORKER  7] ia=1430, solar   , zout=65.3, eup=  176.54 +- 0.708834588
+                                            [WORKER  2] ia=1440, solar   , zout=65.3, eup=  179.14 +- 0.707794789
+     Process 9 started calculating ia=1620
+     Process 38 started calculating ia=1630
+                                            [WORKER 19] ia=1450, solar   , zout=65.3, eup=  171.32 +- 0.726826076
+                                            [WORKER 37] ia=1260, thermal , zout=65.3, eup=  248.59 +- 0.323341562
+     Process 37 started calculating ia=1640
+                                            [WORKER 39] ia=1250, thermal , zout=65.3, eup=  242.87 +- 0.338357074
+                                            [WORKER 12] ia=1280, thermal , zout=65.3, eup=  239.40 +- 0.401272059
+     Process 39 started calculating ia=1650
+     Process 12 started calculating ia=1660
+                                            [WORKER 17] ia=1270, thermal , zout=65.3, eup=  249.21 +- 0.300510954
+     Process 17 started calculating ia=1670
+                                            [WORKER 11] ia=1290, thermal , zout=65.3, eup=  229.93 +- 0.289576524
+                                            [WORKER 13] ia=1300, thermal , zout=65.3, eup=  226.53 +- 0.262810069
+                                            [WORKER 27] ia=1320, thermal , zout=65.3, eup=  244.48 +- 0.364283768
+                                            [WORKER  5] ia=1330, thermal , zout=65.3, eup=  224.89 +- 0.465738957
+     Process 11 started calculating ia=1680
+                                            [WORKER 33] ia=1460, solar   , zout=65.3, eup=  179.79 +- 0.714389052
+                                            [WORKER 28] ia=1310, thermal , zout=65.3, eup=  240.31 +- 0.342197456
+     Process 13 started calculating ia=1690
+     Process 27 started calculating ia=1700
+     Process 5 started calculating ia=1710
+                                            [WORKER 23] ia=1510, solar   , zout=65.3, eup=   66.08 +- 0.696791095
+     Process 28 started calculating ia=1720
+                                            [WORKER 25] ia=1340, thermal , zout=65.3, eup=  207.98 +- 0.390593642
+                                            [WORKER  4] ia=1350, thermal , zout=65.3, eup=  199.11 +- 0.306051843
+                                            [WORKER  3] ia=1360, thermal , zout=65.3, eup=  206.14 +- 0.370256544
+                                            [WORKER  1] ia=1370, thermal , zout=65.3, eup=  216.95 +- 0.408519531
+                                            [WORKER  6] ia=1380, thermal , zout=65.3, eup=  222.44 +- 0.444587821
+                                            [WORKER 30] ia=1500, solar   , zout=65.3, eup=  131.86 +- 0.756851334
+                                            [WORKER 21] ia=1530, solar   , zout=65.3, eup=  111.85 +- 0.763565212
+                                            [WORKER 24] ia=1520, solar   , zout=65.3, eup=   70.17 +- 0.705712685
+                                            [WORKER 20] ia=1490, solar   , zout=65.3, eup=  190.03 +- 0.684688367
+                                            [WORKER 22] ia=1470, solar   , zout=65.3, eup=  223.84 +- 0.546534705
+                                            [WORKER 34] ia=1400, thermal , zout=65.3, eup=  228.34 +- 0.396755164
+                                            [WORKER 31] ia=1410, thermal , zout=65.3, eup=  221.11 +- 0.339616952
+                                            [WORKER 29] ia=1390, thermal , zout=65.3, eup=  223.67 +- 0.374390942
+                                            [WORKER 36] ia=1420, thermal , zout=65.3, eup=  219.85 +- 0.330689119
+                                            [WORKER 32] ia=1600, solar   , zout=65.3, eup=  119.69 +- 0.802131817
+                                            [WORKER  8] ia=1610, solar   , zout=65.3, eup=   93.71 +- 0.774436537
+                                            [WORKER 14] ia=1580, solar   , zout=65.3, eup=  178.44 +- 0.777054431
+                                            [WORKER  7] ia=1430, thermal , zout=65.3, eup=  216.61 +- 0.277743374
+                                            [WORKER 35] ia=1540, solar   , zout=65.3, eup=  202.47 +- 0.714495089
+                                            [WORKER  2] ia=1440, thermal , zout=65.3, eup=  215.44 +- 0.259709775
+                                            [WORKER 15] ia=1590, solar   , zout=65.3, eup=  196.02 +- 0.735029335
+                                            [WORKER 19] ia=1450, thermal , zout=65.3, eup=  218.26 +- 0.306870405
+                                            [WORKER 10] ia=1570, solar   , zout=65.3, eup=  185.49 +- 0.738831814
+     Process 4 started calculating ia=1730
+     Process 25 started calculating ia=1740
+     Process 3 started calculating ia=1750
+                                            [WORKER 18] ia=1480, solar   , zout=65.3, eup=  234.65 +- 0.459189284
+     Process 1 started calculating ia=1760
+     Process 6 started calculating ia=1770
+                                            [WORKER 16] ia=1560, solar   , zout=65.3, eup=  225.50 +- 0.615435371
+                                            [WORKER  9] ia=1620, solar   , zout=65.3, eup=  144.83 +- 0.818583164
+     Process 34 started calculating ia=1780
+     Process 31 started calculating ia=1790
+     Process 29 started calculating ia=1800
+     Process 36 started calculating ia=1810
+                                            [WORKER 38] ia=1630, solar   , zout=65.3, eup=  188.51 +- 0.790821645
+                                            [WORKER 26] ia=1550, solar   , zout=65.3, eup=  246.37 +- 0.475723905
+                                            [WORKER 37] ia=1640, solar   , zout=65.3, eup=  202.10 +- 0.777082888
+                                            [WORKER 39] ia=1650, solar   , zout=65.3, eup=  104.97 +- 0.796838834
+                                            [WORKER 12] ia=1660, solar   , zout=65.3, eup=   77.48 +- 0.761318043
+     Process 7 started calculating ia=1820
+     Process 2 started calculating ia=1830
+                                            [WORKER 17] ia=1670, solar   , zout=65.3, eup=   77.31 +- 0.765875989
+     Process 19 started calculating ia=1840
+                                            [WORKER 11] ia=1680, solar   , zout=65.3, eup=   62.11 +- 0.727728083
+                                            [WORKER 27] ia=1700, solar   , zout=65.3, eup=   61.70 +- 0.739822555
+                                            [WORKER 13] ia=1690, solar   , zout=65.3, eup=   62.77 +- 0.747684879
+                                            [WORKER 33] ia=1460, thermal , zout=65.3, eup=  216.82 +- 0.255038963
+                                            [WORKER  5] ia=1710, solar   , zout=65.3, eup=   61.36 +- 0.738341193
+                                            [WORKER 28] ia=1720, solar   , zout=65.3, eup=   71.32 +- 0.766242926
+                                            [WORKER 23] ia=1510, thermal , zout=65.3, eup=  237.03 +- 0.564097679
+     Process 33 started calculating ia=1850
+     Process 23 started calculating ia=1860
+                                            [WORKER 30] ia=1500, thermal , zout=65.3, eup=  235.99 +- 0.405155781
+                                            [WORKER 21] ia=1530, thermal , zout=65.3, eup=  235.58 +- 0.466749516
+                                            [WORKER 20] ia=1490, thermal , zout=65.3, eup=  223.89 +- 0.234069864
+     Process 30 started calculating ia=1870
+                                            [WORKER 24] ia=1520, thermal , zout=65.3, eup=  240.82 +- 0.505830153
+     Process 21 started calculating ia=1880
+                                            [WORKER 22] ia=1470, thermal , zout=65.3, eup=  216.55 +- 0.219481641
+                                            [WORKER  4] ia=1730, solar   , zout=65.3, eup=   83.82 +- 0.79358296
+                                            [WORKER 25] ia=1740, solar   , zout=65.3, eup=   75.91 +- 0.786333975
+                                            [WORKER  3] ia=1750, solar   , zout=65.3, eup=  136.23 +- 0.869513922
+     Process 20 started calculating ia=1890
+                                            [WORKER  8] ia=1610, thermal , zout=65.3, eup=  240.05 +- 0.538479587
+                                            [WORKER 32] ia=1600, thermal , zout=65.3, eup=  236.69 +- 0.482863359
+     Process 24 started calculating ia=1900
+                                            [WORKER  1] ia=1760, solar   , zout=65.3, eup=  182.97 +- 0.874759505
+                                            [WORKER  6] ia=1770, solar   , zout=65.3, eup=  175.80 +- 0.883308676
+                                            [WORKER 14] ia=1580, thermal , zout=65.3, eup=  225.23 +- 0.332019671
+                                            [WORKER 35] ia=1540, thermal , zout=65.3, eup=  215.01 +- 0.274016367
+                                            [WORKER 15] ia=1590, thermal , zout=65.3, eup=  220.50 +- 0.315165406
+     Process 22 started calculating ia=1910
+                                            [WORKER 10] ia=1570, thermal , zout=65.3, eup=  225.67 +- 0.316129693
+                                            [WORKER 31] ia=1790, solar   , zout=65.3, eup=  196.03 +- 0.88384615
+                                            [WORKER 18] ia=1480, thermal , zout=65.3, eup=  221.02 +- 0.214816057
+     Process 8 started calculating ia=1920
+     Process 32 started calculating ia=1930
+                                            [WORKER 34] ia=1780, solar   , zout=65.3, eup=  173.68 +- 0.889287915
+                                            [WORKER 29] ia=1800, solar   , zout=65.3, eup=  200.08 +- 0.881900384
+                                            [WORKER 16] ia=1560, thermal , zout=65.3, eup=  216.92 +- 0.217423624
+                                            [WORKER 36] ia=1810, solar   , zout=65.3, eup=  183.29 +- 0.902058907
+                                            [WORKER  9] ia=1620, thermal , zout=65.3, eup=  234.77 +- 0.476213296
+     Process 14 started calculating ia=1940
+                                            [WORKER 38] ia=1630, thermal , zout=65.3, eup=  223.56 +- 0.319696008
+                                            [WORKER  7] ia=1820, solar   , zout=65.3, eup=  191.55 +- 0.900305291
+     Process 35 started calculating ia=1950
+                                            [WORKER 26] ia=1550, thermal , zout=65.3, eup=  213.54 +- 0.216811188
+     Process 15 started calculating ia=1960
+                                            [WORKER 39] ia=1650, thermal , zout=65.3, eup=  238.70 +- 0.489871358
+                                            [WORKER 37] ia=1640, thermal , zout=65.3, eup=  221.38 +- 0.285642418
+                                            [WORKER 12] ia=1660, thermal , zout=65.3, eup=  246.07 +- 0.5208781
+                                            [WORKER  2] ia=1830, solar   , zout=65.3, eup=  193.25 +- 0.90196557
+                                            [WORKER 19] ia=1840, solar   , zout=65.3, eup=  184.78 +- 0.908564965
+                                            [WORKER 17] ia=1670, thermal , zout=65.3, eup=  246.08 +- 0.505848181
+                                            [WORKER 11] ia=1680, thermal , zout=65.3, eup=  248.59 +- 0.5284173
+                                            [WORKER 27] ia=1700, thermal , zout=65.3, eup=  249.21 +- 0.579264549
+                                            [WORKER 13] ia=1690, thermal , zout=65.3, eup=  248.55 +- 0.555714288
+                                            [WORKER  5] ia=1710, thermal , zout=65.3, eup=  248.83 +- 0.571931944
+     Process 10 started calculating ia=1970
+                                            [WORKER 28] ia=1720, thermal , zout=65.3, eup=  247.47 +- 0.571649161
+     Process 18 started calculating ia=1980
+     Process 16 started calculating ia=1990
+     Process 9 started calculating ia=2000
+                                            [WORKER 33] ia=1850, solar   , zout=65.3, eup=  200.38 +- 0.904848034
+                                            [WORKER 23] ia=1860, solar   , zout=65.3, eup=  116.85 +- 0.885829867
+     Process 38 started calculating ia=2010
+     Process 26 started calculating ia=2020
+                                            [WORKER 30] ia=1870, solar   , zout=65.3, eup=   76.20 +- 0.821030185
+     Process 39 started calculating ia=2030
+     Process 37 started calculating ia=2040
+     Process 12 started calculating ia=2050
+                                            [WORKER 21] ia=1880, solar   , zout=65.3, eup=   90.37 +- 0.848588527
+     Process 17 started calculating ia=2060
+     Process 11 started calculating ia=2070
+     Process 27 started calculating ia=2080
+     Process 5 started calculating ia=2090
+     Process 13 started calculating ia=2100
+     Process 28 started calculating ia=2110
+                                            [WORKER  4] ia=1730, thermal , zout=65.3, eup=  243.98 +- 0.603053215
+                                            [WORKER 25] ia=1740, thermal , zout=65.3, eup=  245.05 +- 0.586583532
+                                            [WORKER 20] ia=1890, solar   , zout=65.3, eup=  106.04 +- 0.875047035
+                                            [WORKER  3] ia=1750, thermal , zout=65.3, eup=  230.14 +- 0.53821713
+                                            [WORKER 24] ia=1900, solar   , zout=65.3, eup=  173.13 +- 0.938714004
+                                            [WORKER 22] ia=1910, solar   , zout=65.3, eup=  203.69 +- 0.933669754
+                                            [WORKER  1] ia=1760, thermal , zout=65.3, eup=  211.07 +- 0.421339083
+                                            [WORKER  6] ia=1770, thermal , zout=65.3, eup=  216.88 +- 0.44693254
+     Process 4 started calculating ia=2120
+     Process 25 started calculating ia=2130
+     Process 3 started calculating ia=2140
+                                            [WORKER  8] ia=1920, solar   , zout=65.3, eup=  216.33 +- 0.922324314
+                                            [WORKER 32] ia=1930, solar   , zout=65.3, eup=  246.36 +- 0.877149055
+     Process 1 started calculating ia=2150
+     Process 6 started calculating ia=2160
+                                            [WORKER 14] ia=1940, solar   , zout=65.3, eup=  172.98 +- 0.952913855
+                                            [WORKER 35] ia=1950, solar   , zout=65.3, eup=  101.76 +- 0.886888463
+                                            [WORKER 15] ia=1960, solar   , zout=65.3, eup=   98.35 +- 0.88356715
+                                            [WORKER 31] ia=1790, thermal , zout=65.3, eup=  205.93 +- 0.409943262
+                                            [WORKER 34] ia=1780, thermal , zout=65.3, eup=  217.36 +- 0.458565801
+                                            [WORKER 29] ia=1800, thermal , zout=65.3, eup=  206.38 +- 0.397916996
+                                            [WORKER 36] ia=1810, thermal , zout=65.3, eup=  216.00 +- 0.480212275
+                                            [WORKER 10] ia=1970, solar   , zout=65.3, eup=  117.20 +- 0.914357065
+[WORKER 31] Received termination signal. Exiting.
+[WORKER 34] Received termination signal. Exiting.
+[WORKER 29] Received termination signal. Exiting.
+                                            [WORKER  7] ia=1820, thermal , zout=65.3, eup=  209.56 +- 0.427266026
+[WORKER 36] Received termination signal. Exiting.
+                                            [WORKER 18] ia=1980, solar   , zout=65.3, eup=  127.65 +- 0.919927998
+                                            [WORKER 16] ia=1990, solar   , zout=65.3, eup=  186.10 +- 0.964676908
+[WORKER 7] Received termination signal. Exiting.
+                                            [WORKER  2] ia=1830, thermal , zout=65.3, eup=  209.88 +- 0.43128509
+                                            [WORKER 19] ia=1840, thermal , zout=65.3, eup=  215.56 +- 0.451904874
+                                            [WORKER  9] ia=2000, solar   , zout=65.3, eup=  224.34 +- 0.938150943
+[WORKER 2] Received termination signal. Exiting.
+[WORKER 19] Received termination signal. Exiting.
+                                            [WORKER 33] ia=1850, thermal , zout=65.3, eup=  209.24 +- 0.394153868
+                                            [WORKER 23] ia=1860, thermal , zout=65.3, eup=  237.90 +- 0.562433901
+                                            [WORKER 38] ia=2010, solar   , zout=65.3, eup=  219.61 +- 0.949295166
+[WORKER 33] Received termination signal. Exiting.
+[WORKER 23] Received termination signal. Exiting.
+                                            [WORKER 21] ia=1880, thermal , zout=65.3, eup=  245.16 +- 0.55712115
+                                            [WORKER 30] ia=1870, thermal , zout=65.3, eup=  246.83 +- 0.593566465
+                                            [WORKER 26] ia=2020, solar   , zout=65.3, eup=  237.93 +- 0.932416229
+[WORKER 21] Received termination signal. Exiting.
+[WORKER 30] Received termination signal. Exiting.
+                                            [WORKER 37] ia=2040, solar   , zout=65.3, eup=  214.72 +- 0.957686904
+                                            [WORKER 12] ia=2050, solar   , zout=65.3, eup=  240.23 +- 0.937533759
+                                            [WORKER 39] ia=2030, solar   , zout=65.3, eup=  261.48 +- 0.889317976
+                                            [WORKER 20] ia=1890, thermal , zout=65.3, eup=  238.31 +- 0.560641689
+                                            [WORKER 17] ia=2060, solar   , zout=65.3, eup=  247.44 +- 0.922757841
+                                            [WORKER 24] ia=1900, thermal , zout=65.3, eup=  217.18 +- 0.464392242
+                                            [WORKER 11] ia=2070, solar   , zout=65.3, eup=  232.76 +- 0.94868294
+                                            [WORKER  5] ia=2090, solar   , zout=65.3, eup=  253.67 +- 0.869498807
+                                            [WORKER 22] ia=1910, thermal , zout=65.3, eup=  208.89 +- 0.400558046
+                                            [WORKER 27] ia=2080, solar   , zout=65.3, eup=  247.32 +- 0.926844377
+[WORKER 20] Received termination signal. Exiting.
+                                            [WORKER 13] ia=2100, solar   , zout=65.3, eup=  281.69 +- 0.812010691
+                                            [WORKER  8] ia=1920, thermal , zout=65.3, eup=  206.81 +- 0.361048554
+[WORKER 24] Received termination signal. Exiting.
+                                            [WORKER 32] ia=1930, thermal , zout=65.3, eup=  198.37 +- 0.243567817
+[WORKER 22] Received termination signal. Exiting.
+                                            [WORKER 28] ia=2110, solar   , zout=65.3, eup=  301.17 +- 0.760710651
+                                            [WORKER 14] ia=1940, thermal , zout=65.3, eup=  222.61 +- 0.482966097
+                                            [WORKER 35] ia=1950, thermal , zout=65.3, eup=  243.28 +- 0.526694626
+                                            [WORKER 15] ia=1960, thermal , zout=65.3, eup=  247.11 +- 0.487724307
+                                            [WORKER 10] ia=1970, thermal , zout=65.3, eup=  238.73 +- 0.506822325
+[WORKER 8] Received termination signal. Exiting.
+                                            [WORKER  4] ia=2120, solar   , zout=65.3, eup=  289.85 +- 0.802491051
+[WORKER 32] Received termination signal. Exiting.
+                                            [WORKER 18] ia=1980, thermal , zout=65.3, eup=  242.27 +- 0.472648337
+[WORKER 14] Received termination signal. Exiting.
+[WORKER 35] Received termination signal. Exiting.
+[WORKER 15] Received termination signal. Exiting.
+                                            [WORKER 16] ia=1990, thermal , zout=65.3, eup=  228.80 +- 0.390119875
+                                            [WORKER 25] ia=2130, solar   , zout=65.3, eup=  306.79 +- 0.738686143
+                                            [WORKER  9] ia=2000, thermal , zout=65.3, eup=  218.46 +- 0.286709462
+[WORKER 10] Received termination signal. Exiting.
+                                            [WORKER  1] ia=2150, solar   , zout=65.3, eup=  285.05 +- 0.805073136
+                                            [WORKER  6] ia=2160, solar   , zout=65.3, eup=  283.96 +- 0.840598153
+[WORKER 18] Received termination signal. Exiting.
+                                            [WORKER 38] ia=2010, thermal , zout=65.3, eup=  220.01 +- 0.321382747
+                                            [WORKER  3] ia=2140, solar   , zout=65.3, eup=  303.37 +- 0.717511644
+[WORKER 16] Received termination signal. Exiting.
+[WORKER 9] Received termination signal. Exiting.
+[WORKER 38] Received termination signal. Exiting.
+                                            [WORKER 26] ia=2020, thermal , zout=65.3, eup=  217.29 +- 0.274500212
+                                            [WORKER 37] ia=2040, thermal , zout=65.3, eup=  229.39 +- 0.318133256
+[WORKER 26] Received termination signal. Exiting.
+[WORKER 37] Received termination signal. Exiting.
+                                            [WORKER 12] ia=2050, thermal , zout=65.3, eup=  220.94 +- 0.304825678
+                                            [WORKER 39] ia=2030, thermal , zout=65.3, eup=  216.21 +- 0.254444623
+[WORKER 12] Received termination signal. Exiting.
+[WORKER 39] Received termination signal. Exiting.
+                                            [WORKER 17] ia=2060, thermal , zout=65.3, eup=  223.80 +- 0.308388908
+[WORKER 17] Received termination signal. Exiting.
+                                            [WORKER  5] ia=2090, thermal , zout=65.3, eup=  235.61 +- 0.312799477
+                                            [WORKER 27] ia=2080, thermal , zout=65.3, eup=  226.25 +- 0.307276849
+                                            [WORKER 11] ia=2070, thermal , zout=65.3, eup=  233.04 +- 0.332963521
+[WORKER 5] Received termination signal. Exiting.
+[WORKER 27] Received termination signal. Exiting.
+[WORKER 11] Received termination signal. Exiting.
+                                            [WORKER 13] ia=2100, thermal , zout=65.3, eup=  227.36 +- 0.269294607
+[WORKER 13] Received termination signal. Exiting.
+                                            [WORKER 28] ia=2110, thermal , zout=65.3, eup=  222.79 +- 0.247063799
+[WORKER 28] Received termination signal. Exiting.
+                                            [WORKER  4] ia=2120, thermal , zout=65.3, eup=  219.80 +- 0.300314752
+[WORKER 4] Received termination signal. Exiting.
+                                            [WORKER 25] ia=2130, thermal , zout=65.3, eup=  223.78 +- 0.230837301
+[WORKER 25] Received termination signal. Exiting.
+                                            [WORKER  1] ia=2150, thermal , zout=65.3, eup=  233.37 +- 0.244825684
+[WORKER 1] Received termination signal. Exiting.
+                                            [WORKER  6] ia=2160, thermal , zout=65.3, eup=  231.26 +- 0.256548456
+                                            [WORKER  3] ia=2140, thermal , zout=65.3, eup=  230.22 +- 0.237397839
+[WORKER 6] Received termination signal. Exiting.
+Writing libRadtran output to netcdf file:  ./RESULTS/libRad_v01_montecarlo_3D_SWNA_solar,thermal_Orbit_07277C.nc
+[WORKER 3] Received termination signal. Exiting.
+Run finished. It took 0.175 hours 
+
+
+Finished running Python file at Sun Sep 28 17:19:23 CEST 2025

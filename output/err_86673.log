@@ -1,0 +1,2 @@
+slurmstepd: error: *** JOB 86673 ON prod-cn24 CANCELLED AT 2025-11-10T15:43:59 ***
+cp: cannot stat '/scratch/bgre/86673/RESULTS/*nc': No such file or directory

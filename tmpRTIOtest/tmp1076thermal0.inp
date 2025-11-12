@@ -1,0 +1,21 @@
+rte_solver disort
+data_files_path /xnilu_wrk2/projects/NEVAR/libRadtran/data/
+mol_abs_param fu
+source thermal
+wavelength 4500 100000
+mc_backward 
+mc_backward_output eup
+output_process sum
+zout TOA
+output_user sza zout edir eup
+quiet 
+atmosphere_file ./tmpRTIOtest/tmp1076atm.dat
+wc_properties mie
+wc_file 1D ./tmpRTIOtest/tmp1076wc1D.dat
+ic_properties baum_v36 interpolate
+ic_habit solid-column
+ic_file 1D ./tmpRTIOtest/tmp1076ic1D.dat
+brdf_cam u10 6.025420188903809
+albedo_file ./tmpRTIOtest/tmp1076albedothermal.dat
+sza 78.65011596679688
+phi0 63.66374206542969

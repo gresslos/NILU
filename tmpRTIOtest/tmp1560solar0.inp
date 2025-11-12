@@ -1,0 +1,18 @@
+rte_solver disort
+data_files_path /xnilu_wrk2/projects/NEVAR/libRadtran/data/
+mol_abs_param kato2
+source solar
+wavelength 300 4000
+output_process sum
+zout TOA
+output_user sza zout edir eup
+quiet 
+atmosphere_file ./tmpRTIOtest/tmp1560atm.dat
+wc_properties mie
+wc_file 1D ./tmpRTIOtest/tmp1560wc1D.dat
+ic_properties baum_v36 interpolate
+ic_habit solid-column
+ic_file 1D ./tmpRTIOtest/tmp1560ic1D.dat
+albedo_file ./tmpRTIOtest/tmp1560albedosolar.dat
+sza 50.2414436340332
+phi0 50.81562805175781

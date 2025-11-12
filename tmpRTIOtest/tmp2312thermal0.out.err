@@ -1,0 +1,32 @@
+Error -7 interpolating aerosol optical thickness to 355.000000 nm.
+In the current implementation of aerosol_set_tau_at_wvl, it is required
+that the internal wavelength range includes 355.000000 nm.
+The range of the internal wavelength grid is from 550.000000 to 70000.000000 nm. 
+Hope to change that in future!
+Error -7 in (function 'setup_aerosol', file 'aerosol.c', line 872)
+Error -7 in (function 'uvspec', file 'uvspec.c', line 114)
+Error -7 during execution of uvspec
+Command exited with non-zero status 249
+	Command being timed: "/xnilu_wrk2/projects/NEVAR/libRadtran/bin/uvspec"
+	User time (seconds): 0.27
+	System time (seconds): 0.15
+	Percent of CPU this job got: 74%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.58
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 214948
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 11
+	Minor (reclaiming a frame) page faults: 50035
+	Voluntary context switches: 157
+	Involuntary context switches: 11
+	Swaps: 0
+	File system inputs: 664
+	File system outputs: 16
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 249

@@ -1,0 +1,1139 @@
+Running at /scratch/bgre/86572
+Submitdir is /homevip/bgre/RTM
+Number of nodes: 1
+Number of tasks: 40
+Making SLURM ready at  Sun Nov  9 20:36:22 CET 2025
+Starting slurm job at  Sun Nov 9 20:38:00 CET 2025
+Running Python file at Sun Nov  9 20:38:01 CET 2025
+Run started at 2025-11-09T19:38:45.865435+00:00
+
+
+
+=================================================================================================================
+Nadir Pixel Index    =  151
+SceneName            =  Orbit_06497E
+Specs                =  montecarlo - 3D - _wc_test_atm_0 - Large Buffer (25 x 21)
+     Process 2 started calculating ia=1993
+     Process 3 started calculating ia=1994
+     Process 4 started calculating ia=1995
+     Process 5 started calculating ia=1996
+     Process 6 started calculating ia=1997
+     Process 7 started calculating ia=1998
+     Process 9 started calculating ia=2000
+     Process 12 started calculating ia=2003
+     Process 13 started calculating ia=2004
+     Process 14 started calculating ia=2005
+     Process 15 started calculating ia=2006
+     Process 18 started calculating ia=2009
+     Process 19 started calculating ia=2010
+     Process 20 started calculating ia=2011
+     Process 21 started calculating ia=2012
+     Process 23 started calculating ia=2014
+     Process 27 started calculating ia=2018
+     Process 28 started calculating ia=2019
+     Process 31 started calculating ia=2022
+     Process 32 started calculating ia=2023
+     Process 34 started calculating ia=2025
+     Process 39 started calculating ia=2030
+     Process 36 started calculating ia=2027
+     Process 35 started calculating ia=2026
+     Process 22 started calculating ia=2013
+     Process 24 started calculating ia=2015
+     Process 16 started calculating ia=2007
+     Process 8 started calculating ia=1999
+     Process 17 started calculating ia=2008
+     Process 10 started calculating ia=2001
+     Process 1 started calculating ia=1992
+     Process 38 started calculating ia=2029
+     Process 11 started calculating ia=2002
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+     Process 37 started calculating ia=2028
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+     Process 29 started calculating ia=2020
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+     Process 25 started calculating ia=2016
+     Process 30 started calculating ia=2021
+     Process 26 started calculating ia=2017
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+     Process 33 started calculating ia=2024
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+                                            [WORKER 35] ia=2026, solar   , zout=65.8, eup=  476.11 +- 2.64908846
+                                            [WORKER 27] ia=2018, solar   , zout=65.8, eup=  491.60 +- 2.65549979
+                                            [WORKER 26] ia=2017, solar   , zout=65.8, eup=  495.50 +- 2.65362698
+                                            [WORKER 15] ia=2006, solar   , zout=65.8, eup=  488.16 +- 2.65024093
+                                            [WORKER 17] ia=2008, solar   , zout=65.3, eup=  485.32 +- 2.64924488
+                                            [WORKER 25] ia=2016, solar   , zout=65.3, eup=  493.37 +- 2.65120226
+                                            [WORKER 18] ia=2009, solar   , zout=65.3, eup=  475.53 +- 2.65017742
+                                            [WORKER 28] ia=2019, solar   , zout=65.8, eup=  487.71 +- 2.65613026
+                                            [WORKER 20] ia=2011, solar   , zout=65.8, eup=  483.84 +- 2.65152482
+                                            [WORKER 14] ia=2005, solar   , zout=65.8, eup=  495.72 +- 2.64876507
+                                            [WORKER 16] ia=2007, solar   , zout=65.3, eup=  483.68 +- 2.64869783
+                                            [WORKER 13] ia=2004, solar   , zout=65.8, eup=  503.81 +- 2.64050103
+                                            [WORKER 31] ia=2022, solar   , zout=65.3, eup=  485.34 +- 2.65390126
+                                            [WORKER 21] ia=2012, solar   , zout=65.8, eup=  484.82 +- 2.65276791
+                                            [WORKER 19] ia=2010, solar   , zout=65.8, eup=  482.83 +- 2.65182944
+                                            [WORKER 22] ia=2013, solar   , zout=65.8, eup=  497.12 +- 2.65380774
+                                            [WORKER 23] ia=2014, solar   , zout=65.3, eup=  499.97 +- 2.65183385
+                                            [WORKER 34] ia=2025, solar   , zout=65.8, eup=  478.14 +- 2.65056765
+                                            [WORKER 24] ia=2015, solar   , zout=65.3, eup=  496.93 +- 2.65228307
+                                            [WORKER 32] ia=2023, solar   , zout=65.3, eup=  482.97 +- 2.65348528
+                                            [WORKER 30] ia=2021, solar   , zout=65.8, eup=  483.39 +- 2.65255292
+                                            [WORKER 29] ia=2020, solar   , zout=65.8, eup=  484.78 +- 2.65489665
+                                            [WORKER 33] ia=2024, solar   , zout=65.8, eup=  475.60 +- 2.6483725
+                                            [WORKER 12] ia=2003, solar   , zout=65.8, eup=  510.25 +- 2.63695637
+                                            [WORKER 10] ia=2001, solar   , zout=65.3, eup=  520.43 +- 2.62996549
+                                            [WORKER 11] ia=2002, solar   , zout=65.3, eup=  516.04 +- 2.63073141
+                                            [WORKER  9] ia=2000, solar   , zout=65.3, eup=  530.52 +- 2.62648976
+                                            [WORKER  7] ia=1998, solar   , zout=65.8, eup=  537.24 +- 2.61160202
+                                            [WORKER  6] ia=1997, solar   , zout=65.8, eup=  545.47 +- 2.60306622
+                                            [WORKER  8] ia=1999, solar   , zout=65.8, eup=  534.24 +- 2.61548069
+                                            [WORKER  5] ia=1996, solar   , zout=65.8, eup=  559.26 +- 2.58029232
+                                            [WORKER 37] ia=2028, solar   , zout=65.8, eup=  473.24 +- 2.64938401
+                                            [WORKER 39] ia=2030, solar   , zout=65.3, eup=  459.97 +- 2.64653672
+                                            [WORKER 38] ia=2029, solar   , zout=65.3, eup=  455.25 +- 2.63778263
+                                            [WORKER  3] ia=1994, solar   , zout=65.3, eup=  570.93 +- 2.5511837
+                                            [WORKER 36] ia=2027, solar   , zout=65.8, eup=  476.55 +- 2.64878721
+                                            [WORKER  4] ia=1995, solar   , zout=65.3, eup=  563.22 +- 2.58713783
+                                            [WORKER  1] ia=1992, solar   , zout=65.3, eup=  570.00 +- 2.56207263
+                                            [WORKER  2] ia=1993, solar   , zout=65.3, eup=  572.54 +- 2.56015019
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+                                            [WORKER 35] ia=2026, thermal , zout=65.8, eup=  117.30 +- 0.462972642
+     Process 35 started calculating ia=2031
+RUNNING ICE CLOUD! ERRROR!!!!
+                                            [WORKER 27] ia=2018, thermal , zout=65.8, eup=  114.75 +- 0.452891273
+     Process 27 started calculating ia=2032
+RUNNING ICE CLOUD! ERRROR!!!!
+                                            [WORKER 26] ia=2017, thermal , zout=65.8, eup=  114.77 +- 0.459318372
+     Process 26 started calculating ia=2033
+RUNNING ICE CLOUD! ERRROR!!!!
+                                            [WORKER 15] ia=2006, thermal , zout=65.8, eup=  126.27 +- 0.536221189
+                                            [WORKER 17] ia=2008, thermal , zout=65.3, eup=  123.63 +- 0.525556035
+     Process 15 started calculating ia=2034
+RUNNING ICE CLOUD! ERRROR!!!!
+     Process 17 started calculating ia=2035
+RUNNING ICE CLOUD! ERRROR!!!!
+                                            [WORKER 25] ia=2016, thermal , zout=65.3, eup=  114.80 +- 0.439590416
+                                            [WORKER 20] ia=2011, thermal , zout=65.8, eup=  120.55 +- 0.493664146
+                                            [WORKER 18] ia=2009, thermal , zout=65.3, eup=  122.14 +- 0.518671429
+                                            [WORKER 16] ia=2007, thermal , zout=65.3, eup=  125.11 +- 0.534104727
+                                            [WORKER 28] ia=2019, thermal , zout=65.8, eup=  115.56 +- 0.439770529
+                                            [WORKER 21] ia=2012, thermal , zout=65.8, eup=  119.37 +- 0.493587954
+                                            [WORKER 31] ia=2022, thermal , zout=65.3, eup=  114.92 +- 0.427943592
+                                            [WORKER 14] ia=2005, thermal , zout=65.8, eup=  127.34 +- 0.551165535
+                                            [WORKER 13] ia=2004, thermal , zout=65.8, eup=  129.03 +- 0.552482602
+                                            [WORKER 34] ia=2025, thermal , zout=65.8, eup=  116.53 +- 0.444321249
+     Process 25 started calculating ia=2036
+RUNNING ICE CLOUD! ERRROR!!!!
+                                            [WORKER 22] ia=2013, thermal , zout=65.8, eup=  116.38 +- 0.472261343
+                                            [WORKER 19] ia=2010, thermal , zout=65.8, eup=  121.10 +- 0.505682955
+                                            [WORKER 24] ia=2015, thermal , zout=65.3, eup=  115.30 +- 0.454534165
+                                            [WORKER 23] ia=2014, thermal , zout=65.3, eup=  116.57 +- 0.47459983
+                                            [WORKER 30] ia=2021, thermal , zout=65.8, eup=  115.97 +- 0.467426482
+                                            [WORKER 12] ia=2003, thermal , zout=65.8, eup=  129.65 +- 0.545878538
+                                            [WORKER 32] ia=2023, thermal , zout=65.3, eup=  115.29 +- 0.431358832
+                                            [WORKER 29] ia=2020, thermal , zout=65.8, eup=  115.08 +- 0.437986087
+                                            [WORKER 33] ia=2024, thermal , zout=65.8, eup=  116.73 +- 0.462301854
+                                            [WORKER 11] ia=2002, thermal , zout=65.3, eup=  133.05 +- 0.5771812
+                                            [WORKER 10] ia=2001, thermal , zout=65.3, eup=  133.82 +- 0.570906761
+                                            [WORKER  9] ia=2000, thermal , zout=65.3, eup=  135.15 +- 0.572933861
+                                            [WORKER  7] ia=1998, thermal , zout=65.8, eup=  139.09 +- 0.574016406
+                                            [WORKER 37] ia=2028, thermal , zout=65.8, eup=  119.24 +- 0.502789643
+                                            [WORKER 38] ia=2029, thermal , zout=65.3, eup=  120.03 +- 0.486119589
+                                            [WORKER  6] ia=1997, thermal , zout=65.8, eup=  139.00 +- 0.565490271
+                                            [WORKER 36] ia=2027, thermal , zout=65.8, eup=  116.84 +- 0.446992583
+                                            [WORKER  8] ia=1999, thermal , zout=65.8, eup=  137.37 +- 0.567822547
+                                            [WORKER  5] ia=1996, thermal , zout=65.8, eup=  140.92 +- 0.588241776
+                                            [WORKER 39] ia=2030, thermal , zout=65.3, eup=  122.68 +- 0.518283234
+     Process 20 started calculating ia=2037
+                                            [WORKER  3] ia=1994, thermal , zout=65.3, eup=  143.90 +- 0.601953652
+                                            [WORKER  1] ia=1992, thermal , zout=65.3, eup=  147.02 +- 0.610514163
+                                            [WORKER  2] ia=1993, thermal , zout=65.3, eup=  144.60 +- 0.608623579
+                                            [WORKER  4] ia=1995, thermal , zout=65.3, eup=  141.61 +- 0.581023579
+RUNNING ICE CLOUD! ERRROR!!!!
+     Process 18 started calculating ia=2038
+RUNNING ICE CLOUD! ERRROR!!!!
+     Process 16 started calculating ia=2039
+RUNNING ICE CLOUD! ERRROR!!!!
+     Process 28 started calculating ia=2040
+RUNNING ICE CLOUD! ERRROR!!!!
+     Process 21 started calculating ia=2041
+RUNNING ICE CLOUD! ERRROR!!!!
+     Process 31 started calculating ia=2042
+RUNNING ICE CLOUD! ERRROR!!!!
+     Process 14 started calculating ia=2043
+RUNNING ICE CLOUD! ERRROR!!!!
+     Process 13 started calculating ia=2044
+RUNNING ICE CLOUD! ERRROR!!!!
+     Process 34 started calculating ia=2045
+RUNNING ICE CLOUD! ERRROR!!!!
+     Process 22 started calculating ia=2046
+     Process 24 started calculating ia=2047
+     Process 30 started calculating ia=2048
+RUNNING ICE CLOUD! ERRROR!!!!
+     Process 19 started calculating ia=2049
+RUNNING ICE CLOUD! ERRROR!!!!
+     Process 23 started calculating ia=2050
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+     Process 12 started calculating ia=2051
+     Process 32 started calculating ia=2052
+RUNNING ICE CLOUD! ERRROR!!!!
+     Process 29 started calculating ia=2053
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+     Process 33 started calculating ia=2054
+RUNNING ICE CLOUD! ERRROR!!!!
+     Process 11 started calculating ia=2055
+RUNNING ICE CLOUD! ERRROR!!!!
+     Process 10 started calculating ia=2056
+     Process 9 started calculating ia=2057
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+     Process 7 started calculating ia=2058
+RUNNING ICE CLOUD! ERRROR!!!!
+     Process 37 started calculating ia=2059
+RUNNING ICE CLOUD! ERRROR!!!!
+     Process 36 started calculating ia=2060
+     Process 38 started calculating ia=2061
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+     Process 6 started calculating ia=2062
+RUNNING ICE CLOUD! ERRROR!!!!
+     Process 8 started calculating ia=2063
+     Process 39 started calculating ia=2064
+     Process 5 started calculating ia=2065
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+     Process 1 started calculating ia=2066
+RUNNING ICE CLOUD! ERRROR!!!!
+     Process 4 started calculating ia=2067
+     Process 3 started calculating ia=2068
+     Process 2 started calculating ia=2069
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+                                            [WORKER 35] ia=2031, solar   , zout=65.8, eup=  442.29 +- 2.62711467
+                                            [WORKER 27] ia=2032, solar   , zout=65.8, eup=  434.89 +- 2.62307969
+                                            [WORKER 26] ia=2033, solar   , zout=65.8, eup=  431.98 +- 2.62618828
+                                            [WORKER 17] ia=2035, solar   , zout=65.8, eup=  410.71 +- 2.60476149
+                                            [WORKER 15] ia=2034, solar   , zout=65.8, eup=  421.18 +- 2.62013675
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+                                            [WORKER 25] ia=2036, solar   , zout=65.3, eup=  395.01 +- 2.59378006
+RUNNING ICE CLOUD! ERRROR!!!!
+                                            [WORKER 20] ia=2037, solar   , zout=65.3, eup=  385.50 +- 2.57658386
+RUNNING ICE CLOUD! ERRROR!!!!
+                                            [WORKER 18] ia=2038, solar   , zout=65.8, eup=  374.21 +- 2.56500085
+                                            [WORKER 16] ia=2039, solar   , zout=65.8, eup=  356.47 +- 2.53346419
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+                                            [WORKER 31] ia=2042, solar   , zout=65.8, eup=  319.56 +- 2.46255963
+                                            [WORKER 21] ia=2041, solar   , zout=65.8, eup=  328.44 +- 2.46332553
+                                            [WORKER 28] ia=2040, solar   , zout=65.8, eup=  343.01 +- 2.5045607
+                                            [WORKER 14] ia=2043, solar   , zout=65.3, eup=  308.15 +- 2.43057676
+                                            [WORKER 13] ia=2044, solar   , zout=65.3, eup=  296.96 +- 2.4030453
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+                                            [WORKER 34] ia=2045, solar   , zout=65.8, eup=  288.82 +- 2.39872974
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+                                            [WORKER 24] ia=2047, solar   , zout=65.8, eup=  279.08 +- 2.34470551
+                                            [WORKER 19] ia=2049, solar   , zout=65.8, eup=  273.33 +- 2.3146784
+                                            [WORKER 30] ia=2048, solar   , zout=65.8, eup=  271.39 +- 2.33530971
+                                            [WORKER 29] ia=2053, solar   , zout=65.8, eup=  235.23 +- 2.18549298
+                                            [WORKER 23] ia=2050, solar   , zout=65.3, eup=  260.92 +- 2.28613907
+                                            [WORKER 12] ia=2051, solar   , zout=65.3, eup=  254.53 +- 2.25650113
+                                            [WORKER 33] ia=2054, solar   , zout=65.8, eup=  235.63 +- 2.2113674
+                                            [WORKER 22] ia=2046, solar   , zout=65.8, eup=  280.79 +- 2.35705038
+RUNNING ICE CLOUD! ERRROR!!!!
+                                            [WORKER 32] ia=2052, solar   , zout=65.8, eup=  249.27 +- 2.24406764
+                                            [WORKER 37] ia=2059, solar   , zout=65.8, eup=  216.08 +- 2.10490996
+                                            [WORKER 35] ia=2031, thermal , zout=65.8, eup=  126.72 +- 0.556286991
+                                            [WORKER 17] ia=2035, thermal , zout=65.8, eup=  136.92 +- 0.64163201
+                                            [WORKER 38] ia=2061, solar   , zout=65.8, eup=  211.95 +- 2.09056635
+                                            [WORKER 27] ia=2032, thermal , zout=65.8, eup=  129.34 +- 0.586777327
+                                            [WORKER 36] ia=2060, solar   , zout=65.8, eup=  215.35 +- 2.13496531
+                                            [WORKER 15] ia=2034, thermal , zout=65.8, eup=  133.65 +- 0.60861026
+                                            [WORKER 11] ia=2055, solar   , zout=65.8, eup=  232.73 +- 2.19387564
+                                            [WORKER 26] ia=2033, thermal , zout=65.8, eup=  131.93 +- 0.586007076
+                                            [WORKER  9] ia=2057, solar   , zout=65.3, eup=  227.73 +- 2.15328189
+                                            [WORKER  3] ia=2068, solar   , zout=65.8, eup=  218.83 +- 2.1284336
+                                            [WORKER 10] ia=2056, solar   , zout=65.8, eup=  232.08 +- 2.19248753
+                                            [WORKER  2] ia=2069, solar   , zout=65.8, eup=  214.81 +- 2.11565239
+                                            [WORKER  7] ia=2058, solar   , zout=65.3, eup=  221.19 +- 2.13228022
+                                            [WORKER 39] ia=2064, solar   , zout=65.3, eup=  245.15 +- 2.19104153
+                                            [WORKER  6] ia=2062, solar   , zout=65.8, eup=  216.44 +- 2.13206586
+                                            [WORKER  5] ia=2065, solar   , zout=65.3, eup=  221.70 +- 2.15171536
+                                            [WORKER  1] ia=2066, solar   , zout=65.8, eup=  214.01 +- 2.10604075
+                                            [WORKER  4] ia=2067, solar   , zout=65.8, eup=  218.30 +- 2.13065718
+                                            [WORKER  8] ia=2063, solar   , zout=65.8, eup=  214.35 +- 2.09998373
+RUNNING ICE CLOUD! ERRROR!!!!
+                                            [WORKER 25] ia=2036, thermal , zout=65.3, eup=  139.82 +- 0.659821533
+RUNNING ICE CLOUD! ERRROR!!!!
+                                            [WORKER 20] ia=2037, thermal , zout=65.3, eup=  144.31 +- 0.690483771
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+     Process 35 started calculating ia=2070
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+     Process 17 started calculating ia=2071
+RUNNING ICE CLOUD! ERRROR!!!!
+     Process 27 started calculating ia=2072
+RUNNING ICE CLOUD! ERRROR!!!!
+     Process 15 started calculating ia=2073
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+     Process 26 started calculating ia=2074
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+                                            [WORKER 18] ia=2038, thermal , zout=65.8, eup=  149.22 +- 0.728476679
+                                            [WORKER 16] ia=2039, thermal , zout=65.8, eup=  153.15 +- 0.753704855
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+     Process 25 started calculating ia=2075
+RUNNING ICE CLOUD! ERRROR!!!!
+                                            [WORKER 31] ia=2042, thermal , zout=65.8, eup=  169.77 +- 0.841728473
+                                            [WORKER 21] ia=2041, thermal , zout=65.8, eup=  162.54 +- 0.791285678
+                                            [WORKER 28] ia=2040, thermal , zout=65.8, eup=  159.45 +- 0.792825432
+                                            [WORKER 14] ia=2043, thermal , zout=65.3, eup=  175.04 +- 0.847548307
+     Process 20 started calculating ia=2076
+RUNNING ICE CLOUD! ERRROR!!!!
+                                            [WORKER 13] ia=2044, thermal , zout=65.3, eup=  181.73 +- 0.881578275
+     Process 16 started calculating ia=2077
+     Process 18 started calculating ia=2078
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+                                            [WORKER 34] ia=2045, thermal , zout=65.8, eup=  186.81 +- 0.89210481
+     Process 21 started calculating ia=2079
+     Process 31 started calculating ia=2080
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+     Process 28 started calculating ia=2081
+RUNNING ICE CLOUD! ERRROR!!!!
+     Process 14 started calculating ia=2082
+RUNNING ICE CLOUD! ERRROR!!!!
+     Process 13 started calculating ia=2083
+RUNNING ICE CLOUD! ERRROR!!!!
+     Process 34 started calculating ia=2084
+RUNNING ICE CLOUD! ERRROR!!!!
+                                            [WORKER 24] ia=2047, thermal , zout=65.8, eup=  196.47 +- 0.863400688
+     Process 24 started calculating ia=2085
+RUNNING ICE CLOUD! ERRROR!!!!
+                                            [WORKER 19] ia=2049, thermal , zout=65.8, eup=  206.22 +- 0.841409864
+     Process 19 started calculating ia=2086
+RUNNING ICE CLOUD! ERRROR!!!!
+                                            [WORKER 23] ia=2050, thermal , zout=65.3, eup=  212.54 +- 0.84358408
+                                            [WORKER 30] ia=2048, thermal , zout=65.8, eup=  201.76 +- 0.857289958
+                                            [WORKER 12] ia=2051, thermal , zout=65.3, eup=  216.21 +- 0.842661615
+                                            [WORKER 29] ia=2053, thermal , zout=65.8, eup=  228.51 +- 0.801370246
+                                            [WORKER 33] ia=2054, thermal , zout=65.8, eup=  232.38 +- 0.792008744
+                                            [WORKER 22] ia=2046, thermal , zout=65.8, eup=  191.64 +- 0.881571006
+                                            [WORKER 32] ia=2052, thermal , zout=65.8, eup=  223.11 +- 0.822065895
+                                            [WORKER 37] ia=2059, thermal , zout=65.8, eup=  251.14 +- 0.691159069
+     Process 23 started calculating ia=2087
+RUNNING ICE CLOUD! ERRROR!!!!
+     Process 30 started calculating ia=2088
+     Process 12 started calculating ia=2089
+     Process 29 started calculating ia=2090
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+     Process 33 started calculating ia=2091
+RUNNING ICE CLOUD! ERRROR!!!!
+     Process 22 started calculating ia=2092
+                                            [WORKER 38] ia=2061, thermal , zout=65.8, eup=  255.46 +- 0.639366892
+RUNNING ICE CLOUD! ERRROR!!!!
+                                            [WORKER 36] ia=2060, thermal , zout=65.8, eup=  253.24 +- 0.668390732
+                                            [WORKER  9] ia=2057, thermal , zout=65.3, eup=  244.29 +- 0.719171898
+                                            [WORKER 11] ia=2055, thermal , zout=65.8, eup=  237.13 +- 0.776271867
+     Process 32 started calculating ia=2093
+RUNNING ICE CLOUD! ERRROR!!!!
+                                            [WORKER  3] ia=2068, thermal , zout=65.8, eup=  250.42 +- 0.696808695
+                                            [WORKER 10] ia=2056, thermal , zout=65.8, eup=  240.39 +- 0.744600649
+                                            [WORKER  2] ia=2069, thermal , zout=65.8, eup=  248.78 +- 0.728252824
+                                            [WORKER  5] ia=2065, thermal , zout=65.3, eup=  248.70 +- 0.735460494
+                                            [WORKER  6] ia=2062, thermal , zout=65.8, eup=  255.82 +- 0.657211304
+                                            [WORKER  4] ia=2067, thermal , zout=65.8, eup=  248.64 +- 0.707428246
+                                            [WORKER  8] ia=2063, thermal , zout=65.8, eup=  251.26 +- 0.695857531
+     Process 37 started calculating ia=2094
+RUNNING ICE CLOUD! ERRROR!!!!
+                                            [WORKER 35] ia=2070, solar   , zout=65.8, eup=  222.06 +- 2.15706918
+                                            [WORKER  1] ia=2066, thermal , zout=65.8, eup=  252.74 +- 0.668321639
+                                            [WORKER  7] ia=2058, thermal , zout=65.3, eup=  245.38 +- 0.740991894
+                                            [WORKER 39] ia=2064, thermal , zout=65.3, eup=  252.37 +- 0.680212103
+                                            [WORKER 17] ia=2071, solar   , zout=65.3, eup=  219.83 +- 2.13297648
+                                            [WORKER 15] ia=2073, solar   , zout=65.8, eup=  222.70 +- 2.14827636
+                                            [WORKER 27] ia=2072, solar   , zout=65.3, eup=  219.07 +- 2.12016622
+                                            [WORKER 26] ia=2074, solar   , zout=65.8, eup=  231.98 +- 2.19457409
+                                            [WORKER 25] ia=2075, solar   , zout=65.8, eup=  231.27 +- 2.1913364
+     Process 38 started calculating ia=2095
+RUNNING ICE CLOUD! ERRROR!!!!
+                                            [WORKER 20] ia=2076, solar   , zout=65.8, eup=  238.22 +- 2.21588659
+     Process 36 started calculating ia=2096
+     Process 9 started calculating ia=2097
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+     Process 11 started calculating ia=2098
+RUNNING ICE CLOUD! ERRROR!!!!
+     Process 3 started calculating ia=2099
+RUNNING ICE CLOUD! ERRROR!!!!
+                                            [WORKER 16] ia=2077, solar   , zout=65.8, eup=  232.42 +- 2.17212944
+                                            [WORKER 18] ia=2078, solar   , zout=65.3, eup=  237.64 +- 2.21721596
+     Process 10 started calculating ia=2100
+     Process 6 started calculating ia=2101
+                                            [WORKER 21] ia=2079, solar   , zout=65.3, eup=  245.42 +- 2.24615967
+RUNNING ICE CLOUD! ERRROR!!!!
+     Process 2 started calculating ia=2102
+RUNNING ICE CLOUD! ERRROR!!!!
+                                            [WORKER 31] ia=2080, solar   , zout=65.8, eup=  249.00 +- 2.2207961
+RUNNING ICE CLOUD! ERRROR!!!!
+     Process 4 started calculating ia=2103
+RUNNING ICE CLOUD! ERRROR!!!!
+     Process 5 started calculating ia=2104
+     Process 8 started calculating ia=2105
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+                                            [WORKER 28] ia=2081, solar   , zout=65.8, eup=  252.48 +- 2.2655425
+                                            [WORKER 14] ia=2082, solar   , zout=65.8, eup=  272.95 +- 2.32607409
+                                            [WORKER 13] ia=2083, solar   , zout=65.8, eup=  305.87 +- 2.36348805
+                                            [WORKER 34] ia=2084, solar   , zout=65.3, eup=  294.32 +- 2.40367167
+RUNNING ICE CLOUD! ERRROR!!!!
+     Process 1 started calculating ia=2106
+RUNNING ICE CLOUD! ERRROR!!!!
+     Process 7 started calculating ia=2107
+RUNNING ICE CLOUD! ERRROR!!!!
+     Process 39 started calculating ia=2108
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+                                            [WORKER 24] ia=2085, solar   , zout=65.3, eup=  295.95 +- 2.3853814
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+                                            [WORKER 19] ia=2086, solar   , zout=65.3, eup=  296.01 +- 2.38894065
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+                                            [WORKER 23] ia=2087, solar   , zout=65.8, eup=  304.57 +- 2.4290598
+                                            [WORKER 30] ia=2088, solar   , zout=65.8, eup=  328.88 +- 2.4894937
+                                            [WORKER 12] ia=2089, solar   , zout=65.8, eup=  313.29 +- 2.44334864
+                                            [WORKER 29] ia=2090, solar   , zout=65.8, eup=  338.94 +- 2.50199496
+                                            [WORKER 22] ia=2092, solar   , zout=65.3, eup=  335.86 +- 2.50750664
+                                            [WORKER 33] ia=2091, solar   , zout=65.3, eup=  336.98 +- 2.51603449
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+                                            [WORKER 32] ia=2093, solar   , zout=65.3, eup=  342.85 +- 2.52646061
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+                                            [WORKER 37] ia=2094, solar   , zout=65.8, eup=  370.67 +- 2.56717618
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+                                            [WORKER 38] ia=2095, solar   , zout=65.8, eup=  374.84 +- 2.57319067
+RUNNING ICE CLOUD! ERRROR!!!!
+                                            [WORKER 35] ia=2070, thermal , zout=65.8, eup=  247.65 +- 0.724921928
+                                            [WORKER 36] ia=2096, solar   , zout=65.8, eup=  373.36 +- 2.57561449
+                                            [WORKER  9] ia=2097, solar   , zout=65.8, eup=  394.30 +- 2.59938742
+                                            [WORKER 17] ia=2071, thermal , zout=65.3, eup=  243.49 +- 0.777606211
+                                            [WORKER 11] ia=2098, solar   , zout=65.3, eup=  390.52 +- 2.59466601
+                                            [WORKER  3] ia=2099, solar   , zout=65.3, eup=  383.31 +- 2.58182154
+                                            [WORKER 15] ia=2073, thermal , zout=65.8, eup=  240.68 +- 0.763208937
+     Process 35 started calculating ia=2109
+                                            [WORKER 27] ia=2072, thermal , zout=65.3, eup=  244.58 +- 0.762740404
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+                                            [WORKER 26] ia=2074, thermal , zout=65.8, eup=  239.39 +- 0.785097984
+     Process 17 started calculating ia=2110
+RUNNING ICE CLOUD! ERRROR!!!!
+                                            [WORKER  2] ia=2102, solar   , zout=65.8, eup=  390.49 +- 2.60068229
+                                            [WORKER 10] ia=2100, solar   , zout=65.3, eup=  379.74 +- 2.57855683
+RUNNING ICE CLOUD! ERRROR!!!!
+                                            [WORKER  6] ia=2101, solar   , zout=65.8, eup=  524.84 +- 2.62415554
+                                            [WORKER  4] ia=2103, solar   , zout=65.8, eup=  595.36 +- 2.54565391
+                                            [WORKER 25] ia=2075, thermal , zout=65.8, eup=  235.30 +- 0.793257487
+                                            [WORKER  5] ia=2104, solar   , zout=65.3, eup=  334.43 +- 2.47924977
+                                            [WORKER  8] ia=2105, solar   , zout=65.3, eup=  326.44 +- 2.47527841
+RUNNING ICE CLOUD! ERRROR!!!!
+                                            [WORKER  7] ia=2107, solar   , zout=65.3, eup=  316.76 +- 2.45074941
+                                            [WORKER 20] ia=2076, thermal , zout=65.8, eup=  229.20 +- 0.80960348
+                                            [WORKER 16] ia=2077, thermal , zout=65.8, eup=  223.11 +- 0.826430116
+                                            [WORKER 18] ia=2078, thermal , zout=65.3, eup=  220.53 +- 0.852980492
+                                            [WORKER  1] ia=2106, solar   , zout=65.3, eup=  326.08 +- 2.48166331
+                                            [WORKER 39] ia=2108, solar   , zout=65.8, eup=  312.04 +- 2.46340789
+                                            [WORKER 21] ia=2079, thermal , zout=65.3, eup=  216.04 +- 0.841389179
+                                            [WORKER 31] ia=2080, thermal , zout=65.8, eup=  210.96 +- 0.851688166
+                                            [WORKER 28] ia=2081, thermal , zout=65.8, eup=  207.07 +- 0.847415767
+                                            [WORKER 14] ia=2082, thermal , zout=65.8, eup=  199.71 +- 0.832518994
+     Process 15 started calculating ia=2111
+RUNNING ICE CLOUD! ERRROR!!!!
+                                            [WORKER 13] ia=2083, thermal , zout=65.8, eup=  192.13 +- 0.807510314
+                                            [WORKER 34] ia=2084, thermal , zout=65.3, eup=  193.64 +- 0.820139258
+                                            [WORKER 24] ia=2085, thermal , zout=65.3, eup=  188.40 +- 0.816963298
+                                            [WORKER 19] ia=2086, thermal , zout=65.3, eup=  184.15 +- 0.821508644
+     Process 27 started calculating ia=2112
+RUNNING ICE CLOUD! ERRROR!!!!
+     Process 26 started calculating ia=2113
+RUNNING ICE CLOUD! ERRROR!!!!
+                                            [WORKER 23] ia=2087, thermal , zout=65.8, eup=  180.61 +- 0.805982973
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+     Process 25 started calculating ia=2114
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+                                            [WORKER 30] ia=2088, thermal , zout=65.8, eup=  167.21 +- 0.724979152
+                                            [WORKER 12] ia=2089, thermal , zout=65.8, eup=  176.63 +- 0.78277679
+                                            [WORKER 29] ia=2090, thermal , zout=65.8, eup=  156.57 +- 0.630519409
+                                            [WORKER 22] ia=2092, thermal , zout=65.3, eup=  161.43 +- 0.692600232
+                                            [WORKER 33] ia=2091, thermal , zout=65.3, eup=  159.39 +- 0.649203159
+RUNNING ICE CLOUD! ERRROR!!!!
+     Process 20 started calculating ia=2115
+RUNNING ICE CLOUD! ERRROR!!!!
+     Process 16 started calculating ia=2116
+     Process 18 started calculating ia=2117
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+                                            [WORKER 32] ia=2093, thermal , zout=65.3, eup=  160.68 +- 0.688209969
+                                            [WORKER 37] ia=2094, thermal , zout=65.8, eup=  149.81 +- 0.563248534
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+     Process 21 started calculating ia=2118
+RUNNING ICE CLOUD! ERRROR!!!!
+     Process 31 started calculating ia=2119
+RUNNING ICE CLOUD! ERRROR!!!!
+     Process 28 started calculating ia=2120
+RUNNING ICE CLOUD! ERRROR!!!!
+     Process 14 started calculating ia=2121
+RUNNING ICE CLOUD! ERRROR!!!!
+     Process 34 started calculating ia=2122
+     Process 13 started calculating ia=2123
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+     Process 24 started calculating ia=2124
+RUNNING ICE CLOUD! ERRROR!!!!
+     Process 19 started calculating ia=2125
+RUNNING ICE CLOUD! ERRROR!!!!
+                                            [WORKER 38] ia=2095, thermal , zout=65.8, eup=  148.87 +- 0.513625661
+     Process 23 started calculating ia=2126
+RUNNING ICE CLOUD! ERRROR!!!!
+     Process 30 started calculating ia=2127
+RUNNING ICE CLOUD! ERRROR!!!!
+     Process 12 started calculating ia=2128
+     Process 29 started calculating ia=2129
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+     Process 22 started calculating ia=2130
+     Process 33 started calculating ia=2131
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+                                            [WORKER 36] ia=2096, thermal , zout=65.8, eup=  150.62 +- 0.550643498
+     Process 37 started calculating ia=2132
+     Process 32 started calculating ia=2133
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+                                            [WORKER  9] ia=2097, thermal , zout=65.8, eup=  145.42 +- 0.465424936
+                                            [WORKER 11] ia=2098, thermal , zout=65.3, eup=  146.13 +- 0.460691338
+     Process 38 started calculating ia=2134
+RUNNING ICE CLOUD! ERRROR!!!!
+                                            [WORKER 35] ia=2109, solar   , zout=65.8, eup=  310.93 +- 2.45101556
+                                            [WORKER  3] ia=2099, thermal , zout=65.3, eup=  146.36 +- 0.490570667
+                                            [WORKER 17] ia=2110, solar   , zout=65.8, eup=  301.09 +- 2.4438797
+     Process 36 started calculating ia=2135
+RUNNING ICE CLOUD! ERRROR!!!!
+     Process 9 started calculating ia=2136
+RUNNING ICE CLOUD! ERRROR!!!!
+     Process 11 started calculating ia=2137
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+     Process 3 started calculating ia=2138
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+                                            [WORKER 15] ia=2111, solar   , zout=65.8, eup=  292.66 +- 2.41160157
+RUNNING ICE CLOUD! ERRROR!!!!
+                                            [WORKER 27] ia=2112, solar   , zout=65.8, eup=  284.91 +- 2.37295123
+RUNNING ICE CLOUD! ERRROR!!!!
+                                            [WORKER  2] ia=2102, thermal , zout=65.8, eup=  145.90 +- 0.45643812
+                                            [WORKER 10] ia=2100, thermal , zout=65.3, eup=  147.87 +- 0.485911792
+                                            [WORKER  4] ia=2103, thermal , zout=65.8, eup=  136.41 +- 0.182650762
+                                            [WORKER  6] ia=2101, thermal , zout=65.8, eup=  137.14 +- 0.200020532
+                                            [WORKER  5] ia=2104, thermal , zout=65.3, eup=  160.16 +- 0.663725487
+                                            [WORKER  8] ia=2105, thermal , zout=65.3, eup=  163.93 +- 0.696794324
+     Process 2 started calculating ia=2139
+RUNNING ICE CLOUD! ERRROR!!!!
+     Process 10 started calculating ia=2140
+RUNNING ICE CLOUD! ERRROR!!!!
+                                            [WORKER  7] ia=2107, thermal , zout=65.3, eup=  169.12 +- 0.748088865
+                                            [WORKER 26] ia=2113, solar   , zout=65.8, eup=  277.32 +- 2.37407395
+     Process 6 started calculating ia=2141
+     Process 4 started calculating ia=2142
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+     Process 5 started calculating ia=2143
+RUNNING ICE CLOUD! ERRROR!!!!
+     Process 8 started calculating ia=2144
+RUNNING ICE CLOUD! ERRROR!!!!
+                                            [WORKER 39] ia=2108, thermal , zout=65.8, eup=  171.60 +- 0.764860667
+                                            [WORKER  1] ia=2106, thermal , zout=65.3, eup=  165.02 +- 0.698171545
+                                            [WORKER 25] ia=2114, solar   , zout=65.3, eup=  268.57 +- 2.34573443
+                                            [WORKER 20] ia=2115, solar   , zout=65.8, eup=  259.40 +- 2.29656949
+                                            [WORKER 16] ia=2116, solar   , zout=65.8, eup=  265.31 +- 2.31809835
+     Process 7 started calculating ia=2145
+                                            [WORKER 18] ia=2117, solar   , zout=65.8, eup=  259.80 +- 2.3150979
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+                                            [WORKER 21] ia=2118, solar   , zout=65.8, eup=  250.51 +- 2.27101599
+                                            [WORKER 31] ia=2119, solar   , zout=65.8, eup=  266.28 +- 2.35569476
+                                            [WORKER 28] ia=2120, solar   , zout=65.8, eup=  247.90 +- 2.26769388
+                                            [WORKER 14] ia=2121, solar   , zout=65.3, eup=  243.41 +- 2.21873109
+                                            [WORKER 34] ia=2122, solar   , zout=65.8, eup=  257.09 +- 2.30341938
+                                            [WORKER 13] ia=2123, solar   , zout=65.8, eup=  262.64 +- 2.30588069
+                                            [WORKER 24] ia=2124, solar   , zout=65.8, eup=  269.43 +- 2.32068618
+     Process 39 started calculating ia=2146
+     Process 1 started calculating ia=2147
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+                                            [WORKER 19] ia=2125, solar   , zout=65.8, eup=  266.07 +- 2.30655556
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+                                            [WORKER 23] ia=2126, solar   , zout=65.8, eup=  266.24 +- 2.30971235
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+                                            [WORKER 30] ia=2127, solar   , zout=65.3, eup=  261.84 +- 2.31956454
+                                            [WORKER 12] ia=2128, solar   , zout=65.3, eup=  255.97 +- 2.2832735
+                                            [WORKER 29] ia=2129, solar   , zout=65.8, eup=  260.44 +- 2.25133517
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+                                            [WORKER 22] ia=2130, solar   , zout=65.8, eup=  259.95 +- 2.26813741
+RUNNING ICE CLOUD! ERRROR!!!!
+                                            [WORKER 37] ia=2132, solar   , zout=65.8, eup=  266.28 +- 2.29293964
+                                            [WORKER 33] ia=2131, solar   , zout=65.8, eup=  278.23 +- 2.31958027
+                                            [WORKER 32] ia=2133, solar   , zout=65.8, eup=  269.29 +- 2.30158783
+RUNNING ICE CLOUD! ERRROR!!!!
+                                            [WORKER 35] ia=2109, thermal , zout=65.8, eup=  171.98 +- 0.767145127
+                                            [WORKER 38] ia=2134, solar   , zout=65.3, eup=  265.75 +- 2.27055895
+                                            [WORKER 17] ia=2110, thermal , zout=65.8, eup=  174.57 +- 0.778964247
+                                            [WORKER 36] ia=2135, solar   , zout=65.3, eup=  266.77 +- 2.28610726
+                                            [WORKER 15] ia=2111, thermal , zout=65.8, eup=  177.05 +- 0.79869668
+                                            [WORKER  9] ia=2136, solar   , zout=65.8, eup=  275.43 +- 2.31775954
+                                            [WORKER 11] ia=2137, solar   , zout=65.8, eup=  275.26 +- 2.29648436
+                                            [WORKER 27] ia=2112, thermal , zout=65.8, eup=  179.50 +- 0.818883177
+                                            [WORKER  3] ia=2138, solar   , zout=65.8, eup=  281.08 +- 2.31937798
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+     Process 35 started calculating ia=2148
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+     Process 17 started calculating ia=2149
+RUNNING ICE CLOUD! ERRROR!!!!
+     Process 15 started calculating ia=2150
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+                                            [WORKER  2] ia=2139, solar   , zout=65.8, eup=  289.67 +- 2.34388143
+RUNNING ICE CLOUD! ERRROR!!!!
+     Process 27 started calculating ia=2151
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+                                            [WORKER 10] ia=2140, solar   , zout=65.3, eup=  288.81 +- 2.34451353
+                                            [WORKER  6] ia=2141, solar   , zout=65.3, eup=  284.99 +- 2.3283037
+                                            [WORKER  4] ia=2142, solar   , zout=65.3, eup=  285.55 +- 2.32671913
+                                            [WORKER  5] ia=2143, solar   , zout=65.8, eup=  290.13 +- 2.33562618
+                                            [WORKER 26] ia=2113, thermal , zout=65.8, eup=  184.23 +- 0.854891717
+                                            [WORKER  8] ia=2144, solar   , zout=65.8, eup=  284.22 +- 2.31189287
+                                            [WORKER 25] ia=2114, thermal , zout=65.3, eup=  188.74 +- 0.875194868
+                                            [WORKER  7] ia=2145, solar   , zout=65.8, eup=  282.62 +- 2.32021899
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+     Process 26 started calculating ia=2152
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+                                            [WORKER 20] ia=2115, thermal , zout=65.8, eup=  191.83 +- 0.883343225
+                                            [WORKER 39] ia=2146, solar   , zout=65.8, eup=  283.14 +- 2.32743661
+                                            [WORKER 16] ia=2116, thermal , zout=65.8, eup=  192.51 +- 0.841724189
+     Process 25 started calculating ia=2153
+RUNNING ICE CLOUD! ERRROR!!!!
+                                            [WORKER  1] ia=2147, solar   , zout=65.8, eup=  281.00 +- 2.32527755
+                                            [WORKER 18] ia=2117, thermal , zout=65.8, eup=  192.16 +- 0.848288832
+                                            [WORKER 21] ia=2118, thermal , zout=65.8, eup=  201.02 +- 0.877666871
+                                            [WORKER 31] ia=2119, thermal , zout=65.8, eup=  194.93 +- 0.849252665
+                                            [WORKER 28] ia=2120, thermal , zout=65.8, eup=  205.12 +- 0.888959029
+RUNNING ICE CLOUD! ERRROR!!!!
+                                            [WORKER 14] ia=2121, thermal , zout=65.3, eup=  211.77 +- 0.917139596
+                                            [WORKER 34] ia=2122, thermal , zout=65.8, eup=  210.01 +- 0.877959186
+                                            [WORKER 13] ia=2123, thermal , zout=65.8, eup=  210.51 +- 0.869103249
+                                            [WORKER 24] ia=2124, thermal , zout=65.8, eup=  216.52 +- 0.847889284
+                                            [WORKER 19] ia=2125, thermal , zout=65.8, eup=  217.46 +- 0.830098518
+     Process 20 started calculating ia=2154
+RUNNING ICE CLOUD! ERRROR!!!!
+     Process 16 started calculating ia=2155
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+     Process 18 started calculating ia=2156
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+     Process 21 started calculating ia=2157
+RUNNING ICE CLOUD! ERRROR!!!!
+     Process 31 started calculating ia=2158
+RUNNING ICE CLOUD! ERRROR!!!!
+     Process 28 started calculating ia=2159
+RUNNING ICE CLOUD! ERRROR!!!!
+     Process 14 started calculating ia=2160
+RUNNING ICE CLOUD! ERRROR!!!!
+     Process 34 started calculating ia=2161
+RUNNING ICE CLOUD! ERRROR!!!!
+     Process 13 started calculating ia=2162
+     Process 24 started calculating ia=2163
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+                                            [WORKER 23] ia=2126, thermal , zout=65.8, eup=  221.27 +- 0.838976532
+     Process 19 started calculating ia=2164
+RUNNING ICE CLOUD! ERRROR!!!!
+                                            [WORKER 30] ia=2127, thermal , zout=65.3, eup=  227.52 +- 0.841529786
+                                            [WORKER 12] ia=2128, thermal , zout=65.3, eup=  228.87 +- 0.829498555
+                                            [WORKER 29] ia=2129, thermal , zout=65.8, eup=  229.21 +- 0.804781269
+                                            [WORKER 37] ia=2132, thermal , zout=65.8, eup=  234.86 +- 0.790198274
+                                            [WORKER 22] ia=2130, thermal , zout=65.8, eup=  230.67 +- 0.808318935
+                                            [WORKER 33] ia=2131, thermal , zout=65.8, eup=  223.73 +- 0.809338066
+                                            [WORKER 32] ia=2133, thermal , zout=65.8, eup=  231.71 +- 0.794022748
+                                            [WORKER 38] ia=2134, thermal , zout=65.3, eup=  238.19 +- 0.783359807
+                                            [WORKER 36] ia=2135, thermal , zout=65.3, eup=  240.29 +- 0.759278521
+                                            [WORKER  9] ia=2136, thermal , zout=65.8, eup=  241.07 +- 0.755450707
+                                            [WORKER 11] ia=2137, thermal , zout=65.8, eup=  241.66 +- 0.733236038
+     Process 23 started calculating ia=2165
+RUNNING ICE CLOUD! ERRROR!!!!
+                                            [WORKER  3] ia=2138, thermal , zout=65.8, eup=  239.52 +- 0.751807142
+     Process 30 started calculating ia=2166
+RUNNING ICE CLOUD! ERRROR!!!!
+     Process 12 started calculating ia=2167
+RUNNING ICE CLOUD! ERRROR!!!!
+     Process 37 started calculating ia=2168
+     Process 29 started calculating ia=2169
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+     Process 22 started calculating ia=2170
+RUNNING ICE CLOUD! ERRROR!!!!
+                                            [WORKER 35] ia=2148, solar   , zout=65.8, eup=  275.47 +- 2.3044151
+                                            [WORKER 17] ia=2149, solar   , zout=65.8, eup=  277.02 +- 2.32423321
+     Process 33 started calculating ia=2171
+RUNNING ICE CLOUD! ERRROR!!!!
+     Process 32 started calculating ia=2172
+RUNNING ICE CLOUD! ERRROR!!!!
+     Process 38 started calculating ia=2173
+RUNNING ICE CLOUD! ERRROR!!!!
+                                            [WORKER 15] ia=2150, solar   , zout=65.8, eup=  276.77 +- 2.30422255
+                                            [WORKER 27] ia=2151, solar   , zout=65.8, eup=  276.15 +- 2.30867472
+     Process 36 started calculating ia=2174
+RUNNING ICE CLOUD! ERRROR!!!!
+     Process 9 started calculating ia=2175
+RUNNING ICE CLOUD! ERRROR!!!!
+                                            [WORKER  2] ia=2139, thermal , zout=65.8, eup=  241.46 +- 0.731919505
+     Process 11 started calculating ia=2176
+RUNNING ICE CLOUD! ERRROR!!!!
+                                            [WORKER 10] ia=2140, thermal , zout=65.3, eup=  241.12 +- 0.75345432
+     Process 3 started calculating ia=2177
+RUNNING ICE CLOUD! ERRROR!!!!
+                                            [WORKER  6] ia=2141, thermal , zout=65.3, eup=  241.07 +- 0.744033005
+                                            [WORKER  5] ia=2143, thermal , zout=65.8, eup=  248.99 +- 0.794185213
+                                            [WORKER  4] ia=2142, thermal , zout=65.3, eup=  241.67 +- 0.746240132
+                                            [WORKER  8] ia=2144, thermal , zout=65.8, eup=  247.84 +- 0.809559158
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+                                            [WORKER  7] ia=2145, thermal , zout=65.8, eup=  239.16 +- 0.755485699
+RUNNING ICE CLOUD! ERRROR!!!!
+                                            [WORKER 26] ia=2152, solar   , zout=65.8, eup=  283.20 +- 2.34427017
+RUNNING ICE CLOUD! ERRROR!!!!
+     Process 2 started calculating ia=2178
+RUNNING ICE CLOUD! ERRROR!!!!
+                                            [WORKER 25] ia=2153, solar   , zout=65.8, eup=  293.43 +- 2.36335752
+     Process 10 started calculating ia=2179
+RUNNING ICE CLOUD! ERRROR!!!!
+     Process 6 started calculating ia=2180
+RUNNING ICE CLOUD! ERRROR!!!!
+     Process 5 started calculating ia=2181
+RUNNING ICE CLOUD! ERRROR!!!!
+     Process 4 started calculating ia=2182
+RUNNING ICE CLOUD! ERRROR!!!!
+     Process 8 started calculating ia=2183
+RUNNING ICE CLOUD! ERRROR!!!!
+                                            [WORKER 39] ia=2146, thermal , zout=65.8, eup=  237.00 +- 0.77677145
+                                            [WORKER  1] ia=2147, thermal , zout=65.8, eup=  244.47 +- 0.846623086
+     Process 7 started calculating ia=2184
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+                                            [WORKER 20] ia=2154, solar   , zout=65.8, eup=  296.81 +- 2.36523327
+                                            [WORKER 16] ia=2155, solar   , zout=65.8, eup=  303.74 +- 2.37823557
+RUNNING ICE CLOUD! ERRROR!!!!
+                                            [WORKER 18] ia=2156, solar   , zout=65.3, eup=  311.31 +- 2.39130158
+                                            [WORKER 21] ia=2157, solar   , zout=65.8, eup=  316.60 +- 2.40478689
+                                            [WORKER 31] ia=2158, solar   , zout=65.8, eup=  313.03 +- 2.38434539
+     Process 39 started calculating ia=2185
+RUNNING ICE CLOUD! ERRROR!!!!
+     Process 1 started calculating ia=2186
+                                            [WORKER 28] ia=2159, solar   , zout=65.8, eup=  324.53 +- 2.42478758
+RUNNING ICE CLOUD! ERRROR!!!!
+                                            [WORKER 14] ia=2160, solar   , zout=65.8, eup=  328.25 +- 2.41921053
+                                            [WORKER 24] ia=2163, solar   , zout=65.3, eup=  323.92 +- 2.44040683
+                                            [WORKER 34] ia=2161, solar   , zout=65.8, eup=  329.82 +- 2.42616483
+                                            [WORKER 13] ia=2162, solar   , zout=65.3, eup=  329.17 +- 2.44457773
+                                            [WORKER 19] ia=2164, solar   , zout=65.8, eup=  320.79 +- 2.41776789
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+                                            [WORKER 23] ia=2165, solar   , zout=65.8, eup=  321.70 +- 2.40883023
+                                            [WORKER 37] ia=2168, solar   , zout=65.3, eup=  309.01 +- 2.40699707
+                                            [WORKER 30] ia=2166, solar   , zout=65.8, eup=  324.40 +- 2.42157305
+RUNNING ICE CLOUD! ERRROR!!!!
+                                            [WORKER 29] ia=2169, solar   , zout=65.3, eup=  311.70 +- 2.40197662
+                                            [WORKER 12] ia=2167, solar   , zout=65.8, eup=  314.03 +- 2.41922502
+                                            [WORKER 22] ia=2170, solar   , zout=65.3, eup=  312.95 +- 2.3898377
+                                            [WORKER 33] ia=2171, solar   , zout=65.8, eup=  305.92 +- 2.37761203
+RUNNING ICE CLOUD! ERRROR!!!!
+                                            [WORKER 38] ia=2173, solar   , zout=65.8, eup=  307.51 +- 2.37732643
+                                            [WORKER 32] ia=2172, solar   , zout=65.8, eup=  311.34 +- 2.39909577
+RUNNING ICE CLOUD! ERRROR!!!!
+                                            [WORKER 17] ia=2149, thermal , zout=65.8, eup=  234.30 +- 0.790043212
+                                            [WORKER 35] ia=2148, thermal , zout=65.8, eup=  243.31 +- 0.84950603
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+                                            [WORKER  9] ia=2175, solar   , zout=65.8, eup=  297.97 +- 2.33912232
+                                            [WORKER 36] ia=2174, solar   , zout=65.8, eup=  305.89 +- 2.37727849
+                                            [WORKER 15] ia=2150, thermal , zout=65.8, eup=  232.49 +- 0.806858689
+                                            [WORKER 11] ia=2176, solar   , zout=65.8, eup=  297.98 +- 2.35808058
+RUNNING ICE CLOUD! ERRROR!!!!
+                                            [WORKER  3] ia=2177, solar   , zout=65.8, eup=  293.50 +- 2.34991073
+                                            [WORKER 27] ia=2151, thermal , zout=65.8, eup=  231.46 +- 0.809909616
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+     Process 17 started calculating ia=2187
+RUNNING ICE CLOUD! ERRROR!!!!
+     Process 35 started calculating ia=2188
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+     Process 15 started calculating ia=2189
+RUNNING ICE CLOUD! ERRROR!!!!
+                                            [WORKER 26] ia=2152, thermal , zout=65.8, eup=  229.48 +- 0.803346646
+RUNNING ICE CLOUD! ERRROR!!!!
+                                            [WORKER  2] ia=2178, solar   , zout=65.8, eup=  286.75 +- 2.34347777
+                                            [WORKER 25] ia=2153, thermal , zout=65.8, eup=  228.49 +- 0.793630728
+                                            [WORKER 10] ia=2179, solar   , zout=65.8, eup=  279.28 +- 2.30594851
+RUNNING ICE CLOUD! ERRROR!!!!
+     Process 27 started calculating ia=2190
+RUNNING ICE CLOUD! ERRROR!!!!
+                                            [WORKER  6] ia=2180, solar   , zout=65.8, eup=  272.29 +- 2.30556293
+                                            [WORKER  5] ia=2181, solar   , zout=65.8, eup=  266.63 +- 2.28704234
+                                            [WORKER  8] ia=2183, solar   , zout=65.8, eup=  253.54 +- 2.25408776
+                                            [WORKER  4] ia=2182, solar   , zout=65.8, eup=  262.92 +- 2.28087038
+                                            [WORKER  7] ia=2184, solar   , zout=65.3, eup=  246.52 +- 2.23528405
+                                            [WORKER 20] ia=2154, thermal , zout=65.8, eup=  228.96 +- 0.794062307
+                                            [WORKER 16] ia=2155, thermal , zout=65.8, eup=  223.22 +- 0.815332574
+                                            [WORKER 21] ia=2157, thermal , zout=65.8, eup=  220.28 +- 0.818482601
+                                            [WORKER 18] ia=2156, thermal , zout=65.3, eup=  223.70 +- 0.805488077
+     Process 26 started calculating ia=2191
+RUNNING ICE CLOUD! ERRROR!!!!
+                                            [WORKER 31] ia=2158, thermal , zout=65.8, eup=  220.66 +- 0.804002007
+                                            [WORKER 39] ia=2185, solar   , zout=65.8, eup=  238.53 +- 2.20925181
+RUNNING ICE CLOUD! ERRROR!!!!
+                                            [WORKER 28] ia=2159, thermal , zout=65.8, eup=  217.50 +- 0.815929292
+     Process 25 started calculating ia=2192
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+                                            [WORKER  1] ia=2186, solar   , zout=65.8, eup=  236.46 +- 2.18911117
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+                                            [WORKER 14] ia=2160, thermal , zout=65.8, eup=  217.46 +- 0.821536686
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+                                            [WORKER 34] ia=2161, thermal , zout=65.8, eup=  208.66 +- 0.827036917
+                                            [WORKER 24] ia=2163, thermal , zout=65.3, eup=  207.41 +- 0.828860874
+                                            [WORKER 13] ia=2162, thermal , zout=65.3, eup=  202.89 +- 0.822657874
+                                            [WORKER 19] ia=2164, thermal , zout=65.8, eup=  218.17 +- 0.822216549
+RUNNING ICE CLOUD! ERRROR!!!!
+                                            [WORKER 23] ia=2165, thermal , zout=65.8, eup=  217.44 +- 0.817959708
+     Process 20 started calculating ia=2193
+RUNNING ICE CLOUD! ERRROR!!!!
+     Process 16 started calculating ia=2194
+RUNNING ICE CLOUD! ERRROR!!!!
+     Process 21 started calculating ia=2195
+RUNNING ICE CLOUD! ERRROR!!!!
+     Process 18 started calculating ia=2196
+RUNNING ICE CLOUD! ERRROR!!!!
+     Process 31 started calculating ia=2197
+RUNNING ICE CLOUD! ERRROR!!!!
+                                            [WORKER 37] ia=2168, thermal , zout=65.3, eup=  221.96 +- 0.844092759
+RUNNING ICE CLOUD! ERRROR!!!!
+     Process 28 started calculating ia=2198
+RUNNING ICE CLOUD! ERRROR!!!!
+                                            [WORKER 30] ia=2166, thermal , zout=65.8, eup=  218.40 +- 0.823169673
+RUNNING ICE CLOUD! ERRROR!!!!
+     Process 14 started calculating ia=2199
+RUNNING ICE CLOUD! ERRROR!!!!
+     Process 13 started calculating ia=2200
+     Process 34 started calculating ia=2201
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+     Process 24 started calculating ia=2202
+     Process 19 started calculating ia=2203
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+                                            [WORKER 12] ia=2167, thermal , zout=65.8, eup=  221.20 +- 0.845518872
+                                            [WORKER 29] ia=2169, thermal , zout=65.3, eup=  222.10 +- 0.833487584
+                                            [WORKER 22] ia=2170, thermal , zout=65.3, eup=  223.71 +- 0.813207978
+                                            [WORKER 33] ia=2171, thermal , zout=65.8, eup=  224.77 +- 0.813591114
+     Process 23 started calculating ia=2204
+RUNNING ICE CLOUD! ERRROR!!!!
+                                            [WORKER 38] ia=2173, thermal , zout=65.8, eup=  226.91 +- 0.79462973
+                                            [WORKER 32] ia=2172, thermal , zout=65.8, eup=  225.86 +- 0.801847167
+     Process 37 started calculating ia=2205
+RUNNING ICE CLOUD! ERRROR!!!!
+     Process 30 started calculating ia=2206
+RUNNING ICE CLOUD! ERRROR!!!!
+                                            [WORKER  9] ia=2175, thermal , zout=65.8, eup=  230.88 +- 0.800864946
+     Process 12 started calculating ia=2207
+                                            [WORKER 36] ia=2174, thermal , zout=65.8, eup=  229.74 +- 0.800750732
+RUNNING ICE CLOUD! ERRROR!!!!
+[WORKER 29] Received termination signal. Exiting.
+[WORKER 22] Received termination signal. Exiting.
+                                            [WORKER 11] ia=2176, thermal , zout=65.8, eup=  233.68 +- 0.775272389
+                                            [WORKER 17] ia=2187, solar   , zout=65.8, eup=  240.09 +- 2.21728005
+[WORKER 33] Received termination signal. Exiting.
+                                            [WORKER 35] ia=2188, solar   , zout=65.8, eup=  234.04 +- 2.19116275
+[WORKER 38] Received termination signal. Exiting.
+[WORKER 32] Received termination signal. Exiting.
+                                            [WORKER  3] ia=2177, thermal , zout=65.8, eup=  234.66 +- 0.785456396
+[WORKER 9] Received termination signal. Exiting.
+                                            [WORKER 15] ia=2189, solar   , zout=65.8, eup=  226.18 +- 2.16311581
+[WORKER 36] Received termination signal. Exiting.
+[WORKER 11] Received termination signal. Exiting.
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+[WORKER 3] Received termination signal. Exiting.
+RUNNING ICE CLOUD! ERRROR!!!!
+                                            [WORKER 27] ia=2190, solar   , zout=65.3, eup=  226.43 +- 2.15935779
+RUNNING ICE CLOUD! ERRROR!!!!
+                                            [WORKER  2] ia=2178, thermal , zout=65.8, eup=  227.88 +- 0.804796267
+                                            [WORKER 10] ia=2179, thermal , zout=65.8, eup=  237.57 +- 0.77844915
+[WORKER 2] Received termination signal. Exiting.
+                                            [WORKER  6] ia=2180, thermal , zout=65.8, eup=  236.98 +- 0.800626935
+[WORKER 10] Received termination signal. Exiting.
+                                            [WORKER  5] ia=2181, thermal , zout=65.8, eup=  239.17 +- 0.789110956
+                                            [WORKER  4] ia=2182, thermal , zout=65.8, eup=  240.24 +- 0.775390241
+                                            [WORKER  8] ia=2183, thermal , zout=65.8, eup=  242.92 +- 0.774697058
+[WORKER 6] Received termination signal. Exiting.
+[WORKER 5] Received termination signal. Exiting.
+[WORKER 4] Received termination signal. Exiting.
+[WORKER 8] Received termination signal. Exiting.
+                                            [WORKER 26] ia=2191, solar   , zout=65.3, eup=  235.65 +- 2.21378135
+RUNNING ICE CLOUD! ERRROR!!!!
+                                            [WORKER  7] ia=2184, thermal , zout=65.3, eup=  242.15 +- 0.783789817
+                                            [WORKER 25] ia=2192, solar   , zout=65.8, eup=  229.88 +- 2.19132269
+[WORKER 7] Received termination signal. Exiting.
+RUNNING ICE CLOUD! ERRROR!!!!
+                                            [WORKER 39] ia=2185, thermal , zout=65.8, eup=  244.06 +- 0.782380812
+                                            [WORKER 20] ia=2193, solar   , zout=65.8, eup=  235.67 +- 2.20306775
+[WORKER 39] Received termination signal. Exiting.
+RUNNING ICE CLOUD! ERRROR!!!!
+                                            [WORKER  1] ia=2186, thermal , zout=65.8, eup=  243.41 +- 0.789945241
+                                            [WORKER 16] ia=2194, solar   , zout=65.8, eup=  248.72 +- 2.24703774
+                                            [WORKER 21] ia=2195, solar   , zout=65.8, eup=  252.58 +- 2.27895051
+[WORKER 1] Received termination signal. Exiting.
+                                            [WORKER 18] ia=2196, solar   , zout=65.3, eup=  252.99 +- 2.24934918
+                                            [WORKER 31] ia=2197, solar   , zout=65.3, eup=  259.58 +- 2.28257034
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+                                            [WORKER 28] ia=2198, solar   , zout=65.3, eup=  268.05 +- 2.29916797
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+                                            [WORKER 34] ia=2201, solar   , zout=65.8, eup=  273.42 +- 2.31650238
+                                            [WORKER 19] ia=2203, solar   , zout=65.8, eup=  282.14 +- 2.36416171
+                                            [WORKER 24] ia=2202, solar   , zout=65.8, eup=  277.92 +- 2.34845891
+                                            [WORKER 13] ia=2200, solar   , zout=65.8, eup=  267.92 +- 2.31761974
+                                            [WORKER 14] ia=2199, solar   , zout=65.8, eup=  269.09 +- 2.30389246
+                                            [WORKER 23] ia=2204, solar   , zout=65.8, eup=  288.53 +- 2.37378752
+RUNNING ICE CLOUD! ERRROR!!!!
+                                            [WORKER 17] ia=2187, thermal , zout=65.8, eup=  242.96 +- 0.775879982
+                                            [WORKER 35] ia=2188, thermal , zout=65.8, eup=  240.18 +- 0.802780373
+RUNNING ICE CLOUD! ERRROR!!!!
+                                            [WORKER 37] ia=2205, solar   , zout=65.3, eup=  292.61 +- 2.38683692
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+                                            [WORKER 15] ia=2189, thermal , zout=65.8, eup=  240.50 +- 0.820718792
+                                            [WORKER 30] ia=2206, solar   , zout=65.8, eup=  295.90 +- 2.4127407
+                                            [WORKER 12] ia=2207, solar   , zout=65.8, eup=  295.48 +- 2.39121902
+RUNNING ICE CLOUD! ERRROR!!!!
+                                            [WORKER 27] ia=2190, thermal , zout=65.3, eup=  238.14 +- 0.808485973
+[WORKER 17] Received termination signal. Exiting.
+[WORKER 35] Received termination signal. Exiting.
+RUNNING ICE CLOUD! ERRROR!!!!
+[WORKER 15] Received termination signal. Exiting.
+RUNNING ICE CLOUD! ERRROR!!!!
+RUNNING ICE CLOUD! ERRROR!!!!
+[WORKER 27] Received termination signal. Exiting.
+                                            [WORKER 26] ia=2191, thermal , zout=65.3, eup=  237.03 +- 0.817392839
+[WORKER 26] Received termination signal. Exiting.
+                                            [WORKER 25] ia=2192, thermal , zout=65.8, eup=  233.60 +- 0.844393485
+[WORKER 25] Received termination signal. Exiting.
+                                            [WORKER 20] ia=2193, thermal , zout=65.8, eup=  229.39 +- 0.854586874
+[WORKER 20] Received termination signal. Exiting.
+                                            [WORKER 16] ia=2194, thermal , zout=65.8, eup=  222.35 +- 0.864055718
+                                            [WORKER 21] ia=2195, thermal , zout=65.8, eup=  220.90 +- 0.87788464
+[WORKER 16] Received termination signal. Exiting.
+[WORKER 21] Received termination signal. Exiting.
+                                            [WORKER 31] ia=2197, thermal , zout=65.3, eup=  211.61 +- 0.892983543
+                                            [WORKER 18] ia=2196, thermal , zout=65.3, eup=  216.66 +- 0.874424098
+[WORKER 31] Received termination signal. Exiting.
+[WORKER 18] Received termination signal. Exiting.
+                                            [WORKER 28] ia=2198, thermal , zout=65.3, eup=  207.11 +- 0.879524082
+[WORKER 28] Received termination signal. Exiting.
+                                            [WORKER 34] ia=2201, thermal , zout=65.8, eup=  193.41 +- 0.901180161
+                                            [WORKER 19] ia=2203, thermal , zout=65.8, eup=  186.84 +- 0.88410531
+[WORKER 34] Received termination signal. Exiting.
+                                            [WORKER 24] ia=2202, thermal , zout=65.8, eup=  190.95 +- 0.903976087
+                                            [WORKER 14] ia=2199, thermal , zout=65.8, eup=  200.93 +- 0.875392043
+                                            [WORKER 13] ia=2200, thermal , zout=65.8, eup=  198.27 +- 0.899936984
+[WORKER 19] Received termination signal. Exiting.
+                                            [WORKER 23] ia=2204, thermal , zout=65.8, eup=  184.77 +- 0.879048756
+[WORKER 24] Received termination signal. Exiting.
+[WORKER 14] Received termination signal. Exiting.
+[WORKER 13] Received termination signal. Exiting.
+[WORKER 23] Received termination signal. Exiting.
+                                            [WORKER 37] ia=2205, thermal , zout=65.3, eup=  183.41 +- 0.885924904
+                                            [WORKER 30] ia=2206, thermal , zout=65.8, eup=  179.89 +- 0.861920592
+                                            [WORKER 12] ia=2207, thermal , zout=65.8, eup=  179.24 +- 0.859915061
+[WORKER 37] Received termination signal. Exiting.
+[WORKER 30] Received termination signal. Exiting.
+Writing libRadtran output to netcdf file:  ./RESULTS/libRad_v01_montecarlo_3D_SWIA_solar,thermal_Orbit_06497E_wc_test_atm_0.nc
+[WORKER 12] Received termination signal. Exiting.
+Run finished. It took 0.231 hours 
+
+
+Finished running Python file at Sun Nov  9 20:52:52 CET 2025

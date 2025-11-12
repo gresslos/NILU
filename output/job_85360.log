@@ -1,0 +1,191 @@
+Running at /scratch/bgre/85360
+Submitdir is /homevip/bgre/RTM
+Number of nodes: 1
+Number of tasks: 40
+Making SLURM ready at  Wed Nov  5 13:29:16 CET 2025
+Starting slurm job at  Wed Nov 5 13:29:34 CET 2025
+Running Python file at Wed Nov  5 13:29:34 CET 2025
+Run started at 2025-11-05T12:29:52.353314+00:00
+
+
+
+=================================================================================================================
+Nadir Pixel Index    =  151
+SceneName            =  Orbit_06518D
+Specs                =  disort - 1D - _TEST
+     Process 1 started calculating ia=2925
+     Process 3 started calculating ia=2935
+     Process 4 started calculating ia=2940
+     Process 6 started calculating ia=2950
+     Process 15 started calculating ia=2995
+     Process 24 started calculating ia=3040
+     Process 35 started calculating ia=3095
+     Process 38 started calculating ia=3110
+     Process 12 started calculating ia=2980
+     Process 2 started calculating ia=2930
+     Process 5 started calculating ia=2945
+     Process 11 started calculating ia=2975
+     Process 8 started calculating ia=2960
+     Process 13 started calculating ia=2985
+     Process 9 started calculating ia=2965
+     Process 7 started calculating ia=2955
+     Process 10 started calculating ia=2970
+     Process 17 started calculating ia=3005
+     Process 14 started calculating ia=2990
+     Process 31 started calculating ia=3075
+     Process 26 started calculating ia=3050
+     Process 22 started calculating ia=3030
+     Process 32 started calculating ia=3080
+     Process 37 started calculating ia=3105
+     Process 30 started calculating ia=3070
+     Process 33 started calculating ia=3085
+     Process 34 started calculating ia=3090
+     Process 20 started calculating ia=3020
+     Process 25 started calculating ia=3045
+     Process 29 started calculating ia=3065
+     Process 23 started calculating ia=3035
+     Process 16 started calculating ia=3000
+     Process 21 started calculating ia=3025
+     Process 27 started calculating ia=3055
+     Process 36 started calculating ia=3100
+     Process 19 started calculating ia=3015
+     Process 39 started calculating ia=3115
+     Process 28 started calculating ia=3060
+     Process 18 started calculating ia=3010
+                                            [WORKER  4] ia=2940, solar   , zout=64.7, eup=  192.72
+                                            [WORKER  1] ia=2925, solar   , zout=64.7, eup=  287.58
+                                            [WORKER  6] ia=2950, solar   , zout=64.7, eup=  198.81
+                                            [WORKER 12] ia=2980, solar   , zout=64.7, eup=  181.66
+                                            [WORKER  5] ia=2945, solar   , zout=64.7, eup=  205.34
+                                            [WORKER  3] ia=2935, solar   , zout=64.7, eup=  345.60
+                                            [WORKER  2] ia=2930, solar   , zout=64.7, eup=  287.11
+                                            [WORKER  8] ia=2960, solar   , zout=64.7, eup=  184.18
+                                            [WORKER 11] ia=2975, solar   , zout=64.7, eup=  186.81
+                                            [WORKER 15] ia=2995, solar   , zout=64.7, eup=  811.07
+                                            [WORKER  9] ia=2965, solar   , zout=64.7, eup=  192.19
+                                            [WORKER 13] ia=2985, solar   , zout=64.8, eup=  546.30
+                                            [WORKER  7] ia=2955, solar   , zout=64.7, eup=  868.97
+                                            [WORKER 24] ia=3040, solar   , zout=64.7, eup=  989.96
+                                            [WORKER 14] ia=2990, solar   , zout=64.7, eup=  604.61
+                                            [WORKER 10] ia=2970, solar   , zout=64.7, eup=  184.44
+                                            [WORKER 35] ia=3095, solar   , zout=64.7, eup=  993.85
+                                            [WORKER 38] ia=3110, solar   , zout=64.7, eup=  994.91
+                                            [WORKER 32] ia=3080, solar   , zout=64.7, eup=  993.77
+                                            [WORKER 31] ia=3075, solar   , zout=64.7, eup=  993.61
+                                            [WORKER 30] ia=3070, solar   , zout=64.7, eup=  993.13
+                                            [WORKER 26] ia=3050, solar   , zout=64.7, eup=  991.72
+                                            [WORKER 25] ia=3045, solar   , zout=64.7, eup=  991.52
+                                            [WORKER 22] ia=3030, solar   , zout=64.7, eup=  987.84
+                                            [WORKER 23] ia=3035, solar   , zout=64.7, eup=  989.48
+                                            [WORKER 34] ia=3090, solar   , zout=64.7, eup=  994.62
+                                            [WORKER 17] ia=3005, solar   , zout=64.7, eup=  940.95
+                                            [WORKER 20] ia=3020, solar   , zout=64.7, eup=  980.86
+                                            [WORKER 19] ia=3015, solar   , zout=64.7, eup=  977.64
+                                            [WORKER 39] ia=3115, solar   , zout=64.7, eup=  996.30
+                                            [WORKER 21] ia=3025, solar   , zout=64.7, eup=  986.37
+                                            [WORKER 16] ia=3000, solar   , zout=64.7, eup=  892.32
+                                            [WORKER 27] ia=3055, solar   , zout=64.7, eup=  991.16
+                                            [WORKER 33] ia=3085, solar   , zout=64.7, eup=  994.27
+                                            [WORKER 36] ia=3100, solar   , zout=64.7, eup=  995.24
+                                            [WORKER 37] ia=3105, solar   , zout=64.7, eup=  995.26
+                                            [WORKER 29] ia=3065, solar   , zout=64.7, eup=  992.45
+                                            [WORKER 28] ia=3060, solar   , zout=64.7, eup=  991.59
+                                            [WORKER 18] ia=3010, solar   , zout=64.7, eup=  958.73
+                                            [WORKER  4] ia=2940, thermal , zout=64.7, eup=  303.39
+     Process 4 started calculating ia=3120
+                                            [WORKER  1] ia=2925, thermal , zout=64.7, eup=  275.48
+     Process 1 started calculating ia=3125
+                                            [WORKER  6] ia=2950, thermal , zout=64.7, eup=  299.41
+     Process 6 started calculating ia=3130
+                                            [WORKER 12] ia=2980, thermal , zout=64.7, eup=  309.88
+     Process 12 started calculating ia=3135
+                                            [WORKER  5] ia=2945, thermal , zout=64.7, eup=  300.23
+     Process 5 started calculating ia=3140
+                                            [WORKER  3] ia=2935, thermal , zout=64.7, eup=  253.77
+[WORKER 3] Received termination signal. Exiting.
+                                            [WORKER  2] ia=2930, thermal , zout=64.7, eup=  283.78
+[WORKER 2] Received termination signal. Exiting.
+                                            [WORKER  8] ia=2960, thermal , zout=64.7, eup=  297.01
+[WORKER 8] Received termination signal. Exiting.
+                                            [WORKER 11] ia=2975, thermal , zout=64.7, eup=  309.32
+[WORKER 11] Received termination signal. Exiting.
+                                            [WORKER  9] ia=2965, thermal , zout=64.7, eup=  296.00
+[WORKER 9] Received termination signal. Exiting.
+                                            [WORKER 13] ia=2985, thermal , zout=64.8, eup=  202.50
+[WORKER 13] Received termination signal. Exiting.
+                                            [WORKER  7] ia=2955, thermal , zout=64.7, eup=  207.38
+[WORKER 7] Received termination signal. Exiting.
+                                            [WORKER 10] ia=2970, thermal , zout=64.7, eup=  309.02
+[WORKER 10] Received termination signal. Exiting.
+                                            [WORKER 15] ia=2995, thermal , zout=64.7, eup=  130.90
+[WORKER 15] Received termination signal. Exiting.
+                                            [WORKER 14] ia=2990, thermal , zout=64.7, eup=  186.65
+[WORKER 14] Received termination signal. Exiting.
+                                            [WORKER 24] ia=3040, thermal , zout=64.7, eup=  103.56
+[WORKER 24] Received termination signal. Exiting.
+                                            [WORKER 35] ia=3095, thermal , zout=64.7, eup=  101.29
+[WORKER 35] Received termination signal. Exiting.
+                                            [WORKER 38] ia=3110, thermal , zout=64.7, eup=  100.73
+[WORKER 38] Received termination signal. Exiting.
+                                            [WORKER 31] ia=3075, thermal , zout=64.7, eup=  101.28
+[WORKER 31] Received termination signal. Exiting.
+                                            [WORKER 32] ia=3080, thermal , zout=64.7, eup=  101.47
+[WORKER 32] Received termination signal. Exiting.
+                                            [WORKER 25] ia=3045, thermal , zout=64.7, eup=  102.14
+[WORKER 25] Received termination signal. Exiting.
+                                            [WORKER 26] ia=3050, thermal , zout=64.7, eup=  102.70
+[WORKER 26] Received termination signal. Exiting.
+                                            [WORKER 30] ia=3070, thermal , zout=64.7, eup=  101.39
+[WORKER 30] Received termination signal. Exiting.
+                                            [WORKER 34] ia=3090, thermal , zout=64.7, eup=  102.08
+[WORKER 34] Received termination signal. Exiting.
+                                            [WORKER 17] ia=3005, thermal , zout=64.7, eup=  105.68
+[WORKER 17] Received termination signal. Exiting.
+                                            [WORKER 19] ia=3015, thermal , zout=64.7, eup=  104.39
+[WORKER 19] Received termination signal. Exiting.
+                                            [WORKER 23] ia=3035, thermal , zout=64.7, eup=  103.38
+[WORKER 23] Received termination signal. Exiting.
+                                            [WORKER 20] ia=3020, thermal , zout=64.7, eup=  105.42
+[WORKER 20] Received termination signal. Exiting.
+                                            [WORKER 29] ia=3065, thermal , zout=64.7, eup=  101.95
+[WORKER 29] Received termination signal. Exiting.
+                                            [WORKER 22] ia=3030, thermal , zout=64.7, eup=  104.17
+[WORKER 22] Received termination signal. Exiting.
+                                            [WORKER 36] ia=3100, thermal , zout=64.7, eup=  101.06
+[WORKER 36] Received termination signal. Exiting.
+                                            [WORKER 37] ia=3105, thermal , zout=64.7, eup=  100.63
+[WORKER 37] Received termination signal. Exiting.
+                                            [WORKER 33] ia=3085, thermal , zout=64.7, eup=  101.65
+[WORKER 33] Received termination signal. Exiting.
+                                            [WORKER 16] ia=3000, thermal , zout=64.7, eup=  112.91
+[WORKER 16] Received termination signal. Exiting.
+                                            [WORKER 39] ia=3115, thermal , zout=64.7, eup=  100.04
+[WORKER 39] Received termination signal. Exiting.
+                                            [WORKER 27] ia=3055, thermal , zout=64.7, eup=  103.40
+[WORKER 27] Received termination signal. Exiting.
+                                            [WORKER 28] ia=3060, thermal , zout=64.7, eup=  102.91
+[WORKER 28] Received termination signal. Exiting.
+                                            [WORKER 21] ia=3025, thermal , zout=64.7, eup=  104.87
+[WORKER 21] Received termination signal. Exiting.
+                                            [WORKER 18] ia=3010, thermal , zout=64.7, eup=  105.16
+[WORKER 18] Received termination signal. Exiting.
+                                            [WORKER  4] ia=3120, solar   , zout=64.7, eup=  996.29
+                                            [WORKER  1] ia=3125, solar   , zout=64.7, eup=  994.99
+                                            [WORKER  6] ia=3130, solar   , zout=64.7, eup=  995.79
+                                            [WORKER 12] ia=3135, solar   , zout=64.8, eup=  994.29
+                                            [WORKER  5] ia=3140, solar   , zout=64.7, eup=  989.39
+                                            [WORKER  1] ia=3125, thermal , zout=64.7, eup=  100.16
+[WORKER 1] Received termination signal. Exiting.
+                                            [WORKER  4] ia=3120, thermal , zout=64.7, eup=  100.17
+[WORKER 4] Received termination signal. Exiting.
+                                            [WORKER  6] ia=3130, thermal , zout=64.7, eup=  100.52
+[WORKER 6] Received termination signal. Exiting.
+                                            [WORKER 12] ia=3135, thermal , zout=64.8, eup=  100.74
+[WORKER 12] Received termination signal. Exiting.
+                                            [WORKER  5] ia=3140, thermal , zout=64.7, eup=  100.61
+[WORKER 5] Received termination signal. Exiting.
+Writing libRadtran output to netcdf file:  ./RESULTS/libRad_v01_disort_1D_SWIA_solar,thermal_Orbit_06518D_TEST.nc
+Run finished. It took 0.008 hours 
+
+
+Finished running Python file at Wed Nov  5 13:30:33 CET 2025

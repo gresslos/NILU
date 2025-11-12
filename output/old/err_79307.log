@@ -1,0 +1,282 @@
+Traceback (most recent call last):
+  File "/scratch/bgre/79307/./MakeRTMInputFile_bg.py", line 17, in <module>
+Traceback (most recent call last):
+  File "/scratch/bgre/79307/./MakeRTMInputFile_bg.py", line 17, in <module>
+Traceback (most recent call last):
+  File "/scratch/bgre/79307/./MakeRTMInputFile_bg.py", line 17, in <module>
+Traceback (most recent call last):
+  File "/scratch/bgre/79307/./MakeRTMInputFile_bg.py", line 17, in <module>
+Traceback (most recent call last):
+  File "/scratch/bgre/79307/./MakeRTMInputFile_bg.py", line 17, in <module>
+Traceback (most recent call last):
+  File "/scratch/bgre/79307/./MakeRTMInputFile_bg.py", line 17, in <module>
+Traceback (most recent call last):
+  File "/scratch/bgre/79307/./MakeRTMInputFile_bg.py", line 17, in <module>
+Traceback (most recent call last):
+  File "/scratch/bgre/79307/./MakeRTMInputFile_bg.py", line 17, in <module>
+Traceback (most recent call last):
+  File "/scratch/bgre/79307/./MakeRTMInputFile_bg.py", line 17, in <module>
+Traceback (most recent call last):
+  File "/scratch/bgre/79307/./MakeRTMInputFile_bg.py", line 17, in <module>
+Traceback (most recent call last):
+  File "/scratch/bgre/79307/./MakeRTMInputFile_bg.py", line 17, in <module>
+Traceback (most recent call last):
+  File "/scratch/bgre/79307/./MakeRTMInputFile_bg.py", line 17, in <module>
+Traceback (most recent call last):
+  File "/scratch/bgre/79307/./MakeRTMInputFile_bg.py", line 17, in <module>
+Traceback (most recent call last):
+  File "/scratch/bgre/79307/./MakeRTMInputFile_bg.py", line 17, in <module>
+Traceback (most recent call last):
+  File "/scratch/bgre/79307/./MakeRTMInputFile_bg.py", line 17, in <module>
+Traceback (most recent call last):
+  File "/scratch/bgre/79307/./MakeRTMInputFile_bg.py", line 17, in <module>
+Traceback (most recent call last):
+  File "/scratch/bgre/79307/./MakeRTMInputFile_bg.py", line 17, in <module>
+    import ReadEarthCAREL2_bg as ReadEC
+  File "/scratch/bgre/79307/ReadEarthCAREL2_bg.py", line 2560
+    idx_scene = [3, 4. 11]
+                    ^^^^^
+SyntaxError: invalid syntax. Perhaps you forgot a comma?
+    import ReadEarthCAREL2_bg as ReadEC
+  File "/scratch/bgre/79307/ReadEarthCAREL2_bg.py", line 2560
+    idx_scene = [3, 4. 11]
+                    ^^^^^
+SyntaxError: invalid syntax. Perhaps you forgot a comma?
+    import ReadEarthCAREL2_bg as ReadEC
+  File "/scratch/bgre/79307/ReadEarthCAREL2_bg.py", line 2560
+    idx_scene = [3, 4. 11]
+                    ^^^^^
+SyntaxError: invalid syntax. Perhaps you forgot a comma?
+Traceback (most recent call last):
+  File "/scratch/bgre/79307/./MakeRTMInputFile_bg.py", line 17, in <module>
+Traceback (most recent call last):
+  File "/scratch/bgre/79307/./MakeRTMInputFile_bg.py", line 17, in <module>
+Traceback (most recent call last):
+  File "/scratch/bgre/79307/./MakeRTMInputFile_bg.py", line 17, in <module>
+Traceback (most recent call last):
+  File "/scratch/bgre/79307/./MakeRTMInputFile_bg.py", line 17, in <module>
+Traceback (most recent call last):
+  File "/scratch/bgre/79307/./MakeRTMInputFile_bg.py", line 17, in <module>
+    import ReadEarthCAREL2_bg as ReadEC
+  File "/scratch/bgre/79307/ReadEarthCAREL2_bg.py", line 2560
+    idx_scene = [3, 4. 11]
+                    ^^^^^
+SyntaxError: invalid syntax. Perhaps you forgot a comma?
+    import ReadEarthCAREL2_bg as ReadEC
+  File "/scratch/bgre/79307/ReadEarthCAREL2_bg.py", line 2560
+    idx_scene = [3, 4. 11]
+                    ^^^^^
+SyntaxError: invalid syntax. Perhaps you forgot a comma?
+    import ReadEarthCAREL2_bg as ReadEC
+  File "/scratch/bgre/79307/ReadEarthCAREL2_bg.py", line 2560
+    idx_scene = [3, 4. 11]
+                    ^^^^^
+SyntaxError: invalid syntax. Perhaps you forgot a comma?
+    import ReadEarthCAREL2_bg as ReadEC
+    import ReadEarthCAREL2_bg as ReadEC
+  File "/scratch/bgre/79307/ReadEarthCAREL2_bg.py", line 2560
+    idx_scene = [3, 4. 11]
+                    ^^^^^
+SyntaxError: invalid syntax. Perhaps you forgot a comma?
+  File "/scratch/bgre/79307/ReadEarthCAREL2_bg.py", line 2560
+    idx_scene = [3, 4. 11]
+                    ^^^^^
+SyntaxError: invalid syntax. Perhaps you forgot a comma?
+    import ReadEarthCAREL2_bg as ReadEC
+  File "/scratch/bgre/79307/ReadEarthCAREL2_bg.py", line 2560
+    idx_scene = [3, 4. 11]
+                    ^^^^^
+SyntaxError: invalid syntax. Perhaps you forgot a comma?
+    import ReadEarthCAREL2_bg as ReadEC
+  File "/scratch/bgre/79307/ReadEarthCAREL2_bg.py", line 2560
+    idx_scene = [3, 4. 11]
+                    ^^^^^
+SyntaxError: invalid syntax. Perhaps you forgot a comma?
+    import ReadEarthCAREL2_bg as ReadEC
+  File "/scratch/bgre/79307/ReadEarthCAREL2_bg.py", line 2560
+    idx_scene = [3, 4. 11]
+                    ^^^^^
+SyntaxError: invalid syntax. Perhaps you forgot a comma?
+    import ReadEarthCAREL2_bg as ReadEC
+  File "/scratch/bgre/79307/ReadEarthCAREL2_bg.py", line 2560
+    idx_scene = [3, 4. 11]
+                    ^^^^^
+SyntaxError: invalid syntax. Perhaps you forgot a comma?
+    import ReadEarthCAREL2_bg as ReadEC
+  File "/scratch/bgre/79307/ReadEarthCAREL2_bg.py", line 2560
+    idx_scene = [3, 4. 11]
+                    ^^^^^
+SyntaxError: invalid syntax. Perhaps you forgot a comma?
+    import ReadEarthCAREL2_bg as ReadEC
+  File "/scratch/bgre/79307/ReadEarthCAREL2_bg.py", line 2560
+    idx_scene = [3, 4. 11]
+                    ^^^^^
+SyntaxError: invalid syntax. Perhaps you forgot a comma?
+    import ReadEarthCAREL2_bg as ReadEC
+  File "/scratch/bgre/79307/ReadEarthCAREL2_bg.py", line 2560
+    idx_scene = [3, 4. 11]
+                    ^^^^^
+SyntaxError: invalid syntax. Perhaps you forgot a comma?
+    import ReadEarthCAREL2_bg as ReadEC
+  File "/scratch/bgre/79307/ReadEarthCAREL2_bg.py", line 2560
+    idx_scene = [3, 4. 11]
+                    ^^^^^
+SyntaxError: invalid syntax. Perhaps you forgot a comma?
+    import ReadEarthCAREL2_bg as ReadEC
+  File "/scratch/bgre/79307/ReadEarthCAREL2_bg.py", line 2560
+    idx_scene = [3, 4. 11]
+                    ^^^^^
+SyntaxError: invalid syntax. Perhaps you forgot a comma?
+Traceback (most recent call last):
+  File "/scratch/bgre/79307/./MakeRTMInputFile_bg.py", line 17, in <module>
+    import ReadEarthCAREL2_bg as ReadEC
+  File "/scratch/bgre/79307/ReadEarthCAREL2_bg.py", line 2560
+    idx_scene = [3, 4. 11]
+                    ^^^^^
+SyntaxError: invalid syntax. Perhaps you forgot a comma?
+    import ReadEarthCAREL2_bg as ReadEC
+  File "/scratch/bgre/79307/ReadEarthCAREL2_bg.py", line 2560
+    idx_scene = [3, 4. 11]
+                    ^^^^^
+SyntaxError: invalid syntax. Perhaps you forgot a comma?
+    import ReadEarthCAREL2_bg as ReadEC
+  File "/scratch/bgre/79307/ReadEarthCAREL2_bg.py", line 2560
+    idx_scene = [3, 4. 11]
+                    ^^^^^
+SyntaxError: invalid syntax. Perhaps you forgot a comma?
+Traceback (most recent call last):
+  File "/scratch/bgre/79307/./MakeRTMInputFile_bg.py", line 17, in <module>
+    import ReadEarthCAREL2_bg as ReadEC
+  File "/scratch/bgre/79307/ReadEarthCAREL2_bg.py", line 2560
+    idx_scene = [3, 4. 11]
+                    ^^^^^
+SyntaxError: invalid syntax. Perhaps you forgot a comma?
+Traceback (most recent call last):
+  File "/scratch/bgre/79307/./MakeRTMInputFile_bg.py", line 17, in <module>
+    import ReadEarthCAREL2_bg as ReadEC
+  File "/scratch/bgre/79307/ReadEarthCAREL2_bg.py", line 2560
+    idx_scene = [3, 4. 11]
+                    ^^^^^
+SyntaxError: invalid syntax. Perhaps you forgot a comma?
+Traceback (most recent call last):
+  File "/scratch/bgre/79307/./MakeRTMInputFile_bg.py", line 17, in <module>
+Traceback (most recent call last):
+  File "/scratch/bgre/79307/./MakeRTMInputFile_bg.py", line 17, in <module>
+    import ReadEarthCAREL2_bg as ReadEC
+  File "/scratch/bgre/79307/ReadEarthCAREL2_bg.py", line 2560
+    idx_scene = [3, 4. 11]
+                    ^^^^^
+SyntaxError: invalid syntax. Perhaps you forgot a comma?
+    import ReadEarthCAREL2_bg as ReadEC
+  File "/scratch/bgre/79307/ReadEarthCAREL2_bg.py", line 2560
+    idx_scene = [3, 4. 11]
+                    ^^^^^
+SyntaxError: invalid syntax. Perhaps you forgot a comma?
+Traceback (most recent call last):
+  File "/scratch/bgre/79307/./MakeRTMInputFile_bg.py", line 17, in <module>
+    import ReadEarthCAREL2_bg as ReadEC
+  File "/scratch/bgre/79307/ReadEarthCAREL2_bg.py", line 2560
+    idx_scene = [3, 4. 11]
+                    ^^^^^
+SyntaxError: invalid syntax. Perhaps you forgot a comma?
+    import ReadEarthCAREL2_bg as ReadEC
+  File "/scratch/bgre/79307/ReadEarthCAREL2_bg.py", line 2560
+    idx_scene = [3, 4. 11]
+                    ^^^^^
+SyntaxError: invalid syntax. Perhaps you forgot a comma?
+Traceback (most recent call last):
+  File "/scratch/bgre/79307/./MakeRTMInputFile_bg.py", line 17, in <module>
+Traceback (most recent call last):
+  File "/scratch/bgre/79307/./MakeRTMInputFile_bg.py", line 17, in <module>
+Traceback (most recent call last):
+  File "/scratch/bgre/79307/./MakeRTMInputFile_bg.py", line 17, in <module>
+    import ReadEarthCAREL2_bg as ReadEC
+  File "/scratch/bgre/79307/ReadEarthCAREL2_bg.py", line 2560
+    idx_scene = [3, 4. 11]
+                    ^^^^^
+SyntaxError: invalid syntax. Perhaps you forgot a comma?
+    import ReadEarthCAREL2_bg as ReadEC
+  File "/scratch/bgre/79307/ReadEarthCAREL2_bg.py", line 2560
+    idx_scene = [3, 4. 11]
+                    ^^^^^
+SyntaxError: invalid syntax. Perhaps you forgot a comma?
+Traceback (most recent call last):
+  File "/scratch/bgre/79307/./MakeRTMInputFile_bg.py", line 17, in <module>
+    import ReadEarthCAREL2_bg as ReadEC
+  File "/scratch/bgre/79307/ReadEarthCAREL2_bg.py", line 2560
+    idx_scene = [3, 4. 11]
+                    ^^^^^
+SyntaxError: invalid syntax. Perhaps you forgot a comma?
+    import ReadEarthCAREL2_bg as ReadEC
+  File "/scratch/bgre/79307/ReadEarthCAREL2_bg.py", line 2560
+    idx_scene = [3, 4. 11]
+                    ^^^^^
+SyntaxError: invalid syntax. Perhaps you forgot a comma?
+    import ReadEarthCAREL2_bg as ReadEC
+  File "/scratch/bgre/79307/ReadEarthCAREL2_bg.py", line 2560
+    idx_scene = [3, 4. 11]
+                    ^^^^^
+SyntaxError: invalid syntax. Perhaps you forgot a comma?
+Traceback (most recent call last):
+  File "/scratch/bgre/79307/./MakeRTMInputFile_bg.py", line 17, in <module>
+Traceback (most recent call last):
+  File "/scratch/bgre/79307/./MakeRTMInputFile_bg.py", line 17, in <module>
+    import ReadEarthCAREL2_bg as ReadEC
+  File "/scratch/bgre/79307/ReadEarthCAREL2_bg.py", line 2560
+    idx_scene = [3, 4. 11]
+                    ^^^^^
+SyntaxError: invalid syntax. Perhaps you forgot a comma?
+Traceback (most recent call last):
+  File "/scratch/bgre/79307/./MakeRTMInputFile_bg.py", line 17, in <module>
+    import ReadEarthCAREL2_bg as ReadEC
+  File "/scratch/bgre/79307/ReadEarthCAREL2_bg.py", line 2560
+    idx_scene = [3, 4. 11]
+                    ^^^^^
+SyntaxError: invalid syntax. Perhaps you forgot a comma?
+    import ReadEarthCAREL2_bg as ReadEC
+  File "/scratch/bgre/79307/ReadEarthCAREL2_bg.py", line 2560
+    idx_scene = [3, 4. 11]
+                    ^^^^^
+SyntaxError: invalid syntax. Perhaps you forgot a comma?
+    import ReadEarthCAREL2_bg as ReadEC
+  File "/scratch/bgre/79307/ReadEarthCAREL2_bg.py", line 2560
+    idx_scene = [3, 4. 11]
+                    ^^^^^
+SyntaxError: invalid syntax. Perhaps you forgot a comma?
+Traceback (most recent call last):
+  File "/scratch/bgre/79307/./MakeRTMInputFile_bg.py", line 17, in <module>
+Traceback (most recent call last):
+  File "/scratch/bgre/79307/./MakeRTMInputFile_bg.py", line 17, in <module>
+Traceback (most recent call last):
+  File "/scratch/bgre/79307/./MakeRTMInputFile_bg.py", line 17, in <module>
+Traceback (most recent call last):
+  File "/scratch/bgre/79307/./MakeRTMInputFile_bg.py", line 17, in <module>
+Traceback (most recent call last):
+  File "/scratch/bgre/79307/./MakeRTMInputFile_bg.py", line 17, in <module>
+    import ReadEarthCAREL2_bg as ReadEC
+  File "/scratch/bgre/79307/ReadEarthCAREL2_bg.py", line 2560
+    idx_scene = [3, 4. 11]
+                    ^^^^^
+SyntaxError: invalid syntax. Perhaps you forgot a comma?
+    import ReadEarthCAREL2_bg as ReadEC
+  File "/scratch/bgre/79307/ReadEarthCAREL2_bg.py", line 2560
+    idx_scene = [3, 4. 11]
+                    ^^^^^
+SyntaxError: invalid syntax. Perhaps you forgot a comma?
+    import ReadEarthCAREL2_bg as ReadEC
+  File "/scratch/bgre/79307/ReadEarthCAREL2_bg.py", line 2560
+    idx_scene = [3, 4. 11]
+                    ^^^^^
+SyntaxError: invalid syntax. Perhaps you forgot a comma?
+    import ReadEarthCAREL2_bg as ReadEC
+  File "/scratch/bgre/79307/ReadEarthCAREL2_bg.py", line 2560
+    idx_scene = [3, 4. 11]
+                    ^^^^^
+SyntaxError: invalid syntax. Perhaps you forgot a comma?
+    import ReadEarthCAREL2_bg as ReadEC
+  File "/scratch/bgre/79307/ReadEarthCAREL2_bg.py", line 2560
+    idx_scene = [3, 4. 11]
+                    ^^^^^
+SyntaxError: invalid syntax. Perhaps you forgot a comma?
+cp: cannot stat '/scratch/bgre/79307/RESULTS/*nc': No such file or directory
+srun: error: prod-cn24: tasks 0-39: Exited with exit code 1
