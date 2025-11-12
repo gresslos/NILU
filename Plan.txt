@@ -2,16 +2,8 @@
 
 
 ------------ Short-Term -------
-        - Må kanskje legge in add-figure in add_quanty faktisk! usikker
-        - I toppen legge til cmap ='vibris' og WP_min, WP_max, WP_min, WP_Max = 1e-3, 1e5, 1e-6, 10**4.5
-        - Legge inn ny figur setup for LWC & IWC 
-        - 'wc_atm0' and atmoshere 0/1 
-        - turn off quality status for atmos-analysis 
-        - fix add_quanity setup in Plot_Line -> if stacked and add_quantity_list: 
-    - FIX GIT!!!!!!
-
-
 - Read 1 hour first in the morning! 
+-       RUN SURFACE, but get TOA upward SW FLUX and create list with DISORT - MYSTIC - ACM-RT 1D
 - Get mean-error in Buffer-Sensitivity, Ice-Habit-Sensitivity, AOD-thermal-Model-Sensitivity -> use in conclusion & abstract
 - Create subsection Appendix: Atmosphere ACM-COM - include atmosphere IWC and LWC profile and flux plot for atmos 0 and 1 
     * Marke input data as uncertainty in all results (not only uncertainty in DISORT and MYSTIC)
