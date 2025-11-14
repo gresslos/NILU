@@ -458,6 +458,15 @@ def SetRTM(UVS, ia, ACM3D=None, AMACD=None, ACMCOM=None, ACMRT=None, BMAFLX=None
     UVS.inp['zout']='TOA'
     UVS.inp['output_user']='sza zout edir eup'
     UVS.inp['quiet']=''
+    # ---- Calculate Date -> day_of_year ---- (changes made 14.11.2025)
+    ProductFile = ACMCOM.fn 
+    date_num = '20' + ProductFile.split('20', 1)[1].split('T', 1)[0] # Extract Date from ProductFile
+    year = date_num[0:4]; month = date_num[4:6]; day = date_num[6:8]
+    date = day + "." + month+ "." + year
+    day_of_year = datetime(int(year), int(month), int(day)).timetuple().tm_yday # Get day_of_year    
+    UVS.inp['day_of_year']=day_of_year
+    # print(date, day_of_year)   
+    # -----------------------------------------
     
     # Gaseous atmosphere
     atmosphere_file=input_dir+'tmp'+'{:00004d}'.format(ia)+'atm.dat'

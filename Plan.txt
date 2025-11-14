@@ -1,13 +1,19 @@
 ----------------------------------- MASTER PLAN -----------------------------------------
 
+------------ Git Rutine ------
+cd -> to folder
+git status
+git add -A              # or: git add <files/dirs>
+git commit -m "<short note>"
+git push
+
 
 ------------ Short-Term -------
 - Read 1 hour first in the morning! 
--       RUN SURFACE, but get TOA upward SW FLUX and create list with DISORT - MYSTIC - ACM-RT 1D
+- Make function to plot whole globe + mulitple swaths!
+- Think about what to include on monday meeting ()
+- CHECK ATMOSPHERE ACM-COM UNCERTAINTIES IS QUAITY STATUS CORRECT? IS ACTTUALYY ATMOSPHERE 1 MORE VALID THEN ATMOSPHERE 0????????
 - Get mean-error in Buffer-Sensitivity, Ice-Habit-Sensitivity, AOD-thermal-Model-Sensitivity -> use in conclusion & abstract
-- Create subsection Appendix: Atmosphere ACM-COM - include atmosphere IWC and LWC profile and flux plot for atmos 0 and 1 
-    * Marke input data as uncertainty in all results (not only uncertainty in DISORT and MYSTIC)
-    * 
 - Write about CF-diff in Large-VS-Small-Buffer
 - Make Add_Quantity IWC and LWP vs astitude!
 - Make DISORT vs ACM-RT 1D

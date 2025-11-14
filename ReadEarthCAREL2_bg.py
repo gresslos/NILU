@@ -3201,7 +3201,7 @@ if __name__ == "__main__":
              # 3D-Cloud impact
     # additional_spesifications += '_wc'
     additional_spesifications += '_wc_test_atm_0'
-    atmosphere = 0
+    atmosphere = 1
 
 
     
