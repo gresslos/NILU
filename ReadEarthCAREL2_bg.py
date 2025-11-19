@@ -1373,7 +1373,6 @@ class Scene:
             x2 = Scene2.latitude
 
             data = self.solar_combined_top_of_atmosphere_flux
-
             # ----------- Quality-Status -----------------
             quality = self.quality_status[:]
             # boolean mask: True where quality is 0 or 2
@@ -1387,7 +1386,6 @@ class Scene:
             # bbr_direction=1
             # data4 = self.solar_top_of_atmosphere_flux[:,bbr_direction]
             data2 = Scene2.solar_eup
-
             # ----------- Quality-Status -----------------
             # BG: modification to only include calculated results with valid quality
             # Create a combined mask: non-zero and quality 0 or 1
@@ -1478,8 +1476,8 @@ class Scene:
             vmin=data.min()#0.0001 #
             vmax=data.max()#4 #
             ymin =0
-            ymax =500
-            ymax =1000
+            # ymax =500
+            ymax = 1.3*np.nanmax(data) 
             # ax.set_ylabel(r"$F_{\mathrm{TOA}}^{\uparrow}$ [W/m$^2$]", fontsize=INFOSIZE) #('TOA upward flux [W/m$^2$]', fontsize=fsize)
 
 
@@ -1606,8 +1604,9 @@ class Scene:
             vmin=data.min()#0.0001 #
             vmax=data.max()#4 #
             ymin =0
-            ymax =500
-            ymax =400
+            # ymax =500
+            # ymax =400
+            ymax = 1.3*np.nanmax(data) 
             # ax.set_ylabel(r"$F_{\mathrm{TOA}}^{\uparrow}$ [W/m$^2$]", fontsize=INFOSIZE) #('TOA upward flux [W/m$^2$]', fontsize=fsize)     
     
 
@@ -2672,10 +2671,6 @@ class Scene:
                         fontsize=INFOSIZE*.8)
             ax.vlines(x, baseline, data, color='red', alpha=0.6, lw=0.2)  # lines to baseline
         else:
-            #### ONLY FOR ATMOSPHERE - ANALYSIS ######
-            ax.set_xlim(3.01, 4.99)
-            ########################################
-
             l, = ax.plot(x, data, 
                                 label=cblabel, 
                                 color='r',
@@ -3146,9 +3141,9 @@ if __name__ == "__main__":
     want_3D = True      # BG: used in flux plot (DISORT or MYSTIC)
     want_ps = False     # BG: if want DISORT pseudospherical (want_3D overwrite want_ps)
 
-    idx_scene = [7] 
+    idx_scene = [3,4,5] 
     # idx_scene = [3, 4, 5, 8, 11]
-    # idx_scene =[3,4,5,6,7,8]
+    # idx_scene =[7]
     SceneNames = [['Orbit_05378D'],#0           # Marocco - Norway           # Previousy ['Arctic_05378D']
                   ['Orbit_05458F'],             # Chile
                   ['Orbit_05926C'],             # Old Greenland (13.06.2026)
@@ -3196,12 +3191,15 @@ if __name__ == "__main__":
     # additional_spesifications += '_GHM_mc1e6'
     # additional_spesifications += '_GHM_mc1e7'
            # All points 
-    # additional_spesifications += '_All_FullBuffer'
+    additional_spesifications += '_All_FullBuffer'
     # additional_spesifications += '_All_SmallBuffer'
+    # additional_spesifications += '_All'
              # 3D-Cloud impact
     # additional_spesifications += '_wc'
-    additional_spesifications += '_wc_test_atm_0'
-    atmosphere = 1
+    # additional_spesifications += '_wc_test_atm_0'
+    # atmosphere = 1
+             # TEST; THEN REMOVE
+    # additional_spesifications += '_wc_test_new_3D_surface'
 
 
     
@@ -3269,7 +3267,7 @@ if __name__ == "__main__":
     #           NOTE: do not put 'CF' at the end of quantity_list
     quantity_list = False
     # quantity_list = ['tot_wp']
-    quantity_list = ['tot_wc']
+    # quantity_list = ['tot_wc']
     # quantity_list = ['CF']
     # quantity_list = ['CF', 'tot_wp']
 
@@ -3411,7 +3409,7 @@ if __name__ == "__main__":
 
     librad_version2 =  'disort_1D'                  
             # Chose from: 'montecarlo_3D'  'disort_1D'   librad_version
-    additional_spesifications2 =   additional_spesifications   
+    additional_spesifications2 =   '_All'
             #Chose from: '_wc'   '_All_SmallBuffer'    '_GHM'   additional_spesifications
 
                         # librad_type         = 'SWIN'; additional_spesifications2 = ''
@@ -3504,7 +3502,7 @@ if __name__ == "__main__":
         if Product2:      
             ProductPath = ProductPathRTM
             ProductFile = os.path.join(ProductPath, Product2) # BG: removed this [+'*'+SceneName+'*.nc')] and changed Product -> Product2
-            # print('ProductFile2', ProductFile)
+            print('ProductFile2', ProductFile)
             ProductFile = sorted(glob.glob(ProductFile))[0]
             libRad2 = Scene(Name=SceneName, verbose=verbose)
             libRad2.ReadEarthCAREh5(ProductFile, verbose=verbose)

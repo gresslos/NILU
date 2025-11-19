@@ -1,0 +1,106 @@
+Running at /scratch/bgre/88250
+Submitdir is /homevip/bgre/RTM
+Number of nodes: 1
+Number of tasks: 30
+Making SLURM ready at  Mon Nov 17 16:42:49 CET 2025
+Starting slurm job at  Mon Nov 17 16:44:45 CET 2025
+Running Python file at Mon Nov 17 16:44:46 CET 2025
+Run started at 2025-11-17T15:45:22.211097+00:00
+
+
+
+=================================================================================================================
+Nadir Pixel Index    =  151
+SceneName            =  Orbit_06497E
+Specs                =  montecarlo - 3D - _wc_test_new_3D_surface - Large Buffer (25 x 21)
+2532
+Latitude            = 0.00
+2532
+Latitude            = 0.00
+[WORKER 29] Received termination signal. Exiting.
+2532
+Latitude            = 0.00
+2532
+Latitude            = 0.00
+[WORKER 6] Received termination signal. Exiting.
+[WORKER 5] Received termination signal. Exiting.
+2532
+Latitude            = 0.00
+[WORKER 2] Received termination signal. Exiting.
+2532
+Latitude            = 0.00
+[WORKER 28] Received termination signal. Exiting.
+2532
+Latitude            = 0.00
+[WORKER 26] Received termination signal. Exiting.
+2532
+Latitude            = 0.00
+[WORKER 17] Received termination signal. Exiting.
+2532
+Latitude            = 0.00
+[WORKER 25] Received termination signal. Exiting.
+2532
+Latitude            = 0.00
+[WORKER 9] Received termination signal. Exiting.
+2532
+Latitude            = 0.00
+[WORKER 15] Received termination signal. Exiting.
+2532
+Latitude            = 0.00
+     Process 1 started calculating ia=2532
+[WORKER 1] Unexpected exception for ia=2532: [Errno 2] No such file or directory: './tmpRTIOtest/tmp2532atm.dat'
+[WORKER 1] Unexpected exception for ia=2532: [Errno 2] No such file or directory: './tmpRTIOtest/tmp2532atm.dat'
+2532
+Latitude            = 0.00
+[WORKER 27] Received termination signal. Exiting.
+2532
+Latitude            = 0.00
+[WORKER 3] Received termination signal. Exiting.
+2532
+Latitude            = 0.00
+[WORKER 24] Received termination signal. Exiting.
+2532
+Latitude            = 0.00
+[WORKER 7] Received termination signal. Exiting.
+2532
+Latitude            = 0.00
+[WORKER 23] Received termination signal. Exiting.
+2532
+Latitude            = 0.00
+[WORKER 13] Received termination signal. Exiting.
+2532
+Latitude            = 0.00
+[WORKER 22] Received termination signal. Exiting.
+2532
+Latitude            = 0.00
+[WORKER 18] Received termination signal. Exiting.
+2532
+Latitude            = 0.00
+[WORKER 11] Received termination signal. Exiting.
+2532
+Latitude            = 0.00
+[WORKER 10] Received termination signal. Exiting.
+2532
+Latitude            = 0.00
+[WORKER 19] Received termination signal. Exiting.
+2532
+Latitude            = 0.00
+[WORKER 16] Received termination signal. Exiting.
+2532
+Latitude            = 0.00
+[WORKER 4] Received termination signal. Exiting.
+2532
+Latitude            = 0.00
+[WORKER 20] Received termination signal. Exiting.
+2532
+Latitude            = 0.00
+[WORKER 8] Received termination signal. Exiting.
+2532
+Latitude            = 0.00
+[WORKER 21] Received termination signal. Exiting.
+2532
+Latitude            = 0.00
+[WORKER 12] Received termination signal. Exiting.
+2532
+Latitude            = 0.00
+[WORKER 14] Received termination signal. Exiting.

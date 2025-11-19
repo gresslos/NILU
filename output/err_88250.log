@@ -1,0 +1,9 @@
+Traceback (most recent call last):
+  File "/scratch/bgre/88250/./MakeRTMInputFile_bg.py", line 1786, in <module>
+    with open(os.path.join(RTOutNetcdfPath, SceneName + "-" +str(my_rank)),file_mode) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: './RESULTStest/Orbit_06497E-1'
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+slurmstepd: error: *** JOB 88250 ON prod-cn22 CANCELLED AT 2025-11-17T16:55:01 ***
+slurmstepd: error: *** STEP 88250.0 ON prod-cn22 CANCELLED AT 2025-11-17T16:55:01 ***
+cp: cannot stat '/scratch/bgre/88250/RESULTS/*nc': No such file or directory

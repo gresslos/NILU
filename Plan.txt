@@ -9,24 +9,22 @@ git push
 
 
 ------------ Short-Term -------
-- Read 1 hour first in the morning! 
-- Make function to plot whole globe + mulitple swaths!
-- Think about what to include on monday meeting ()
-- CHECK ATMOSPHERE ACM-COM UNCERTAINTIES IS QUAITY STATUS CORRECT? IS ACTTUALYY ATMOSPHERE 1 MORE VALID THEN ATMOSPHERE 0????????
+- Lage correlation plot for GHM-SC-RA in same plot with alpha
+- Legge til nye BA baseline for ACM-RT
+
 - Get mean-error in Buffer-Sensitivity, Ice-Habit-Sensitivity, AOD-thermal-Model-Sensitivity -> use in conclusion & abstract
 - Write about CF-diff in Large-VS-Small-Buffer
-- Make Add_Quantity IWC and LWP vs astitude!
-- Make DISORT vs ACM-RT 1D
-- Calculate all LWP and IWP for tables again! do not include LWP and IWP threshold!!
-- Make CF-plot that follow what small and/or large 3D buffer see! 
+    * Make CF-plot that follow what small and/or large 3D buffer see! 
     * Plot CF for Large- and for Small-Buffer! -> where they differ-> differnds librad_diff_flx large vs small 3D buffer
     * where 3D vs 1D RT differ as well i think!
+- Kanskje feil i "if surface:" -> ial -> irec!!!  -> TESTER I TOA NÅ, TESTE I SUR HVIS HAR MYE Å SI! -> se Orbit 06498E swath if differnt!
+
+
 - Select distingt large error (with souronding good errros) to study closer:
     * RUN MYSTIC and DISORT -> libRad_diff_flx
     * Plot many plots -> see something correlating?
     * errors regarding cloud-thikness?
     * 3D cloud anisotropy causing errors? -> can see better in Large vs Small Buffer and comparison to DISORT 
-    * Info-Plot show correlation to where Flux-Errros is located?
 
 
 

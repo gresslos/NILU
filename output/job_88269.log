@@ -1,0 +1,24 @@
+Running at /scratch/bgre/88269
+Submitdir is /homevip/bgre/RTM
+Number of nodes: 1
+Number of tasks: 2
+Making SLURM ready at  Mon Nov 17 20:28:37 CET 2025
+Starting slurm job at  Mon Nov 17 20:29:28 CET 2025
+Running Python file at Mon Nov 17 20:29:28 CET 2025
+Run started at 2025-11-17T19:29:56.225220+00:00
+
+
+
+=================================================================================================================
+Nadir Pixel Index    =  151
+SceneName            =  Orbit_06497E
+Specs                =  disort - 1D - _All - 
+     Process 1 started calculating ia=200
+                                            [WORKER  1] ia= 200, solar   , zout=64.8, eup=  376.54
+                                            [WORKER  1] ia= 200, thermal , zout=64.8, eup=  317.11
+Writing libRadtran output to netcdf file:  ./RESULTS/libRad_v01_disort_1D_SWIA_solar,thermal_Orbit_06497E_All.nc
+[WORKER 1] Received termination signal. Exiting.
+Run finished. It took 0.007 hours 
+
+
+Finished running Python file at Mon Nov 17 20:30:24 CET 2025

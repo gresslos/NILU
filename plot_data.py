@@ -2,6 +2,9 @@ import matplotlib.image as mpimg
 import matplotlib.pyplot as plt
 import numpy as np
 import os
+import cartopy.crs as ccrs
+import cartopy.feature as cfeature
+from matplotlib.ticker import AutoMinorLocator, MultipleLocator
 
 import glob
 import ReadEarthCAREL2_bg as ReadEC
@@ -343,7 +346,7 @@ def get_instances(SceneName, Product, Product2=False, BMAFLX=False):
     ProductPath = ProductPathRTM
     ProductFile = os.path.join(ProductPath, Product)
     # print('ProductFile1', ProductFile)
-    ProductFile = sorted(glob.glob(ProductFile))[0]    
+    ProductFile = sorted(glob.glob(ProductFile))[0]  
     libRad = ReadEC.Scene(Name=SceneName)
     libRad.ReadEarthCAREh5(ProductFile)
     libRad.SetExtent()
@@ -585,6 +588,158 @@ def loop_through_data(source, Product2, SceneNames, librad_type='SWIA', statisti
 
 
 
+def plot_traj_on_globe(SceneNames, vmin=-4, vmax=1.0, cmap_name="coolwarm", title="Title", cblabel="Value"):
+    fig = plt.figure(figsize=FIGSIZE)
+    cmap = plt.get_cmap(cmap_name)
+    projection=ccrs.PlateCarree()
+    ax = plt.axes(projection=projection)
+    # Map features
+    ax.add_feature(cfeature.COASTLINE)
+    ax.add_feature(cfeature.BORDERS, linestyle='-')
+        # ax.add_feature(cfeature.LAKES, alpha=0.5)
+        # ax.add_feature(cfeature.RIVERS)
+    gl=ax.gridlines(draw_labels=True)
+    gl.top_labels = False
+    gl.right_labels=False
+
+    Product2, BMAFLX = False, False
+    glob_min_lat, glob_max_lat, glob_min_lon, glob_max_lon = np.nan, np.nan, np.nan, np.nan
+  
+    label_groups = []  # store representative positions of each plotted group
+    LABEL_Y_OFFSET = 10.0  # degrees to move labels downward for stacked labels
+    OVERLAP_DX = 3.0       # longitude threshold for "too close"
+    OVERLAP_DY = 3.0       # latitude threshold for "too close"
+    for spec in additional_spesifications:
+        for SceneName in SceneNames:
+            Product = (
+                    'libRad_' + 
+                    version_identifier  + '_' +
+                    librad_version      + '_' +
+                    librad_type         + '_' +
+                    source_str          + '_' +
+                    SceneName           + 
+                    spec                + '.nc'
+                )
+
+            _, _, ACMCOM, _ = get_instances(SceneName, Product, Product2, BMAFLX)
+
+            x = ACMCOM.longitude; y = ACMCOM.latitude; data = ACMCOM.surface_temperature * 0
+            # update local extents
+            min_lon, max_lon = np.nanmin(x), np.nanmax(x)
+            min_lat, max_lat = np.nanmin(y), np.nanmax(y)
+            # update global extents
+            if np.isnan(glob_min_lat) or min_lat < glob_min_lat: glob_min_lat = min_lat
+            if np.isnan(glob_max_lat) or max_lat > glob_max_lat: glob_max_lat = max_lat
+            if np.isnan(glob_min_lon) or min_lon < glob_min_lon: glob_min_lon = min_lon
+            if np.isnan(glob_max_lon) or max_lon > glob_max_lon: glob_max_lon = max_lon
+            
+
+            # Trajectory plot specs
+            SceneName = SceneName.replace("Orbit_", "")
+
+            center_lon = 0.5 * (min_lon + max_lon)
+            center_lat = max_lat
+
+            # Check if close to an existing group
+            group_idx = None
+            for i, g in enumerate(label_groups):
+                if (abs(center_lon - g["lon"]) < OVERLAP_DX and abs(center_lat - g["lat"]) < OVERLAP_DY):
+                    group_idx = i
+                    break
+
+            # Decide if to plot full trajectory
+            if group_idx is None:
+                # pcolormesh for each swath
+                cs = ax.pcolormesh(
+                    x, y, data,
+                    transform=ccrs.PlateCarree(),
+                    shading='auto',
+                    cmap=cmap,
+                    vmin=vmin, vmax=vmax
+                )
+                idx_nadir = 151
+                ax.plot(x[idx_nadir, :], y[idx_nadir, :],
+                        color="b", linewidth=0.6, alpha=0.9)
+                ax.text(center_lon, center_lat, SceneName,
+                    transform=ccrs.PlateCarree(),
+                    fontsize=INFOSIZE,
+                    fontweight='bold', ha='center', va='bottom',
+                    bbox=dict(boxstyle='round,pad=0.15',facecolor='white',edgecolor='none', alpha=0.8)
+                    )
+                # Update/add to the group for not future plotting of similar swaths
+                label_groups.append({"lon": center_lon, "lat": center_lat, "n_labels": 1,})
+            else: 
+                # Too close: do NOT plot swath or line
+                # Only add a label stacked underneath the first one.
+                g = label_groups[group_idx]
+                g["n_labels"] += 1
+
+                label_lat = g["lat"] - LABEL_Y_OFFSET * (g["n_labels"] - 1)
+
+                ax.text(
+                    g["lon"], label_lat, SceneName,
+                    transform=ccrs.PlateCarree(),
+                    fontsize=INFOSIZE,
+                    fontweight='bold', ha='center', va='bottom',
+                    bbox=dict(boxstyle='round,pad=0.15', facecolor='white',edgecolor='none', alpha=0.8)
+                )
+
+    
+
+            # # Colorbar
+            # cb = fig.colorbar(
+            #     cs, ax=ax,
+            #     shrink=1.0, pad=0.02,
+            #     extend='both',
+            #     extendrect=True
+            # )
+            # cb.set_label(cblabel, size=INFOSIZE)
+            # cb.ax.tick_params(labelsize=INFOSIZE * 0.8)
+            # cb.outline.set_visible(False)
+            # cb.ax.set_facecolor('#f7f7f7')
+
+    # Under/bad colors for cleaner look
+    cs.cmap.set_under('#f0f0f0')
+    cs.cmap.set_bad('#f0f0f0')
+
+    # Axis labels + limits = "2D globe"
+    pad = 5 # Latitude/Longitude
+    ax.set_xlim(glob_min_lon - pad, glob_max_lon + pad)
+    ax.set_ylim(glob_min_lat - pad, glob_max_lat + pad)
+    # ax.set_global()
+
+   
+    ax.set_xlabel(r'Longitude [N$^\circ$]', fontsize=INFOSIZE)
+    ax.set_ylabel(r'Latitude [N$^\circ$]', fontsize=INFOSIZE)
+        # ax.xaxis.set_major_locator(MultipleLocator(2.0))  # one tick every 2°
+        # ax.xaxis.set_minor_locator(MultipleLocator(2.0))
+    # ax.xaxis.set_minor_locator(AutoMinorLocator())
+    # ax.yaxis.set_minor_locator(AutoMinorLocator())
+    
+    ax.tick_params(axis='both', which='major', labelsize=INFOSIZE*.8)
+    ax.tick_params(axis='both', which='minor', labelsize=INFOSIZE*.8)
+    fig.suptitle(title, fontsize=FONTSIZE, y=0.98, fontweight='bold')  
+   
+    # Background, grid, spines
+    ax.set_facecolor('#f0f0f0')
+    ax.grid(which='major', linestyle='--', alpha=0.4)
+    ax.grid(which='minor', linestyle=':',  alpha=0.2)
+
+    for spine in ['top', 'right']:
+        ax.spines[spine].set_visible(False)
+
+    # ax.legend()
+    ax.set_aspect('auto')  # let x/y stretch freely
+    # [left, bottom, width, height] in figure fraction coordinates
+    # ax.set_position([0.02, 0.05, 0.96, 0.88])
+    # fig.tight_layout()
+    # fig.tight_layout(rect=[0, 0, 1, 0.95])
+    # fig.tight_layout()
+    # fig.subplots_adjust(top=0.92)   # then put the suptitle inside that
+    # fig.suptitle(title, fontsize=FONTSIZE, fontweight='bold')
+    # fig.savefig(png_name)
+    fig.savefig(png_name, bbox_inches="tight")
+    print(f"Plot saved to {png_name}")
 
 
 
@@ -643,7 +798,8 @@ if __name__ == "__main__":
     'mc_photons',   #2
     'SWIA',         #3
     '3D_buffer',    #4
-    'correlation'   #5
+    'correlation',  #5
+    'plot_traj'     #6
     ]
     what_to_plot = plot_list[plot_version_idx]
 
@@ -752,15 +908,26 @@ if __name__ == "__main__":
         Product2 = False
         show_stds = False
         statistics = 'all_pixels_values'
-        idx_scene = [3,4,11] # [3,4,5,8,11] # [3,4] #[3,4,5,6,7,8]
-        sources   = ['solar']
+        idx_scene = [3,4,5,6,7,8] #[3,4,5,8,11] # [3,4,5,8,11] # [3,4] #[3,4,5,6,7,8]
+        sources   = ['solar'] # Chose either solar or thermal, not both
         versions = sources
-        librad_version = 'montecarlo_3D'
+        librad_version = 'montecarlo_3D' # 'montecarlo_3D' 'disort_1D'
 
-        idx = 1
-        additional_spesifications = [['_All_FullBuffer'],['_All_SmallBuffer']][idx]
-        titles = [[' - Large Buffer'], [' - Small Buffer']][idx]
+        idx = 2
+        additional_spesifications = [['_All_FullBuffer'],['_All_SmallBuffer'],['_GHM'],['_SC'],['_RA']][idx]
+        titles = [[' - Large Buffer'], [' - Small Buffer'],[' - GHM'],[' - SC'],[' - RA']][idx]
+        # titles = ['']
         png_names = ['Data/figures/correlation' + additional_spesifications[0] + '.png']
+    
+    elif what_to_plot == 'plot_traj':
+        idx_scene =  [3,4,5,8,11] # [3,4] #[3,4,5,6,7,8]
+        SceneNames = [SceneNames[i][0] for i in idx_scene]
+        sources   = ['']
+        librad_version = 'montecarlo_3D'
+        additional_spesifications = [['_All_FullBuffer'],['_All_SmallBuffer']][0]
+
+        titles = ['Trajectories']
+        png_names = ['Data/figures/trajectories.png']
 
 
 
@@ -769,6 +936,11 @@ if __name__ == "__main__":
 
     ################################# NOT CHANGE  #########################################
     for source, title, png_name in zip(sources, titles, png_names):
+
+        if what_to_plot == 'plot_traj':
+            plot_traj_on_globe(SceneNames, title=title)
+            continue 
+
         orbits, places, data, stds = loop_through_data(source, Product2, SceneNames, librad_type, statistics)
 
         # --- SWIA-studies ---

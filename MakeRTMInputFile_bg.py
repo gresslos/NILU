@@ -355,7 +355,7 @@ def ReduceLayers(ACMCOM, Name='', verbose=False):
 
     return  ACMCOMnew
 
-def SetRTM(UVS, ia, ACM3D=None, AMACD=None, ACMCOM=None, ACMRT=None, BMAFLX=None, input_dir='', iccloud=True,
+def SetRTM(UVS, ia, iacr, ACM3D=None, AMACD=None, ACMCOM=None, ACMRT=None, BMAFLX=None, input_dir='', iccloud=True,
            wccloud=True, surface=True, aerosol=True, mc_basename_path='', RTdimension = '1D',
            mol_abs_param='kato2', data_dir='', source='solar', SceneName=None):
 
@@ -459,7 +459,7 @@ def SetRTM(UVS, ia, ACM3D=None, AMACD=None, ACMCOM=None, ACMRT=None, BMAFLX=None
     UVS.inp['output_user']='sza zout edir eup'
     UVS.inp['quiet']=''
     # ---- Calculate Date -> day_of_year ---- (changes made 14.11.2025)
-    ProductFile = ACMCOM.fn 
+    ProductFile = os.path.basename(ACMCOM.fn)
     date_num = '20' + ProductFile.split('20', 1)[1].split('T', 1)[0] # Extract Date from ProductFile
     year = date_num[0:4]; month = date_num[4:6]; day = date_num[6:8]
     date = day + "." + month+ "." + year
@@ -505,13 +505,13 @@ def SetRTM(UVS, ia, ACM3D=None, AMACD=None, ACMCOM=None, ACMRT=None, BMAFLX=None
             # BG: used for setting T at h = 0 (for 3D run) 
             last_T = T; last_p = p
 
-    # BG: How to find surface_temperature and surface_altitude
-        # surface_h = min(v for v,p in zip(ACMCOM.height_level[1:,ia], ACMCOM.pressure_level[1:,ia]) if v > 0 and p < 1e10)
-        # print("     surface h = ", surface_h)
+                    # BG: How to find surface_temperature and surface_altitude
+                    # surface_h = min(v for v,p in zip(ACMCOM.height_level[1:,ia], ACMCOM.pressure_level[1:,ia]) if v > 0 and p < 1e10)
+                    # print("     surface h = ", surface_h)
 
-        # print("     surface temperature: ", ACMCOM.surface_temperature[iacr,ia]) 
-        # print("last_T = ", last_T)
-        # print("last_p = ", last_p)
+                    # print("     surface temperature: ", ACMCOM.surface_temperature[iacr,ia]) 
+                    # print("last_T = ", last_T)
+                    # print("last_p = ", last_p)
 
     # Add surface at 0 km altitude if not included in profile
     if np.abs(last_h) > 0.0001 and RTdimension == '3D':
@@ -1103,24 +1103,21 @@ def SetRTM(UVS, ia, ACM3D=None, AMACD=None, ACMCOM=None, ACMRT=None, BMAFLX=None
                     elif "Orbit_07277C" in SceneName: irec -= 2527
                     elif "Orbit_06331C" in SceneName: irec -= 2636
 
-
+                    ###################### THIS IS NEW TEST - REMOVE #####################
+                    irec = ial
+                    iacr = iac
+                    ######################################################################
 
                     itype_index = 'itype_index_{:00004d}_{:00004d}_{:00004d}_{:00004d}.dat'.format(ia, iac, ial, irec)
                     mc_albedo_type_file = input_dir+'tmp'+'{:00004d}_{:00004d}_{:00004d}_{:00004d}'.format(ia, iac, ial, irec)+'mc_albedo_spectral_type'+source+'.dat'
                     fatf = open(mc_albedo_type_file,'w')
                     f.write('{:d} {:d} {:s}\n'.format(ix, iy, itype_index))
                     fat.write('{:s} {:s}\n'.format(itype_index, mc_albedo_type_file))
+
                     if source=='solar':
                         # ESO:
                         UVvisalb = ACMCOM.albedo_diffuse_radiation_surface_visible[iacr,irec]
                         UVNIRalb = ACMCOM.albedo_diffuse_radiation_surface_near_infrared[iacr,irec]
-
-                        ########## BG: TESTING REDUCING ALBEDO ########################
-                        # print(f'UV_vis_albedo = {UVvisalb}\nNIR_albedo = {UVNIRalb}')
-                        # r_factor = 0.75
-                        # UVvisalb    = UVvisalb * r_factor
-                        # UVNIRalb      = UVNIRalb * r_factor
-                        ###############################################################
 
                         fatf.write('{:f} {:f}\n'.format(200, UVvisalb ))
                         fatf.write('{:f} {:f}\n'.format(700, UVvisalb ))
@@ -1263,6 +1260,7 @@ if __name__ == "__main__":
               ['solar', 'thermal']][idx_source] 
 
     idx_scene = [7]
+    # idx_scene = [3,4,5,6,7,8,11]
     # idx_scene = [3,4,5,6,7,8]
     # idx_scene =[3,4,5,6,7,8, 11]
     SceneNames = [['Orbit_05378D'],#0           # Marocco - Norway           # Previousy ['Arctic_05378D']
@@ -1291,7 +1289,7 @@ if __name__ == "__main__":
     Test    = False
     want_ps = False      # BG: if want DISORT pseudospherical 
     verbose = False
-    want_3D = False       # BG: if want MYSTIC
+    want_3D = True       # BG: if want MYSTIC
     want_small_buffer = False    # Use this if want faster execution without much loss of 3D effects
      
     if want_3D and want_small_buffer: buffer_str = 'Small Buffer (13 x 13)'
@@ -1326,9 +1324,12 @@ if __name__ == "__main__":
             # All points 
     # additional_spesifications += '_All_FullBuffer'
     # additional_spesifications += '_All_SmallBuffer'
+    # additional_spesifications += '_All'
             # 3D-Cloud impact
     # additional_spesifications += '_wc'           # INFO: large-buffer
-    additional_spesifications += '_wc_test_atm_0'
+    # additional_spesifications += '_wc_test_atm_0'
+            # TEST; THEN REMOVE
+    additional_spesifications += '_wc_test_new_3D_surface'
 
 
     surface = True      # BG: = False -> default albedo = 0     
@@ -1532,7 +1533,7 @@ if __name__ == "__main__":
         else: 
             # ialongs = [int(end/2)] #[300, 600, 900, 1200] #[1000, 2000, 3000, 4000]
     
-            target_lat = 40.875
+            target_lat = 0
             target_idx = int(np.nanargmin(np.abs(ACMCOM.latitude_active - target_lat)))
             ialongs = [target_idx]
             print(target_idx)
@@ -1669,7 +1670,7 @@ if __name__ == "__main__":
                                 UVS = UVspec.UVspec()   #tms: UVspec.py is an external program that defines input and runs libRadtran
                                 UVS.inp['rte_solver']=rte_solver
                                 #tms: "SetRTM" is a function defined above - NB! Check path
-                                UVS = SetRTM(UVS, ia, ACM3D=ACM3D, AMACD=AMACD, ACMCOM=ACMCOM, ACMRT=ACMRT, BMAFLX=BMAFLX,
+                                UVS = SetRTM(UVS, ia, iacr, ACM3D=ACM3D, AMACD=AMACD, ACMCOM=ACMCOM, ACMRT=ACMRT, BMAFLX=BMAFLX,
                                             iccloud=iccloud, wccloud=wccloud, surface=surface, aerosol=aerosol,
                                             mc_basename_path=RTInpOutPath, RTdimension = RTdimension, input_dir=RTInpOutPath,
                                             mol_abs_param=mol_abs_param, data_dir=RTMdata, source=source, SceneName=SceneName)
