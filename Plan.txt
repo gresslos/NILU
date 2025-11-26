@@ -9,37 +9,31 @@ git push
 
 
 ------------ Short-Term -------
-- Lage correlation plot for GHM-SC-RA in same plot with alpha
-- Legge til nye BA baseline for ACM-RT
+- Write about max deviations from buffer-sizes + CF effect + might use libRad_flx_diff againss tot_wc, not tot_wp!
+- Kjøre MYSTIC surface på nytt med korrekt "if Surface" 
+- Maybe structure main takeway of Master as looking into Buffer-Size Sensitivity (using even smaller buffer on small locations!)
+- 3D RT effect:
+    * Run many swaths with IPA, MC LargeBuffer, MC SmallBuffer, MCIPA? 
+    * Make statistics (mean-abs-err, max-abs-err, mean-rel-err?)
+    * Present statistics before in-depth analysis selected areas
 
-- Get mean-error in Buffer-Sensitivity, Ice-Habit-Sensitivity, AOD-thermal-Model-Sensitivity -> use in conclusion & abstract
-- Write about CF-diff in Large-VS-Small-Buffer
-    * Make CF-plot that follow what small and/or large 3D buffer see! 
-    * Plot CF for Large- and for Small-Buffer! -> where they differ-> differnds librad_diff_flx large vs small 3D buffer
-    * where 3D vs 1D RT differ as well i think!
-- Kanskje feil i "if surface:" -> ial -> irec!!!  -> TESTER I TOA NÅ, TESTE I SUR HVIS HAR MYE Å SI! -> se Orbit 06498E swath if differnt!
+
 
 
 - Select distingt large error (with souronding good errros) to study closer:
+        -- 6888C -> 74.0-74.5 - cloud-free -> clody -> can look at CF-effect!
+        -- 6888C -> 80.5-81.0 - broken-clouds - much LWC, little IWC -> look at CF-effect!
+        -- 6331C -> 75.0-76.0 - continous clouds (not look at CF) - Liquid above Ice-cloud -> interresting!
+        -- 6518D -> 41.0-52.5 - Very large area with continous data -> very good starting point of section!
+        -- 6886E -> 11.5-15.0 - Very thin ice-cloud with interesting liquid-cloud underneight!
     * RUN MYSTIC and DISORT -> libRad_diff_flx
-    * Plot many plots -> see something correlating?
-    * errors regarding cloud-thikness?
     * 3D cloud anisotropy causing errors? -> can see better in Large vs Small Buffer and comparison to DISORT 
 
 
 
 
-
-- Select areas interessting to look at liquid- and ice-water-clouds
-        - cloudfree areas
-        - ice-cloud areas
-        - liquid-cloud areas
-        - liquid and ice cloud areas 
-        - cloud altitude relevant?
-    - MYISTIC vs (BMA-FLX, DISORT, ACM-RT 3D)
-    - DISORT  vs (BMA-FLX, ACM-1D)
-    - MYSTIC averaged vs DISORT averaged?
-    - Make statistics (delta_F plots, means over 100x10 areas compared to BMA-FLX -> more representable to ESM?)
+ESM - GCM - Comparison
+- mean diff (libRad - BMAFLX) over 100x10 km areas -> more representable to ESM? -> good comparions?
 
 
 ------------ Writing -----------
@@ -47,15 +41,6 @@ git push
 - Monte Carlo Noice 
 
 
------------- Coding --------------
-- Function to calculate <F> (not mean diff!)
-- Select cloudy areas with large variations:
-    Look at: Mystic VS Disort, Mystic VS ACM-RT 3D, Mystic VS BMA-FLX
+                
 
-
-
-------- THINGS TO LOOK INTO ------
-- Albedo VS Cloud-Fraction (ref: Griskey i think, look into)
-- SWIA - Impact (compare against All-, Clear-, Pristine-Sky)
-    
 

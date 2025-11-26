@@ -908,15 +908,15 @@ if __name__ == "__main__":
         Product2 = False
         show_stds = False
         statistics = 'all_pixels_values'
-        idx_scene = [3,4,5,6,7,8] #[3,4,5,8,11] # [3,4,5,8,11] # [3,4] #[3,4,5,6,7,8]
-        sources   = ['solar'] # Chose either solar or thermal, not both
+        idx_scene =  [3,4,11] #[3,4,5,8,11] #[3,4,5,8,11] # [3,4,5,8,11] # [3,4] #[3,4,5,6,7,8]
+        sources   = ['thermal'] # Chose either solar or thermal, not both
         versions = sources
         librad_version = 'montecarlo_3D' # 'montecarlo_3D' 'disort_1D'
 
-        idx = 2
+        idx = 0
         additional_spesifications = [['_All_FullBuffer'],['_All_SmallBuffer'],['_GHM'],['_SC'],['_RA']][idx]
         titles = [[' - Large Buffer'], [' - Small Buffer'],[' - GHM'],[' - SC'],[' - RA']][idx]
-        # titles = ['']
+        titles = ['']
         png_names = ['Data/figures/correlation' + additional_spesifications[0] + '.png']
     
     elif what_to_plot == 'plot_traj':

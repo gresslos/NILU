@@ -8,8 +8,8 @@
 #SBATCH --nodes=1
 ###SBATCH --ntasks=40
 ###SBATCH --ntasks-per-node=40
-#SBATCH --ntasks=10
-#SBATCH --ntasks-per-node=10
+#SBATCH --ntasks=30
+#SBATCH --ntasks-per-node=30
 ###SBATCH --ntasks=3
 ###SBATCH --ntasks-per-node=3
 

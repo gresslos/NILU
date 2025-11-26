@@ -84,7 +84,6 @@ def interpolate(x1, data1_raw, fill1, x2, data2_raw, fill2):
     return x_valid, data1_interp_valid, data2_valid
 
 # BG: My add-profile-to-plot function
-# BG: Used in solar_both and thermal_both
 def add_profile_to_plot(fig, ax, ACMCOM, fsize, legend_list, quantity=None, iacr=151, stacked=True, normalize=False):
     """
     Add a single profile (ex. elevation, lwc, iwc, ...) to the given axis.
@@ -207,6 +206,11 @@ def add_profile_to_plot(fig, ax, ACMCOM, fsize, legend_list, quantity=None, iacr
 
         profile[0].append(iwc)
         profile[1].append(lwc)
+        
+        # Find highest cloudy altitude
+        heights = ACMCOM.height_layer
+        valid = ((~np.isnan(iwc)) & (iwc != 0)) | ((~np.isnan(lwc)) & (lwc != 0))
+        cloud_top_height = np.nanmax(heights[valid])/1000 # units= m -> km
 
 
 
@@ -318,7 +322,10 @@ def add_profile_to_plot(fig, ax, ACMCOM, fsize, legend_list, quantity=None, iacr
         elif "Orbit_06888C" in SceneName: offset = 2527
         elif "Orbit_07277C" in SceneName: offset = 2527
         elif "Orbit_06331C" in SceneName: offset = 2636
-        idx = ACM3D.index_construction - offset          # (cross, along)
+        idx = (ACM3D.index_construction - offset)          # (cross, along)
+        # Valid where >= 0 and finite
+        valid_idx_mask = (idx >= 0) & ~np.isnan(idx)
+
         acr_lo = ACM3D.nadir_pixel_index - Buffer_Across
         acr_hi = ACM3D.nadir_pixel_index + Buffer_Across + 1
         # 3) slide along
@@ -328,13 +335,17 @@ def add_profile_to_plot(fig, ax, ACMCOM, fsize, legend_list, quantity=None, iacr
             # Column indices in Buffer
             # Rectangle of column IDs -> 1D 
             cols = idx[acr_lo:acr_hi, al_lo:al_hi].ravel()
+            # Remove out of bounce idx from cutting swath
+            valid_cols_mask = valid_idx_mask[acr_lo:acr_hi, al_lo:al_hi].ravel()
+            cols = cols[valid_cols_mask]
+
             v = valid_col[cols]
             c = cloud_col[cols]
             v_sum = int(v.sum())
             CF = (int(c.sum()) / v_sum) if v_sum > 0 else np.nan
             profile[ia] = CF
 
-        want_compare_to_small_buffer = True
+        want_compare_to_small_buffer = False
         if want_compare_to_small_buffer: # Same procedure as above
             want_large_buffer =  False   
             Buffer_Along  = 12 if want_large_buffer else 6
@@ -345,6 +356,9 @@ def add_profile_to_plot(fig, ax, ACMCOM, fsize, legend_list, quantity=None, iacr
                 al_lo = ia - Buffer_Along
                 al_hi = ia + Buffer_Along + 1
                 cols = idx[acr_lo:acr_hi, al_lo:al_hi].ravel()
+                # Remove out of bounce idx from cutting swath
+                valid_cols_mask = valid_idx_mask[acr_lo:acr_hi, al_lo:al_hi].ravel()
+                cols = cols[valid_cols_mask]
                 v = valid_col[cols]
                 c = cloud_col[cols]
                 v_sum = int(v.sum())
@@ -352,7 +366,7 @@ def add_profile_to_plot(fig, ax, ACMCOM, fsize, legend_list, quantity=None, iacr
                 profile[ia] -= CF
             profile[:int(np.flatnonzero(valid_col)[0])], profile[int(np.flatnonzero(valid_col)[-1]):] = np.nan, np.nan # Eliminate boundary effects
 
-        ylabel = 'Cloud Fraction []' if not want_compare_to_small_buffer else 'CF Diff.\n(Large - Small Buffer) []'
+        ylabel = 'CF []' if not want_compare_to_small_buffer else 'CF Diff.\n(Large - Small Buffer) []'
         color  = 'black'
         label  = 'CF' if not want_compare_to_small_buffer else 'CF Diff.'
 
@@ -365,9 +379,9 @@ def add_profile_to_plot(fig, ax, ACMCOM, fsize, legend_list, quantity=None, iacr
     if stacked: # Stack the Add_Profile to a subplot under OG-figure (stacked on top)
         if not hasattr(fig, "_stacked_inited"): # check if first time call this function
             fig.clf()  # clear figure to rebuild layout
-            if 'CF' in quantity_list and len(quantity_list) != 1: #-> if only CF -> only 2 stacked figures
+            if ('CF' in quantity_list and len(quantity_list) != 1) or ('tot_wc' in quantity_list and 'tot_wp' in quantity_list): # Have 2 stacked figures
                 fig.set_figheight( fig.get_figheight() * 2) #increase fig-height for stacked figures
-                gs = fig.add_gridspec(3, 1, height_ratios=[3, 2, 1.5], hspace=0.0)
+                gs = fig.add_gridspec(3, 1, height_ratios=[3, 1.5, 2], hspace=0.0)
                 ax = fig.add_subplot(gs[0, 0])
                 ax2 = fig.add_subplot(gs[1, 0], sharex=ax)
                 ax3 = fig.add_subplot(gs[2, 0], sharex=ax)
@@ -375,6 +389,7 @@ def add_profile_to_plot(fig, ax, ACMCOM, fsize, legend_list, quantity=None, iacr
                 fig._ax_top = ax
                 fig._ax_mid = ax2
                 fig._ax_bot = ax3
+                plt.setp(fig._ax_mid.get_xticklabels(), visible=False) # Remove x-ticks for midle-fig
             else: 
                 fig.set_figheight( fig.get_figheight() * 1.5) #increase fig-height for stacked figures
                 gs = fig.add_gridspec(2, 1, height_ratios=[3, 2], hspace=0.0)
@@ -384,13 +399,13 @@ def add_profile_to_plot(fig, ax, ACMCOM, fsize, legend_list, quantity=None, iacr
                 fig._ax_top = ax
                 fig._ax_bot = ax2
 
-        if 'CF' in quantity_list: # 3-Figures Stacked
-            if 'CF' in quantity: # Plotting CF into _ax_bot
-                ax  = fig._ax_top
-                ax2 = fig._ax_bot
-            else: # Plot other quantities into _ax_mid
+        if ('CF' in quantity_list) or ('tot_wc' in quantity_list and 'tot_wp' in quantity_list): # 3-Figures Stacked
+            if ('CF' in quantity) or ('tot_wp' in quantity):  # Plotting CF into _ax_bot
                 ax  = fig._ax_top
                 ax2 = fig._ax_mid
+            else: # Plot other quantities into _ax_mid
+                ax  = fig._ax_top
+                ax2 = fig._ax_bot
         else:
             ax  = fig._ax_top
             ax2 = fig._ax_bot
@@ -403,7 +418,7 @@ def add_profile_to_plot(fig, ax, ACMCOM, fsize, legend_list, quantity=None, iacr
         ax2.grid(which='minor', linestyle=':',  alpha=0.2)
         ax2.spines['right'].set_visible(False)
         
-        plt.setp(ax.get_xticklabels(), visible=False) # same x-ticks
+        plt.setp(ax.get_xticklabels(), visible=False) # Same x-ticks (but remove)
         # -------------------------------------------
 
         # Make twin axis
@@ -427,12 +442,12 @@ def add_profile_to_plot(fig, ax, ACMCOM, fsize, legend_list, quantity=None, iacr
     # per-parent-axis counter
     n_right = getattr(ax, "right_twin_count", 0)
     # only push outward for the 2nd, 3rd, ... twins
-    if n_right > 0 and 'CF' not in quantity:
-        offset_step = 80 #60  # px; adjust to taste
+    if n_right > 0 and 'CF' not in quantity :
+        offset_step = 80 #60  # px
         ax2.spines["right"].set_position(("outward", offset_step * n_right))
 
     # update counter for next call
-    if 'CF' not in quantity: setattr(ax, "right_twin_count", n_right + 1)
+    if ('CF' not in quantity) or ('tot_wc' not in quantity): setattr(ax, "right_twin_count", n_right + 1)
     # ---------------------------------------------------------------------------
 
     ax2.set_ylabel(ylabel, fontsize=fsize*0.8, color=color, labelpad=5)
@@ -450,35 +465,25 @@ def add_profile_to_plot(fig, ax, ACMCOM, fsize, legend_list, quantity=None, iacr
             label_list = ylabel
             color_list = [0, 0]
             ax2.set_ylabel('Altitude [km]', fontsize=INFOSIZE)
-            fig.subplots_adjust(right=1.05)   # Adjuct without tight_layout
+            fig.subplots_adjust(right=1.05, bottom=.1)   # Adjuct without tight_layout
+            cs_list = []
+
         elif quantity == 'tot_wp': label_list = ['IWP','LWP']; color_list = [(0.0, 0.6, 0.5), (0.2, 0.4, 0.8)]
         else: profile = [profile]; label_list = [label]; color_list = [color]
 
         for i, (p, l, c) in enumerate(zip(profile, label_list, color_list)):
             if 'wc' in quantity: # Plot Colormesh + Colorbar
                 if   'I' in l: cmap = plt.get_cmap('viridis')
-                elif 'L' in l: cmap = plt.get_cmap('magma')
+                elif 'L' in l: cmap = plt.get_cmap('magma') 
                 else: print("ERROR in cmap")
         
                 cs = ax2.pcolormesh(x,y,p, shading='auto', cmap=cmap, norm=LogNorm(WC_min, WC_max))
+                cs_list.append(cs)
                 ax2.set_ylabel('')        # clears the label text
                 ax2.tick_params(axis='y', which='both', right=True, labelright=False, length=0) # clears ticks
 
-                # Placement of Colorbar Axis (cax)
-                cb = fig.colorbar(  cs, ax=[ax,ax2], #location='right', use_gridspec=True,
-                                    shrink=0.4, pad=0.0,
-                                    # extend='both',
-                                    # extendrect=True,
-                                    anchor=(0, 0),   # (x, y) for 'right' location -> y shifts vertically:
-                                                        # 0 = bottom, 0.5 = center, 1 = top
-                                    )
-                cb.set_label(l, size=INFOSIZE)
-                cb.ax.tick_params(labelsize=INFOSIZE*.8)
-                cb.outline.set_visible(False)             # remove black frame
-                cb.ax.set_facecolor('#f7f7f7')            # subtle bg behind ramp
-
-                fig.tight_layout = lambda *args, **kwargs: None # turnes off tight_layout -> wont work later in code
-                        
+                fig.tight_layout = lambda *args, **kwargs: None # turnes off tight_layout -> wont work later in code        
+              
                 
             else: # Plot Line(s)
                 line, = ax2.plot(x, p,  
@@ -488,6 +493,7 @@ def add_profile_to_plot(fig, ax, ACMCOM, fsize, legend_list, quantity=None, iacr
                             markersize=1, marker='o',
                             alpha=alpha)
                 legend_list.append(line) 
+            
     else: # Add property
         line, = ax2.plot(x, profile,  
                     label=label, 
@@ -495,7 +501,25 @@ def add_profile_to_plot(fig, ax, ACMCOM, fsize, legend_list, quantity=None, iacr
                     # linestyle='--',
                     linewidth=0.8,
                     alpha=alpha)
-    if 'wc' in quantity:
+
+    if 'cs' in locals(): 
+        if 'tot_wc' in quantity:
+            three_fig_bool = ('CF' in quantity_list and len(quantity_list) != 1) or ('tot_wp' in quantity_list)
+            ax_list = [ax, fig._ax_mid, ax2] if three_fig_bool else [ax, ax2]
+            anchor = (0, 0)
+            shrink = .3 if three_fig_bool else .4
+            for cs, l in zip(cs_list, label_list):
+                cb = fig.colorbar(
+                    cs, ax=ax_list, shrink=shrink,
+                    pad=0.0,
+                    anchor=anchor,
+                )
+                cb.set_label(l, size=INFOSIZE)
+                cb.ax.tick_params(labelsize=INFOSIZE * .8)
+                cb.outline.set_visible(False)
+                cb.ax.set_facecolor('#f7f7f7')
+
+    if 'wc' in quantity or 'wp' in quantity:
         pass  # no legend for tot_wc
     else:
         if 'CF' not in quantity or len(quantity_list) == 1:
@@ -511,13 +535,14 @@ def add_profile_to_plot(fig, ax, ACMCOM, fsize, legend_list, quantity=None, iacr
     if 'wp' in quantity:
         ax2.set_yscale('log')
         ax2.set_ylim(WP_min, WP_max)
-    elif 'wc' in quantity: ax2.set_ylim(ymin=0,ymax=19) # altitude
+    elif 'wc' in quantity: ax2.set_ylim(ymin=0,ymax=cloud_top_height) #ymax=19) # altitude
     else:
         ymax, ymin = np.nanmax(profile), np.nanmin(profile)
         pad = 0.15 * (ymax-ymin)
         ax2.set_ylim(ymin, ymax + pad)
     
-    return ax, ax2
+    if 'tot_wc' in quantity_list: ax2 = fig._ax_mid  # Make sure legends is made to mid_fig
+    return ax, ax2 
 
     
 def calculate_cloud_fraction(ACMCOM, ACM3D, want_2D=True, want_ice=False):
@@ -704,6 +729,7 @@ class Scene:
         fig = plt.figure(figsize=(6.0,9.0))
         if 'C' in SceneName: fig = plt.figure(figsize=(6.0,2.0))
         if 'integrated' in plot_type: fig =  plt.figure(figsize=(5,4)) #plt.figure(figsize=(5,4))
+        # if stacked: fig = plt.figure(figsize=(10,3))
         fig.subplots_adjust(left=0.11, right=0.88,bottom=0.06)
 
         ax = fig.add_subplot(1,1,1, projection=projection)
@@ -724,8 +750,8 @@ class Scene:
         cmap = plt.get_cmap('viridis')  #cmap = plt.get_cmap('jet')
         THRESHOLD_lwc = 1e30 
         THRESHOLD_iwc = 1e30
-        THRESHOLD_lwp = 400 
-        THRESHOLD_iwp = 1000
+        THRESHOLD_lwp = 400 + 1e30
+        THRESHOLD_iwp = 1000 + 1e30
 
         if plot_type=='index_construction':
             data = self.index_construction
@@ -942,13 +968,52 @@ class Scene:
 
             # Orbit 06518D specs:
             # xmin, xmax, ymin, ymax = -99.5, -97.5, 39, 41
+            ################## MODIFICATION FOR LATITUDE-RANGE #################
+            if modify_xlim: 
+                lat_min, lat_max = lat_ranges[idx]
+                # mask where latitude is inside the desired band
+                mask = (y >= lat_min) & (y <= lat_max)
+                lon_min = np.nanmin(x[mask]); lon_max = np.nanmax(x[mask])
 
-            ax.set_xlim(xmin - padx, xmax + padx)   # longitude
-            ax.set_ylim(ymin - pady, ymax + pady)   # latitude
+                
+                # --------- Draw black box for LargeBuffer -------------
+                # mask where latitude is inside the desired band
+                mask = (y[nadir_idx,:] >= lat_min) & (y[nadir_idx,:] <= lat_max)
+                # upper and lower “edges” of the buffer, masked
+                x_0 = x[nadir_idx - 10, mask]
+                y_0 = y[nadir_idx - 10, mask]
+                x_1 = x[nadir_idx + 10, mask]
+                y_1 = y[nadir_idx + 10, mask]
+                
+                # Build a closed rectangle path:
+                # bottom edge: x_0 (forward) - top edge: x_1 (backwards) - and close back to the starting point
+                x_rect = np.concatenate([x_0, x_1[::-1], [x_0[0]]])
+                y_rect = np.concatenate([y_0, y_1[::-1], [y_0[0]]])
+
+                ax.plot(
+                    x_rect, y_rect, '-',
+                    linewidth=1,
+                    color='black',
+                    label='3D buffer',
+                    transform=projection,  # e.g. ccrs.PlateCarree()
+                    zorder=20,
+                )
+                # -------------------------------------------------------
+
+                lat_diff = lat_max-lat_min
+                lon_diff = lon_max-lon_min
+                lat_min -= lat_diff/2; lat_max += lat_diff/2
+                lon_min += lon_diff/5; lon_max -= lon_diff/1.5 # not show whole width
+
+                ax.set_xlim(lon_min, lon_max)
+                ax.set_ylim(lat_min, lat_max)
+            ####################################################################
+            else:
+                ax.set_xlim(xmin - padx, xmax + padx)   # longitude
+                ax.set_ylim(ymin - pady, ymax + pady)   # latitude
 
             print('Mean data over valid-region = ', data_valid.mean())
 
-        
         ax.set_aspect('auto')  # let x/y stretch freely
 
         if 'wc' in plot_type:
@@ -974,7 +1039,7 @@ class Scene:
         cb.ax.set_facecolor('#f7f7f7')            # subtle bg behind ramp
 
         ax.set_xlabel(r'Latitude [N$^\circ$]', fontsize=INFOSIZE)
-        ax.set_ylabel('Altitude [km]', fontsize=INFOSIZE)
+        ax.set_ylabel('Altitude [km]', fontsize=INFOSIZE)    
         
         # ax.xaxis.set_major_locator(MultipleLocator(2.0))  # one tick every 2°
         # ax.xaxis.set_minor_locator(MultipleLocator(2.0))
@@ -987,7 +1052,7 @@ class Scene:
         ax.tick_params(axis='both', which='minor', labelsize=INFOSIZE*.8)
         fig.suptitle(title, fontsize=FONTSIZE, y=0.98, fontweight='bold')
         ax.set_title(f"{self.Name} - {date}  {time} (UTC)", fontsize=INFOSIZE)
-        plt.figtext(0.001, 0.003, f"Baselines: AC = ({AC_baseline})  |  BA = ({BA_baseline})", fontsize=FONTSIZE*0.45)
+        plt.figtext(0.001, 0.004, baseline_str, fontsize=FONTSIZE*0.45)
         # Orbit nr: self.Name
         
 
@@ -1138,7 +1203,7 @@ class Scene:
         ax.tick_params(axis='both', which='minor', labelsize=INFOSIZE)
         fig.suptitle(title, fontsize=FONTSIZE, y=0.98)
         ax.set_title(f"{self.Name} - {date}  {time} (UTC)", fontsize=INFOSIZE)
-        plt.figtext(0.001, 0.003, f"Baselines: AC = ({AC_baseline})  |  BA = ({BA_baseline})", fontsize=FONTSIZE*0.45)
+        plt.figtext(0.001, 0.004, baseline_str, fontsize=FONTSIZE*0.45)
         # Orbit nr: self.Name
         
 
@@ -1185,7 +1250,7 @@ class Scene:
         fig.subplots_adjust(left=0.11, right=0.88,bottom=0.06)
 
         ax = fig.add_subplot(1,1,1)
-        #        ax.set_extent([self.extent_left, self.extent_right, self.extent_bottom,  self.extent_top], crs=ccrs.PlateCarree())
+                # ax.set_extent([self.extent_left, self.extent_right, self.extent_bottom,  self.extent_top], crs=ccrs.PlateCarree())
 
         # BG: define window-size for average-meassurements
         w_size = 20
@@ -1353,7 +1418,7 @@ class Scene:
             #   Scene3 = ACMRT
             #   Scene4 = librad2
             title='Solar TOA flux' #+ f' - Atmosphere {atmosphere} (ACM-COM)'
-            cblabel='BMA_FLX: solar_combined_top_of_atmosphere_flux'
+            cblabel='BMA_FLX' #: solar_combined_top_of_atmosphere_flux'
                 
 
             # ---------- BG: Get additional data to plot (twin or stacked-axis) ----------------
@@ -1404,21 +1469,21 @@ class Scene:
                         # marker=".", markersize = 4, linestyle="None", 
                         alpha=.9,
                         linewidth=1.2,
-                        zorder=10)
+                        zorder=30)
             pl_list.append(p)
 
             
-            if want_average_line:
-                # BG: original w = 21 -> change to 3
-                # BG: if calculated fewer than 3 pixels -> must change data3
-                data3=  moving_average(data2, w=w_size)  # Assessment_domain_along_size = 21
-                p,=ax.plot(x2[w_size:-w_size], data3[w_size:-w_size],
-                        color='#007FFF',
-                        linewidth=2, 
-                        zorder=9,
-                        alpha=.7,
-                        label='libRadtran, averaged')
-                pl_list.append(p) 
+            # if want_average_line:
+            #     # BG: original w = 21 -> change to 3
+            #     # BG: if calculated fewer than 3 pixels -> must change data3
+            #     data3=  moving_average(data2, w=w_size)  # Assessment_domain_along_size = 21
+            #     p,=ax.plot(x2[w_size:-w_size], data3[w_size:-w_size],
+            #             color='#007FFF',
+            #             linewidth=2, 
+            #             zorder=9,
+            #             alpha=.7,
+            #             label='libRadtran, averaged')
+            #     pl_list.append(p) 
 
             
             if Scene4 != None:
@@ -1436,12 +1501,8 @@ class Scene:
                 # Apply the mask to data
                 x4[~mask], data4[~mask] = np.nan, np.nan
                 # ------------------------------------------------
-                p,=ax.plot(x4, data4, color='green', label='libRadtran, '+librad_version2,
-                    #    marker=".",
-                    #    markersize = 2, 
-                    #    linestyle="None", 
-                       alpha=.5,
-                       zorder=5)
+                if want_average_line: data4=  moving_average(data4, w=w_size); p,=ax.plot(x4, data4, color='green', label='libRadtran, '+librad_version2, marker = 'o', markersize = 3, linestyle = 'None', zorder=10)
+                else: p,=ax.plot(x4, data4, color='lightgreen', label='libRadtran, '+librad_version2, alpha=.8, zorder=5)
                 pl_list.append(p)
             if Scene3 != None: 
                 x3 = Scene3.latitude_active
@@ -1459,16 +1520,14 @@ class Scene:
                 x3 = x3[quality_mask]
                 # ------------------------------------------------
 
-                p,=ax.plot(x3, data3, color='yellow', label='ACM_RT 1d: flux_up_solar_1d_all_sky, TOA')
+                p,=ax.plot(x3, data3, color='gray', label='ACM_RT 1D', linewidth=2) #, alpha=.8) "flux_up_solar_1d_all_sky, TOA"
                 pl_list.append(p)
 
                 p,=ax.plot(x3, data4, 
-                        color='black', # '#00A028'
-                        marker = 'x', 
-                        markersize=8,
-                        linestyle="None", 
+                        color = 'black', marker = 'o', markersize = 3, linestyle = 'None', 
+                        # color='black', marker = 'x', markersize=8, linestyle="None", 
                         zorder=8, 
-                        label='ACM_RT 3d: flux_up_solar_3d_all_sky, TOA')
+                        label='ACM_RT 3D') # "flux_up_solar_3d_all_sky, TOA"
                 pl_list.append(p) 
             
 
@@ -1483,7 +1542,7 @@ class Scene:
 
         elif plot_type=='thermal_both':
             title='Thermal TOA flux' #+ f' - Atmosphere {atmosphere} (ACM-COM)'
-            cblabel='BMA_FLX: thermal_combined_top_of_atmosphere_flux'
+            cblabel='BMA_FLX' #: thermal_combined_top_of_atmosphere_flux'
 
             # ---------- BG: Get additional data to plot (twin or stacked-axis) ----------------
             if quantity_list:
@@ -1532,21 +1591,21 @@ class Scene:
                         # marker=".", markersize = 4, linestyle="None", 
                         alpha=.9,
                         linewidth=1.2,
-                        zorder=10)
+                        zorder=30)
             pl_list.append(p)
 
             
-            if want_average_line:
-                # BG: original w = 21 -> change to 3
-                # BG: if calculated fewer than 3 pixels -> must change data3
-                data3=  moving_average(data2, w=w_size)  # Assessment_domain_along_size = 21
-                p,=ax.plot(x2[w_size:-w_size], data3[w_size:-w_size],
-                        color='#007FFF',
-                        linewidth=2, 
-                        zorder=9,
-                        alpha=.7,
-                        label='libRadtran, averaged')
-                pl_list.append(p) 
+            # if want_average_line:
+            #     # BG: original w = 21 -> change to 3
+            #     # BG: if calculated fewer than 3 pixels -> must change data3
+            #     data3=  moving_average(data2, w=w_size)  # Assessment_domain_along_size = 21
+            #     p,=ax.plot(x2[w_size:-w_size], data3[w_size:-w_size],
+            #             color='#007FFF',
+            #             linewidth=2, 
+            #             zorder=9,
+            #             alpha=.7,
+            #             label='libRadtran, averaged')
+            #     pl_list.append(p) 
             
 
             if Scene4 != None:
@@ -1564,12 +1623,8 @@ class Scene:
                 # Apply the mask to data
                 x4[~mask], data4[~mask] = np.nan, np.nan
                 # ------------------------------------------------
-                p,=ax.plot(x4, data4, color='green', label='libRadtran, '+librad_version2,
-                    #    marker=".",
-                    #    markersize = 2, 
-                    #    linestyle="None", 
-                       alpha=.5,
-                       zorder=5)
+                if want_average_line: data4=  moving_average(data4, w=w_size); p,=ax.plot(x4, data4, color='green', label='libRadtran, '+librad_version2, marker = 'o', markersize = 3, linestyle = 'None', zorder=10)
+                else: p,=ax.plot(x4, data4, color='lightgreen', label='libRadtran, '+librad_version2, alpha=.8, zorder=5)
                 pl_list.append(p)
             if Scene3 != None:
                 x3 = Scene3.latitude_active
@@ -1587,18 +1642,15 @@ class Scene:
                 x3 = x3[quality_mask]
                 # ------------------------------------------------
 
-                p,=ax.plot(x3, data3, color='yellow', label='ACM_RT 1d: flux_up_thermal_1d_all_sky, TOA')
+                p,=ax.plot(x3, data3, color='gray', label='ACM_RT 1D', linewidth=2) #, alpha=.8) "flux_up_solar_1d_all_sky, TOA"
                 pl_list.append(p)
-            
-                
+
                 p,=ax.plot(x3, data4, 
-                        color='black', # '#00A028'
-                        marker = 'x', 
-                        markersize=8,
-                        linestyle="None", 
+                        color = 'black', marker = 'o', markersize = 3, linestyle = 'None', 
+                        # color='black', marker = 'x', markersize=8, linestyle="None", 
                         zorder=8, 
-                        label='ACM_RT 3d: flux_up_thermal_3d_all_sky, TOA')
-                pl_list.append(p)
+                        label='ACM_RT 3D') # "flux_up_solar_3d_all_sky, TOA"
+                pl_list.append(p) 
                 
 
             vmin=data.min()#0.0001 #
@@ -1846,7 +1898,7 @@ class Scene:
 
         # BG: created by me
         elif plot_type=='solar_flx_ratio':
-            title='Solar TOA flux ratio'    
+            title='Solar TOA flux Rel.Err.' #ratio'    
             if 'montecarlo' in Scene2.fn:
                 cblabel = 'MYSTIC / BMA_FLX '
                 label = 'MYSTIC / BMA_FLX, averaged'
@@ -1869,22 +1921,35 @@ class Scene:
             fill_value_data2 = 0
             x, data1_interp, data2 = interpolate(x1, data1, fill_value_data1, x2, data2, fill_value_data2) 
 
-            # Calculate ratio
-            data = data2 / data1_interp
+            # Calculate ratio ######## TEST REL-ERR
+            data = (data2 - data1_interp) / data1_interp
 
-            data_mean = moving_average(data2, w=w_size) / moving_average(data1_interp, w=w_size)
-            p,=ax.plot(x, data_mean,
-                       color='b',
-                       linewidth=2, 
-                       zorder=9,
-                       alpha=.8,
-                       label=label) 
-            pl_list.append(p)
+            # data_mean = moving_average(data2, w=w_size) / moving_average(data1_interp, w=w_size)
+            # p,=ax.plot(x, data_mean,
+            #            color='b',
+            #            linewidth=2, 
+            #            zorder=9,
+            #            alpha=.8,
+            #            label=label) 
+            # pl_list.append(p)
+
+            # Add mean of the error to plot
+            mean_err = np.nanmean(data)
+            std  = np.nanstd(data)
+            data_str = fr"⟨Rel.Err Flux⟩ = {mean_err:.3f} ± {std:.3f}" + r" W/m$^2$"
+            print('-----------------------------------------------\n'
+                  'thermal: ', data_str, '    (n = ', len(data), ')\n'
+                  '-----------------------------------------------')
+            ax.text(
+                0.99, 0.88, data_str,
+                transform=ax.transAxes, ha='right', va='bottom',
+                fontsize=fsize*.8, color='k',
+                bbox=dict(boxstyle='round,pad=0.3', facecolor='w', alpha=0.9))
 
            
-            baseline = 1
+            baseline = 0 #1
             padding = 0.1
-            ax.axhline(1.0, color='black', linestyle='--', linewidth=1.5, label='Baseline (y=1)')
+            ax.axhline(baseline, color='black', linestyle='--', linewidth=1.5, label='Baseline (y=1)')
             # Calculate the maximum absolute deviation from the baseline (y=1)
             max_deviation = np.max(np.abs(data - baseline)) 
             # BG: adjust ymin/ymax for equal comparison
@@ -1962,7 +2027,19 @@ class Scene:
                 label = 'DISORT - BMA_FLX, averaged'
             else:
                 print("BG: error, correct files?")
-            title += '     [ ' + cblabel + ' ] '
+            title += '     [' + cblabel + '] '
+
+            # ---------- BG: Get additional data to plot (twin or stacked-axis) ----------------
+            if quantity_list:
+                add_profile_list = [] if stacked else pl_list # List for ax2-legends
+                for quantity in quantity_list:
+                    ax, ax2 = add_profile_to_plot(fig, ax, ACMCOM, fsize=fsize, legend_list=add_profile_list, quantity=quantity, stacked=stacked)
+                if stacked and add_profile_list: ax2.legend(handles=add_profile_list, 
+                                                            loc='upper right', framealpha=0.7, 
+                                                            borderaxespad=0.0,                  # space to axes
+                                                            borderpad=0.25, labelspacing=0.25,   # compact box)
+                                                            fontsize=INFOSIZE*.8)
+            # ------------------------------------------------------------------------
 
 
             x1 = self.latitude
@@ -2048,7 +2125,7 @@ class Scene:
                 label = 'DISORT - BMA_FLX, averaged'
             else:
                 print("BG: error, correct files?")
-            title += '     [ ' + cblabel + ' ] '
+            title += '     [' + cblabel + '] '
 
 
             x1 = self.latitude
@@ -2662,7 +2739,7 @@ class Scene:
             l, = ax.plot(x, data, 
                                 label=cblabel, 
                                 color='r',
-                                marker=".", linestyle="None", markersize = 4
+                                # marker=".", linestyle="None", markersize = 4
                                 ) # cmap=cmap, vmin=vmin, vmax=vmax, linewidth=0)
             ax.legend(handles=[l]+pl_list,
                         loc='upper left', framealpha=0.7, 
@@ -2671,24 +2748,35 @@ class Scene:
                         fontsize=INFOSIZE*.8)
             ax.vlines(x, baseline, data, color='red', alpha=0.6, lw=0.2)  # lines to baseline
         else:
+            ax.set_xlim(np.nanmin(x2),np.nanmax(x2)) # x2 -> libRad-data
             l, = ax.plot(x, data, 
                                 label=cblabel, 
                                 color='r',
+                                zorder=20
                                 # marker=".", markersize = 4, linestyle="None"
                                 ) # cmap=cmap, vmin=vmin, vmax=vmax, linewidth=0)
             # ax.legend(handles=[l]+pl_list, fontsize=INFOSIZE*.7)
-            ax.legend(handles=[l]+pl_list,
+            leg = ax.legend(handles=[l]+pl_list,
                         # loc='upper left', 
                         framealpha=0.7, 
                         borderaxespad=0.0,                  # space to axes
                         borderpad=0.25, labelspacing=0.25,   # compact box)
                         fontsize=INFOSIZE*.8)
+            leg.set_zorder(99) # put in front
+
+
+
+
+        ################## MODIFICATION FOR LATITUDE-RANGE #################
+        if modify_xlim: ax.set_xlim(lat_ranges[idx])
+        ####################################################################
+
 
 
         ax.set_xlabel(xlabel + xlabel_specs, fontsize=INFOSIZE)
         ax.set_ylabel(ylabel + ylabel_specs, fontsize=INFOSIZE)
-
-        
+        if 'ax2' in locals():
+            fig._ax_bot.set_xlabel(xlabel + xlabel_specs, fontsize=INFOSIZE)
 
         ax.xaxis.set_minor_locator(AutoMinorLocator())
         ax.yaxis.set_minor_locator(AutoMinorLocator())
@@ -2696,7 +2784,7 @@ class Scene:
         ax.tick_params(axis='both', which='minor', labelsize=INFOSIZE*.8)
         fig.suptitle(title, fontsize=FONTSIZE, y=0.98, fontweight='bold')
         ax.set_title(f"{self.Name} - {date}  {time} (UTC)", fontsize=INFOSIZE)
-        plt.figtext(0.001, 0.003, f"Baselines: AC = ({AC_baseline})  |  BA = ({BA_baseline})", fontsize=FONTSIZE*0.45)
+        plt.figtext(0.001, 0.004, baseline_str, fontsize=FONTSIZE*0.45)
         # Orbit nr: self.Name
 
         # BG: ----- plot-adjustments for nicer looking plots -----------
@@ -2707,8 +2795,6 @@ class Scene:
         ax.grid(which='major', linestyle='--', alpha=0.4)
         ax.grid(which='minor', linestyle=':',  alpha=0.2)
         ax.minorticks_on()
-
-        
 
         # remove top/right border
         for spine in ['top','right']:
@@ -3141,9 +3227,50 @@ if __name__ == "__main__":
     want_3D = True      # BG: used in flux plot (DISORT or MYSTIC)
     want_ps = False     # BG: if want DISORT pseudospherical (want_3D overwrite want_ps)
 
-    idx_scene = [3,4,5] 
+    modify_xlim = False
+    if modify_xlim: 
+        idx = 0
+        lat_ranges = [
+            (74.27, 74.41), # 6888C
+            (80.63, 80.74), # 6888C
+            ####### OLD ##########
+            (74.0, 74.5),   # 6888C
+            (80.5, 81.0),   # 6888C
+            (75.0, 76.0),   # 6331C
+            (41.0, 52.5),   # 6518D
+            (11.5, 15.0),   # 6886E
+        ]
+
+
+    # BG: Chose idx to select additional info on solar_both and thermal_both plot 
+    # Chose from: 
+    #   [None, 'elevation', 'lwp', 'iwp', 'tot_wp', 'albedo', 'aerosols', 'surface_temperature', 'CF']
+    #           NOTE: do not put 'CF' at the end of quantity_list - nor with tot_wc 
+    #           NOTE: tot_wp before tot_wc
+    quantity_list = False
+    # quantity_list = ['tot_wp']
+    # quantity_list = ['tot_wc']
+    # quantity_list = ['CF']
+    # quantity_list = ['tot_wp', 'tot_wc']
+    # quantity_list = ['CF', 'tot_wc']
+
+    
+
+    # BG: additional plot-settings
+    want_average_line   = False                # Average line of librad-flux-values
+    want_EarthCARE_info = True                 # Sets Scene3 = ACM3D (in PlotLien)
+    want_product2       = True                 # Sets Scene4 = librad2 (in PlotLine)
+    want_SZA            = True                 # Prints out SZA
+    want_Cloud_Fraction = True                 # Prints out CF
+    if want_Cloud_Fraction: want_2D = False    # CF of 2D swat, or 1D nadir column
+    stacked = True                             # If add quanteties to plot, if should get own figure below
+    
+
+
+
+    # idx_scene = [3,4,5,8, 11] 
     # idx_scene = [3, 4, 5, 8, 11]
-    # idx_scene =[7]
+    idx_scene = [3,4,5,6,7,8,11]
     SceneNames = [['Orbit_05378D'],#0           # Marocco - Norway           # Previousy ['Arctic_05378D']
                   ['Orbit_05458F'],             # Chile
                   ['Orbit_05926C'],             # Old Greenland (13.06.2026)
@@ -3191,7 +3318,7 @@ if __name__ == "__main__":
     # additional_spesifications += '_GHM_mc1e6'
     # additional_spesifications += '_GHM_mc1e7'
            # All points 
-    additional_spesifications += '_All_FullBuffer'
+    # additional_spesifications += '_All_FullBuffer'
     # additional_spesifications += '_All_SmallBuffer'
     # additional_spesifications += '_All'
              # 3D-Cloud impact
@@ -3200,6 +3327,7 @@ if __name__ == "__main__":
     # atmosphere = 1
              # TEST; THEN REMOVE
     # additional_spesifications += '_wc_test_new_3D_surface'
+    additional_spesifications += '_All_FullBuffer_test_new_3D_surface'
 
 
     
@@ -3207,7 +3335,7 @@ if __name__ == "__main__":
 
 
 
-    fig_index = 2
+    fig_index = 7
     figname = ['fig:flx_solar',#0                                                   
                'fig:flx_thermal',                                                   
                'fig:flx_both',                      # Solar + Thermal               
@@ -3239,7 +3367,6 @@ if __name__ == "__main__":
                ][fig_index]
 
 
-    
     # BG: fig:*both* when simulated in solar & thermal ('*solar,thermal*'-name in RESULT .nc files)
 
     pathL2TestProducts  = '/xnilu_wrk2/projects/NEVAR/data/EarthCARE_Real/'  
@@ -3260,29 +3387,6 @@ if __name__ == "__main__":
     version_identifier  = 'v01'
 
     
-
-    # BG: Chose idx to select additional info on solar_both and thermal_both plot 
-    # Chose from: 
-    #   [None, 'elevation', 'lwp', 'iwp', 'tot_wp', 'albedo', 'aerosols', 'surface_temperature', 'CF']
-    #           NOTE: do not put 'CF' at the end of quantity_list
-    quantity_list = False
-    # quantity_list = ['tot_wp']
-    # quantity_list = ['tot_wc']
-    # quantity_list = ['CF']
-    # quantity_list = ['CF', 'tot_wp']
-
-    
-
-    # BG: additional plot-settings
-    want_average_line   = False                # Average line of librad-flux-values
-    want_EarthCARE_info = True                 # Sets Scene3 = ACM3D (in PlotLien)
-    want_product2       = True                 # Sets Scene4 = librad2 (in PlotLine)
-    want_SZA            = True                 # Prints out SZA
-    want_Cloud_Fraction = True                 # Prints out CF
-    if want_Cloud_Fraction: want_2D = False    # CF of 2D swat, or 1D nadir column
-    stacked = True                             # If add quanteties to plot, if should get own figure below
-    
-
 
 
     
@@ -3386,7 +3490,6 @@ if __name__ == "__main__":
         plot_types_map = ['index_construction']
     elif figname == 'fig:plot_swat':
         plot_types_map = ['plot_swat']
-    
 
 
 
@@ -3415,7 +3518,9 @@ if __name__ == "__main__":
                         # librad_type         = 'SWIN'; additional_spesifications2 = ''
 
 
-    
+
+
+
 
     plot_types_flx = plot_types_flx_geo + plot_types_flx_solar + plot_types_flx_thermal
 
@@ -3627,6 +3732,11 @@ if __name__ == "__main__":
         # Fix Baseline
         AC_baseline = ", ".join(AC_baseline.split())
         BA_baseline = ", ".join(BA_baseline.split())
+        baseline_str = "Baselines: "
+        if AC_baseline != '':   baseline_str += f'AC = ({AC_baseline})  '
+        if BA_baseline != '': baseline_str += f'BA = ({BA_baseline})  '
+           
+
 
         # Extract Date
         date_num = '20' + ProductFile.split('20', 1)[1].split('T', 1)[0]

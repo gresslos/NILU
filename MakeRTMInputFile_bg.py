@@ -1096,28 +1096,16 @@ def SetRTM(UVS, ia, iacr, ACM3D=None, AMACD=None, ACMCOM=None, ACMRT=None, BMAFL
             for iac in iacrosses:
                 iy=1
                 for ial in ialongs:
-                    irec = ACM3D.index_construction[iac, ial]  # Teste å bytte ut iac, ial med irec, irec
-                    # BG: modification for reduced swat-length
-                    if "Orbit_05926C" in SceneName:   irec -= 2700 
-                    elif "Orbit_06888C" in SceneName: irec -= 2527 
-                    elif "Orbit_07277C" in SceneName: irec -= 2527
-                    elif "Orbit_06331C" in SceneName: irec -= 2636
-
-                    ###################### THIS IS NEW TEST - REMOVE #####################
-                    irec = ial
-                    iacr = iac
-                    ######################################################################
-
-                    itype_index = 'itype_index_{:00004d}_{:00004d}_{:00004d}_{:00004d}.dat'.format(ia, iac, ial, irec)
-                    mc_albedo_type_file = input_dir+'tmp'+'{:00004d}_{:00004d}_{:00004d}_{:00004d}'.format(ia, iac, ial, irec)+'mc_albedo_spectral_type'+source+'.dat'
+                    itype_index = 'itype_index_{:00004d}_{:00004d}_{:00004d}_{:00004d}.dat'.format(ia, iac, ial, 0)
+                    mc_albedo_type_file = input_dir+'tmp'+'{:00004d}_{:00004d}_{:00004d}_{:00004d}'.format(ia, iac, ial, 0)+'mc_albedo_spectral_type'+source+'.dat'
                     fatf = open(mc_albedo_type_file,'w')
                     f.write('{:d} {:d} {:s}\n'.format(ix, iy, itype_index))
                     fat.write('{:s} {:s}\n'.format(itype_index, mc_albedo_type_file))
 
                     if source=='solar':
                         # ESO:
-                        UVvisalb = ACMCOM.albedo_diffuse_radiation_surface_visible[iacr,irec]
-                        UVNIRalb = ACMCOM.albedo_diffuse_radiation_surface_near_infrared[iacr,irec]
+                        UVvisalb = ACMCOM.albedo_diffuse_radiation_surface_visible[iac,ial]
+                        UVNIRalb = ACMCOM.albedo_diffuse_radiation_surface_near_infrared[iac,ial]
 
                         fatf.write('{:f} {:f}\n'.format(200, UVvisalb ))
                         fatf.write('{:f} {:f}\n'.format(700, UVvisalb ))
@@ -1127,25 +1115,13 @@ def SetRTM(UVS, ia, iacr, ACM3D=None, AMACD=None, ACMCOM=None, ACMRT=None, BMAFL
                         nwvl = ACMCOM.wavelengths_thermal_surface_emissivity.shape[0]
                         cmtonm=1e-07
                         for iwvl in np.arange(nwvl-1,-1,-1):
-                            #print(ACMCOM.wavelengths_thermal_surface_emissivity[iwvl] * 1e-04)
-                            # This should not happen. Is there some kind of inconsistency in the
-                            # synthetic data
-
-                            if ACMCOM.surface_emissivity_type_index[iacr,irec]>26:
-                                # ESO:
-                                # print("WARN: irec>=26 for ia {}".format(ia))
+                            if ACMCOM.surface_emissivity_type_index[iac,ial]>26:
                                 albedo=0.0
-                            #elif ACMCOM.surface_emissivity_type_index[0,irec]<0:
-                            # ESO:
-                                # print("WARNING: surface_emissivity_type_index = {} > 26 for ia {}, irec {}".format(ACMCOM.surface_emissivity_type_index[iacr,irec], ia, irec))
-                            elif ACMCOM.surface_emissivity_type_index[iacr,irec]<0:
+                            elif ACMCOM.surface_emissivity_type_index[iac,ial]<0:
                                 albedo=0.0
-                                # print("WARNING, surface_emissivity_type_index = {} < 0  for ia {}, irec {}".format(ACMCOM.surface_emissivity_type_index[iacr,irec], ia, irec))
                             else:
-                                #tms
-                                albedo = 1-ACMCOM.surface_emissivity_table[ACMCOM.surface_emissivity_type_index[iacr,irec]-1,iwvl]
-                                
-
+                                albedo = 1-ACMCOM.surface_emissivity_table[ACMCOM.surface_emissivity_type_index[iac,ial]-1,iwvl]
+                            
                             wvl = 1./(ACMCOM.wavelengths_thermal_surface_emissivity[iwvl] * cmtonm)
 
                             fatf.write('{:10.3f} {:8.5f}\n'.format(wvl, albedo))
@@ -1155,6 +1131,65 @@ def SetRTM(UVS, ia, iacr, ACM3D=None, AMACD=None, ACMCOM=None, ACMRT=None, BMAFL
                     fatf.close()    
                     iclines=iclines+1
                     iy=iy+1
+                                # irec = ACM3D.index_construction[iac, ial]  # Teste å bytte ut iac, ial med irec, irec
+                                # # BG: modification for reduced swat-length
+                                # if "Orbit_05926C" in SceneName:   irec -= 2700 
+                                # elif "Orbit_06888C" in SceneName: irec -= 2527 
+                                # elif "Orbit_07277C" in SceneName: irec -= 2527
+                                # elif "Orbit_06331C" in SceneName: irec -= 2636
+
+                                # ###################### THIS IS NEW TEST - REMOVE #####################
+                                # irec = ial
+                                # iacr = iac
+                                # ######################################################################
+
+                                # itype_index = 'itype_index_{:00004d}_{:00004d}_{:00004d}_{:00004d}.dat'.format(ia, iac, ial, irec)
+                                # mc_albedo_type_file = input_dir+'tmp'+'{:00004d}_{:00004d}_{:00004d}_{:00004d}'.format(ia, iac, ial, irec)+'mc_albedo_spectral_type'+source+'.dat'
+                                # fatf = open(mc_albedo_type_file,'w')
+                                # f.write('{:d} {:d} {:s}\n'.format(ix, iy, itype_index))
+                                # fat.write('{:s} {:s}\n'.format(itype_index, mc_albedo_type_file))
+
+                                # if source=='solar':
+                                #     # ESO:
+                                #     UVvisalb = ACMCOM.albedo_diffuse_radiation_surface_visible[iacr,irec]
+                                #     UVNIRalb = ACMCOM.albedo_diffuse_radiation_surface_near_infrared[iacr,irec]
+
+                                #     fatf.write('{:f} {:f}\n'.format(200, UVvisalb ))
+                                #     fatf.write('{:f} {:f}\n'.format(700, UVvisalb ))
+                                #     fatf.write('{:f} {:f}\n'.format(701, UVNIRalb ))
+                                #     fatf.write('{:f} {:f}\n'.format(4500, UVNIRalb ))
+                                # elif source=='thermal':
+                                #     nwvl = ACMCOM.wavelengths_thermal_surface_emissivity.shape[0]
+                                #     cmtonm=1e-07
+                                #     for iwvl in np.arange(nwvl-1,-1,-1):
+                                #         #print(ACMCOM.wavelengths_thermal_surface_emissivity[iwvl] * 1e-04)
+                                #         # This should not happen. Is there some kind of inconsistency in the
+                                #         # synthetic data
+
+                                #         if ACMCOM.surface_emissivity_type_index[iacr,irec]>26:
+                                #             # ESO:
+                                #             # print("WARN: irec>=26 for ia {}".format(ia))
+                                #             albedo=0.0
+                                #         #elif ACMCOM.surface_emissivity_type_index[0,irec]<0:
+                                #         # ESO:
+                                #             # print("WARNING: surface_emissivity_type_index = {} > 26 for ia {}, irec {}".format(ACMCOM.surface_emissivity_type_index[iacr,irec], ia, irec))
+                                #         elif ACMCOM.surface_emissivity_type_index[iacr,irec]<0:
+                                #             albedo=0.0
+                                #             # print("WARNING, surface_emissivity_type_index = {} < 0  for ia {}, irec {}".format(ACMCOM.surface_emissivity_type_index[iacr,irec], ia, irec))
+                                #         else:
+                                #             #tms
+                                #             albedo = 1-ACMCOM.surface_emissivity_table[ACMCOM.surface_emissivity_type_index[iacr,irec]-1,iwvl]
+                                            
+
+                                #         wvl = 1./(ACMCOM.wavelengths_thermal_surface_emissivity[iwvl] * cmtonm)
+
+                                #         fatf.write('{:10.3f} {:8.5f}\n'.format(wvl, albedo))
+
+                                #     # Add one more longer wavelength to comply with Fu wavelength grid. Assume albedo is the same.
+                                #     fatf.write('{:10.3f} {:8.5f}\n'.format(110000, albedo))
+                                # fatf.close()    
+                                # iclines=iclines+1
+                                # iy=iy+1
                 ix=ix+1
             f.close()
             fat.close()
@@ -1259,13 +1294,15 @@ if __name__ == "__main__":
               ['thermal'],
               ['solar', 'thermal']][idx_source] 
 
-    idx_scene = [7]
-    # idx_scene = [3,4,5,6,7,8,11]
+    # idx_scene = [4,5,6]
+    idx_scene = [7,8,11]
     # idx_scene = [3,4,5,6,7,8]
     # idx_scene =[3,4,5,6,7,8, 11]
-    SceneNames = [['Orbit_05378D'],#0           # Marocco - Norway           # Previousy ['Arctic_05378D']
-                  ['Orbit_05458F'],             # Chile
-                  ['Orbit_05926C'],             # Old Greenland (13.06.2026)
+                        ################# OLD ########################################################################
+    SceneNames = [      ['Orbit_05378D'],#0           # Marocco - Norway           
+                        ['Orbit_05458F'],             # Chile
+                        ['Orbit_05926C'],             # Old Greenland (13.06.2026)
+                        ##############################################################################################
 
                   ['Orbit_06888C'],#3           # Svalbard (14.08.2025)     
                   ['Orbit_07277C'],             # Svalbard (08.09.2025)
@@ -1328,8 +1365,9 @@ if __name__ == "__main__":
             # 3D-Cloud impact
     # additional_spesifications += '_wc'           # INFO: large-buffer
     # additional_spesifications += '_wc_test_atm_0'
-            # TEST; THEN REMOVE
-    additional_spesifications += '_wc_test_new_3D_surface'
+            # NEW-Surface-Version
+    # additional_spesifications += '_wc_test_new_3D_surface'
+    additional_spesifications += '_All_FullBuffer_test_new_3D_surface'
 
 
     surface = True      # BG: = False -> default albedo = 0     
@@ -1515,10 +1553,8 @@ if __name__ == "__main__":
             elif SceneName == 'Orbit_06331C': # USA
                 target_start_lat, target_end_lat = 76,78
 
-
             start, end = int(np.nanargmin(np.abs(lat - target_start_lat))),  int(np.nanargmin(np.abs(lat - target_end_lat)))
             if start > end: tmp = start; start = end; end = tmp
-
             # print(f'Latitudes            = {ACMCOM.latitude_active[start]:.2f} -> {ACMCOM.latitude_active[end]:.2f}')
             
             
@@ -1533,7 +1569,7 @@ if __name__ == "__main__":
         else: 
             # ialongs = [int(end/2)] #[300, 600, 900, 1200] #[1000, 2000, 3000, 4000]
     
-            target_lat = 0
+            target_lat = 73.1
             target_idx = int(np.nanargmin(np.abs(ACMCOM.latitude_active - target_lat)))
             ialongs = [target_idx]
             print(target_idx)
