@@ -84,7 +84,7 @@ def interpolate(x1, data1_raw, fill1, x2, data2_raw, fill2):
     return x_valid, data1_interp_valid, data2_valid
 
 # BG: My add-profile-to-plot function
-def add_profile_to_plot(fig, ax, ACMCOM, fsize, legend_list, quantity=None, iacr=151, stacked=True, normalize=False):
+def add_profile_to_plot(fig, ax, ACMCOM, fsize, legend_list, quantity=None, quantity_list=None, iacr=151, stacked=True, normalize=False):
     """
     Add a single profile (ex. elevation, lwc, iwc, ...) to the given axis.
     
@@ -479,7 +479,6 @@ def add_profile_to_plot(fig, ax, ACMCOM, fsize, legend_list, quantity=None, iacr
         
                 cs = ax2.pcolormesh(x,y,p, shading='auto', cmap=cmap, norm=LogNorm(WC_min, WC_max))
                 cs_list.append(cs)
-                ax2.set_ylabel('')        # clears the label text
                 ax2.tick_params(axis='y', which='both', right=True, labelright=False, length=0) # clears ticks
 
                 fig.tight_layout = lambda *args, **kwargs: None # turnes off tight_layout -> wont work later in code        
@@ -502,7 +501,7 @@ def add_profile_to_plot(fig, ax, ACMCOM, fsize, legend_list, quantity=None, iacr
                     linewidth=0.8,
                     alpha=alpha)
 
-    if 'cs' in locals(): 
+    if 'cs' in locals():  # If cs is defined
         if 'tot_wc' in quantity:
             three_fig_bool = ('CF' in quantity_list and len(quantity_list) != 1) or ('tot_wp' in quantity_list)
             ax_list = [ax, fig._ax_mid, ax2] if three_fig_bool else [ax, ax2]
@@ -806,7 +805,7 @@ class Scene:
                     color='r',
                     label='Satellite trajectory',
                     transform=projection,   # e.g. ccrs.PlateCarree()
-                    zorder=10)
+                    zorder=2)
             # ---------------------------------------------
             # # ---------- Add 3D-Buffers  ------------------
             # nx, ny = data.shape
@@ -831,7 +830,7 @@ class Scene:
 
         elif plot_type=='integrated_lwc':
             title = 'Liquid Water Path'
-            cblabel = r"LWC [$kg/m^2$]"
+            cblabel = r"LWP [$kg/m^2$]"
             data = ACM3D.index_construction * 0.0
             nx = data.shape[0]
             ny = data.shape[1]
@@ -875,7 +874,7 @@ class Scene:
                     color='r',
                     label='Satellite trajectory',
                     transform=projection,   # e.g. ccrs.PlateCarree()
-                    zorder=10)
+                    zorder=2)
             # ---------------------------------------------
             # # ---------- Add 3D-Buffers  ------------------
             # nx, ny = data.shape
@@ -895,7 +894,7 @@ class Scene:
             #         ax.plot(X, Y, '-', color=color, lw=1.5, transform=projection, zorder=20,
             #                     label=label if k == 0 else '_nolegend_')
             # ax.legend()
-            # # ---------------------------------------------
+            # # # ---------------------------------------------
 
         elif plot_type=='albedo_direct_radiation_surface_visible':
             data = self.albedo_direct_radiation_surface_visible
@@ -932,23 +931,6 @@ class Scene:
             print("Unknown plot_type: "+plot_type+", exiting")
             exit()
 
-                ############################ OLD #################################
-                # print('data', vmin, vmax, data.min(), data.max())
-                # cs = ax.pcolor(x, y, data, cmap=cmap, transform=projection, vmin=vmin, vmax=vmax, linewidth=0)
-                # if plot_type!='':
-                #     cb = plt.colorbar(cs, shrink=1.,  fraction=0.02, pad=0.03) # BG: change fraction to change cb-height
-                #     cblabel=cblabel
-                #     cb.ax.tick_params(labelsize=fsize)
-                #     cb.set_label(cblabel, size=fsize)
-                #     title = self.Name + title
-                #     plt.title(title, size=fsize)
-                #     cmap.set_under('gray')
-                # if plot_type=='albedo_diffuse_radiation_surface_visible' or plot_type=='albedo_diffuse_radiation_surface_near_infrared':
-                #         cmap.set_over('gray')
-                # # BG: how to add points on 2D plot
-                # # ax.plot(x[151, 2000], y[151, 2000], 'rx', markersize=20, markeredgewidth=2, transform=ccrs.PlateCarree())
-
-                #        if plot_type=='index_construction':
         
 
 
@@ -970,20 +952,37 @@ class Scene:
             # xmin, xmax, ymin, ymax = -99.5, -97.5, 39, 41
             ################## MODIFICATION FOR LATITUDE-RANGE #################
             if modify_xlim: 
-                lat_min, lat_max = lat_ranges[idx]
+                lat_min, lat_max = lat_ranges
                 # mask where latitude is inside the desired band
                 mask = (y >= lat_min) & (y <= lat_max)
                 lon_min = np.nanmin(x[mask]); lon_max = np.nanmax(x[mask])
-
                 
-                # --------- Draw black box for LargeBuffer -------------
+                # --------- Draw Trajecotry and LargeBuffer -------------
                 # mask where latitude is inside the desired band
                 mask = (y[nadir_idx,:] >= lat_min) & (y[nadir_idx,:] <= lat_max)
-                # upper and lower “edges” of the buffer, masked
-                x_0 = x[nadir_idx - 10, mask]
-                y_0 = y[nadir_idx - 10, mask]
-                x_1 = x[nadir_idx + 10, mask]
-                y_1 = y[nadir_idx + 10, mask]
+                # Plot nadir line
+                ax.plot(
+                    x[nadir_idx, mask], y[nadir_idx, mask], '-',
+                    linewidth=3,
+                    color='r',
+                    label='Trajectory of interest',
+                    transform=projection,  # e.g. ccrs.PlateCarree()
+                    zorder=2,
+                )
+
+                # BUFFER:
+                # indices where mask is True
+                idx = np.where(mask)[0]
+                # define start/end with along-track dim LargeBuffer
+                start =  idx[0] - 12 
+                end   = idx[-1] + 12 
+
+                # expanded slices for upper & lower buffer edges
+                x_0 = x[nadir_idx - 10, start:end]
+                y_0 = y[nadir_idx - 10, start:end]
+                x_1 = x[nadir_idx + 10, start:end]
+                y_1 = y[nadir_idx + 10, start:end]
+                
                 
                 # Build a closed rectangle path:
                 # bottom edge: x_0 (forward) - top edge: x_1 (backwards) - and close back to the starting point
@@ -992,21 +991,33 @@ class Scene:
 
                 ax.plot(
                     x_rect, y_rect, '-',
-                    linewidth=1,
+                    linewidth=1.5,
                     color='black',
-                    label='3D buffer',
+                    label='LargeBuffer',
                     transform=projection,  # e.g. ccrs.PlateCarree()
-                    zorder=20,
+                    zorder=2,
                 )
                 # -------------------------------------------------------
 
                 lat_diff = lat_max-lat_min
                 lon_diff = lon_max-lon_min
-                lat_min -= lat_diff/2; lat_max += lat_diff/2
-                lon_min += lon_diff/5; lon_max -= lon_diff/1.5 # not show whole width
+                pad_lat = lat_diff/4; pad_lon = lon_diff/10
+        
+                
+                    # lat_min -= lat_diff*1.3; lat_max += lat_diff*2
+                    # lon_min += lon_diff/7; lon_max -= lon_diff/1.6 # not show whole width
+                    # lon_min += 0; lon_max -= 2 # not show whole width
+
+                lon_min, lon_max = np.nanmin(x_1) - pad_lon, np.nanmax(x_0) + pad_lon
+                lat_min, lat_max = np.nanmin(y_1) - pad_lat, np.nanmax(y_0) + pad_lat*2
 
                 ax.set_xlim(lon_min, lon_max)
                 ax.set_ylim(lat_min, lat_max)
+
+                ax.legend(  loc='upper right', framealpha=0.7, 
+                            borderaxespad=0.0,                  # space to axes
+                            borderpad=0.25, labelspacing=0.25,   # compact box)
+                            fontsize=INFOSIZE*.8)
             ####################################################################
             else:
                 ax.set_xlim(xmin - padx, xmax + padx)   # longitude
@@ -1041,10 +1052,12 @@ class Scene:
         ax.set_xlabel(r'Latitude [N$^\circ$]', fontsize=INFOSIZE)
         ax.set_ylabel('Altitude [km]', fontsize=INFOSIZE)    
         
-        # ax.xaxis.set_major_locator(MultipleLocator(2.0))  # one tick every 2°
-        # ax.xaxis.set_minor_locator(MultipleLocator(2.0))
+       
         
         #----------------------------------- Plot Settings -------------------------
+        # ax.xaxis.set_major_locator(MultipleLocator(2.0))  # one tick every 2°
+        # ax.xaxis.set_minor_locator(MultipleLocator(2.0))
+
         ax.xaxis.set_minor_locator(AutoMinorLocator())
         ax.yaxis.set_minor_locator(AutoMinorLocator())
         
@@ -1401,7 +1414,7 @@ class Scene:
             x = ACMCOM.latitude_active
 
             for quantity in quantity_list:
-                ax2 = add_profile_to_plot(fig, ax, ACMCOM, fsize=fsize, legend_list=pl_list, quantity=quantity, stacked=False)
+                ax2 = add_profile_to_plot(fig, ax, ACMCOM, fsize=fsize, legend_list=pl_list, quantity=quantity, quantity_list=quantity_list, stacked=False)
                 
            
 
@@ -1425,7 +1438,7 @@ class Scene:
             if quantity_list:
                 add_profile_list = [] # List for ax2-legends
                 for quantity in quantity_list:
-                    ax, ax2 = add_profile_to_plot(fig, ax, ACMCOM, fsize=fsize, legend_list=add_profile_list, quantity=quantity, stacked=True)
+                    ax, ax2 = add_profile_to_plot(fig, ax, ACMCOM, fsize=fsize, legend_list=add_profile_list, quantity=quantity, quantity_list=quantity_list, stacked=True)
                 if add_profile_list: ax2.legend(handles=add_profile_list, 
                                                 loc='upper right', framealpha=0.7, 
                                                 borderaxespad=0.0,                  # space to axes
@@ -1439,12 +1452,13 @@ class Scene:
 
             data = self.solar_combined_top_of_atmosphere_flux
             # ----------- Quality-Status -----------------
-            quality = self.quality_status[:]
-            # boolean mask: True where quality is 0 or 2
-            quality_mask = np.isin(quality, [0, 2]) 
+            if want_quality_status: 
+                quality = self.quality_status[:]
+                # boolean mask: True where quality is 0 or 2
+                quality_mask = np.isin(quality, [0, 2]) 
 
-            # Apply the mask to data
-            x[~quality_mask], data[~quality_mask] = np.nan, np.nan
+                # Apply the mask to data
+                x[~quality_mask], data[~quality_mask] = np.nan, np.nan
             # ------------------------------------------------
 
 
@@ -1452,20 +1466,23 @@ class Scene:
             # data4 = self.solar_top_of_atmosphere_flux[:,bbr_direction]
             data2 = Scene2.solar_eup
             # ----------- Quality-Status -----------------
-            # BG: modification to only include calculated results with valid quality
-            # Create a combined mask: non-zero and quality 0 or 1
-            quality = ACMCOM.quality_status[:]
-            mask = (data2 != 0) & np.isin(quality, [0, 1])
+            if want_quality_status: 
+                # BG: modification to only include calculated results with valid quality
+                # Create a combined mask: non-zero and quality 0 or 1
+                quality = ACMCOM.quality_status[:]
+                mask = (data2 != 0) & np.isin(quality, [0, 1])
 
-            # Apply the mask to data
-            x2[~mask], data2[~mask] = np.nan, np.nan
+                # Apply the mask to data
+                x2[~mask], data2[~mask] = np.nan, np.nan
             # ------------------------------------------------
 
             # Print info:
             print(f'\n|--------{plot_type:.14} FLUX MYSTIC---------------|\n'
                     f'|mean, min, max  = {np.nanmean(data2):.2f} & {np.nanmin(data2):.2f} & {np.nanmax(data2):.2f}')
 
-            p,=ax.plot(x2, data2, color='blue', label='libRadtran, '+librad_version,
+            RTM_str = 'MYSTIC (3D)' if '3D' in librad_version else 'DISORT (1D)'
+            # RTM_str = 'MYSTIC - LargeBuffer (3D)'
+            p,=ax.plot(x2, data2, color='blue', label=RTM_str,
                         # marker=".", markersize = 4, linestyle="None", 
                         alpha=.9,
                         linewidth=1.2,
@@ -1493,16 +1510,19 @@ class Scene:
                 x4 = Scene4.latitude 
                 data4 = Scene4.solar_eup
                 # ----------- Quality-Status -----------------
-                # BG: modification to only include calculated results with valid quality
-                # Create a combined mask: non-zero and quality 0 or 1
-                quality = ACMCOM.quality_status[:]
-                mask = (data4 != 0) & np.isin(quality, [0, 1])
-                
-                # Apply the mask to data
-                x4[~mask], data4[~mask] = np.nan, np.nan
+                if want_quality_status: 
+                    # BG: modification to only include calculated results with valid quality
+                    # Create a combined mask: non-zero and quality 0 or 1
+                    quality = ACMCOM.quality_status[:]
+                    mask = (data4 != 0) & np.isin(quality, [0, 1])
+                    
+                    # Apply the mask to data
+                    x4[~mask], data4[~mask] = np.nan, np.nan
                 # ------------------------------------------------
-                if want_average_line: data4=  moving_average(data4, w=w_size); p,=ax.plot(x4, data4, color='green', label='libRadtran, '+librad_version2, marker = 'o', markersize = 3, linestyle = 'None', zorder=10)
-                else: p,=ax.plot(x4, data4, color='lightgreen', label='libRadtran, '+librad_version2, alpha=.8, zorder=5)
+                RTM_str = 'MYSTIC (3D)' if '3D' in librad_version2 else 'DISORT (1D)'
+                # RTM_str = 'MYSTIC - SmallBuffer (3D)'
+                if want_average_line: data4=  moving_average(data4, w=w_size); p,=ax.plot(x4, data4, color='green', label=RTM_str, marker = 'o', markersize = 3, linestyle = 'None', zorder=10)
+                else: p,=ax.plot(x4, data4, color='lightgreen', label=RTM_str, alpha=.8, zorder=5)
                 pl_list.append(p)
             if Scene3 != None: 
                 x3 = Scene3.latitude_active
@@ -1511,13 +1531,14 @@ class Scene:
                 data4 = Scene3.flux_up_solar_3d_all_sky[:,itoa]
 
                 # ----------- Quality-Status -----------------
-                quality = Scene3.quality_status[0,:]
-                # boolean mask: True where quality is 0 or 1
-                quality_mask = np.isin(quality, [0, 1]) 
+                if want_quality_status: 
+                    quality = Scene3.quality_status[0,:]
+                    # boolean mask: True where quality is 0 or 1
+                    quality_mask = np.isin(quality, [0, 1]) 
 
-                data3 = data3[quality_mask]
-                data4 = data4[quality_mask]
-                x3 = x3[quality_mask]
+                    data3 = data3[quality_mask]
+                    data4 = data4[quality_mask]
+                    x3 = x3[quality_mask]
                 # ------------------------------------------------
 
                 p,=ax.plot(x3, data3, color='gray', label='ACM_RT 1D', linewidth=2) #, alpha=.8) "flux_up_solar_1d_all_sky, TOA"
@@ -1548,7 +1569,7 @@ class Scene:
             if quantity_list:
                 add_profile_list = [] # List for ax2-legends
                 for quantity in quantity_list:
-                    ax, ax2 = add_profile_to_plot(fig, ax, ACMCOM, fsize=fsize, legend_list=add_profile_list, quantity=quantity, stacked=True)
+                    ax, ax2 = add_profile_to_plot(fig, ax, ACMCOM, fsize=fsize, legend_list=add_profile_list, quantity=quantity, quantity_list=quantity_list, stacked=True)
                 if add_profile_list: ax2.legend(handles=add_profile_list, 
                                                 loc='upper right', framealpha=0.7, 
                                                 borderaxespad=0.0,                  # space to axes
@@ -1563,31 +1584,34 @@ class Scene:
             data = self.thermal_combined_top_of_atmosphere_flux        
 
             # ----------- Quality-Status -----------------
-            quality = self.quality_status[:]
-            # boolean mask: True where quality is 0 or 2
-            quality_mask = np.isin(quality, [0, 1]) 
+            if want_quality_status: 
+                quality = self.quality_status[:]
+                # boolean mask: True where quality is 0 or 2
+                quality_mask = np.isin(quality, [0, 1]) 
 
-            # Apply the mask to data
-            x[~quality_mask], data[~quality_mask] = np.nan, np.nan
+                # Apply the mask to data
+                x[~quality_mask], data[~quality_mask] = np.nan, np.nan
             # ------------------------------------------------
   
 
 
             data2 = Scene2.thermal_eup
             # ----------- Quality-Status -----------------
-            # BG: modification to only include calculated results with valid quality
-            # Create a combined mask: non-zero data2 and quality 0 or 1
-            quality = ACMCOM.quality_status[:]
-            mask = (data2 != 0) & np.isin(quality, [0, 1])
+            if want_quality_status: 
+                # BG: modification to only include calculated results with valid quality
+                # Create a combined mask: non-zero data2 and quality 0 or 1
+                quality = ACMCOM.quality_status[:]
+                mask = (data2 != 0) & np.isin(quality, [0, 1])
 
-            # Apply the mask to data
-            x2[~mask], data2[~mask] = np.nan, np.nan
+                # Apply the mask to data
+                x2[~mask], data2[~mask] = np.nan, np.nan
             # ------------------------------------------------
             # Print info:
             print(f'|--------{plot_type:.14} FLUX MYSTIC-------------|\n'
                   f'|mean, min, max  = {np.nanmean(data2):.2f} & {np.nanmin(data2):.2f} & {np.nanmax(data2):.2f}\n')
 
-            p,=ax.plot(x2, data2, color='blue', label='libRadtran, '+librad_version,
+            RTM_str = 'MYSTIC (3D)' if '3D' in librad_version else 'DISORT (1D)'
+            p,=ax.plot(x2, data2, color='blue', label=RTM_str,
                         # marker=".", markersize = 4, linestyle="None", 
                         alpha=.9,
                         linewidth=1.2,
@@ -1615,16 +1639,19 @@ class Scene:
                 x4 = Scene4.latitude 
                 data4 = Scene4.thermal_eup
                 # ----------- Quality-Status -----------------
-                # BG: modification to only include calculated results with valid quality
-                # Create a combined mask: non-zero and quality 0 or 1
-                quality = ACMCOM.quality_status[:]
-                mask = (data4 != 0) & np.isin(quality, [0, 1])
+                if want_quality_status: 
+                    # BG: modification to only include calculated results with valid quality
+                    # Create a combined mask: non-zero and quality 0 or 1
+                    quality = ACMCOM.quality_status[:]
+                    mask = (data4 != 0) & np.isin(quality, [0, 1])
 
-                # Apply the mask to data
-                x4[~mask], data4[~mask] = np.nan, np.nan
+                    # Apply the mask to data
+                    x4[~mask], data4[~mask] = np.nan, np.nan
                 # ------------------------------------------------
-                if want_average_line: data4=  moving_average(data4, w=w_size); p,=ax.plot(x4, data4, color='green', label='libRadtran, '+librad_version2, marker = 'o', markersize = 3, linestyle = 'None', zorder=10)
-                else: p,=ax.plot(x4, data4, color='lightgreen', label='libRadtran, '+librad_version2, alpha=.8, zorder=5)
+                RTM_str = 'MYSTIC (3D)' if '3D' in librad_version2 else 'DISORT (1D)'
+                # RTM_str = 'MYSTIC - SmallBuffer(3D)'
+                if want_average_line: data4=  moving_average(data4, w=w_size); p,=ax.plot(x4, data4, color='green', label=RTM_str, marker = 'o', markersize = 3, linestyle = 'None', zorder=10)
+                else: p,=ax.plot(x4, data4, color='lightgreen', label=RTM_str, alpha=.8, zorder=5)
                 pl_list.append(p)
             if Scene3 != None:
                 x3 = Scene3.latitude_active
@@ -1633,13 +1660,14 @@ class Scene:
                 data4 = Scene3.flux_up_thermal_3d_reference_height_all_sky[:]
 
                 # ----------- Quality-Status -----------------
-                quality = Scene3.quality_status[0,:]
-                # boolean mask: True where quality is 0 or 1
-                quality_mask = np.isin(quality, [0, 1]) 
+                if want_quality_status: 
+                    quality = Scene3.quality_status[0,:]
+                    # boolean mask: True where quality is 0 or 1
+                    quality_mask = np.isin(quality, [0, 1]) 
 
-                data3 = data3[quality_mask]
-                data4 = data4[quality_mask]
-                x3 = x3[quality_mask]
+                    data3 = data3[quality_mask]
+                    data4 = data4[quality_mask]
+                    x3 = x3[quality_mask]
                 # ------------------------------------------------
 
                 p,=ax.plot(x3, data3, color='gray', label='ACM_RT 1D', linewidth=2) #, alpha=.8) "flux_up_solar_1d_all_sky, TOA"
@@ -1701,7 +1729,7 @@ class Scene:
             if quantity_list:
                 add_profile_list = [] if stacked else pl_list # List for ax2-legends
                 for quantity in quantity_list:
-                    ax, ax2 = add_profile_to_plot(fig, ax, ACMCOM, fsize=fsize, legend_list=add_profile_list, quantity=quantity, stacked=stacked)
+                    ax, ax2 = add_profile_to_plot(fig, ax, ACMCOM, fsize=fsize, legend_list=add_profile_list, quantity=quantity, quantity_list=quantity_list, stacked=stacked)
                 if stacked and add_profile_list: ax2.legend(handles=add_profile_list, 
                                                             loc='upper right', framealpha=0.7, 
                                                             borderaxespad=0.0,                  # space to axes
@@ -1710,8 +1738,9 @@ class Scene:
             # ------------------------------------------------------------------------
 
             title = ''
-            title += label
-            title += ' - Solar TOA Flux Difference'   
+            title += 'Solar TOA Flux Difference'   
+            title += ' - ' + label
+            
         
             x1 = self.latitude
             x2 = Scene2.latitude
@@ -1720,13 +1749,14 @@ class Scene:
             data2 = Scene2.solar_eup # librad2
 
             # ----------- Quality-Status -----------------
-            # BG: modification to only include calculated results with valid quality
-            # Create a combined mask: non-zero and quality 0 or 1
-            quality = ACMCOM.quality_status[:]
-            mask = (data1 != 0) & (data2 != 0) & np.isin(quality, [0, 1])
+            if want_quality_status: 
+                # BG: modification to only include calculated results with valid quality
+                # Create a combined mask: non-zero and quality 0 or 1
+                quality = ACMCOM.quality_status[:]
+                mask = (data1 != 0) & (data2 != 0) & np.isin(quality, [0, 1])
 
-            # Apply the mask to data
-            x1[~mask], x2[~mask], data1[~mask], data2[~mask] = np.nan, np.nan, np.nan, np.nan
+                # Apply the mask to data
+                x1[~mask], x2[~mask], data1[~mask], data2[~mask] = np.nan, np.nan, np.nan, np.nan
             # ------------------------------------------------
 
             data = data1 - data2 
@@ -1746,7 +1776,7 @@ class Scene:
             # Add mean of the error to plot
             mean_err = np.nanmean(data)
             std  = np.nanstd(data)
-            data_str = fr"⟨$\Delta F$⟩ = {mean_err:.3f} ± {std:.3f}" + r" W/m$^2$"
+            data_str = fr"⟨$\Delta F$⟩ = {mean_err:.1f} ± {std:.1f}" + r" W/m$^2$"
             print('-----------------------------------------------\n'
                   'solar: ', data_str, '    (n = ', len(data), ')\n'
                   '-----------------------------------------------')
@@ -1822,7 +1852,7 @@ class Scene:
             if quantity_list:
                 add_profile_list = [] if stacked else pl_list # List for ax2-legends
                 for quantity in quantity_list:
-                    ax, ax2 = add_profile_to_plot(fig, ax, ACMCOM, fsize=fsize, legend_list=add_profile_list, quantity=quantity, stacked=stacked)
+                    ax, ax2 = add_profile_to_plot(fig, ax, ACMCOM, fsize=fsize, legend_list=add_profile_list, quantity=quantity, quantity_list=quantity_list, stacked=stacked)
                 if stacked and add_profile_list: ax2.legend(handles=add_profile_list, 
                                                             loc='upper right', framealpha=0.7, 
                                                             borderaxespad=0.0,                  # space to axes
@@ -1838,13 +1868,14 @@ class Scene:
             data2 = Scene2.thermal_eup 
 
             # ----------- Quality-Status -----------------
-            # BG: modification to only include calculated results with valid quality
-            # Create a combined mask: non-zero and quality 0 or 1
-            quality = ACMCOM.quality_status[:]
-            mask = (data1 != 0) & (data2 != 0) & np.isin(quality, [0, 1])
+            if want_quality_status: 
+                # BG: modification to only include calculated results with valid quality
+                # Create a combined mask: non-zero and quality 0 or 1
+                quality = ACMCOM.quality_status[:]
+                mask = (data1 != 0) & (data2 != 0) & np.isin(quality, [0, 1])
 
-            # Apply the mask to data
-            x1[~mask], x2[~mask], data1[~mask], data2[~mask] = np.nan, np.nan, np.nan, np.nan
+                # Apply the mask to data
+                x1[~mask], x2[~mask], data1[~mask], data2[~mask] = np.nan, np.nan, np.nan, np.nan
             # ------------------------------------------------
 
 
@@ -1865,7 +1896,7 @@ class Scene:
             # Add mean of the error to plot
             mean_err = np.nanmean(data)
             std  = np.nanstd(data)
-            data_str = fr"⟨$\Delta F$⟩ = {mean_err:.3f} ± {std:.3f}" + r" W/m$^2$"
+            data_str = fr"⟨$\Delta F$⟩ = {mean_err:.1f} ± {std:.1f}" + r" W/m$^2$"
             print('-----------------------------------------------\n'
                   'thermal: ', data_str, '    (n = ', len(data), ')\n'
                   '-----------------------------------------------')
@@ -1936,7 +1967,7 @@ class Scene:
             # Add mean of the error to plot
             mean_err = np.nanmean(data)
             std  = np.nanstd(data)
-            data_str = fr"⟨Rel.Err Flux⟩ = {mean_err:.3f} ± {std:.3f}" + r" W/m$^2$"
+            data_str = fr"⟨Rel.Err Flux⟩ = {mean_err:.1f} ± {std:.1f}" + r" W/m$^2$"
             print('-----------------------------------------------\n'
                   'thermal: ', data_str, '    (n = ', len(data), ')\n'
                   '-----------------------------------------------')
@@ -2015,25 +2046,35 @@ class Scene:
 
         # BG: created by me
         elif plot_type=='solar_flx_diff':
-            title='Solar TOA flux difference'    
-            if 'montecarlo' in Scene2.fn:
-                cblabel = 'MYSTIC - BMA_FLX '
-                label = 'MYSTIC - BMA_FLX, averaged'
+            # ------- Sensitivity analysis specs ------------------
+            if 'SmallBuffer' in Scene2.fn:
+                label = 'SmallBuffer  [MYSTIC - BMA_FLX]'
+                cblabel = r"$F_{\mathrm{SmallBuffer}} - F_{\mathrm{BMA\_FLX}}$"
+            elif 'FullBuffer' in Scene2.fn:
+                label = 'LargeBuffer [MYSTIC  - BMA_FLX]'
+                cblabel = r"$F_{\mathrm{LargeBuffer}} - F_{\mathrm{BMA\_FLX}}$"
+            # -------------------------------------------------------
+            elif 'montecarlo' in Scene2.fn:
+                cblabel = r"$F_{\mathrm{MYSTIC}} - F_{\mathrm{BMA\_FLX}}$"
+                label = '[MYSTIC - BMA_FLX]'
             elif 'disort_pseudospherical' in Scene2.fn:
                 cblabel = 'DISORT (ps) - BMA_FLX'
-                label = 'DISORT (ps) - BMA_FLX, averaged'
+                label = '[DISORT (ps) - BMA_FLX]'
             elif 'disort' in Scene2.fn:
-                cblabel = 'DISORT - BMA_FLX'
-                label = 'DISORT - BMA_FLX, averaged'
+                cblabel = r"$F_{\mathrm{DISORT}} - F_{\mathrm{BMA\_FLX}}$"
+                label = '[DISORT - BMA_FLX]'
             else:
                 print("BG: error, correct files?")
-            title += '     [' + cblabel + '] '
+            
+            title = ''
+            title += 'Solar TOA flux difference - '  
+            title +=  label 
 
             # ---------- BG: Get additional data to plot (twin or stacked-axis) ----------------
             if quantity_list:
                 add_profile_list = [] if stacked else pl_list # List for ax2-legends
                 for quantity in quantity_list:
-                    ax, ax2 = add_profile_to_plot(fig, ax, ACMCOM, fsize=fsize, legend_list=add_profile_list, quantity=quantity, stacked=stacked)
+                    ax, ax2 = add_profile_to_plot(fig, ax, ACMCOM, fsize=fsize, legend_list=add_profile_list, quantity=quantity, quantity_list=quantity_list, stacked=stacked)
                 if stacked and add_profile_list: ax2.legend(handles=add_profile_list, 
                                                             loc='upper right', framealpha=0.7, 
                                                             borderaxespad=0.0,                  # space to axes
@@ -2049,21 +2090,21 @@ class Scene:
             data2 = Scene2.solar_eup
 
             # ----------- Quality-Status -----------------
-            quality = self.quality_status[:]
-            # boolean mask: True where quality is 0 or 2
-            quality_mask = np.isin(quality, [0, 2]) 
+            if want_quality_status: 
+                quality = self.quality_status[:]
+                # boolean mask: True where quality is 0 or 2
+                quality_mask = np.isin(quality, [0, 2]) 
 
-            data1 = data1[quality_mask]
-            x1 = x1[quality_mask]
-
-            # ----------- Quality-Status -----------------
-            quality = ACMCOM.quality_status[:]
-            quality_mask = np.isin(quality, [0, 1])
-
-            x2 = x2[quality_mask]
-            data2 = data2[quality_mask]
+                data1 = data1[quality_mask]
+                x1 = x1[quality_mask]
+                # ----------- Quality-Status -----------------
+                quality = ACMCOM.quality_status[:]
+                quality_mask = np.isin(quality, [0, 1]) & (data2 != 0)
+            
+                x2 = x2[quality_mask]
+                data2 = data2[quality_mask]
             # ------------------------------------------------
-
+             
             # Performe interpolation for comparison
             fill_value_data1 = 9.96921e+36
             fill_value_data2 = 0
@@ -2086,7 +2127,7 @@ class Scene:
             # Add mean of the relative‑error to plot
             mean_err = np.nanmean(data)
             std  = np.nanstd(data)
-            data_str = fr"⟨$\Delta F$⟩ = {mean_err:.3f} ± {std:.3f}" + r" W/m$^2$"
+            data_str = fr"⟨$\Delta F$⟩ = {mean_err:.1f} ± {std:.1f}" + r" W/m$^2$"
             print('-----------------------------------------------\n'
                   'solar: ', data_str, '    (n = ', len(data), ')\n'
                   '-----------------------------------------------')
@@ -2113,19 +2154,29 @@ class Scene:
 
         # BG: created by me
         elif plot_type=='thermal_flx_diff':
-            title='Thermal TOA flux difference'    
-            if 'montecarlo' in Scene2.fn:
-                cblabel = 'MYSTIC - BMA_FLX '
-                label = 'MYSTIC - BMA_FLX, averaged'
+            # ------- Sensitivity analysis specs ------------------
+            if 'SmallBuffer' in Scene2.fn:
+                label = 'SmallBuffer  [MYSTIC - BMA_FLX]'
+                cblabel = r"$F_{\mathrm{SmallBuffer}} - F_{\mathrm{BMA\_FLX}}$"
+            elif 'FullBuffer' in Scene2.fn:
+                label = 'LargeBuffer [MYSTIC  - BMA_FLX]'
+                cblabel = r"$F_{\mathrm{LargeBuffer}} - F_{\mathrm{BMA\_FLX}}$"
+            # -------------------------------------------------------
+            elif 'montecarlo' in Scene2.fn:
+                cblabel = r"$F_{\mathrm{MYSTIC}} - F_{\mathrm{BMA\_FLX}}$"
+                label = '[MYSTIC - BMA_FLX]'
             elif 'disort_pseudospherical' in Scene2.fn:
                 cblabel = 'DISORT (ps) - BMA_FLX'
-                label = 'DISORT (ps) - BMA_FLX, averaged'
+                label = '[DISORT (ps) - BMA_FLX]'
             elif 'disort' in Scene2.fn:
-                cblabel = 'DISORT - BMA_FLX'
-                label = 'DISORT - BMA_FLX, averaged'
+                cblabel = r"$F_{\mathrm{DISORT}} - F_{\mathrm{BMA\_FLX}}$"
+                label = '[DISORT - BMA_FLX]'
             else:
                 print("BG: error, correct files?")
-            title += '     [' + cblabel + '] '
+            
+            title = ''
+            title += 'Thermal TOA flux difference - '  
+            title +=  label 
 
 
             x1 = self.latitude
@@ -2135,25 +2186,29 @@ class Scene:
             data2 = Scene2.thermal_eup
 
             # ----------- Quality-Status -----------------
-            quality = self.quality_status[:]
-            # boolean mask: True where quality is 0 or 1
-            quality_mask = np.isin(quality, [0, 1]) 
+            if want_quality_status: 
+                quality = self.quality_status[:]
+                # boolean mask: True where quality is 0 or 1
+                quality_mask = np.isin(quality, [0, 1]) 
+                
+                data1 = data1[quality_mask]
+                x1 = x1[quality_mask]
+                # ----------- Quality-Status -----------------
+                quality = ACMCOM.quality_status[:]
+                quality_mask = np.isin(quality, [0, 1]) & (data2 != 0)
 
-            data1 = data1[quality_mask]
-            x1 = x1[quality_mask]
-
-            # ----------- Quality-Status -----------------
-            quality = ACMCOM.quality_status[:]
-            quality_mask = np.isin(quality, [0, 1])
-
-            x2 = x2[quality_mask]
-            data2 = data2[quality_mask]
+                x2 = x2[quality_mask]
+                data2 = data2[quality_mask]
             # ------------------------------------------------
+        
+
+            
 
             # Performe interpolation for comparison
             fill_value_data1 = 9.96921e+36
             fill_value_data2 = 0
             x, data1_interp, data2 = interpolate(x1, data1, fill_value_data1, x2, data2, fill_value_data2) 
+
 
             # Calculate ratio
             data = (data2 - data1_interp) #/ data1_interp
@@ -2172,7 +2227,7 @@ class Scene:
             # Add mean of the relative‑error to plot
             mean_err = np.nanmean(data)
             std  = np.nanstd(data)
-            data_str = fr"⟨$\Delta F$⟩ = {mean_err:.3f} ± {std:.3f}" + r" W/m$^2$"
+            data_str = fr"⟨$\Delta F$⟩ = {mean_err:.1f} ± {std:.1f}" + r" W/m$^2$"
             print('-----------------------------------------------\n'
                   'thermal: ', data_str, '    (n = ', len(data), ')\n'
                   '-----------------------------------------------')
@@ -2244,7 +2299,7 @@ class Scene:
             # Add mean of the relative‑error to plot
             mean_err = np.nanmean(data)
             std  = np.nanstd(data)
-            data_str = fr"⟨$\Delta F$⟩ = {mean_err:.3f} ± {std:.3f}" + r" W/m$^2$"
+            data_str = fr"⟨$\Delta F$⟩ = {mean_err:.1f} ± {std:.1f}" + r" W/m$^2$"
             print('solar: ', data_str, '    (n = ', len(data), ')')
             ax.text(.98, .10, data_str,
                     transform=ax.transAxes, ha='right', va='bottom',
@@ -2317,7 +2372,7 @@ class Scene:
             # Add mean of the relative‑error to plot
             mean_err = np.nanmean(data)
             std  = np.nanstd(data)
-            data_str = fr"⟨$\Delta F$⟩ = {mean_err:.3f} ± {std:.3f}" + r" W/m$^2$"
+            data_str = fr"⟨$\Delta F$⟩ = {mean_err:.1f} ± {std:.1f}" + r" W/m$^2$"
             print('thermal: ', data_str, '    (n = ', len(data), ')')
             ax.text(.98, .10, data_str,
                     transform=ax.transAxes, ha='right', va='bottom',
@@ -2768,7 +2823,19 @@ class Scene:
 
 
         ################## MODIFICATION FOR LATITUDE-RANGE #################
-        if modify_xlim: ax.set_xlim(lat_ranges[idx])
+        if modify_xlim: 
+            lat_min, lat_max = lat_ranges
+            
+            mask = (x >= lat_min) & (x <= lat_max) # mask for this latitude band
+            pad = 10
+            data_max = np.nanmax(data[mask]) + pad
+            data_min = np.nanmin(data[mask]) - pad
+            if plot_type == 'solar_both' or plot_type == 'thermal_both':
+                data_min = 0; data_max += 40 # To account for 1D RTM large variation
+
+            ax.set_xlim(lat_ranges)
+            ax.set_ylim(data_min, data_max+10)
+
         ####################################################################
 
 
@@ -2810,6 +2877,7 @@ class Scene:
             plt.close()
 
         return
+    
 
 
     def InterpolateAngstrom(self, ACMCOM, angstrom_exponent=1):
@@ -3224,22 +3292,45 @@ if __name__ == "__main__":
     # --------------------------------------
 
  
-    want_3D = True      # BG: used in flux plot (DISORT or MYSTIC)
-    want_ps = False     # BG: if want DISORT pseudospherical (want_3D overwrite want_ps)
+    want_3D = False      # BG: used in flux plot (DISORT or MYSTIC)
+    
+
+    # BG: additional plot-settings
+    want_ps             = False               # BG: if want DISORT pseudospherical (want_3D overwrite want_ps)
+    want_quality_status = True                # If want ACM-COM and BMA-FLX quality status
+    want_average_line   = False                # Average line of librad-flux-values
+    want_EarthCARE_info = False                 # Sets Scene3 = ACM3D (in PlotLien)
+    want_product2       = True                 # Sets Scene4 = librad2 (in PlotLine)
+    want_SZA            = False                 # Prints out SZA
+    want_Cloud_Fraction = False                 # Prints out CF
+    if want_Cloud_Fraction: want_2D = False    # CF of 2D swat, or 1D nadir column
+    stacked = True                             # If add quanteties to plot, if should get own figure below
+
+
+    librad_version2 =  'disort_1D'                  
+            # Chose from: 'montecarlo_3D'  'disort_1D'   librad_version
+    additional_spesifications2 =   '_TEST_old_thermal_range'
+            #Chose from: '_wc'   '_All_SmallBuffer'    '_GHM'   '_All'  additional_spesifications
+
 
     modify_xlim = False
     if modify_xlim: 
-        idx = 0
+        idx = 4
         lat_ranges = [
             (74.27, 74.41), # 6888C
             (80.63, 80.74), # 6888C
+            (51.40, 52.00), # 6518D
+            (11.50, 12.00), # 6886E
+            (18.40, 21.40), # 6886E
             ####### OLD ##########
             (74.0, 74.5),   # 6888C
             (80.5, 81.0),   # 6888C
             (75.0, 76.0),   # 6331C
             (41.0, 52.5),   # 6518D
             (11.5, 15.0),   # 6886E
-        ]
+
+            (46.0, 52.0)    # 6518D
+        ][idx]
 
 
     # BG: Chose idx to select additional info on solar_both and thermal_both plot 
@@ -3256,24 +3347,19 @@ if __name__ == "__main__":
 
     
 
-    # BG: additional plot-settings
-    want_average_line   = False                # Average line of librad-flux-values
-    want_EarthCARE_info = True                 # Sets Scene3 = ACM3D (in PlotLien)
-    want_product2       = True                 # Sets Scene4 = librad2 (in PlotLine)
-    want_SZA            = True                 # Prints out SZA
-    want_Cloud_Fraction = True                 # Prints out CF
-    if want_Cloud_Fraction: want_2D = False    # CF of 2D swat, or 1D nadir column
-    stacked = True                             # If add quanteties to plot, if should get own figure below
     
 
 
 
     # idx_scene = [3,4,5,8, 11] 
     # idx_scene = [3, 4, 5, 8, 11]
-    idx_scene = [3,4,5,6,7,8,11]
-    SceneNames = [['Orbit_05378D'],#0           # Marocco - Norway           # Previousy ['Arctic_05378D']
-                  ['Orbit_05458F'],             # Chile
-                  ['Orbit_05926C'],             # Old Greenland (13.06.2026)
+    # idx_scene = [3,4,5,6,7,8]
+    idx_scene = [3,7]
+                        ################# OLD ########################################################################
+    SceneNames = [      ['Orbit_05378D'],#0           # Marocco - Norway           
+                        ['Orbit_05458F'],             # Chile
+                        ['Orbit_05926C'],             # Old Greenland (13.06.2026)
+                        ##############################################################################################
 
                   ['Orbit_06888C'],#3           # Svalbard (14.08.2025)     
                   ['Orbit_07277C'],             # Svalbard (08.09.2025)
@@ -3287,7 +3373,9 @@ if __name__ == "__main__":
                   ['Orbit_06600C'],#9           # Greenland (27.07.2025)          
                   ['Orbit_06662C'],             # Greenland (31.07.2025)   
 
-                  ['Orbit_06331C'] #11          # Greenland (09.07.2025)        
+                  ['Orbit_06331C'],#11          # Greenland (09.07.2025)       
+
+                  ['Orbit_07883D'] #12          # Norway (FILEFJELL) 
                   ]
 
     SceneNames = [SceneNames[i][0] for i in idx_scene]
@@ -3327,7 +3415,9 @@ if __name__ == "__main__":
     # atmosphere = 1
              # TEST; THEN REMOVE
     # additional_spesifications += '_wc_test_new_3D_surface'
-    additional_spesifications += '_All_FullBuffer_test_new_3D_surface'
+    # additional_spesifications += '_All_FullBuffer_test_new_3D_surface'
+    # additional_spesifications += '_TEST_old_thermal_range'
+    additional_spesifications += '_TEST_new_thermal_range'
 
 
     
@@ -3335,7 +3425,7 @@ if __name__ == "__main__":
 
 
 
-    fig_index = 7
+    fig_index = 4
     figname = ['fig:flx_solar',#0                                                   
                'fig:flx_thermal',                                                   
                'fig:flx_both',                      # Solar + Thermal               
@@ -3363,7 +3453,9 @@ if __name__ == "__main__":
                'fig:ice_water_content',         # Curtain
                'fig:earthCARE_flx_rel_err',         # ACM_RT 1D + 3D vs BMA_FLX
                'fig:plot_swat',#20
-               'fig:plot_info'
+               'fig:plot_info',
+
+               'fig:multi_plot'#22                  # Mulitple libRad
                ][fig_index]
 
 
@@ -3377,12 +3469,11 @@ if __name__ == "__main__":
 
     latitude_wanted     = 40.0
     librad_type         = 'SWIA'
-    # librad_type         = 'SNIA'
-    # librad_type         = 'SWNA'
-    # librad_type         = 'SNNA'
-    # librad_type         = 'NWIA'
-    # librad_type         = 'SWIN'
-    librad_version2     = ''
+        # librad_type         = 'SNIA'
+        # librad_type         = 'SWNA'
+        # librad_type         = 'SNNA'
+        # librad_type         = 'NWIA'
+        # librad_type         = 'SWIN'
     Product2            = False
     version_identifier  = 'v01'
 
@@ -3408,6 +3499,7 @@ if __name__ == "__main__":
     elif figname == 'fig:flx_thermal':
         plot_types_flx_thermal = ['thermal_both']
         source_str = 'thermal'
+        if want_product2: Product2 = True
     elif figname == 'fig:flx_both':
         plot_types_flx_solar   = ['solar_both']
         plot_types_flx_thermal = ['thermal_both']
@@ -3496,26 +3588,26 @@ if __name__ == "__main__":
     # pick the correct model version
     if want_3D:
         librad_version = 'montecarlo_3D'
-        if Product2: 
-            if want_ps:
-                librad_version2 = 'disort_pseudospherical_1D' 
-            else: 
-                librad_version2 = 'disort_1D'
+        # if Product2: 
+        #     if want_ps:
+        #         librad_version2 = 'disort_pseudospherical_1D' 
+        #     else: 
+        #         librad_version2 = 'disort_1D'
     else:
         if want_ps:
             librad_version = 'disort_pseudospherical_1D' # BG: this might be correct: 'disort '$'\n''pseudospherical'
         else:
             librad_version = 'disort_1D' # 'twostr_1D' 
-        if Product2: librad_version2 = 'montecarlo_3D'
+        # if Product2: librad_version2 = 'montecarlo_3D'
 
 
 
-    librad_version2 =  'disort_1D'                  
-            # Chose from: 'montecarlo_3D'  'disort_1D'   librad_version
-    additional_spesifications2 =   '_All'
-            #Chose from: '_wc'   '_All_SmallBuffer'    '_GHM'   additional_spesifications
+            # librad_version2 =  'disort_1D'                  
+            #         # Chose from: 'montecarlo_3D'  'disort_1D'   librad_version
+            # additional_spesifications2 =   '_TEST_old_thermal_range'
+            #         #Chose from: '_wc'   '_All_SmallBuffer'    '_GHM'   '_All'  additional_spesifications
 
-                        # librad_type         = 'SWIN'; additional_spesifications2 = ''
+            #                     # librad_type         = 'SWIN'; additional_spesifications2 = ''
 
 
 
@@ -3587,7 +3679,7 @@ if __name__ == "__main__":
         if len(plot_types_librad)>0 or len(plot_types_flx)>0:       
             ProductPath = ProductPathRTM
             ProductFile = os.path.join(ProductPath, Product)
-            # print('ProductFile1', ProductFile)
+            print('ProductFile1', ProductFile)
             ProductFile = sorted(glob.glob(ProductFile))[0]    
             libRad = Scene(Name=SceneName, verbose=verbose)
             libRad.ReadEarthCAREh5(ProductFile, verbose=verbose)
@@ -3612,13 +3704,14 @@ if __name__ == "__main__":
             libRad2 = Scene(Name=SceneName, verbose=verbose)
             libRad2.ReadEarthCAREh5(ProductFile, verbose=verbose)
             libRad2.SetExtent()
+
+
             
 
         # BG: Find; Baseline, Data, Time
-        BA_baseline = ''
-        AC_baseline = ''
-        
-        
+        BB_baseline, BA_baseline, AC_baseline = '', '', ''
+
+           
         Product ='ACM_RT_'#'ACM_COM' #
         #ProductPath = 'ECA_EXAB_'+Product+'*'  #'ECA_EXAA_'+Product+'*'
         #ProductPath = 'ECA_EXAB_'+Product+'*' #BG: marked out this for Orbit_05926C
@@ -3634,6 +3727,7 @@ if __name__ == "__main__":
         out = parts[1][:2] if len(parts) > 1 else None
         if out == 'BA': BA_baseline += ' ACM_RT'
         elif out == 'AC': AC_baseline += ' ACM_RT'
+        elif out == 'BB': BB_baseline += ' ACM_RT'
         # print(out)
         #---------------------------------------------
         
@@ -3657,6 +3751,7 @@ if __name__ == "__main__":
         out = parts[1][:2] if len(parts) > 1 else None
         if out == 'BA': BA_baseline += ' ALL_3D'
         elif out == 'AC': AC_baseline += ' ALL_3D'
+        elif out == 'BB': BB_baseline += ' ALL_3D'
         # print(out)
         #---------------------------------------------
         
@@ -3685,6 +3780,9 @@ if __name__ == "__main__":
         out = parts[1][:2] if len(parts) > 1 else None
         if out == 'BA': BA_baseline += ' ' + Product
         elif out == 'AC': AC_baseline += ' ' + Product
+        elif out == 'BB': BB_baseline += ' ' + Product
+        
+
         # print(out)
         #---------------------------------------------
 
@@ -3712,6 +3810,8 @@ if __name__ == "__main__":
         out = parts[1][:2] if len(parts) > 1 else None
         if out == 'BA': BA_baseline += ' ' + Product
         elif out == 'AC': AC_baseline += ' ' + Product
+        elif out == 'BB': BB_baseline += ' ' + Product
+
         # print(out)
         #---------------------------------------------
             
@@ -3725,6 +3825,8 @@ if __name__ == "__main__":
         out = parts[1][:2] if len(parts) > 1 else None
         if out == 'BA': BA_baseline += ' ' + Product
         elif out == 'AC': AC_baseline += ' ' + Product
+        elif out == 'BB': BB_baseline += ' ' + Product
+
         # print(out)
         #---------------------------------------------
 
@@ -3734,7 +3836,8 @@ if __name__ == "__main__":
         BA_baseline = ", ".join(BA_baseline.split())
         baseline_str = "Baselines: "
         if AC_baseline != '':   baseline_str += f'AC = ({AC_baseline})  '
-        if BA_baseline != '': baseline_str += f'BA = ({BA_baseline})  '
+        if BA_baseline != '':   baseline_str += f'BA = ({BA_baseline})  '
+        if BB_baseline != '':   baseline_str += f'BB = ({BB_baseline})  '
            
 
 
@@ -3748,7 +3851,6 @@ if __name__ == "__main__":
         start_time = first_time_num[:2] + ":" + first_time_num[2:4]
         end_time = second_time_num[:2] + ":" + second_time_num[2:4]
         time = start_time + '-' + end_time
-
         # print(  f'\nAC_baseline = {AC_baseline}\nBA_baseline = {BA_baseline}\n' 
         #         f'{date} - {time}\n')
         
@@ -3795,6 +3897,7 @@ if __name__ == "__main__":
             pngfile = plotdir+ SceneName+'_'+plot_type+'_'+librad_version+'_'+librad_type+ png_spesifications + '.png' #'' #
             libRad.PlotLine(plot_type=plot_type, pngfile=pngfile, verbose=verbose, Scene2=libRad2)
             
+
         print(f"png-file: {pngfile}")
 
 

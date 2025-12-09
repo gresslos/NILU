@@ -93,18 +93,25 @@ def Calc3DBufferSize(ACM3D, ia):
     # fixed values:     m_assess and n_assess 
     # dynamic values:   m_buffer and n_buffer (depend on ia) 
 
+
     # BG: Decide to use my buffer, not dynamic buffer!
-    m_assess = 5 # REMERBER THIS!!!!!!!!!!!!!!
-    m_buffer = 5 # REMERBER THIS!!!!!!!!!!!!!!
-    n_assess = 6 # REMERBER THIS!!!!!!!!!!!!!!
-    n_buffer = 6 # REMERBER THIS!!!!!!!!!!!!!!         
+    if which_buffer == 0:   # MCIPA
+        m_assess = 0; m_buffer = 0 
+        n_assess = 0; n_buffer = 0 
+    elif which_buffer == 1: # SmallBuffer
+        m_assess = 3; m_buffer = 3 
+        n_assess = 3; n_buffer = 3 
+    elif which_buffer == 2: # LargeBuffer
+        m_assess = 5; m_buffer = 5 
+        n_assess = 6; n_buffer = 6         
+    elif which_buffer == 3: # MegaBuffer
+        m_assess = 0; m_buffer = 15
+        n_assess = 0; n_buffer = 15   
+    elif which_buffer == 4: # GigaBuffer
+        m_assess = 0; m_buffer = 20
+        n_assess = 0; n_buffer = 20    
     
-    # BG: Reduces buffer size for faster execution
-    if want_small_buffer:
-        m_assess = 3 # REMERBER THIS!!!!!!!!!!!!!!
-        m_buffer = 3 # REMERBER THIS!!!!!!!!!!!!!!
-        n_assess = 3 # REMERBER THIS!!!!!!!!!!!!!!
-        n_buffer = 3 # REMERBER THIS!!!!!!!!!!!!!!
+    
 
     ialongs = np.arange(ia-n_assess-n_buffer, ia+n_assess+n_buffer+1)
     iacrosses = np.arange(ACM3D.nadir_pixel_index-m_buffer-m_assess, ACM3D.nadir_pixel_index+m_buffer+m_assess+1)
@@ -401,45 +408,45 @@ def SetRTM(UVS, ia, iacr, ACM3D=None, AMACD=None, ACMCOM=None, ACMRT=None, BMAFL
             # UVS.inp['mc_photons']='400'
             # UVS.inp['mc_photons']='1600'
             Nx, Ny, iacrosses, ialongs = Calc3DBufferSize(ACM3D, ia)  #calculates along and cross track buffer size 
-            
-            # Check if latitude increase or decrease
-            is_increasing = np.all(np.diff(ACM3D.latitude[:, ia]) > 0)
-            #            print(ACM3D.latitude[:, ia])
-            #            print(is_increasing); exit()
-            # In wc_file x propagates east and y propagates north, hence if latitude
-            # is increasing (ascending node) keep ialongs, but reverse iacrosses.
-            # If latitude is decreasing (descending node), reverse ialongs and
-            # keep iacrosses.
+            if (Nx > 1) & (Ny > 1):  # BG: if not MCIPA
+                # Check if latitude increase or decrease
+                is_increasing = np.all(np.diff(ACM3D.latitude[:, ia]) > 0)
+                #            print(ACM3D.latitude[:, ia])
+                #            print(is_increasing); exit()
+                # In wc_file x propagates east and y propagates north, hence if latitude
+                # is increasing (ascending node) keep ialongs, but reverse iacrosses.
+                # If latitude is decreasing (descending node), reverse ialongs and
+                # keep iacrosses.
 
-            if is_increasing:
-                iacrosses=iacrosses[::-1]  # reverse: ialong=[1,2,3,4] --> ialong=[4,3,2,1]
-                ialongs=ialongs
-            else:
-                iacrosses=iacrosses
-                ialongs=ialongs[::-1]
+                if is_increasing:
+                    iacrosses=iacrosses[::-1]  # reverse: ialong=[1,2,3,4] --> ialong=[4,3,2,1]
+                    ialongs=ialongs
+                else:
+                    iacrosses=iacrosses
+                    ialongs=ialongs[::-1]
 
-            # 3D wc and ic files are aligned parallel to the meridians, the EartCARE swath is not.
-            # To correct for this perform a solar azimuth angle shift
-            p0 = (ACM3D.longitude[iacrosses[0],  ialongs[0]],   ACM3D.latitude[iacrosses[0],  ialongs[0]])
-            p1 = (ACM3D.longitude[iacrosses[0],  ialongs[-1]],  ACM3D.latitude[iacrosses[0],  ialongs[-1]])
-            px = (p0[0], p1[1])
+                # 3D wc and ic files are aligned parallel to the meridians, the EartCARE swath is not.
+                # To correct for this perform a solar azimuth angle shift
+                p0 = (ACM3D.longitude[iacrosses[0],  ialongs[0]],   ACM3D.latitude[iacrosses[0],  ialongs[0]])
+                p1 = (ACM3D.longitude[iacrosses[0],  ialongs[-1]],  ACM3D.latitude[iacrosses[0],  ialongs[-1]])
+                px = (p0[0], p1[1])
 
-            p0 = pdeg2km(p0)
-            p1 = pdeg2km(p1)
-            px = pdeg2km(px)
-                
-            p0p1 = np.sqrt(np.power(p1[0]-p0[0],2) + np.power(p1[1]-p0[1],2))
-            p0px = np.sqrt(np.power(px[0]-p0[0],2) + np.power(px[1]-p0[1],2))
-                
-            phi0_shift = np.rad2deg(np.arccos(p0px/p0p1)) 
-            #print('phi0, phi0_shift', phi0, phi0_shift)
-            
-            if phi0 > 0 and phi0< 180:
-                phi0 = phi0-phi0_shift
-            else:
-                phi0 = phi0+phi0_shift
+                p0 = pdeg2km(p0)
+                p1 = pdeg2km(p1)
+                px = pdeg2km(px)
                     
-            #print('phi0', phi0, phi0_shift)
+                p0p1 = np.sqrt(np.power(p1[0]-p0[0],2) + np.power(p1[1]-p0[1],2))
+                p0px = np.sqrt(np.power(px[0]-p0[0],2) + np.power(px[1]-p0[1],2))
+                    
+                phi0_shift = np.rad2deg(np.arccos(p0px/p0p1)) 
+                #print('phi0, phi0_shift', phi0, phi0_shift)
+                
+                if phi0 > 0 and phi0< 180:
+                    phi0 = phi0-phi0_shift
+                else:
+                    phi0 = phi0+phi0_shift
+                        
+                #print('phi0', phi0, phi0_shift)
         else:
             UVS.inp['mc_photons'] = '1000'
 
@@ -448,7 +455,7 @@ def SetRTM(UVS, ia, iacr, ACM3D=None, AMACD=None, ACMCOM=None, ACMRT=None, BMAFL
     UVS.inp['mol_abs_param']=mol_abs_param
     UVS.inp['source']=source
     if source=='thermal':
-        UVS.inp['wavelength']='4500 100000'
+        UVS.inp['wavelength']='4500 100000'   
         UVS.inp['mc_backward']=''
         UVS.inp['mc_backward_output']='eup'
     else:
@@ -1294,8 +1301,9 @@ if __name__ == "__main__":
               ['thermal'],
               ['solar', 'thermal']][idx_source] 
 
+    idx_scene = [12]
     # idx_scene = [4,5,6]
-    idx_scene = [7,8,11]
+    # idx_scene = [7,8,11]
     # idx_scene = [3,4,5,6,7,8]
     # idx_scene =[3,4,5,6,7,8, 11]
                         ################# OLD ########################################################################
@@ -1316,22 +1324,31 @@ if __name__ == "__main__":
                   ['Orbit_06600C'],#9           # Greenland (27.07.2025)          
                   ['Orbit_06662C'],             # Greenland (31.07.2025)   
 
-                  ['Orbit_06331C'] #11          # Greenland (09.07.2025)        
+                  ['Orbit_06331C'],#11          # Greenland (09.07.2025)       
+
+                  ['Orbit_07883D'] #12          # Norway (FILEFJELL) 
                   ]
 
     SceneNames = [SceneNames[i][0] for i in idx_scene]
 
 
 
-    Test    = False
+    Test    = True
     want_ps = False      # BG: if want DISORT pseudospherical 
     verbose = False
     want_3D = True       # BG: if want MYSTIC
-    want_small_buffer = False    # Use this if want faster execution without much loss of 3D effects
-     
-    if want_3D and want_small_buffer: buffer_str = 'Small Buffer (13 x 13)'
-    elif want_3D:                     buffer_str = 'Large Buffer (25 x 21)'
+                            
+    which_buffer = 0
+        # 0: MCIPA   1: Small  2: Large (Full)   3: Mega   4: Giga
+   
+    if want_3D: 
+        if   which_buffer == 0 : buffer_str = 'MCIPA'
+        elif which_buffer == 1 : buffer_str = 'Small Buffer (13 x 13)'
+        elif which_buffer == 2 : buffer_str = 'Large Buffer (25 x 21)'
+        elif which_buffer == 3 : buffer_str = 'Mega  Buffer (31 x 31)'
+        elif which_buffer == 4 : buffer_str = 'Giga  Buffer (41 x 41)'
     else:                             buffer_str = ''
+    ######### OLD: # want_small_buffer = True    # Use this if want faster execution without much loss of 3D effects ##############
     
     # BG: To distinguish minor modifications to .nc files
     additional_spesifications = '' 
@@ -1359,15 +1376,20 @@ if __name__ == "__main__":
     # additional_spesifications += '_GHM_mc1e6'
     # additional_spesifications += '_GHM_mc1e7'
             # All points 
-    # additional_spesifications += '_All_FullBuffer'
+    # additional_spesifications += '_All_MCIPA'
     # additional_spesifications += '_All_SmallBuffer'
-    # additional_spesifications += '_All'
+    # additional_spesifications += '_All_FullBuffer'
+    # additional_spesifications += '_All_MegaBuffer'
+    # additional_spesifications += '_All_GigaBuffer'
+    additional_spesifications += '_All'
             # 3D-Cloud impact
     # additional_spesifications += '_wc'           # INFO: large-buffer
     # additional_spesifications += '_wc_test_atm_0'
             # NEW-Surface-Version
     # additional_spesifications += '_wc_test_new_3D_surface'
-    additional_spesifications += '_All_FullBuffer_test_new_3D_surface'
+    # additional_spesifications += '_All_FullBuffer_test_new_3D_surface'
+    # additional_spesifications += '_TEST_old_thermal_range'
+    # additional_spesifications += '_TEST_new_thermal_range'
 
 
     surface = True      # BG: = False -> default albedo = 0     
@@ -1446,7 +1468,7 @@ if __name__ == "__main__":
     for SceneName in SceneNames:
         Product ='ALL_3D_'
         ProductPath = '*'+Product+'*'
-        ProductFile = os.path.join(pathL2TestProducts, SceneName, 'output', ProductPath, '*'+Product+'*.h5')        
+        ProductFile = os.path.join(pathL2TestProducts, SceneName, 'output', ProductPath, '*'+Product+'*.h5')     
         ProductFile = sorted(glob.glob(ProductFile))[0]        #tms: Does it mean that the first file (if several) is selected?
 
         if verbose: print('ProductFile', ProductFile)
@@ -1542,20 +1564,20 @@ if __name__ == "__main__":
                             #     # print(f'Latitudes            = {ACMCOM.latitude_active[start]} -> {ACMCOM.latitude_active[end]}')
                             
         # # Modification used for WC-3D-Bias testing
-        if 'wc' in additional_spesifications:
-            lat = ACMCOM.latitude_active
-            if SceneName == 'Orbit_06497E': # Africa
-                target_start_lat, target_end_lat = 3, 5
-            elif SceneName == 'Orbit_06518D': # USA
-                target_start_lat, target_end_lat = 40,42
-            elif SceneName == 'Orbit_06888C': # USA
-                target_start_lat, target_end_lat = 68,69
-            elif SceneName == 'Orbit_06331C': # USA
-                target_start_lat, target_end_lat = 76,78
+        # if 'wc' in additional_spesifications:
+        #     lat = ACMCOM.latitude_active
+        #     if SceneName == 'Orbit_06497E': # Africa
+        #         target_start_lat, target_end_lat = 3, 5
+        #     elif SceneName == 'Orbit_06518D': # USA
+        #         target_start_lat, target_end_lat = 40,42
+        #     elif SceneName == 'Orbit_06888C': # USA
+        #         target_start_lat, target_end_lat = 68,69
+        #     elif SceneName == 'Orbit_06331C': # USA
+        #         target_start_lat, target_end_lat = 76,78
 
-            start, end = int(np.nanargmin(np.abs(lat - target_start_lat))),  int(np.nanargmin(np.abs(lat - target_end_lat)))
-            if start > end: tmp = start; start = end; end = tmp
-            # print(f'Latitudes            = {ACMCOM.latitude_active[start]:.2f} -> {ACMCOM.latitude_active[end]:.2f}')
+        #     start, end = int(np.nanargmin(np.abs(lat - target_start_lat))),  int(np.nanargmin(np.abs(lat - target_end_lat)))
+        #     if start > end: tmp = start; start = end; end = tmp
+        #     # print(f'Latitudes            = {ACMCOM.latitude_active[start]:.2f} -> {ACMCOM.latitude_active[end]:.2f}')
             
             
 
@@ -1569,7 +1591,7 @@ if __name__ == "__main__":
         else: 
             # ialongs = [int(end/2)] #[300, 600, 900, 1200] #[1000, 2000, 3000, 4000]
     
-            target_lat = 73.1
+            target_lat = 66
             target_idx = int(np.nanargmin(np.abs(ACMCOM.latitude_active - target_lat)))
             ialongs = [target_idx]
             print(target_idx)

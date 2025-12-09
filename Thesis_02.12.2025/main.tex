@@ -1,0 +1,146 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% NOTE: more stuff marked out, found in "Master_Not_UiO_Front_Page(17.09.2025)" on Overleaf
+
+% \documentclass[
+%   aps,
+%   rmp,
+%   reprint,
+%   author-year,       % ← switch on author–year mode
+%   longbibliography,  % ← include titles in the bib (optional)
+%   amsmath,amssymb,
+%   graphicx
+%   ]{revtex4-1}
+
+
+% \usepackage{graphicx}
+% \usepackage[utf8]{inputenc}
+% \usepackage{hyperref}
+% \hypersetup{breaklinks=true,colorlinks=true,linkcolor=black,citecolor=blue,filecolor=magenta,urlcolor=blue}
+
+% \newcommand{\note}[1]{\textcolor{cyan}{#1}}
+% \newcommand{\tove}[2]{\textcolor{red}{#1}}
+% % BG: mark this off to hide all notes!
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\documentclass[]{Front_Page_UiO/uiomasterthesis}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc, url}   \urlstyle{sf}
+\usepackage{babel, textcomp, uiomasterfp}
+
+
+%%%%%% My settings %%%%%%%%%%%%
+\usepackage[authoryear]{natbib}
+\setcitestyle{authoryear,round,semicolon} % use (Kuo et al) rather then [Kou et al]
+\usepackage{amsmath, amssymb}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\hypersetup{breaklinks=true,colorlinks=true,linkcolor=black,citecolor=blue,filecolor=magenta,urlcolor=blue}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{Assessment of Radiative Closure - Analysis Based on EarthCARE Observations}
+\subtitle{Small thesis description}
+\author{Benjamin Gressløs\\ \url{benjagr@uio.no}}
+
+\begin{document}
+
+\uiomasterfp[kind={Master's thesis}, supervisor={Tove Svendby},  compact, colour=pink, date=\today, dept={Department of Physics}, 
+long]
+
+
+%%%%%% My settings %%%%%%%%%%%%
+\newcommand{\note}[1]{\textcolor{green}{#1}}
+\newcommand{\tove}[2]{\textcolor{red}{#1}}
+% BG: mark this off to hide all notes!
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%% Page-Look setting %%%%%%%%
+%Prevents a nearly-empty “float page” and keeps more text with figures
+\renewcommand{\floatpagefraction}{0.9}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\tableofcontents
+
+\begin{abstract}
+    This is where I put the abstract: 
+        % Things to include:
+        %     - Motivation clouds 
+        %     - LibRadtran; DISORT, MYSTIC
+        %     - EarthCARE ACM-RT: RRTMG, Monte Carlo
+        %     - Results
+
+        % -------------------------------------------------------------------
+        %  The aim of this study is to investigate the effects of (cloud morphology?) on solar and thermal radiative transfer in (cloudy?) the atmosphere.  [from Cole et al.]
+        % -------------------------------------------------------------------
+\end{abstract}
+
+\section{Introduction} 
+\label{Introduction}
+\input{text/Introduction}
+
+\section{Theory}
+\label{Theory}
+\input{text/Theory}
+
+\section{Method}
+\label{Method}
+\input{text/Method}
+
+\section{Tools}
+\label{Tools}
+\input{text/Tools}
+
+\section{Results}
+\label{Results}
+\input{text/Results}
+
+\section{Discussion}
+\label{Discussion}
+\input{text/Discussion}
+
+\section{Conclusion}
+\label{Conclusion}
+\input{text/Conclusion}
+
+% ----------- Additional info --------
+\clearpage
+\phantomsection
+\section*{Data availability}
+\addcontentsline{toc}{section}{Data availability}
+The datasets used in this thesis include EarthCARE mission data. Access and usage are subject to the mission’s data policy.
+\note{Is this enough?}
+
+% \clearpage
+\phantomsection
+\section*{Code availability}
+\addcontentsline{toc}{section}{Code availability}
+All analysis code used in this thesis is available at \note{href to my repository: \href{https://github.com/USERNAME/REPO}{github.com/USERNAME/REPO}}.
+The repository contains the scripts for data pre-processing, uvspec runs, and figure generation, with a README for reproduction. \note{Note to myself: create README}
+
+
+% \clearpage
+\phantomsection
+\section*{Acknowledgements}
+\addcontentsline{toc}{section}{Acknowledgements}
+This master’s thesis was carried out at the NILU and submitted to the University of Oslo (UiO). I thank Tove Marit Svendby for supervision and my colleagues at NILU for practical and technical support.
+I also wish to thank Arve Kylling for adapting his Python implementation to enable libRadtran radiative transfer simulations based on EarthCARE retrievals. 
+Finally, I acknowledge the use of EarthCARE mission data.
+% -------------------------------------
+
+
+\clearpage
+\section{Appendix}
+\label{Appendix}
+\input{text/Appendix}
+
+
+\begingroup
+  \raggedright
+  \footnotesize
+  \bibliographystyle{plainnat} %\bibliographystyle{apsrmp4-1}     % ← author–year .bst for RMP
+  \bibliography{refs}               
+\endgroup
+
+
+
+\end{document}

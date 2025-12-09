@@ -1,0 +1,55 @@
+
+
+|---------------------- INFO ------------------------|
+| 10th pixel if specified, else all pixel simulated  |
+|----------------------------------------------------|
+
+
+
+
+-------------------------------- 3D-Buffer --------------------------------------
+Mean F(TOA,up) diff (MYSTIC-LargeBuffer - MYSTIC-SmallBuffer) (5 swath)
+    \ref{fig:3D_buffer}
+    Mean delta-F (SW)   =    0.72 +- 14.56 W/m2       (LargeBuffer - SmallBuffer)
+    Mean delta-F (LW)   =   -0.18 +-  3.82 W/m2       (LargeBuffer - SmallBuffer)
+        -> No bias from buffer-size -> but change in variability!
+
+F(TOA,up) diff (Large - SmallBuffer)
+    \ref{fig:3D_buffer_06518D} (this is fig that has highetst and clearest differences!)
+    Max delta-F (SW)   ~ +- 150 W/m2 
+    Max delta-F (LW)   ~ +-  60 W/m2
+        -> Only in small regions, assume pixles differnce by large VS small buffer (ex 25x21 13x13 -> 25-13 / 2 -> ~6km range
+
+
+
+
+----------------------------- Thermal AOD-models -----------------------------------
+Mean F(TOA,up) diff (MYSTIC - BMAFLX) (6 swaths, 10th pixel):
+    \ref{fig:aerosol_versions}
+    x0.60 abs mean diff to aerosol-default -> -2 to -9 W/m2  (dependent on aerosol-loading in atmosphere)
+        AOD-model impact (x0.6 abs - aerosol-default) is -2 to -9 W/m2
+    
+Mean F(TOA,up) diff (MYSTIC - BMAFLX) (1 orbit (mostly impacted swath)
+    \ref{fig:AOD_06518D}
+    (mean diff) (std)
+       -9.28 +- 6.74 W/m2  
+
+
+-------------------------------- Ice-Habit --------------------------------------
+Mean F(TOA, up) diff (MYSTIC - BMAFLX) (6 swaths)
+    \ref{fig:Ice_Habit_all_points}
+    Systematic bias (In SW, not so much in LW) in mean F(TOA, up) over ice-cloud region 
+    General larges GHM-RA 
+
+F(TOA, up) diff 
+    SW: maximally delta-F ~ 60 W/m2     (RA - GHM, 6497E, 6886E, seen from plot GITHUB)
+        -> Figs. \ref{fig:Ice_Habit_06888C} and \ref{fig:Ice_Habit_06907D} good image on spatial variation in delta-F with IWP
+    LW: maximally delta-F ~  5 W/m2     (SC - GHM, 6497E, 6518D, seen from plot GITHUB)
+
+
+
+
+
+    
+    
+    

@@ -11,7 +11,7 @@ output_process sum
 zout TOA
 output_user sza zout edir eup
 quiet 
-day_of_year 201
+day_of_year 226
 atmosphere_file ./tmpRTIOtest/tmp2532atm.dat
 wc_properties mie
 wc_file 3D ./tmpRTIOtest/tmp2532wc3D.dat
@@ -20,10 +20,10 @@ ic_habit ghm
 ic_file 3D ./tmpRTIOtest/tmp2532ic3D.dat
 aerosol_default 
 aerosol_file tau ./tmpRTIOtest/tmp2532aero1D.dat
-aerosol_angstrom 1.100000 0.580177
-aerosol_set_tau_at_wvl 355 0.5801770978988422
+aerosol_angstrom 1.100000 1.040001
+aerosol_set_tau_at_wvl 355 1.0400008468914632
 mc_albedo_spectral_file ./tmpRTIOtest/tmp2532mc_albedo_spectral_filesolar.dat
 mc_albedo_type ./tmpRTIOtest/tmp2532mc_albedo_typesolar.dat
 mc_elevation_file ./tmpRTIOtest/tmp2532elevation.dat
-sza 33.8530158996582
-phi0 118.48858252436398
+sza 31.051437377929688
+phi0 107.78719889594548

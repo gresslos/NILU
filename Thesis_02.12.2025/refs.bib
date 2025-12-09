@@ -1,0 +1,896 @@
+
+
+# ----------------------------------------------- EarthCARE -------------------------------------
+# EarthCARE mission-science and system overview. 
+@Article{EarthCARE_overview,
+    AUTHOR = {Wehr, T. and Kubota, T. and Tzeremes, G. and Wallace, K. and Nakatsuka, H. and Ohno, Y. and Koopman, R. and Rusli, S. and Kikuchi, M. and Eisinger, M. and Tanaka, T. and Taga, M. and Deghaye, P. and Tomita, E. and Bernaerts, D.},
+    TITLE = {The EarthCARE mission -- science and system overview},
+    JOURNAL = {Atmospheric Measurement Techniques},
+    VOLUME = {16},
+    YEAR = {2023},
+    NUMBER = {15},
+    PAGES = {3581--3608},
+    URL = {https://amt.copernicus.org/articles/16/3581/2023/},
+    DOI = {10.5194/amt-16-3581-2023}
+}
+#  EarthCARE prosessing chain
+@Article{EarthCARE_processing_chain,
+    AUTHOR = {Eisinger, M. and Marnas, F. and Wallace, K. and Kubota, T. and Tomiyama, N. and Ohno, Y. and Tanaka, T. and Tomita, E. and Wehr, T. and Bernaerts, D.},
+    TITLE = {The EarthCARE mission: science data processing chain overview},
+    JOURNAL = {Atmospheric Measurement Techniques},
+    VOLUME = {17},
+    YEAR = {2024},
+    NUMBER = {2},
+    PAGES = {839--862},
+    URL = {https://amt.copernicus.org/articles/17/839/2024/},
+    DOI = {10.5194/amt-17-839-2024}
+}
+
+# INFO: 1D vs 3D RT-modeling
+@Article{EarthCARE_quantities,
+    AUTHOR = {Cole, J. N. S. and Barker, H. W. and Qu, Z. and Villefranque, N. and Shephard, M. W.},
+    TITLE = {Broadband radiative quantities for the EarthCARE mission: the ACM-COM and ACM-RT products},
+    JOURNAL = {Atmospheric Measurement Techniques},
+    VOLUME = {16},
+    YEAR = {2023},
+    NUMBER = {18},
+    PAGES = {4271--4288},
+    URL = {https://amt.copernicus.org/articles/16/4271/2023/},
+    DOI = {10.5194/amt-16-4271-2023}
+}
+@Article{EarthCARE_ACMB_3D,
+AUTHOR = {Qu, Z. and Barker, H. W. and Cole, J. N. S. and Shephard, M. W.},
+TITLE = {Across-track extension of retrieved cloud and aerosol properties for
+the EarthCARE mission: the ACMB-3D product},
+JOURNAL = {Atmospheric Measurement Techniques},
+VOLUME = {16},
+YEAR = {2023},
+NUMBER = {9},
+PAGES = {2319--2331},
+URL = {https://amt.copernicus.org/articles/16/2319/2023/},
+DOI = {10.5194/amt-16-2319-2023}
+}
+@article{EarthCARE_index_construction,
+author = {Barker, H. W. and Jerg, M. P. and Wehr, T. and Kato, S. and Donovan, D. P. and Hogan, R. J.},
+title = {A 3D cloud-construction algorithm for the EarthCARE satellite mission},
+journal = {Quarterly Journal of the Royal Meteorological Society},
+volume = {137},
+number = {657},
+pages = {1042-1058},
+keywords = {cloud, radiative transfer, satellite, EarthCARE},
+doi = {https://doi.org/10.1002/qj.824},
+url = {https://doi.org/10.1002/qj.824},
+year = {2011}
+}
+@misc{ESA,
+  author       = {{European Space Agency}},
+  title        = {{EarthCARE}},
+  howpublished = {\url{https://www.esa.int/Applications/Observing_the_Earth/FutureEO/EarthCARE}},
+  note         = {Accessed 2025-10-04},
+  year         = {2025}
+}
+@misc{ESA_EarthCARE_Data,
+  author       = {{European Space Agency (ESA)}},
+  title        = {{EarthCARE Mission Data Portal}},
+  year         = {2025},
+  howpublished = {\url{https://earth.esa.int/eogateway/missions/earthcare/data}},
+  note         = {Accessed October 2025}
+}
+
+#-----------------------------------------------------------------------------------------------
+
+
+
+# This reference can be good for motivationg why look at cloud effet -> good by 3D models
+@article{Winker,
+  author       = {Winker, David and Chepfer, Helene and Noel, Vincent and Cai, Xia},
+  title        = {Observational Constraints on Cloud Feedbacks: The Role of Active Satellite Sensors},
+  journal      = {Surveys in Geophysics},
+  year         = {2017},
+  month        = nov,
+  volume       = {38},
+  number       = {6},
+  pages        = {1483--1508},
+  doi          = {10.1007/s10712-017-9452-0},
+  url          = {https://doi.org/10.1007/s10712-017-9452-0},
+  issn         = {1573-0956},
+}
+
+# Not main articles -----------------
+# INFO: climate-driven shifts in clouds
+@article{Chepfer,
+    author = {Chepfer, H. and Noel, V. and Winker, D. and Chiriaco, M.},
+    title = {Where and when will we observe cloud changes due to climate warming?},
+    journal = {Geophysical Research Letters},
+    volume = {41},
+    number = {23},
+    pages = {8387-8395},
+    keywords = {clouds, remote sensing, spaceborne lidar, climate},
+    doi = {https://doi.org/10.1002/2014GL061792},
+    url = {https://doi.org/10.1002/2014GL061792},
+    year = {2014},
+}
+# INFO: radar-spesifcs things
+@article{Takahashi,
+    author = {Takahashi, Hanii and Lebsock, Matthew D. and Richardson, Mark and Marchand, Roger and Kay, Jennifer E.},
+    title = {When Will Spaceborne Cloud Radar Detect Upward Shifts in Cloud Heights?},
+    journal = {Journal of Geophysical Research: Atmospheres},
+    volume = {124},
+    number = {13},
+    pages = {7270-7285},
+    keywords = {upward shifts in cloud heights, W-band cloud radar, future climate, CESM1},
+    doi = {https://doi.org/10.1029/2018JD030242},
+    url = {https://doi.org/10.1029/2018JD030242},
+    year = {2019}
+}
+# INFO: clouds being larges uncertainty on GCM  
+@article{Vaillant,
+  author       = {Vaillant de Gu{\'e}lis, Thibault and Chepfer, H{\'e}l{\`e}ne and Guzman, Rodrigo and Bonazzola, Marine and Winker, David M. and Noel, Vincent},
+  title        = {Space lidar observations constrain longwave cloud feedback},
+  journal      = {Scientific Reports},
+  year         = {2018},
+  month        = nov,
+  volume       = {8},
+  number       = {1},
+  pages        = {16570},
+  doi          = {10.1038/s41598-018-34943-1},
+  url          = {https://doi.org/10.1038/s41598-018-34943-1},
+  issn         = {2045-2322}
+}
+
+# INFO: about RRTMG
+@article{Iacono,
+    author = {Iacono, Michael J. and Delamere, Jennifer S. and Mlawer, Eli J. and Shephard, Mark W. and Clough, Shepard A. and Collins, William D.},
+    title = {Radiative forcing by long-lived greenhouse gases: Calculations with the AER radiative transfer models},
+    journal = {Journal of Geophysical Research: Atmospheres},
+    volume = {113},
+    number = {D13},
+    pages = {},
+    keywords = {greenhouse forcing, radiative transfer, climate change},
+    doi = {https://doi.org/10.1029/2008JD009944},
+    url = {https://doi.org/10.1029/2008JD009944},
+    year = {2008}
+}
+
+# INFO: RT GCM + 1D vs 3D effects clouds
+@article {Singer,
+      author = "Clare E. Singer and Ignacio Lopez-Gomez and Xiyue Zhang and Tapio Schneider",
+      title = "Top-of-Atmosphere Albedo Bias from Neglecting Three-Dimensional Cloud Radiative Effects",
+      journal = "Journal of the Atmospheric Sciences",
+      year = "2021",
+      publisher = "American Meteorological Society",
+      address = "Boston MA, USA",
+      volume = "78",
+      number = "12",
+      doi = "10.1175/JAS-D-21-0032.1",
+      pages=      "4053 - 4069",
+      url = "https://journals.ametsoc.org/view/journals/atsc/78/12/JAS-D-21-0032.1.xml"
+}
+# INFO: 3D cloud effect + ICA
+@article {Hogan,
+      author = "Robin J. Hogan and Mark D. Fielding and Howard W. Barker and Najda Villefranque and Sophia A. K. Schäfer",
+      title = "Entrapment: An Important Mechanism to Explain the Shortwave 3D Radiative Effect of Clouds",
+      journal = "Journal of the Atmospheric Sciences",
+      year = "2019",
+      publisher = "American Meteorological Society",
+      address = "Boston MA, USA",
+      volume = "76",
+      number = "7",
+      doi = "10.1175/JAS-D-18-0366.1",
+      pages=      "2123 - 2141",
+      url = "https://journals.ametsoc.org/view/journals/atsc/76/7/jas-d-18-0366.1.xml"
+}
+# INFO: "original" 3D cloud effect
+@article {Varnai,
+      author = "Tamás Várnai and Roger Davies",
+      title = "Effects of Cloud Heterogeneities on Shortwave Radiation: Comparison of Cloud-Top Variability and Internal Heterogeneity",
+      journal = "Journal of the Atmospheric Sciences",
+      year = "1999",
+      publisher = "American Meteorological Society",
+      address = "Boston MA, USA",
+      volume = "56",
+      number = "24",
+      doi = "10.1175/1520-0469(1999)056<4206:EOCHOS>2.0.CO;2",
+      pages=      "4206 - 4224",
+      url = "https://journals.ametsoc.org/view/journals/atsc/56/24/1520-0469_1999_056_4206_eochos_2.0.co_2.xml"
+}
+
+% INFO: Radiative Smoothning
+@article{Marshak,
+author = {Marshak, Alexander and Davis, Anthony and Wiscombe, Warren and Cahalan, Robert},
+title = {Radiative smoothing in fractal clouds},
+journal = {Journal of Geophysical Research: Atmospheres},
+volume = {100},
+number = {D12},
+pages = {26247-26261},
+doi = {https://doi.org/10.1029/95JD02895},
+url = {https://agupubs.onlinelibrary.wiley.com/doi/abs/10.1029/95JD02895},
+eprint = {https://agupubs.onlinelibrary.wiley.com/doi/pdf/10.1029/95JD02895},
+year = {1995}
+}
+% INFO: Radiative Smoothning
+@article{Savigny,
+author = {von Savigny, C. and Funk, O. and Platt, U. and Pfeilsticker, K.},
+title = {Radiative smoothing in zenith-scattered skylight transmitted through optically thick clouds to the ground},
+journal = {Geophysical Research Letters},
+volume = {26},
+number = {19},
+pages = {2949-2952},
+doi = {https://doi.org/10.1029/1999GL900619},
+url = {https://agupubs.onlinelibrary.wiley.com/doi/abs/10.1029/1999GL900619},
+eprint = {https://agupubs.onlinelibrary.wiley.com/doi/pdf/10.1029/1999GL900619},
+year = {1999}
+}
+
+
+
+# INFO: ICA
+@article {Cahalan,
+      author = "Robert F. Cahalan and Lazaros Oreopoulos and Alexander Marshak and K. Franklin Evans and Anthony B. Davis and Robert Pincus and Ken H. Yetzer and Bernhard Mayer and Roger Davies and Thomas P. Ackerman and Howard W. Barker and Eugene E. Clothiaux and Robert G. Ellingson and Michael J. Garay and Evgueni Kassianov and Stefan Kinne and Andreas Macke and William O'hirok and Philip T. Partain and Sergei M. Prigarin and Alexei N. Rublev and Graeme L. Stephens and Frederic Szczap and Ezra E. Takara and Tamas Várnai and Guoyong Wen and Tatiana B. Zhuravleva",
+      title = "THE I3RC: Bringing Together the Most Advanced Radiative Transfer Tools for Cloudy Atmospheres",
+      journal = "Bulletin of the American Meteorological Society",
+      year = "2005",
+      publisher = "American Meteorological Society",
+      address = "Boston MA, USA",
+      volume = "86",
+      number = "9",
+      doi = "10.1175/BAMS-86-9-1275",
+      pages=      "1275 - 1294",
+      url = "https://journals.ametsoc.org/view/journals/bams/86/9/bams-86-9-1275.xml"
+}
+
+# INFO: 3D effects: cloud shadowing
+@article{Frame,
+title = {An application of the tilted independent pixel approximation to cumulonimbus environments},
+journal = {Atmospheric Research},
+volume = {91},
+number = {1},
+pages = {127-136},
+year = {2009},
+issn = {0169-8095},
+doi = {https://doi.org/10.1016/j.atmosres.2008.05.005},
+url = {https://www.sciencedirect.com/science/article/pii/S0169809508001269},
+author = {Jeffrey W. Frame and Jonathan L. Petters and Paul M. Markowski and Jerry Y. Harrington},
+keywords = {Radiative transfer, Numerical modeling, Radiation, Clouds, Thunderstorms},
+}
+
+# INFO: 3D effects: cloud shadowing -> impact clouds!
+@article{Veerman,
+author = {Veerman, M. A. and Pedruzo-Bagazgoitia, X. and Jakub, F. and Vilà-Guerau de Arellano, J. and van Heerwaarden, C. C.},
+title = {Three-Dimensional Radiative Effects By Shallow Cumulus Clouds on Dynamic Heterogeneities Over a Vegetated Surface},
+journal = {Journal of Advances in Modeling Earth Systems},
+volume = {12},
+number = {7},
+pages = {e2019MS001990},
+doi = {https://doi.org/10.1029/2019MS001990},
+url = {https://doi.org/10.1029/2019MS001990},
+note = {e2019MS001990 10.1029/2019MS001990},
+year = {2020}
+}
+
+% INFO: albedo earth + cloud impact
+@article{Stephens,
+author = {Stephens, Graeme L. and O'Brien, Denis and Webster, Peter J. and Pilewski, Peter and Kato, Seiji and Li, Jui-lin},
+title = {The albedo of Earth},
+journal = {Reviews of Geophysics},
+volume = {53},
+number = {1},
+pages = {141-163},
+keywords = {solar radiation, albedo, energy balance},
+doi = {https://doi.org/10.1002/2014RG000449},
+url = {https://doi.org/10.1002/2014RG000449},
+year = {2015}
+}
+@Inbook{Stephens_book,
+author="Stephens, G.L. and Heidinger, A.K. and Gabriel, P.M.",
+editor="Marshak, Alexander and Davis, Anthony",
+title="Photon Paths and Cloud Heterogeneity: An Observational Strategy to Assess Effects of 3D Geometry on Radiative Transfer",
+bookTitle="3D Radiative Transfer in Cloudy Atmospheres",
+year="2005",
+publisher="Springer Berlin Heidelberg",
+address="Berlin, Heidelberg",
+pages="587--616",
+isbn="978-3-540-28519-9",
+doi="10.1007/3-540-28519-9_13",
+url="https://doi.org/10.1007/3-540-28519-9_13"
+}
+@article{Fan,
+author = {Fan, Chongxing and Chen, Yi-Hsuan and Chen, Xiuhong and Lin, Wuyin and Yang, Ping and Huang, Xianglei},
+title = {A Refined Understanding of the Ice Cloud Longwave Scattering Effects in Climate Model},
+journal = {Journal of Advances in Modeling Earth Systems},
+volume = {15},
+number = {10},
+pages = {e2023MS003810},
+keywords = {cloud longwave scattering, cloud-radiation interaction, radiative forcing and feedback, E3SM, climate modeling},
+doi = {https://doi.org/10.1029/2023MS003810},
+url = {https://doi.org/10.1029/2023MS003810},
+note = {e2023MS003810 2023MS003810},
+year = {2023}
+}
+
+
+% INFO: ESMs & GCM
+@misc{ESM_GCM,
+  author       = {{U.S. Department of Energy}},
+  title        = {{DOE Explains\ldots Earth System and Climate Models}},
+  howpublished = {Online: \url{https://www.energy.gov/science/doe-explainsearth-system-and-climate-models}},
+  year         = {2025},
+  note         = {Accessed 5 August 2025}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+% INFO: 3D cloud radiative bias -------------------------------
+@article{Barker2012,
+  author  = {Barker, H.~W. and Kato, S. and Wehr, T.},
+  title   = {Computation of Solar Radiative Fluxes by 1D and 3D Methods Using Cloudy Atmospheres Inferred from A-train Satellite Data},
+  journal = {Surveys in Geophysics},
+  volume  = {33},
+  number  = {3},
+  pages   = {657--676},
+  year    = {2012},
+  doi     = {10.1007/s10712-011-9164-9},
+  url     = {https://doi.org/10.1007/s10712-011-9164-9},
+}
+@article{Okata,
+author = {Okata, M. and Nakajima, T. and Suzuki, K. and Inoue, T. and Nakajima, T. Y. and Okamoto, H.},
+title = {A study on radiative transfer effects in 3-D cloudy atmosphere using satellite data},
+journal = {Journal of Geophysical Research: Atmospheres},
+volume = {122},
+number = {1},
+pages = {443-468},
+keywords = {radiation, cloud, satellite, Monte Carlo, approximation},
+doi = {https://doi.org/10.1002/2016JD025441},
+url = {https://doi.org/10.1002/2016JD025441},
+year = {2017}
+}
+@Article{Ademakinwa,
+AUTHOR = {Ademakinwa, A. S. and Tushar, Z. H. and Zheng, J. and Wang, C. and Purushotham, S. and Wang, J. and Meyer, K. G. and V\'arnai, T. and Zhang, Z.},
+TITLE = {Influence of cloud retrieval errors due to three-dimensional radiative
+effects on calculations of broadband shortwave cloud radiative effect},
+JOURNAL = {Atmospheric Chemistry and Physics},
+VOLUME = {24},
+YEAR = {2024},
+NUMBER = {5},
+PAGES = {3093--3114},
+URL = {https://acp.copernicus.org/articles/24/3093/2024/},
+DOI = {10.5194/acp-24-3093-2024}
+}
+@article {Gristey,
+author = "Jake J. Gristey and Graham Feingold and Ian B. Glenn and K. Sebastian Schmidt and Hong Chen",
+title = "Surface Solar Irradiance in Continental Shallow Cumulus Fields: Observations and Large-Eddy Simulation",
+journal = "Journal of the Atmospheric Sciences",
+year = "2020",
+publisher = "American Meteorological Society",
+address = "Boston MA, USA",
+volume = "77",
+number = "3",
+doi = "10.1175/JAS-D-19-0261.1",
+pages=      "1065 - 1080",
+url = "https://journals.ametsoc.org/view/journals/atsc/77/3/jas-d-19-0261.1.xml"
+}
+@article{Giuseppe,
+author = {Di Giuseppe, F. and Tompkins, A. M.},
+title = {Three-dimensional radiative transfer in tropical deep convective clouds},
+journal = {Journal of Geophysical Research: Atmospheres},
+volume = {108},
+number = {D23},
+pages = {},
+keywords = {3-D radiative transfer, convective clouds},
+doi = {https://doi.org/10.1029/2003JD003392},
+url = {https://agupubs.onlinelibrary.wiley.com/doi/abs/10.1029/2003JD003392},
+year = {2003}
+}
+%--------------------------------------------------------------
+
+
+
+
+
+
+
+# RTM ----------------------------------------------------------
+@misc{libRadtran,
+  author       = {Mayer, Bernhard and Emde, Claudia and Jakub, Fabian and Kylling, Arve},
+  title        = {{libRadtran} - library for radiative transfer},
+  howpublished = {\url{https://www.libradtran.org/doku.php?id=start}},
+  note         = {Version 2.0.6 (Dec 24, 2024); last modified Jan 18, 2025; accessed Jul 17, 2025},
+  year         = {2025},
+}
+@Article{libRadtran_RT,
+AUTHOR = {Mayer, B. and Kylling, A.},
+TITLE = {Technical note: The libRadtran software package for radiative transfer calculations - description and examples of use},
+JOURNAL = {Atmospheric Chemistry and Physics},
+VOLUME = {5},
+YEAR = {2005},
+NUMBER = {7},
+PAGES = {1855--1877},
+URL = {https://acp.copernicus.org/articles/5/1855/2005/},
+DOI = {10.5194/acp-5-1855-2005}
+}
+@manual{libRadtran_user_guide,
+  title        = {libRadtran User Guide},
+  author       = {Mayer, B. and Kylling, A. and Emde, C. and Buras, R. and Gasteiger, J. and Jakub, F. and Hamann, U. and Richter, B.},
+  year         = {2025},
+  note         = {Last updated 2 Feb 2025; accessed 11 Aug 2025},
+  url          = {https://www.libradtran.org/doc/libRadtran.pdf}
+}
+@book{RT_book,
+place={Cambridge}, 
+edition={2}, 
+title={Radiative Transfer in the Atmosphere and Ocean}, 
+publisher={Cambridge University Press}, 
+author={Stamnes, Knut and Thomas, Gary E. and Stamnes, Jakob J.}, 
+year={2017}
+} 
+@article{Dahlback,
+    title = {A new spherical model for computing the radiation field available for photolysis and heating at twilight},
+    journal = {Planetary and Space Science},
+    volume = {39},
+    number = {5},
+    pages = {671--683},
+    year = {1991},
+    issn = {0032-0633},
+    doi = {https://doi.org/10.1016/0032-0633(91)90061-E},
+    url = {https://www.sciencedirect.com/science/article/pii/003206339190061E},
+    author = {Arne Dahlback and Knut Stamnes},
+}
+@techreport{Stamnes2000,
+  author       = {Stamnes, Knut and Tsay, Si-Chee and Wiscombe, Warren and Laszlo, Istv\'an},
+  title        = {{DISORT}: A General-Purpose Fortran Program for Discrete-Ordinate-Method Radiative Transfer in Scattering and Emitting Layered Media: Documentation of Methodology},
+  institution  = {Dept.\ of Physics and Engineering Physics, Stevens Institute of Technology},
+  address      = {Hoboken, NJ},
+  type         = {Technical Report},
+  year         = {2000},
+  url          = {http://www.libradtran.org/lib/exe/fetch.php?media=disortreport1.1.pdf},
+}
+@article{Stamnes1988,
+author = {Knut Stamnes and S-Chee Tsay and Warren Wiscombe and Kolf Jayaweera},
+journal = {Appl. Opt.},
+keywords = {Emissivity; Multiple scattering; Radar; Reflection; Reflectivity; Thermal emissions},
+number = {12},
+pages = {2502--2509},
+publisher = {Optica Publishing Group},
+title = {Numerically stable algorithm for discrete-ordinate-method radiative transfer in multiple scattering and emitting layered media},
+volume = {27},
+month = {Jun},
+year = {1988},
+url = {https://opg.optica.org/ao/abstract.cfm?URI=ao-27-12-2502},
+doi = {10.1364/AO.27.002502},
+}
+
+
+# Monte Carlo
+@article{Mayer2009,
+author = {Mayer, Bernhard},
+year = {2009},
+month = {02},
+pages = {75-99},
+title = {Radiative transfer in the cloudy atmosphere},
+volume = {1},
+journal = {European Physical Journal},
+url = {https://elib.dlr.de/59646/1/2009-Mayer_A9RA3_tmp.pdf},
+}
+@article{Noebauer,
+	title = {Monte {Carlo} radiative transfer},
+	volume = {5},
+	issn = {2365-0524},
+	url = {https://doi.org/10.1007/s41115-019-0004-9},
+	doi = {10.1007/s41115-019-0004-9},
+	journal = {Living Reviews in Computational Astrophysics},
+	author = {Noebauer, Ulrich M. and Sim, Stuart A.},
+	month = jun,
+	year = {2019},
+	pages = {1},
+}
+@inproceedings{Mayer1999,
+  author       = {Mayer, Bernhard},
+  title        = {I3RC Phase 1 Results from the MYSTIC Monte Carlo Model},
+  booktitle    = {Intercomparison of Three-Dimensional Radiation Codes: Abstracts of the First International Workshop},
+  year         = {1999},
+  address      = {Tucson, Arizona, USA},
+  organization = {I3RC Workshop},
+  note         = {Extended abstract},
+  url          = {https://www.researchgate.net/publication/229051487_I3RC_phase_1_results_from_the_MYSTIC_Monte_Carlo_model}
+}
+
+
+
+% INFO: neglecting scattering - 1D LW RT
+@article{Kuo,
+title = {Assessing the accuracy and efficiency of longwave radiative transfer models involving scattering effect with cloud optical property parameterizations},
+journal = {Journal of Quantitative Spectroscopy and Radiative Transfer},
+volume = {240},
+pages = {106683},
+year = {2020},
+issn = {0022-4073},
+doi = {https://doi.org/10.1016/j.jqsrt.2019.106683},
+url = {https://www.sciencedirect.com/science/article/pii/S0022407319305606},
+author = {Chia-Pang Kuo and Ping Yang and Xianglei Huang and Yi-Hsuan Chen and Guosheng Liu},
+keywords = {Radiative transfer, Water cloud parameterization, Ice cloud parameterization}
+}
+% ----------------------------------------------------------------
+
+
+
+
+% INFO: Ice-Habit ----------------------------------------------------
+@article{Um_Ice_Habit,
+	title = {Dimensions and aspect ratios of natural ice crystals},
+	volume = {15},
+	url = {https://acp.copernicus.org/articles/15/3933/2015/},
+	doi = {10.5194/acp-15-3933-2015},
+	number = {7},
+	journal = {Atmospheric Chemistry and Physics},
+	author = {Um, J. and McFarquhar, G. M. and Hong, Y. P. and Lee, S.-S. and Jung, C. H. and Lawson, R. P. and Mo, Q.},
+	year = {2015},
+	pages = {3933--3956},
+}
+@article{Korolev_Ice_Habit,
+author = {Korolev, A. V. and Isaac, G. A. and Hallett, J.},
+title = {Ice particle habits in Arctic clouds},
+journal = {Geophysical Research Letters},
+volume = {26},
+number = {9},
+pages = {1299-1302},
+doi = {https://doi.org/10.1029/1999GL900232},
+url = {https://doi.org/10.1029/1999GL900232},
+year = {1999}
+}
+@article{Kristjánsson_Ice_Habit,
+author = {Kristjánsson, J. E. and Edwards, J. M. and Mitchell, D. L.},
+title = {Impact of a new scheme for optical properties of ice crystals on climates of two GCMs},
+journal = {Journal of Geophysical Research: Atmospheres},
+volume = {105},
+number = {D8},
+pages = {10063-10079},
+doi = {https://doi.org/10.1029/2000JD900015},
+url = {https://doi.org/10.1029/2000JD900015},
+year = {2000}
+}
+@article {Lawson_Ice_Habit,
+author = "R. Paul Lawson and Brad A. Baker and Patrick Zmarzly and Darren O’Connor and Qixu Mo and Jean-Francois Gayet and Valery Shcherbakov",
+title = "Microphysical and Optical Properties of Atmospheric Ice Crystals at South Pole Station",
+journal = "Journal of Applied Meteorology and Climatology",
+year = "2006",
+publisher = "American Meteorological Society",
+address = "Boston MA, USA",
+volume = "45",
+number = "11",
+doi = "10.1175/JAM2421.1",
+pages=      "1505 - 1524",
+url = "https://journals.ametsoc.org/view/journals/apme/45/11/jam2421.1.xml"
+}
+@article{Diedenhoven_motivation_Ice_Habit,
+author = {{van Diedenhoven}, Bastiaan and Fridlind, Ann M. and Cairns, Brian and Ackerman, Andrew S.},
+title = {Variation of ice crystal size, shape, and asymmetry parameter in tops of tropical deep convective clouds},
+journal = {Journal of Geophysical Research: Atmospheres},
+volume = {119},
+number = {20},
+pages = {11,809-11,825},
+keywords = {ice clouds, ice crystals, deep convection, asymmetry parameter},
+doi = {https://doi.org/10.1002/2014JD022385},
+url = {https://doi.org/10.1002/2014JD022385},
+year = {2014}
+}
+@article {Diedenhoven_parametrization_Ice_Habit,
+author = {{van Diedenhoven}, Bastiaan and Ackerman, Andrew S. and Cairns, Brian and Fridlind, Ann M.},
+title = "A Flexible Parameterization for Shortwave Optical Properties of Ice Crystals",
+journal = "Journal of the Atmospheric Sciences",
+year = "2014",
+publisher = "American Meteorological Society",
+address = "Boston MA, USA",
+volume = "71",
+number = "5",
+doi = "10.1175/JAS-D-13-0205.1",
+pages=      "1763 - 1782",
+url = "https://journals.ametsoc.org/view/journals/atsc/71/5/jas-d-13-0205.1.xml"
+}
+@article{Diedenhoven_non_pristine_Ice_Habit,
+title = {The prevalence of the 22° halo in cirrus clouds},
+journal = {Journal of Quantitative Spectroscopy and Radiative Transfer},
+volume = {146},
+pages = {475-479},
+year = {2014},
+note = {Electromagnetic and Light Scattering by Nonspherical Particles XIV},
+issn = {0022-4073},
+doi = {https://doi.org/10.1016/j.jqsrt.2014.01.012},
+url = {https://www.sciencedirect.com/science/article/pii/S0022407314000223},
+author = {Bastiaan {van Diedenhoven}},
+keywords = {Ice crystals, Cirrus clouds, Halos},
+}
+@article {Fu_Ice_Habit,
+author = "Qiang Fu",
+title = "A New Parameterization of an Asymmetry Factor of Cirrus Clouds for Climate Models",
+journal = "Journal of the Atmospheric Sciences",
+year = "2007",
+publisher = "American Meteorological Society",
+address = "Boston MA, USA",
+volume = "64",
+number = "11",
+doi = "10.1175/2007JAS2289.1",
+pages=      "4140 - 4150",
+url = "https://journals.ametsoc.org/view/journals/atsc/64/11/2007jas2289.1.xml"
+}
+@article{Wang_Ice_Habit,
+title = {Estimation of the cirrus cloud scattering phase function from satellite observations},
+journal = {Journal of Quantitative Spectroscopy and Radiative Transfer},
+volume = {138},
+pages = {36-49},
+year = {2014},
+issn = {0022-4073},
+doi = {https://doi.org/10.1016/j.jqsrt.2014.02.001},
+url = {https://www.sciencedirect.com/science/article/pii/S0022407314000466},
+author = {Chenxi Wang and Ping Yang and Andrew Dessler and Bryan A. Baum and Yongxiang Hu},
+keywords = {Thin cirrus clouds, Optical properties, Cloud phase function, Satellite observations},
+}
+@Article{Cole_Ice_Habit,
+AUTHOR = {Cole, B. H. and Yang, P. and Baum, B. A. and Riedi, J. and C.-Labonnote, L.},
+TITLE = {Ice particle habit and surface roughness derived from PARASOL polarization measurements},
+JOURNAL = {Atmospheric Chemistry and Physics},
+VOLUME = {14},
+YEAR = {2014},
+NUMBER = {7},
+PAGES = {3739--3750},
+URL = {https://acp.copernicus.org/articles/14/3739/2014/},
+DOI = {10.5194/acp-14-3739-2014}
+}
+@techreport{SSEC_Ice_Habit,
+  author       = {Baum, Bryan A. and Yang, Ping and Heymsfield, Andrew},
+  title        = {Ice Cloud Bulk Scattering and Absorption Models: Refinement Through Comparison of Hyperspectral, Narrowband, and Polarization Sensors},
+  institution  = {Space Science and Engineering Center, University of Wisconsin–Madison},
+  year         = {2014},
+  number       = {SSEC Publication No. 14.08.B1},
+  type         = {Final Report},
+  url          = {https://pubs.ssec.wisc.edu/research_Resources/publications/pdfs/SSECPUBS/SSEC_Publication_No_14_08_B1.pdf},
+  note         = {Contract number NNX11AF40G, grant period February 2011 – August 2014}
+}
+@article{Wendisch_thermal_Ice_Habit,
+author = {Wendisch, Manfred and Yang, Ping and Pilewskie, Peter},
+title = {Effects of ice crystal habit on thermal infrared radiative properties and forcing of cirrus},
+journal = {Journal of Geophysical Research: Atmospheres},
+volume = {112},
+number = {D8},
+pages = {},
+keywords = {atmospheric radiation, thermal infrared, cirrus optical properties},
+doi = {https://doi.org/10.1029/2006JD007899},
+url = {https://doi.org/10.1029/2006JD007899},
+year = {2007}
+}
+@article{Wendisch_solar_Ice_Habit,
+author = {Wendisch, Manfred and Pilewskie, Peter and Pommier, John and Howard, Steve and Yang, Ping and Heymsfield, Andrew J. and Schmitt, Carl G. and Baumgardner, Darrel and Mayer, Bernhard},
+title = {Impact of cirrus crystal shape on solar spectral irradiance: A case study for subtropical cirrus},
+journal = {Journal of Geophysical Research: Atmospheres},
+volume = {110},
+number = {D3},
+pages = {},
+keywords = {atmospheric solar radiation, cirrus clouds, crystal shape influence},
+doi = {https://doi.org/10.1029/2004JD005294},
+url = {https://doi.org/10.1029/2004JD005294},
+year = {2005}
+}
+
+% ------------------------------------------------------------------
+
+
+% Info: Aerosol -------------------------------------------------------
+@article{Zhou_Aerosol,
+title = {The effect of aerosols on long wave radiation and global warming},
+journal = {Atmospheric Research},
+volume = {135-136},
+pages = {102-111},
+year = {2014},
+issn = {0169-8095},
+doi = {https://doi.org/10.1016/j.atmosres.2013.08.009},
+url = {https://www.sciencedirect.com/science/article/pii/S0169809513002354},
+author = {Y. Zhou and H. Savijärvi},
+keywords = {Aerosols, Long wave radiation, Radiative forcing, Long wave heating rate}
+}
+
+
+@article{Angstrom1929,
+author = {Anders Ångström},
+title = {On the Atmospheric Transmission of Sun Radiation and on Dust in the Air},
+journal = {Geografiska Annaler},
+volume = {11},
+number = {2},
+pages = {156--166},
+year = {1929},
+publisher = {Taylor \& Francis},
+doi = {10.1080/20014422.1929.11880498},
+url = {https://sci-hub.ru/10.1080/20014422.1929.11880498},
+}
+@article{Angstrom1964,
+author = {Anders Ångström},
+title = {The parameters of atmospheric turbidity},
+journal = {Tellus},
+volume = {16},
+number = {1},
+pages = {64--75},
+year = {1964},
+publisher = {Taylor \& Francis},
+doi = {10.3402/tellusa.v16i1.8885},
+url = {https://www.tandfonline.com/doi/pdf/10.3402/tellusa.v16i1.8885},
+}
+
+
+
+@article{Schuster_Aerosol,
+author = {Schuster, Gregory L. and Dubovik, Oleg and Holben, Brent N.},
+title = {Angstrom exponent and bimodal aerosol size distributions},
+journal = {Journal of Geophysical Research: Atmospheres},
+volume = {111},
+number = {D7},
+pages = {},
+keywords = {angstrom exponent, sunphotometry, aerosols},
+doi = {https://doi.org/10.1029/2005JD006328},
+abstract = {Power laws have long been used to describe the spectral dependence of aerosol extinction, and the wavelength exponent of the aerosol extinction law is commonly referred to as the Angstrom exponent.},
+year = {2006}
+}
+
+%%% Not sure if use this, remove if Kerstin do not agree:
+@article{Toledano_Aerosol,
+ author = {Toledano, C. and Wiegner, M. and Groß, S. and Freudenthaler, V. and Gasteiger, J. and Müller, D. and Müller, T. and Schladitz, A. and Weinzierl, B. and Torres, B. and O’neill, N. T.},
+ doi = {10.1111/j.1600-0889.2011.00573.x},
+ url = {10.1111/j.1600-0889.2011.00573.x},
+ journal = {Tellus B: Chemical and Physical Meteorology},
+ month = {Jan},
+ title = {Optical properties of aerosol mixtures derived from sun-sky radiometry during SAMUM-2},
+ year = {2011}
+}
+% ---------------------------------------------------------------------
+
+% INFO: Surface VS TOA fluxes ----------------------------------------
+
+% --------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%%%%%%%%%%%% Small additional references %%%%%%%%%%%%%%%%%%%%%
+@Article{Matplotlib,
+  Author    = {Hunter, J. D.},
+  Title     = {Matplotlib: A 2D graphics environment},
+  Journal   = {Computing in Science \& Engineering},
+  Volume    = {9},
+  Number    = {3},
+  Pages     = {90--95},
+  abstract  = {Matplotlib is a 2D graphics package used for Python for
+  application development, interactive scripting, and publication-quality
+  image generation across user interfaces and operating systems.},
+  publisher = {IEEE COMPUTER SOC},
+  doi       = {10.1109/MCSE.2007.55},
+  year      = 2007
+}
+
+# Must update this
+@misc{chatgpt2024,
+  author       = {OpenAI},
+  title        = {ChatGPT},
+  year         = {2024},
+  howpublished = { \url{https://chat.openai.com/} },
+  note         = {Accessed: 2024-10-05}
+}
+
+@article {Heymsfield,
+      author = "Andrew J. Heymsfield and Carl Schmitt and Aaron Bansemer",
+      title = "Ice Cloud Particle Size Distributions and Pressure-Dependent Terminal Velocities from In Situ Observations at Temperatures from 0° to −86°C",
+      journal = "Journal of the Atmospheric Sciences",
+      year = "2013",
+      publisher = "American Meteorological Society",
+      address = "Boston MA, USA",
+      volume = "70",
+      number = "12",
+      doi = "10.1175/JAS-D-12-0124.1",
+      pages=      "4123 - 4154",
+      url = "https://journals.ametsoc.org/view/journals/atsc/70/12/jas-d-12-0124.1.xml"
+}
+
+@article{Baum,
+title = {Ice cloud single-scattering property models with the full phase matrix at wavelengths from 0.2 to 100µm},
+journal = {Journal of Quantitative Spectroscopy and Radiative Transfer},
+volume = {146},
+pages = {123-139},
+year = {2014},
+note = {Electromagnetic and Light Scattering by Nonspherical Particles XIV},
+issn = {0022-4073},
+doi = {https://doi.org/10.1016/j.jqsrt.2014.02.029},
+url = {https://www.sciencedirect.com/science/article/pii/S0022407314000867},
+author = {Bryan A. Baum and Ping Yang and Andrew J. Heymsfield and Aaron Bansemer and Benjamin H. Cole and Aronne Merrelli and Carl Schmitt and Chenxi Wang},
+keywords = {Ice clouds, Light scattering, Remote sensing, Radiative transfer},
+}
+@article {Yang,
+      author = "Ping Yang and Lei Bi and Bryan A. Baum and Kuo-Nan Liou and George W. Kattawar and Michael I. Mishchenko and Benjamin Cole",
+      title = "Spectrally Consistent Scattering, Absorption, and Polarization Properties of Atmospheric Ice Crystals at Wavelengths from 0.2 to 100 μm",
+      journal = "Journal of the Atmospheric Sciences",
+      year = "2013",
+      publisher = "American Meteorological Society",
+      address = "Boston MA, USA",
+      volume = "70",
+      number = "1",
+      doi = "10.1175/JAS-D-12-039.1",
+      pages=      "330 - 347",
+      url = "https://journals.ametsoc.org/view/journals/atsc/70/1/jas-d-12-039.1.xml"
+}
+
+@book{Chandrasekhar,
+  author    = {Chandrasekhar, Subrahmanyan},
+  title     = {Radiative Transfer},
+  publisher = {Dover Publications},
+  address   = {New York},
+  year      = {1960},
+  pages     = {416},
+}
+
+@article{MT19937,
+author = {Matsumoto, Makoto and Nishimura, Takuji},
+title = {Mersenne twister: a 623-dimensionally equidistributed uniform pseudo-random number generator},
+year = {1998},
+issue_date = {Jan. 1998},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+volume = {8},
+number = {1},
+issn = {1049-3301},
+url = {https://dl.acm.org/doi/pdf/10.1145/272991.272995},
+doi = {10.1145/272991.272995},
+journal = {ACM Trans. Model. Comput. Simul.},
+month = jan,
+pages = {3–30},
+numpages = {28}
+}
+
+@article{Cox_and_Munk1,
+author = {Charles Cox and Walter Munk},
+journal = {J. Opt. Soc. Am.},
+keywords = {Optical systems; Reflection coefficient; Refractive index; Roll to roll processing; Statistics; Surface roughness measurement},
+number = {11},
+pages = {838--850},
+publisher = {Optica Publishing Group},
+title = {Measurement of the Roughness of the Sea Surface from Photographs of the Sun's Glitter},
+volume = {44},
+month = {Nov},
+year = {1954},
+url = {https://opg.optica.org/abstract.cfm?URI=josa-44-11-838},
+doi = {10.1364/JOSA.44.000838}
+}
+@article{Cox_and_Munk2,
+  author  = {Cox, Charles and Munk, Walter},
+  title   = {Statistics of the Sea Surface Derived from Sun Glitter},
+  journal = {Journal of Marine Research},
+  year    = {1954},
+  volume  = {13},
+  number  = {2},
+  pages   = {198--227},
+  url     = {https://elischolar.library.yale.edu/journal_of_marine_research/814}
+}

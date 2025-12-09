@@ -9,8 +9,16 @@ git push
 
 
 ------------ Short-Term -------
-- Write about max deviations from buffer-sizes + CF effect + might use libRad_flx_diff againss tot_wc, not tot_wp!
-- Kjøre MYSTIC surface på nytt med korrekt "if Surface" 
+- Find sources solar 250-300 and thermal 4000-4500 write
+- BUFFER-IN-DEPTH Analysis:
+    * run DIOSRT for 7883D for comparison with MCIPA
+    * run 5x5 medium buffer! (maybe MCIPA -> 5x5 -> 13x13 <- 25x21 <- 31x31 <- 41x41)
+    * Run many other swaths for comparisons with multipel swaths
+    * Maybe more math: d<F>/dN where <F> is swath-average flux and N is #pixels in buffer size -> Buffer-Size-Sensitivity
+        - Using Least-Square Linear Regression -> deltaF(N) = F(N) - BMAFLX = a + b*N    ->    deltaF(N)/dN = b  [(W/m2) per pixel]
+        - Myabe use per 100 km^2 or someting! (like adding 10x10 to buffer!)
+        - Maybe not Linear regression is best -> maybe changes non-linear! maybe squared? or exponential?
+- Maybe add NIPA for 6886E swath in 3D RT effect!
 - Maybe structure main takeway of Master as looking into Buffer-Size Sensitivity (using even smaller buffer on small locations!)
 - 3D RT effect:
     * Run many swaths with IPA, MC LargeBuffer, MC SmallBuffer, MCIPA? 

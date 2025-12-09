@@ -8,14 +8,14 @@
 #SBATCH --nodes=1
 ###SBATCH --ntasks=40
 ###SBATCH --ntasks-per-node=40
-#SBATCH --ntasks=30
-#SBATCH --ntasks-per-node=30
+#SBATCH --ntasks=3
+#SBATCH --ntasks-per-node=3
 ###SBATCH --ntasks=3
 ###SBATCH --ntasks-per-node=3
 
 
 ###SBATCH --cpus-per-task=1
-#SBATCH --time=1-02:00:00
+#SBATCH --time=2-10:00:00
 #SBATCH --mem-per-cpu=1400Mb
 
 #SBATCH --partition=main

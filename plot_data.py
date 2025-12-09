@@ -263,7 +263,7 @@ def plot_correlation(source, versions, orbits, places, values, ylabel, title_spe
     ymin, xmin, ymax, xmax = xy_min, xy_min, xy_max, xy_max
 
     # y=x line
-    p, = ax.plot([lo, hi], [lo, hi], lw=1.2, c='b', linestyle="--", label="1:1")
+    p, = ax.plot([lo, hi], [lo, hi], lw=1.2, c='r', linestyle="--", label="y = x")
     pl_list.append(p)
 
     # Regression line over same span
@@ -273,12 +273,12 @@ def plot_correlation(source, versions, orbits, places, values, ylabel, title_spe
 
     data_str = (
         # f"n = {x.size}\n"
-        f"r² = {r2:.2f}\n"
+        f"R² = {r2:.2f}                     \n"
         # f"RMSE = {rmse:.2f}\n"
-        r"$⟨\Delta F⟩$ (Bias) = " + f"{mean:.2f} ± {std:.2f} " + r"W/m$^2$"  # _{\mathrm{TOA}}^{\uparrow}
+        r"$⟨\Delta F⟩$ (Bias) = " + f"{mean:.1f} ± {std:.1f}" + r" W/m$^2$"  # _{\mathrm{TOA}}^{\uparrow}
         # f"\nMAE = {mae:.2f}\n"
     )
-    ax.text(.98, .02, data_str,
+    ax.text(.99, .01, data_str,
             transform=ax.transAxes, ha='right', va='bottom',
             fontsize=FONTSIZE*.7, color='k',
             bbox=dict(boxstyle='round,pad=0.3', facecolor='w', alpha=0.8))
@@ -320,7 +320,7 @@ def plot_correlation(source, versions, orbits, places, values, ylabel, title_spe
                 loc='upper left', framealpha=0.7, 
                 borderaxespad=0.0,                   # space to axes
                 borderpad=0.25, labelspacing=0.25,   # compact box)
-                fontsize=INFOSIZE*.9)
+                fontsize=INFOSIZE*.8)
 
     fig.tight_layout()
     ax.set_facecolor('#f0f0f0')  # Axes background (warm light grey)
@@ -345,13 +345,15 @@ def get_instances(SceneName, Product, Product2=False, BMAFLX=False):
     # Get .nc file
     ProductPath = ProductPathRTM
     ProductFile = os.path.join(ProductPath, Product)
-    # print('ProductFile1', ProductFile)
+    print('ProductFile1', ProductFile)
     ProductFile = sorted(glob.glob(ProductFile))[0]  
     libRad = ReadEC.Scene(Name=SceneName)
     libRad.ReadEarthCAREh5(ProductFile)
     libRad.SetExtent()
     
-
+    # BG: Find; Baseline, Data, Time
+    BB_baseline, BA_baseline, AC_baseline = '', '', ''
+        
     # Get ACM-COM 
     Product ='ACM_COM'
     ProductPath = '*'+Product+'*'
@@ -360,6 +362,14 @@ def get_instances(SceneName, Product, Product2=False, BMAFLX=False):
     ACMCOM = ReadEC.Scene(Name=SceneName)
     ACMCOM.ReadEarthCAREh5(ProductFile) #, ACM3D=ACM3D)
     ACMCOM.SetExtent()
+    # Extract Baseline ---------------------------   
+    parts = ProductFile.split("ECA_EX", 1)
+    out = parts[1][:2] if len(parts) > 1 else None
+    if out == 'BA': BA_baseline += ' ' + Product
+    elif out == 'AC': AC_baseline += ' ' + Product
+    elif out == 'BB': BB_baseline += ' ' + Product
+    # print(out)
+    #---------------------------------------------
 
     if Product2:      
         ProductPath = ProductPathRTM
@@ -380,8 +390,39 @@ def get_instances(SceneName, Product, Product2=False, BMAFLX=False):
         BMAFLX = ReadEC.Scene(Name=SceneName)
         BMAFLX.ReadEarthCAREh5(ProductFile, Resolution='StandardResolution')
         BMAFLX.SetExtent()
+        # Extract Baseline ---------------------------   
+        parts = ProductFile.split("ECA_EX", 1)
+        out = parts[1][:2] if len(parts) > 1 else None
+        if out == 'BA': BA_baseline += ' ' + Product
+        elif out == 'AC': AC_baseline += ' ' + Product
+        elif out == 'BB': BB_baseline += ' ' + Product
+        # print(out)
+        #---------------------------------------------
+    
+     # Fix Baseline
+    AC_baseline = ", ".join(AC_baseline.split())
+    BA_baseline = ", ".join(BA_baseline.split())
+    baseline_str = "Baselines: "
+    if AC_baseline != '':   baseline_str += f'AC = ({AC_baseline})  '
+    if BA_baseline != '':   baseline_str += f'BA = ({BA_baseline})  '
+    if BB_baseline != '':   baseline_str += f'BB = ({BB_baseline})  '
+        
 
-    return libRad, BMAFLX, ACMCOM, libRad2
+
+    # Extract Date
+    date_num = '20' + ProductFile.split('20', 1)[1].split('T', 1)[0]
+    date = date_num[6:8] + "." + date_num[4:6] + "." + date_num[0:4]
+
+    # Extract Time
+    first_time_num = ProductFile.split('T')[1].split('Z')[0]
+    second_time_num = ProductFile.split('T')[2].split('Z')[0] 
+    start_time = first_time_num[:2] + ":" + first_time_num[2:4]
+    end_time = second_time_num[:2] + ":" + second_time_num[2:4]
+    time = start_time + '-' + end_time
+
+    info = (date, time, baseline_str)
+
+    return libRad, BMAFLX, ACMCOM, libRad2, info
 
 
 
@@ -402,16 +443,16 @@ def get_data(source, spec, data, data_row, stds, stds_row, libRad, libRad2, ACMC
     attr_BMAFLX = attr_by_source_BMAFLX.get(source)
 
     x1 = libRad.latitude
-    data1 = getattr(libRad, attr_libRad)  # dynamic attribute access
+    data1 = getattr(libRad, attr_libRad)  # dynamic attribute access -> libRad, Solar or Thermal
     # ----------- Quality-Status (ACMCOM) -----------------
     quality = ACMCOM.quality_status[:]
     quality_mask_ACMCOM = np.isin(quality, [0, 1])
-    quality_mask_non_zero = quality_mask_ACMCOM & (data1 != 0)
+    quality_mask_libRad = quality_mask_ACMCOM & (data1 != 0)
     
     # x1 = x1[quality_mask_ACMCOM]
     # data1 = data1[quality_mask_ACMCOM]
-    x1 = x1[quality_mask_non_zero]
-    data1 = data1[quality_mask_non_zero]
+    x1 = x1[quality_mask_libRad]
+    data1 = data1[quality_mask_libRad]
 
 
     # print(f'{spec:10} {source:10} flux: min={np.min(data1):.2f}, mean={np.mean(data1):.2f}, max={np.max(data1):.2f}\n')
@@ -446,9 +487,9 @@ def get_data(source, spec, data, data_row, stds, stds_row, libRad, libRad2, ACMC
         data2 = getattr(libRad2, attr_libRad)  # dynamic attribute access 
 
         # ----------- Quality-Status (ACMCOM) -----------------
-        quality_mask_non_zero = quality_mask_ACMCOM & (data2 != 0)
-        x2 = x2[quality_mask_non_zero]
-        data2 = data2[quality_mask_non_zero]
+        quality_mask_libRad2 = quality_mask_ACMCOM & (data2 != 0)
+        x2 = x2[quality_mask_libRad2]
+        data2 = data2[quality_mask_libRad2]
         
         # ------------------------------------------------
 
@@ -533,7 +574,7 @@ def loop_through_data(source, Product2, SceneNames, librad_type='SWIA', statisti
                         spec                + '.nc'
                     )
 
-                libRad, BMAFLX, ACMCOM, libRad2 = get_instances(SceneName, Product, Product2, BMAFLX)
+                libRad, BMAFLX, ACMCOM, libRad2, _ = get_instances(SceneName, Product, Product2, BMAFLX)
                 get_data(source, l_type, data, data_row, stds, stds_row, libRad, libRad2, ACMCOM, BMAFLX, metric='only_libRad', statistics=statistics) 
                 # Note, changed spec -> l_type to let know how to construct data-array
 
@@ -565,7 +606,7 @@ def loop_through_data(source, Product2, SceneNames, librad_type='SWIA', statisti
                         )
 
                 # print(f'ScneName: {SceneName}:')
-                libRad, BMAFLX, ACMCOM, libRad2 = get_instances(SceneName, Product, Product2, BMAFLX)
+                libRad, BMAFLX, ACMCOM, libRad2, _ = get_instances(SceneName, Product, Product2, BMAFLX)
                 if what_to_plot == 'correlation':   metric = 'only_libRad'
                 else:                               metric = 'diff'
                 get_data(source, spec, data, data_row, stds, stds_row, libRad, libRad2, ACMCOM, BMAFLX, metric=metric, statistics=statistics)
@@ -744,6 +785,432 @@ def plot_traj_on_globe(SceneNames, vmin=-4, vmax=1.0, cmap_name="coolwarm", titl
 
 
 
+def plot_multi_libRad(libRad_list, additional_spesifications, BMAFLX, ACMCOM, plot_type, pngfile, info, quantity_list):
+    x = BMAFLX.latitude
+    cmap = plt.get_cmap('viridis')  # 'viridis' 'inferno'  
+    colors = plt.cm.Set2.colors
+    # colors = plt.cm.Dark2.colors    
+    # colors = plt.cm.tab10.colors  
+    xmin = BMAFLX.latitude.min() #-90 #
+    xmax = BMAFLX.latitude.max() #90 #
+    pl_list = []
+    xlabel = "Latitude"; xlabel_specs = r" [N$^\circ$]"
+    ylabel= r"$F_{\mathrm{TOA}}^{\uparrow}$"; ylabel_specs = r" [W/m$^2$]"
+    date, time, baseline_str = info
+    stacked = True
+
+
+    
+    
+    if 'flx_diff' in plot_type: 
+        fig = plt.figure(figsize=(10,4))
+        gs = fig.add_gridspec(1, 2, width_ratios=[3,1]) 
+        ax = fig.add_subplot(gs[0, 0])
+    elif 'correlation' in plot_type: 
+        fig = plt.figure(figsize=(8,8))
+        ax = fig.add_subplot(1,1,1)
+                # gs = fig.add_gridspec(1, 2, width_ratios=[3,1]) 
+                # ax = fig.add_subplot(gs[0, 0])
+    else:                       
+        fig = plt.figure(figsize=(10,4))
+        ax = fig.add_subplot(1,1,1)
+
+    ################################ Differnt Plotting-Codes ###############################
+    if plot_type == 'solar_both': 
+        title='Solar TOA flux' #+ f' - Atmosphere {atmosphere} (ACM-COM)'
+        cblabel='BMA_FLX' #: solar_combined_top_of_atmosphere_flux'
+                
+        # ---------- BG: Get additional data to plot (twin or stacked-axis) ----------------
+        if quantity_list:
+            add_profile_list = [] # List for ax2-legends
+            for quantity in quantity_list:
+                ax, ax2 = ReadEC.add_profile_to_plot(fig, ax, ACMCOM, fsize=FONTSIZE, legend_list=add_profile_list, quantity=quantity, quantity_list=quantity_list, stacked=stacked)
+            if add_profile_list: ax2.legend(handles=add_profile_list, 
+                                            loc='upper right', framealpha=0.7, 
+                                            borderaxespad=0.0,                  # space to axes
+                                            borderpad=0.25, labelspacing=0.25,   # compact box)
+                                            fontsize=INFOSIZE*.8)
+        # ------------------------------------------------------------------------
+
+        x = BMAFLX.latitude 
+        data = BMAFLX.solar_combined_top_of_atmosphere_flux
+        # ----------- Quality-Status -----------------
+        if want_quality_status: 
+            quality = BMAFLX.quality_status[:]
+            # boolean mask: True where quality is 0 or 2
+            quality_mask = np.isin(quality, [0, 2]) 
+
+            # Apply the mask to data
+            x[~quality_mask], data[~quality_mask] = np.nan, np.nan
+        else: 
+            mask = (data < 1e30) & (data > 0); x[~mask] = np.nan; data[~mask] = np.nan
+        # ------------------------------------------------
+       
+        for i, (libRad, spec) in enumerate(zip(libRad_list, additional_spesifications)):
+            color = colors[i % len(colors)]
+
+            x2 = libRad.latitude
+            data2 = libRad.solar_eup
+            # ----------- Quality-Status -----------------
+            if want_quality_status: 
+                # BG: modification to only include calculated results with valid quality
+                # Create a combined mask: non-zero and quality 0 or 1
+                quality = ACMCOM.quality_status[:]
+                mask = (data2 != 0) & np.isin(quality, [0, 1])
+
+                # Apply the mask to data
+                x2[~mask], data2[~mask] = np.nan, np.nan
+            # ------------------------------------------------
+
+            # Print info:
+            print(f'\n|--------{plot_type:.14} FLUX MYSTIC---------------|\n'
+                    f'|mean, min, max  = {np.nanmean(data2):.2f} & {np.nanmin(data2):.2f} & {np.nanmax(data2):.2f}')
+
+            RTM_str = 'MYSTIC (3D)' if '3D' in librad_version else 'DISORT (1D)'
+            if         'MCIPA' in spec: RTM_str += ' - MCIPA'
+            elif 'SmallBuffer' in spec: RTM_str += ' - SmallBuffer'
+            elif 'FullBuffer'  in spec: RTM_str += ' - LargeBuffer'
+            elif 'MegaBuffer'  in spec: RTM_str += ' - MegaBuffer'
+            elif 'GigaBuffer'  in spec: RTM_str += ' - GigaBuffer'
+            p,=ax.plot(x2, data2, color=color, label=RTM_str,
+                        # marker=".", markersize = 4, linestyle="None", 
+                        alpha=.9,
+                        linewidth=1,
+                        zorder=i)
+            pl_list.append(p)
+
+                                    # if Scene3 != None: 
+                                    #     x3 = Scene3.latitude_active
+                                    #     itoa=0
+                                    #     data3 = Scene3.flux_up_solar_1d_all_sky[:,itoa]
+                                    #     data4 = Scene3.flux_up_solar_3d_all_sky[:,itoa]
+
+                                    #     # ----------- Quality-Status -----------------
+                                    #     if want_quality_status: 
+                                    #         quality = Scene3.quality_status[0,:]
+                                    #         # boolean mask: True where quality is 0 or 1
+                                    #         quality_mask = np.isin(quality, [0, 1]) 
+
+                                    #         data3 = data3[quality_mask]
+                                    #         data4 = data4[quality_mask]
+                                    #         x3 = x3[quality_mask]
+                                    #     # ------------------------------------------------
+
+                                    #     p,=ax.plot(x3, data3, color='gray', label='ACM_RT 1D', linewidth=2) #, alpha=.8) "flux_up_solar_1d_all_sky, TOA"
+                                    #     pl_list.append(p)
+
+                                    #     p,=ax.plot(x3, data4, 
+                                    #             color = 'black', marker = 'o', markersize = 3, linestyle = 'None', 
+                                    #             # color='black', marker = 'x', markersize=8, linestyle="None", 
+                                    #             zorder=8, 
+                                    #             label='ACM_RT 3D') # "flux_up_solar_3d_all_sky, TOA"
+                                    #     pl_list.append(p) 
+        
+
+        vmin=data.min()
+        vmax=data.max()
+        ymin =0
+        ymax = 1.3*np.nanmax(data) 
+
+        ax.set_xlim(np.nanmin(x2),np.nanmax(x2)) # x2 -> libRad-data
+        l, = ax.plot(x, data, 
+                            label=cblabel, 
+                            color='r',
+                            zorder=10
+                            # marker=".", markersize = 4, linestyle="None"
+                            ) # cmap=cmap, vmin=vmin, vmax=vmax, linewidth=0)
+        leg = ax.legend(handles=[l]+pl_list,
+                    # loc='upper left', 
+                    framealpha=0.7, 
+                    borderaxespad=0.0,                  # space to axes
+                    borderpad=0.25, labelspacing=0.25,   # compact box)
+                    fontsize=INFOSIZE*.8)
+        leg.set_zorder(99) # put in front
+      
+    #########################################################################################################################################
+    if plot_type == 'solar_flx_diff':
+        baseline = 0
+        padding = 0.1
+        title = 'Solar TOA flux difference'  
+        if 'Buffer' in libRad_list[0].fn: title +=  ' - 3D Buffer Size Sensitivity'
+        title += ' - [MYSTIC - BMAFLX]'
+        
+        # ---------- BG: Get additional data to plot (twin or stacked-axis) ----------------
+        if quantity_list:
+            add_profile_list = [] if stacked else pl_list # List for ax2-legends
+            for quantity in quantity_list:
+                ax, ax2 = ReadEC.add_profile_to_plot(fig, ax, ACMCOM, fsize=FONTSIZE, legend_list=add_profile_list, quantity=quantity, quantity_list=quantity_list, stacked=stacked)
+            if stacked and add_profile_list: ax2.legend(handles=add_profile_list, 
+                                                        loc='upper right', framealpha=0.7, 
+                                                        borderaxespad=0.0,                  # space to axes
+                                                        borderpad=0.25, labelspacing=0.25,   # compact box)
+                                                        fontsize=INFOSIZE*.8)
+        # ------------------------------------------------------------------------
+
+        x1 = BMAFLX.latitude
+        data1 = BMAFLX.solar_combined_top_of_atmosphere_flux
+        # ----------- Quality-Status -----------------
+        if want_quality_status: 
+            quality = BMAFLX.quality_status[:]
+            # boolean mask: True where quality is 0 or 2
+            quality_mask = np.isin(quality, [0, 2]) 
+
+            data1 = data1[quality_mask]
+            x1 = x1[quality_mask]
+        else: 
+            mask = (data1 < 1e30) & (data1 > 0); x1[~mask] = np.nan; data1[~mask] = np.nan
+        # -------------------------------------------
+       
+       
+        for i, (libRad, spec) in enumerate(zip(libRad_list, additional_spesifications)):
+            color = colors[i % len(colors)]
+            x2 = libRad.latitude
+            data2 = libRad.solar_eup
+            # ----------- Quality-Status -----------------
+            if want_quality_status: 
+                quality = ACMCOM.quality_status[:]
+                quality_mask = np.isin(quality, [0, 1]) & (data2 != 0)
+            
+                x2 = x2[quality_mask]
+                data2 = data2[quality_mask]
+            # ------------------------------------------------
+
+
+            # IF only selected area
+            if modify_xlim: 
+                lat_min, lat_max = lat_ranges   
+                mask1 = (x1 >= lat_min) & (x1 <= lat_max) # mask for this latitude band
+                mask2 = (x2 >= lat_min) & (x2 <= lat_max) # mask for this latitude band
+                x1, data1, x2, data2 = x1[mask1], data1[mask1], x2[mask2], data2[mask2]
+                
+                
+
+            # Performe interpolation for comparison
+            fill_value_data1 = 9.96921e+36
+            fill_value_data2 = 0
+            x, data1_interp, data2 = ReadEC.interpolate(x1, data1, fill_value_data1, x2, data2, fill_value_data2) 
+
+            # Calculate ratio
+            data = (data2 - data1_interp) #/ data1_interp
+
+            RTM_str = 'MYSTIC (3D)' if '3D' in librad_version else 'DISORT (1D)'
+            if         'MCIPA' in spec: RTM_str += ' - MCIPA'
+            elif 'SmallBuffer' in spec: RTM_str += ' - SmallBuffer'
+            elif 'FullBuffer'  in spec: RTM_str += ' - LargeBuffer'
+            elif 'MegaBuffer'  in spec: RTM_str += ' - MegaBuffer'
+            elif 'GigaBuffer'  in spec: RTM_str += ' - GigaBuffer'
+
+            # Add mean of the relative‑error to plot
+            mean_err = np.nanmean(data)
+            std  = np.nanstd(data)
+            data_str = fr"{RTM_str+'\n'} ⟨$\Delta F$⟩ = {mean_err:.1f} ± {std:.1f}" + r" W/m$^2$"
+            print('-----------------------------------------------\n'
+                    'solar: ', data_str, '    (n = ', len(data), ')\n'
+                    '-----------------------------------------------')
+
+            if quantity_list is None: 
+                y_pos = .7-(.8/len(libRad_list))*i
+                fsize = FONTSIZE*.8
+            else: 
+                y_pos = .83-.07*i
+                fsize = FONTSIZE*.7
+
+            fig.text(.99,y_pos, data_str,
+                    ha='right', va='bottom',
+                    fontsize=fsize, color='k',
+                    bbox=dict(boxstyle='round,pad=0.3', facecolor=color, alpha=0.6))
+                
+            p, = ax.plot(x, data, label=RTM_str, color=color, linewidth=1.4, alpha=0.8, zorder=i
+                        # marker=".", linestyle="None", markersize = 4
+                        ) 
+            pl_list.append(p)
+            # ax.vlines(x, baseline, data, color=color, alpha=0.6, lw=0.2)  # lines to baseline
+        ax.axhline(0.0, color='black', linestyle='--', linewidth=1.5, label='Baseline (y=0)')
+        # Calculate the maximum absolute deviation from the baseline (y=1)
+        max_deviation = np.max(np.abs(data - baseline)) 
+        ymin = baseline - max_deviation - padding 
+        ymax = baseline + max_deviation + padding
+        ylabel = r"$\Delta F_{\mathrm{TOA}}^{\uparrow}$"
+
+        ax.legend(handles=pl_list,
+                    # loc='upper left', 
+                    framealpha=0.7, 
+                    borderaxespad=0.0,                  # space to axes
+                    borderpad=0.25, labelspacing=0.25,   # compact box)
+                    fontsize=INFOSIZE*.8)
+    #########################################################################################################################################
+    if plot_type == 'correlation_plot':
+        title = 'Solar TOA flux difference'  
+        if 'Buffer' in libRad_list[0].fn: title +=  ' - 3D Buffer Size Sensitivity'
+        
+        xlabel_specs = r' [W/m$^2$]'
+        xlabel = 'BMA-FLX'
+        data1 = BMAFLX.solar_combined_top_of_atmosphere_flux # BMA-FLX
+        x1 = BMAFLX.latitude 
+        # ----------- Quality-Status -----------------
+        if want_quality_status: 
+            quality = BMAFLX.quality_status[:]
+            # boolean mask: True where quality is 0 or 2
+            quality_mask = np.isin(quality, [0, 2]) 
+
+            data1 = data1[quality_mask]
+            x1 = x1[quality_mask]
+        else: 
+            mask = (data1 < 1e30) & (data1 > 0); x1[~mask] = np.nan; data1[~mask] = np.nan
+        # ------------------------------------------------
+
+        for i, (libRad, spec) in enumerate(zip(libRad_list, additional_spesifications)):
+            color = colors[i % len(colors)]
+            ylabel = 'libRadtran' if '3D' not in libRad.fn else 'MYSTIC'
+           
+            data2 = libRad.solar_eup 
+            x2 = libRad.latitude
+            # ----------- Quality-Status -----------------
+            if want_quality_status: 
+                # Create a combined mask: non-zero and quality 0 or 1
+                quality = ACMCOM.quality_status[:]
+                mask = (data2 != 0) & np.isin(quality, [0, 1])
+
+                data2 = data2[mask]
+                x2 = x2[mask]
+            # ------------------------------------------------
+
+            # IF only selected area
+            if modify_xlim: 
+                lat_min, lat_max = lat_ranges   
+                mask1 = (x1 >= lat_min) & (x1 <= lat_max) # mask for this latitude band
+                mask2 = (x2 >= lat_min) & (x2 <= lat_max) # mask for this latitude band
+                x1, data1, x2, data2 = x1[mask1], data1[mask1], x2[mask2], data2[mask2]
+
+            RTM_str = 'MYSTIC (3D)' if '3D' in libRad.fn else 'DISORT (1D)'
+            if         'MCIPA' in spec: RTM_str += ' - MCIPA'
+            elif 'SmallBuffer' in spec: RTM_str += ' - SmallBuffer'
+            elif 'FullBuffer'  in spec: RTM_str += ' - LargeBuffer'
+            elif 'MegaBuffer'  in spec: RTM_str += ' - MegaBuffer'
+            elif 'GigaBuffer'  in spec: RTM_str += ' - GigaBuffer'
+
+            # Performe interpolation for comparison
+            fill_value_data1 = 9.96921e+36
+            fill_value_data2 = 0
+            not_used, data1_interp, data2 = ReadEC.interpolate(x1, data1, fill_value_data1, x2, data2, fill_value_data2) 
+
+            x = data1_interp # model truth
+            y = data2 
+            # Stats
+            r = np.corrcoef(x, y)[0, 1] # Correlation coefficient
+            r2 = r**2 # The strength of linear association
+            # Least squares fit y = a + b x
+            b, a = np.polyfit(x, y, 1)
+                # yhat = a + b * x
+            # Errors
+            diff = y - x
+                # rmse = np.sqrt(np.mean(diff**2))
+            mae = np.mean(np.abs(diff))
+            mean = np.mean(diff); std = np.std(diff)
+
+            # Ranges for plotting
+            xy_min = np.nanmin([x.min(), y.min()])
+            xy_max = np.nanmax([x.max(), y.max()])
+            pad = 0.03 * (xy_max - xy_min if xy_max > xy_min else 1.0)
+            lo, hi = xy_min - pad, xy_max + pad
+
+            sc = ax.scatter(x, y, s=4, alpha=.6, color=color, label=RTM_str)
+            # pl_list.append(sc)
+
+            # Regression line over same span
+            xx = np.linspace(lo, hi, 100)
+            # p, = ax.plot(xx, a + b * xx, lw=1.5, c=color, label=f"{RTM_str}\n   y = {a:.2f} + {b:.2f}x") # WRITE IN FIG-TEXT: Linear Least Squares (fit)") 
+            p, = ax.plot(xx, a + b * xx, lw=1.5, c=color, label=f"y = {a:.2f} + {b:.2f}x") # WRITE IN FIG-TEXT: Linear Least Squares (fit)") 
+            pl_list.append(p)
+
+            data_str = (
+                RTM_str + '      \n'
+                # f"n = {x.size}\n"
+                f"R² = {r2:.2f}                       \n"
+                # f"RMSE = {rmse:.2f}\n"
+                r"$⟨\Delta F⟩$ (Bias) = " + f"{mean:.1f} ± {std:.1f} " + r" W/m$^2$"  # _{\mathrm{TOA}}^{\uparrow}
+                # f"\nMAE = {mae:.2f}\n"
+            )
+            fsize = FONTSIZE*.6 if len(libRad_list) > 3 else FONTSIZE*.7
+            y_diff = 0.09*i if len(libRad_list) > 3 else 0.1*i
+            fig.text(.99, .07*len(libRad_list)-y_diff, data_str,
+                    transform=ax.transAxes, ha='right', va='bottom',
+                    fontsize=fsize, color='k',
+                    bbox=dict(boxstyle='round,pad=0.3', facecolor=color, alpha=0.6))
+
+       
+           
+
+        
+
+        # y=x line
+        p, = ax.plot([lo, hi], [lo, hi], lw=1.2, c='r', linestyle="--", label="y = x")
+        pl_list.append(p)
+        
+        ax.set_xlim(lo, hi)
+        ax.set_ylim(lo, hi)
+        ax.set_aspect("equal", adjustable="box")
+
+        ax.legend(handles=pl_list,
+                    loc='upper left', framealpha=0.7, 
+                    borderaxespad=0.0,                   # space to axes
+                    borderpad=0.25, labelspacing=0.25,   # compact box)
+                    fontsize=INFOSIZE*.8)
+
+
+  
+        
+
+
+
+
+    ########################################################################################
+    ################## MODIFICATION FOR LATITUDE-RANGE #################
+    if modify_xlim and plot_type != 'correlation_plot': 
+        lat_min, lat_max = lat_ranges
+        
+        mask = (x >= lat_min) & (x <= lat_max) # mask for this latitude band
+        pad = 10
+        data_max = np.nanmax(data[mask]) + pad
+        data_min = np.nanmin(data[mask]) - pad
+        if plot_type == 'solar_both' or plot_type == 'thermal_both':
+            data_min = 0; data_max += 40 # To account for 1D RTM large variation
+
+        ax.set_xlim(lat_ranges)
+        ax.set_ylim(data_min, data_max+10)
+    ####################################################################
+
+    ax.set_xlabel(xlabel + xlabel_specs, fontsize=INFOSIZE)
+    ax.set_ylabel(ylabel + ylabel_specs, fontsize=INFOSIZE)
+
+    ax.xaxis.set_minor_locator(AutoMinorLocator())
+    ax.yaxis.set_minor_locator(AutoMinorLocator())
+    ax.tick_params(axis='both', which='major', labelsize=INFOSIZE*.8)
+    ax.tick_params(axis='both', which='minor', labelsize=INFOSIZE*.8)
+    fig.suptitle(title, fontsize=FONTSIZE, y=0.98, fontweight='bold')
+
+    ax.set_title(f"{libRad_list[0].Name} - {date}  {time} (UTC)", fontsize=INFOSIZE)
+    plt.figtext(0.001, 0.004, baseline_str, fontsize=FONTSIZE*0.45)
+    # Orbit nr: self.Name
+
+    # BG: ----- plot-adjustments for nicer looking plots -----------
+    fig.tight_layout()
+    # Axes background (warm light grey)
+    ax.set_facecolor('#f0f0f0')
+    # Grid: major dashed, minor dotted
+    ax.grid(which='major', linestyle='--', alpha=0.4)
+    ax.grid(which='minor', linestyle=':',  alpha=0.2)
+    ax.minorticks_on()
+
+    # remove top/right border
+    for spine in ['top','right']:
+        ax.spines[spine].set_visible(False)
+    # -------------------------------------------------------------
+    plt.savefig(pngfile)
+    plt.close()
+            
+    return
+
 
 
 
@@ -772,7 +1239,9 @@ if __name__ == "__main__":
                   ['Orbit_06600C'],#9           # Greenland (27.07.2025)          
                   ['Orbit_06662C'],             # Greenland (31.07.2025)   
 
-                  ['Orbit_06331C'] #11          # Greenland (09.07.2025)        
+                  ['Orbit_06331C'],#11          # Greenland (09.07.2025)       
+
+                  ['Orbit_07883D'] #12          # Norway (FILEFJELL) 
                   ]
 
     ProductPathRTM              = './RESULTS/'
@@ -799,7 +1268,8 @@ if __name__ == "__main__":
     'SWIA',         #3
     '3D_buffer',    #4
     'correlation',  #5
-    'plot_traj'     #6
+    'plot_traj',    #6
+    'multi_libRad'  #7
     ]
     what_to_plot = plot_list[plot_version_idx]
 
@@ -908,16 +1378,16 @@ if __name__ == "__main__":
         Product2 = False
         show_stds = False
         statistics = 'all_pixels_values'
-        idx_scene =  [3,4,11] #[3,4,5,8,11] #[3,4,5,8,11] # [3,4,5,8,11] # [3,4] #[3,4,5,6,7,8]
-        sources   = ['thermal'] # Chose either solar or thermal, not both
+        idx_scene =  [5,8,12] #[3,4,5,8,11] #[3,4,5,8,11] # [3,4,5,8,11] # [3,4] #[3,4,5,6,7,8]
+        sources   = ['solar'] # Chose either solar or thermal, not both
         versions = sources
         librad_version = 'montecarlo_3D' # 'montecarlo_3D' 'disort_1D'
 
-        idx = 0
-        additional_spesifications = [['_All_FullBuffer'],['_All_SmallBuffer'],['_GHM'],['_SC'],['_RA']][idx]
-        titles = [[' - Large Buffer'], [' - Small Buffer'],[' - GHM'],[' - SC'],[' - RA']][idx]
-        titles = ['']
-        png_names = ['Data/figures/correlation' + additional_spesifications[0] + '.png']
+        idx = 1
+        additional_spesifications = [['_All'],['_All_MCIPA'],['_All_SmallBuffer'],['_All_FullBuffer'],['_All_MegaBuffer'], ['_All_GigaBuffer'],['_GHM'],['_SC'],['_RA']][idx]
+        titles = [[' - DISORT'],[' - MCIPA'],[' - Small Buffer'],[' - Large Buffer'],[' - Mega Buffer'],[' - Giga Buffer'],[' - GHM'],[' - SC'],[' - RA']][idx]
+        # titles = ['']
+        png_names = ['Data/figures/correlation' + additional_spesifications[0][0] + '.png']
     
     elif what_to_plot == 'plot_traj':
         idx_scene =  [3,4,5,8,11] # [3,4] #[3,4,5,6,7,8]
@@ -928,6 +1398,54 @@ if __name__ == "__main__":
 
         titles = ['Trajectories']
         png_names = ['Data/figures/trajectories.png']
+
+    elif what_to_plot == 'multi_libRad':
+        Product2 = False; BMAFLX = True
+
+        want_quality_status = True
+        modify_xlim = False
+        if modify_xlim: 
+            idx = 2
+            lat_ranges = [
+                (42, 52),       # 6158D 
+                (43, 51),       # 7883D
+                (10.1, 13.9),   # 6886E
+                (74.27, 74.41), # 6888C
+                (80.63, 80.74), # 6888C
+                (51.40, 52.00), # 6518D
+                (11.50, 12.00), # 6886E
+                (18.40, 21.40), # 6886E
+                ####### OLD ##########
+                (74.0, 74.5),   # 6888C
+                (80.5, 81.0),   # 6888C
+                (75.0, 76.0),   # 6331C
+                (41.0, 52.5),   # 6518D
+                (11.5, 15.0),   # 6886E
+                (46.0, 52.0)    # 6518D
+            ][idx]
+        
+        ### Choose between 5, 8, 12 ###
+        idx_scene = 5
+        SceneName = SceneNames[idx_scene][0] 
+        sources   = ['solar']
+        librad_version_list = ['montecarlo_3D','montecarlo_3D','montecarlo_3D','montecarlo_3D','montecarlo_3D'][1:5]
+        additional_spesifications = ['_All_MCIPA', '_All_SmallBuffer', '_All_FullBuffer', '_All_MegaBuffer', '_All_GigaBuffer'][1:5]
+        plot_type_list =  [
+            ['solar_both', 'solar_flx_diff', 'correlation_plot'],
+            ['solar_both'],
+            ['correlation_plot'],
+            ['solar_flx_diff']
+            ][0]
+        quantity_list = None 
+        # quantity_list = ['tot_wp','tot_wc']
+
+        titles = ['']; png_names = [''] 
+        plotdir_base = './figures/'; mode_folder = 'MYSTIC/' if '3D' in librad_version_list[-1] else 'DISORT/' 
+        plotdir = os.path.join(plotdir_base, SceneName, mode_folder)
+
+
+
+
 
 
 
@@ -940,6 +1458,32 @@ if __name__ == "__main__":
         if what_to_plot == 'plot_traj':
             plot_traj_on_globe(SceneNames, title=title)
             continue 
+
+         
+        elif "multi_libRad" in what_to_plot: 
+            for plot_type in plot_type_list: 
+                libRad_list = []
+                for librad_version, spec in zip(librad_version_list, additional_spesifications):
+                    Product = (
+                            'libRad_' + 
+                            version_identifier  + '_' +
+                            librad_version      + '_' +
+                            librad_type         + '_' +
+                            source_str          + '_' +
+                            SceneName           + 
+                            spec                + '.nc'
+                        )
+
+                    libRad, BMAFLX, ACMCOM, libRad2, info = get_instances(SceneName, Product, Product2, BMAFLX)
+                    libRad_list.append(libRad)
+
+                pngfile = plotdir+ SceneName+'_'+plot_type+'_'+librad_version+'_'+librad_type+'.png'
+                plot_multi_libRad(libRad_list, additional_spesifications, BMAFLX, ACMCOM, plot_type, pngfile, info, quantity_list)
+                print(f"png-file: {pngfile}")
+            continue
+
+
+
 
         orbits, places, data, stds = loop_through_data(source, Product2, SceneNames, librad_type, statistics)
 
@@ -969,6 +1513,7 @@ if __name__ == "__main__":
             formatted_data.append(data.squeeze())  # data.squeeze() -> shape (5,)
             formatted_stds.append(stds.squeeze())
             continue # do not call plot() 
+       
         
         elif "correlation" in what_to_plot:
             plot_correlation(
