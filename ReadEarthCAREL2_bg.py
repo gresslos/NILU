@@ -2877,6 +2877,140 @@ class Scene:
             plt.close()
 
         return
+
+
+
+    def PlotAllLevels(self, plot_type, pngfile, Scene2, ACMCOM):
+        fig = plt.figure(figsize=(10,4))
+        ax = fig.add_subplot(1,1,1)
+
+        x = self.latitude
+        xlabel = "Latitude"; xlabel_specs = r" [N$^\circ$]"
+        ylabel = "Altitude"; ylabel_specs = r" [km]"
+        cblabel = r"$F_{\mathrm{TOA}}^{\uparrow}$ [W/m$^2$]"
+
+        cmap = plt.get_cmap('viridis')  # 'viridis' 'inferno'     cmap = plt.get_cmap('jet')
+        xmin = self.latitude.min() #-90 #
+        xmax = self.latitude.max() #90 #
+        
+        title = ''
+        pl_list = []
+        if plot_type == 'all_levels_solar':
+            z = ACMCOM.height_level / 1000.0  # [km]
+            data = self.solar_eup.T
+            
+            if 'disort' in self.fn: label = '[DISORT]'
+            elif 'montecarlo' in self.fn: label = '[MYSTIC]'
+            else: label= 'something went wrong';clabel=''
+
+            title += "Solar Upward Flux"
+            title += ' - ' + label
+        
+        elif plot_type == 'all_levels_solar_diff':
+            z = ACMCOM.height_level / 1000.0  # [km]
+            data = self.solar_eup.T - Scene2.solar_eup.T
+            
+
+            if 'disort' in self.fn and 'montecarlo' in Scene2.fn: label = '[MYSTIC - DISORT]'
+            elif 'disort' in Scene2.fn and 'montecarlo' in self.fn: label = '[DISORT - MYSTIC]'
+                    # elif 'SmallBuffer' in self.fn: label = 'MYSTIC - 3D Buffer Size Sensitivity'
+                    # elif 'FullBuffer' in self.fn: label = 'MYSTIC - 3D Buffer Size Sensitivity'
+            else: label= 'something went wrong';clabel=''
+
+            cblabel = r"$\Delta F_{\mathrm{TOA}}^{\uparrow}$ [W/m$^2$]"
+            title += "Solar Upward Flux Difference"
+            title += ' - ' + label
+
+
+
+        data = data[::-1, :]         # reverse altitude-order
+        # Set limits -----------------------------
+        if modify_xlim:
+            lat_min, lat_max = lat_ranges
+            h_max = 20    #### IMPORTANT NOTE: do not calculate Fluxes above around 40 km!
+        else:
+            lat_min, lat_max = np.nanmin(x), np.nanmax(x)
+            h_max = 20 #64
+        
+        mask = (x > lat_min) & (x < lat_max)
+        vmin = np.nanmin(data[:,mask])
+        vmax = np.nanmax(data[:,mask])
+        # ---------------------------------------
+      
+        im = ax.pcolormesh(x, z, data,
+                shading='auto', cmap=cmap, vmin=vmin, vmax=vmax
+            )
+       
+        # add colorbar with flux label
+        cb = fig.colorbar(im, ax=ax, pad=0.005, extend='both', extendrect=True)
+        cb.set_label(cblabel, size=INFOSIZE*.8)
+        cb.ax.tick_params(labelsize=INFOSIZE * .8)
+        cb.outline.set_visible(False)
+        cb.ax.set_facecolor('#f7f7f7')
+
+
+
+        #----------------- Add clouds ----------------------
+        if want_cloud_on_plot: 
+            # 0: clear sky, 1: cloudy sky
+            cloud = (ACMCOM.cloud_flag == 1)         
+            X = np.broadcast_to(x, cloud.shape)
+            Z = z[:cloud.shape[0], :]                 
+            ax.scatter(X[cloud], Z[cloud],
+                    c="white", s=2, alpha=0.3, marker="s",
+                    linewidths=0, zorder=10, label='Cloud-Mask')
+            ax.legend(  loc='upper left', 
+                        framealpha=0.7, 
+                        borderaxespad=0.0,                  # space to axes
+                        borderpad=0.25, labelspacing=0.25,   # compact box)
+                        fontsize=INFOSIZE*.8)
+
+        
+
+            
+
+
+        
+                    
+
+        ax.set_xlim(lat_min, lat_max)
+        ax.set_ylim(0, h_max)
+        ax.set_xlabel(xlabel + xlabel_specs, fontsize=INFOSIZE)
+        ax.set_ylabel(ylabel + ylabel_specs, fontsize=INFOSIZE)
+        ax.xaxis.set_minor_locator(AutoMinorLocator())
+        ax.yaxis.set_minor_locator(AutoMinorLocator())
+        ax.tick_params(axis='both', which='major', labelsize=INFOSIZE*.8)
+        ax.tick_params(axis='both', which='minor', labelsize=INFOSIZE*.8)
+        fig.suptitle(title, fontsize=FONTSIZE, y=0.98, fontweight='bold')
+        ax.set_title(f"{self.Name} - {date}  {time} (UTC)", fontsize=INFOSIZE)
+        plt.figtext(0.001, 0.004, baseline_str, fontsize=FONTSIZE*0.45)
+        # Orbit nr: self.Name
+
+        # BG: ----- plot-adjustments for nicer looking plots -----------
+        fig.tight_layout()
+        # Axes background (warm light grey)
+        ax.set_facecolor('#f0f0f0')
+        # Grid: major dashed, minor dotted
+        ax.grid(which='major', linestyle='--', alpha=0.4)
+        ax.grid(which='minor', linestyle=':',  alpha=0.2)
+        ax.minorticks_on()
+
+       
+
+        # remove top/right border
+        for spine in ['top','right']:
+            ax.spines[spine].set_visible(False)
+        # -------------------------------------------------------------
+
+        if pngfile==None or pngfile=='':
+            plt.show()
+        else:
+            if verbose:
+                print("pngfile", pngfile)
+            plt.savefig(pngfile)
+            plt.close()
+
+        return
     
 
 
@@ -2986,12 +3120,9 @@ class Scene:
             self.flux_up_thermal_1d_all_sky=SD['flux_up_thermal_1d_all_sky'][()]
             self.flux_up_thermal_3d_reference_height_all_sky=SD['flux_up_thermal_3d_reference_height_all_sky'][()]
 
-            #tms self.flux_up_solar_1d_all_sky=self.flux_up_solar_1d_all_sky[atmosphere,:,:]
-            #tms self.flux_up_solar_3d_all_sky=self.flux_up_solar_3d_all_sky[atmosphere,:,:]
+            # BG: only single atmosphere here!
             self.flux_up_solar_1d_all_sky=self.flux_up_solar_1d_all_sky[0,:,:]
             self.flux_up_solar_3d_all_sky=self.flux_up_solar_3d_all_sky[0,:,:]
-
-            # ESO
             self.flux_up_thermal_1d_all_sky=self.flux_up_thermal_1d_all_sky[0,:,:]
             self.flux_up_thermal_3d_reference_height_all_sky=self.flux_up_thermal_3d_reference_height_all_sky[0,:]   
 
@@ -3009,6 +3140,7 @@ class Scene:
             self.liquid_water_content = np.asarray(SD['liquid_water_content'][()], dtype=np.float64) * 1000.0
             self.liquid_effective_radius = np.asarray(SD['liquid_effective_radius'][()], dtype=np.float64) * 1e6
             self.aerosol_extinction = np.asarray(SD['aerosol_extinction'][()], dtype=np.float64) * 1000.0
+            self.cloud_flag = np.asarray(SD['cloud_flag'][()], dtype=np.float64)
 
             self.ice_water_content_units = SD['ice_water_content'].attrs['units']
             self.ice_water_content_units = 'kg/m**3'
@@ -3055,6 +3187,7 @@ class Scene:
             self.ice_effective_radius = self.ice_effective_radius[atmosphere,:,:]
             self.aerosol_extinction = self.aerosol_extinction[atmosphere,:,:]
             self.aerosol_classification = self.aerosol_classification[atmosphere,:,:]
+            self.cloud_flag = self.cloud_flag[atmosphere,:,:]
 
             self.surface_temperature = SD['surface_temperature'][()]
             self.albedo_direct_radiation_surface_visible = SD['albedo_direct_radiation_surface_visible'][()]
@@ -3231,7 +3364,45 @@ class Scene:
                 
         ncf.close()
         
+    def WriteNetcdf_all_levels(self, fn, verbose=True):
+        if verbose:
+            print("Writing libRadtran output to netcdf file: ", fn)
 
+        ncf = Dataset(fn, 'w')
+
+        along_tracks = self.latitude_active.shape[0]
+        nHeightLevels = self.solar_eup.shape[1]
+        ncf.createDimension('along_track', along_tracks)
+        ncf.createDimension('height_level', nHeightLevels)
+
+        latitude = ncf.createVariable('latitude',np.dtype('float').char,('along_track',))
+        latitude.units = "degree_north" 
+        latitude.long_name = "Latitude"
+        latitude[:] = self.latitude_active
+
+        # --- Flux variables: 2D (along_track, height_level) ---
+        solar_eup = ncf.createVariable('solar_eup', np.dtype('float').char, ('along_track', 'height_level'))
+        solar_eup.units = "W m-2"
+        solar_eup.long_name = "Solar upward flux"
+        solar_eup[:, :] = self.solar_eup
+
+        solar_eup_std = ncf.createVariable('solar_eup_std', np.dtype('float').char, ('along_track', 'height_level'))
+        solar_eup_std.units = "W m-2"
+        solar_eup_std.long_name = "Standard deviation of solar upward flux"
+        solar_eup_std[:, :] = self.solar_eup_std
+
+        thermal_eup = ncf.createVariable('thermal_eup', np.dtype('float').char, ('along_track', 'height_level'))
+        thermal_eup.units = "W m-2"
+        thermal_eup.long_name = "Thermal upward flux"
+        thermal_eup[:, :] = self.thermal_eup
+
+        thermal_eup_std = ncf.createVariable('thermal_eup_std', np.dtype('float').char, ('along_track', 'height_level'))
+        thermal_eup_std.units = "W m-2"
+        thermal_eup_std.long_name = "Standard deviation of thermal upward flux"
+        thermal_eup_std[:, :] = self.thermal_eup_std
+
+        ncf.close()
+        
 
 
 
@@ -3292,7 +3463,7 @@ if __name__ == "__main__":
     # --------------------------------------
 
  
-    want_3D = False      # BG: used in flux plot (DISORT or MYSTIC)
+    want_3D = True      # BG: used in flux plot (DISORT or MYSTIC)
     
 
     # BG: additional plot-settings
@@ -3309,11 +3480,11 @@ if __name__ == "__main__":
 
     librad_version2 =  'disort_1D'                  
             # Chose from: 'montecarlo_3D'  'disort_1D'   librad_version
-    additional_spesifications2 =   '_TEST_old_thermal_range'
+    additional_spesifications2 =   '_All'
             #Chose from: '_wc'   '_All_SmallBuffer'    '_GHM'   '_All'  additional_spesifications
 
 
-    modify_xlim = False
+    modify_xlim = True
     if modify_xlim: 
         idx = 4
         lat_ranges = [
@@ -3354,7 +3525,7 @@ if __name__ == "__main__":
     # idx_scene = [3,4,5,8, 11] 
     # idx_scene = [3, 4, 5, 8, 11]
     # idx_scene = [3,4,5,6,7,8]
-    idx_scene = [3,7]
+    idx_scene = [3]
                         ################# OLD ########################################################################
     SceneNames = [      ['Orbit_05378D'],#0           # Marocco - Norway           
                         ['Orbit_05458F'],             # Chile
@@ -3413,11 +3584,8 @@ if __name__ == "__main__":
     # additional_spesifications += '_wc'
     # additional_spesifications += '_wc_test_atm_0'
     # atmosphere = 1
-             # TEST; THEN REMOVE
-    # additional_spesifications += '_wc_test_new_3D_surface'
-    # additional_spesifications += '_All_FullBuffer_test_new_3D_surface'
-    # additional_spesifications += '_TEST_old_thermal_range'
-    additional_spesifications += '_TEST_new_thermal_range'
+            # All ATM-levels
+    additional_spesifications += '_all_levels'
 
 
     
@@ -3425,7 +3593,7 @@ if __name__ == "__main__":
 
 
 
-    fig_index = 4
+    fig_index = 23
     figname = ['fig:flx_solar',#0                                                   
                'fig:flx_thermal',                                                   
                'fig:flx_both',                      # Solar + Thermal               
@@ -3455,7 +3623,8 @@ if __name__ == "__main__":
                'fig:plot_swat',#20
                'fig:plot_info',
 
-               'fig:multi_plot'#22                  # Mulitple libRad
+               'fig:all_levels_solar',#22
+               'fig:all_levels_solar_diff',
                ][fig_index]
 
 
@@ -3491,6 +3660,7 @@ if __name__ == "__main__":
        plot_types_flx_geo   = []
        plot_types_flx_solar = []
        plot_types_flx_thermal = []
+       plot_all_levels = []
 
     # determine which source string goes into the filename
     if figname == 'fig:flx_solar':
@@ -3552,6 +3722,16 @@ if __name__ == "__main__":
     elif figname == 'fig:plot_info':
         plot_types_flx_geo = ['plot_info']
         source_str = 'solar,thermal'
+    elif figname == 'fig:all_levels_solar' or figname == 'fig:all_levels_solar_diff':
+        plot_all_levels = [figname[len('fig:'):]]
+        if figname == 'fig:all_levels_solar_diff': Product2 = True; additional_spesifications2 = '_all_levels'
+        source_str = 'solar,thermal'
+        want_cloud_on_plot = True
+        idx = 1
+        lat_ranges = [
+            (74.27, 74.41), # 6888C 
+            (74   , 75.5), # 6888C
+        ][idx]
     else:
         source_str = ''  # for non-flux figures
 
@@ -3676,7 +3856,7 @@ if __name__ == "__main__":
         
 
 
-        if len(plot_types_librad)>0 or len(plot_types_flx)>0:       
+        if len(plot_types_librad)>0 or len(plot_types_flx)>0 or len(plot_all_levels):      
             ProductPath = ProductPathRTM
             ProductFile = os.path.join(ProductPath, Product)
             print('ProductFile1', ProductFile)
@@ -3897,6 +4077,11 @@ if __name__ == "__main__":
             pngfile = plotdir+ SceneName+'_'+plot_type+'_'+librad_version+'_'+librad_type+ png_spesifications + '.png' #'' #
             libRad.PlotLine(plot_type=plot_type, pngfile=pngfile, verbose=verbose, Scene2=libRad2)
             
+        for plot_type in plot_all_levels: 
+            pngfile = plotdir+ SceneName+'_'+plot_type+'_'+librad_version+'_'+librad_type+'.png'
+            Scene2 = libRad2 if Product2 else None
+            libRad.PlotAllLevels(plot_type=plot_type, pngfile=pngfile, Scene2=Scene2, ACMCOM=ACMCOM)
+
 
         print(f"png-file: {pngfile}")
 

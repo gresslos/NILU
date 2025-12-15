@@ -1,0 +1,4 @@
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+slurmstepd: error: *** JOB 92827 ON prod-cn26 CANCELLED AT 2025-12-11T17:03:57 ***
+slurmstepd: error: *** STEP 92827.0 ON prod-cn26 CANCELLED AT 2025-12-11T17:03:57 ***
+cp: cannot stat '/scratch/bgre/92827/RESULTS/*nc': No such file or directory

@@ -1,0 +1,24 @@
+rte_solver disort
+data_files_path /xnilu_wrk2/projects/NEVAR/libRadtran/data/
+mol_abs_param kato2
+source solar
+wavelength 300 4000
+output_process sum
+zout atm_levels
+output_user sza zout edir eup
+quiet 
+day_of_year 226
+atmosphere_file ./tmpRTIO/tmp1348atm.dat
+wc_properties mie
+wc_file 1D ./tmpRTIO/tmp1348wc1D.dat
+ic_properties baum_v36 interpolate
+ic_habit ghm
+ic_file 1D ./tmpRTIO/tmp1348ic1D.dat
+aerosol_default 
+aerosol_file tau ./tmpRTIO/tmp1348aero1D.dat
+aerosol_angstrom 1.100000 0.003865
+aerosol_set_tau_at_wvl 355 0.003865432843791887
+brdf_cam u10 4.402184009552002
+albedo_file ./tmpRTIO/tmp1348albedosolar.dat
+sza 67.62125396728516
+phi0 59.16654968261719

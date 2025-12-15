@@ -1,0 +1,9 @@
+Traceback (most recent call last):
+  File "/scratch/bgre/92824/./all_levels_MakeRTMInputFile_bg.py", line 1628, in <module>
+    vertical_shape = r1.shape[1] if r1.shape > 0 else r3.shape[1]
+                                    ^^^^^^^^^^^^
+TypeError: '>' not supported between instances of 'tuple' and 'int'
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+slurmstepd: error: *** STEP 92824.0 ON prod-cn26 CANCELLED AT 2025-12-11T16:53:36 ***
+slurmstepd: error: *** JOB 92824 ON prod-cn26 CANCELLED AT 2025-12-11T16:53:36 ***
+cp: cannot stat '/scratch/bgre/92824/RESULTS/*nc': No such file or directory

@@ -1,0 +1,2 @@
+/scratch/bgre/92423/UVspec.py:370: UserWarning: loadtxt: input contained no data: "./tmpRTIO/tmp4350solar4.out"
+  sza, zout, edir, eup = np.loadtxt(fn, unpack=True)

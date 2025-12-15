@@ -1,0 +1,9 @@
+Traceback (most recent call last):
+  File "/scratch/bgre/92826/./all_levels_MakeRTMInputFile_bg.py", line 1628, in <module>
+    libRad.solar_eup[idx,:] = r1
+    ~~~~~~~~~~~~~~~~^^^^^^^
+ValueError: could not broadcast input array from shape (243,) into shape (249,)
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+slurmstepd: error: *** JOB 92826 ON prod-cn26 CANCELLED AT 2025-12-11T17:01:21 ***
+slurmstepd: error: *** STEP 92826.0 ON prod-cn26 CANCELLED AT 2025-12-11T17:01:21 ***
+cp: cannot stat '/scratch/bgre/92826/RESULTS/*nc': No such file or directory

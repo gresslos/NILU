@@ -1383,11 +1383,13 @@ if __name__ == "__main__":
         versions = sources
         librad_version = 'montecarlo_3D' # 'montecarlo_3D' 'disort_1D'
 
-        idx = 1
-        additional_spesifications = [['_All'],['_All_MCIPA'],['_All_SmallBuffer'],['_All_FullBuffer'],['_All_MegaBuffer'], ['_All_GigaBuffer'],['_GHM'],['_SC'],['_RA']][idx]
-        titles = [[' - DISORT'],[' - MCIPA'],[' - Small Buffer'],[' - Large Buffer'],[' - Mega Buffer'],[' - Giga Buffer'],[' - GHM'],[' - SC'],[' - RA']][idx]
+        idx = 4
+        additional_spesifications = [['_All'],
+                                    ['_All_MCIPA'],['_All_MiniBuffer'],['_All_SmallBuffer'],['_All_MediumBuffer'],['_All_FullBuffer'],['_All_MegaBuffer'], ['_All_GigaBuffer'],
+                                    ['_GHM'],['_SC'],['_RA']][idx]
+        titles = [[' - DISORT'],[' - MCIPA'],[' - Mini Buffer'],[' - Small Buffer'],[' - Medium Buffer'],[' - Large Buffer'],[' - Mega Buffer'],[' - Giga Buffer'],[' - GHM'],[' - SC'],[' - RA']][idx]
         # titles = ['']
-        png_names = ['Data/figures/correlation' + additional_spesifications[0][0] + '.png']
+        png_names = ['Data/figures/correlation' + additional_spesifications[0] + '.png']
     
     elif what_to_plot == 'plot_traj':
         idx_scene =  [3,4,5,8,11] # [3,4] #[3,4,5,6,7,8]

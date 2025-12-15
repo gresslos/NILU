@@ -98,16 +98,22 @@ def Calc3DBufferSize(ACM3D, ia):
     if which_buffer == 0:   # MCIPA
         m_assess = 0; m_buffer = 0 
         n_assess = 0; n_buffer = 0 
-    elif which_buffer == 1: # SmallBuffer
+    elif which_buffer == 1: # MiniBuffer
+        m_assess = 0; m_buffer = 2
+        n_assess = 0; n_buffer = 2
+    elif which_buffer == 2: # SmallBuffer
         m_assess = 3; m_buffer = 3 
         n_assess = 3; n_buffer = 3 
-    elif which_buffer == 2: # LargeBuffer
+    elif which_buffer == 3: # MediumBuffer
+        m_assess = 0; m_buffer = 8
+        n_assess = 0; n_buffer = 8
+    elif which_buffer == 4: # LargeBuffer
         m_assess = 5; m_buffer = 5 
         n_assess = 6; n_buffer = 6         
-    elif which_buffer == 3: # MegaBuffer
+    elif which_buffer == 5: # MegaBuffer
         m_assess = 0; m_buffer = 15
         n_assess = 0; n_buffer = 15   
-    elif which_buffer == 4: # GigaBuffer
+    elif which_buffer == 6: # GigaBuffer
         m_assess = 0; m_buffer = 20
         n_assess = 0; n_buffer = 20    
     
@@ -1301,11 +1307,12 @@ if __name__ == "__main__":
               ['thermal'],
               ['solar', 'thermal']][idx_source] 
 
-    idx_scene = [12]
+    idx_scene = [6, 7]
     # idx_scene = [4,5,6]
     # idx_scene = [7,8,11]
     # idx_scene = [3,4,5,6,7,8]
     # idx_scene =[3,4,5,6,7,8, 11]
+    # idx_scene = [12]
                         ################# OLD ########################################################################
     SceneNames = [      ['Orbit_05378D'],#0           # Marocco - Norway           
                         ['Orbit_05458F'],             # Chile
@@ -1333,20 +1340,22 @@ if __name__ == "__main__":
 
 
 
-    Test    = True
+    Test    = False
     want_ps = False      # BG: if want DISORT pseudospherical 
     verbose = False
     want_3D = True       # BG: if want MYSTIC
                             
     which_buffer = 0
-        # 0: MCIPA   1: Small  2: Large (Full)   3: Mega   4: Giga
+        # 0: MCIPA   1:Mini   2: Small   3: Medium   4: Large (Full)   5: Mega   6: Giga
    
     if want_3D: 
         if   which_buffer == 0 : buffer_str = 'MCIPA'
-        elif which_buffer == 1 : buffer_str = 'Small Buffer (13 x 13)'
-        elif which_buffer == 2 : buffer_str = 'Large Buffer (25 x 21)'
-        elif which_buffer == 3 : buffer_str = 'Mega  Buffer (31 x 31)'
-        elif which_buffer == 4 : buffer_str = 'Giga  Buffer (41 x 41)'
+        elif which_buffer == 1 : buffer_str = 'Mini   Buffer (5 x 5)'
+        elif which_buffer == 2 : buffer_str = 'Small  Buffer (13 x 13)'
+        elif which_buffer == 3 : buffer_str = 'Medium Buffer (17 x 17)'
+        elif which_buffer == 4 : buffer_str = 'Large  Buffer (25 x 21)'
+        elif which_buffer == 5 : buffer_str = 'Mega   Buffer (31 x 31)'
+        elif which_buffer == 6 : buffer_str = 'Giga   Buffer (41 x 41)'
     else:                             buffer_str = ''
     ######### OLD: # want_small_buffer = True    # Use this if want faster execution without much loss of 3D effects ##############
     
@@ -1376,12 +1385,14 @@ if __name__ == "__main__":
     # additional_spesifications += '_GHM_mc1e6'
     # additional_spesifications += '_GHM_mc1e7'
             # All points 
-    # additional_spesifications += '_All_MCIPA'
+    additional_spesifications += '_All_MCIPA'
+    # additional_spesifications += '_All_MiniBuffer'
     # additional_spesifications += '_All_SmallBuffer'
+    # additional_spesifications += '_All_MediumBuffer'
     # additional_spesifications += '_All_FullBuffer'
     # additional_spesifications += '_All_MegaBuffer'
     # additional_spesifications += '_All_GigaBuffer'
-    additional_spesifications += '_All'
+    # additional_spesifications += '_All'
             # 3D-Cloud impact
     # additional_spesifications += '_wc'           # INFO: large-buffer
     # additional_spesifications += '_wc_test_atm_0'

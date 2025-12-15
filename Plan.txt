@@ -9,15 +9,25 @@ git push
 
 
 ------------ Short-Term -------
-- Find sources solar 250-300 and thermal 4000-4500 write
+- Finish Aerosol part in Theory, Method, Appendix 
+    * Note just copy from appendix to Theory and Method, need to merge nicly and fix Appendix!
+- Add new swaths to Buffer-Sensitivity!
+- Optimal across-track dimention where edge-effects negligleble!
+- NOTES FROM ARVE: 
+    * MYSTIC and DISORT vs BMAFLX (same figure!)
+    * Same y-axis intervall in all plots
+    * Discribe in depth figures trough horizontal photons transport! OK just to meniton what see as Arve said!
+    * Note that MC-noice increase for larger buffer-size (given mc_photons is only regarding simulated pixels, not processed pixels)
+    * Add empty pixels around 13x13 buffer to test for edge-effects!
+- Run small area with zout atm_levels! could be cool plot which can further showcase differences DISORT MYSTIC!
 - BUFFER-IN-DEPTH Analysis:
-    * run DIOSRT for 7883D for comparison with MCIPA
     * run 5x5 medium buffer! (maybe MCIPA -> 5x5 -> 13x13 <- 25x21 <- 31x31 <- 41x41)
     * Run many other swaths for comparisons with multipel swaths
     * Maybe more math: d<F>/dN where <F> is swath-average flux and N is #pixels in buffer size -> Buffer-Size-Sensitivity
         - Using Least-Square Linear Regression -> deltaF(N) = F(N) - BMAFLX = a + b*N    ->    deltaF(N)/dN = b  [(W/m2) per pixel]
         - Myabe use per 100 km^2 or someting! (like adding 10x10 to buffer!)
         - Maybe not Linear regression is best -> maybe changes non-linear! maybe squared? or exponential?
+
 - Maybe add NIPA for 6886E swath in 3D RT effect!
 - Maybe structure main takeway of Master as looking into Buffer-Size Sensitivity (using even smaller buffer on small locations!)
 - 3D RT effect:

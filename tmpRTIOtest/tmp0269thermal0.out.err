@@ -1,18 +1,19 @@
+ ... increasing number_of_streams to 16 because of Cox and Munk!
 	Command being timed: "/xnilu_wrk2/projects/NEVAR/libRadtran/bin/uvspec"
-	User time (seconds): 0.89
-	System time (seconds): 0.22
-	Percent of CPU this job got: 96%
-	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:01.16
+	User time (seconds): 4.30
+	System time (seconds): 0.31
+	Percent of CPU this job got: 99%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:04.66
 	Average shared text size (kbytes): 0
 	Average unshared data size (kbytes): 0
 	Average stack size (kbytes): 0
 	Average total size (kbytes): 0
-	Maximum resident set size (kbytes): 220972
+	Maximum resident set size (kbytes): 252524
 	Average resident set size (kbytes): 0
 	Major (requiring I/O) page faults: 0
-	Minor (reclaiming a frame) page faults: 51518
-	Voluntary context switches: 168
-	Involuntary context switches: 12
+	Minor (reclaiming a frame) page faults: 59505
+	Voluntary context switches: 144
+	Involuntary context switches: 29
 	Swaps: 0
 	File system inputs: 96
 	File system outputs: 48

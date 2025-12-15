@@ -1,0 +1,25 @@
+rte_solver disort
+data_files_path /xnilu_wrk2/projects/NEVAR/libRadtran/data/
+mol_abs_param fu
+source thermal
+wavelength 4500 100000
+mc_backward 
+mc_backward_output eup
+output_process sum
+zout atm_levels
+output_user sza zout edir eup
+quiet 
+day_of_year 226
+atmosphere_file ./tmpRTIO/tmp1360atm.dat
+wc_properties mie
+wc_file 1D ./tmpRTIO/tmp1360wc1D.dat
+ic_properties baum_v36 interpolate
+ic_habit ghm
+ic_file 1D ./tmpRTIO/tmp1360ic1D.dat
+aerosol_default 
+aerosol_file tau ./tmpRTIO/tmp1360aero1D.dat
+aerosol_set_tau_at_wvl 4500 0.1251303303299645
+brdf_cam u10 3.9333362579345703
+albedo_file ./tmpRTIO/tmp1360albedothermal.dat
+sza 67.5283432006836
+phi0 59.00297546386719

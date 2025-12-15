@@ -8,8 +8,8 @@
 #SBATCH --nodes=1
 ###SBATCH --ntasks=40
 ###SBATCH --ntasks-per-node=40
-#SBATCH --ntasks=3
-#SBATCH --ntasks-per-node=3
+#SBATCH --ntasks=5
+#SBATCH --ntasks-per-node=5
 ###SBATCH --ntasks=3
 ###SBATCH --ntasks-per-node=3
 
@@ -73,7 +73,7 @@ mkdir -p $HOME_RTM/RESULTS
 
 echo "Running Python file at $(date)"
 srun --unbuffered --mpi=pmix python ./MakeRTMInputFile_bg.py
-# srun --unbuffered --mpi=pmix python ./old_MakeRTM_I_THINK.py
+# srun --unbuffered --mpi=pmix python ./all_levels_MakeRTMInputFile_bg.py
 echo "Finished running Python file at $(date)"
 
 
