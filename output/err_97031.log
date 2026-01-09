@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/scratch/bgre/97031/./AllLevelsMakeRTM.py", line 1707, in <module>
+    idx = (ia, slice(None), slice(None), slice(None, nlev))
+           ^^
+NameError: name 'ia' is not defined. Did you mean: 'i'?
