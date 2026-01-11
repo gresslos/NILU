@@ -1089,8 +1089,8 @@ class Scene:
         ax.tick_params(axis='both', which='minor', labelsize=INFOSIZE*.8)
         fig.suptitle(title, fontsize=FONTSIZE, y=0.99, fontweight='bold')
         line1 = f"{self.Name} - {date} {time} (UTC)"
-        line2 = fr"SZA={SZA:.0f}$^\circ$ $\phi$={PHI:.0f}$^\circ$ TOA$\approx${zout:.0f} km"
-        ax.set_title(f"{line1}             |{line2}|", fontsize=INFOSIZE*.8)      
+        line2 = fr"⟨SZA⟩={SZA:.0f}$^\circ$ $⟨\phi⟩$={PHI:.0f}$^\circ$ TOA$\approx${zout:.0f} km"
+        ax.set_title(f"{line1}             {line2}", fontsize=INFOSIZE*.8)          
         plt.figtext(0.001, 0.004, baseline_str, fontsize=FONTSIZE*0.45)
         # Orbit nr: self.Name
         
@@ -1242,8 +1242,8 @@ class Scene:
         ax.tick_params(axis='both', which='minor', labelsize=INFOSIZE)
         fig.suptitle(title, fontsize=FONTSIZE, y=0.99, fontweight='bold')
         line1 = f"{self.Name} - {date} {time} (UTC)"
-        line2 = fr"SZA={SZA:.0f}$^\circ$ $\phi$={PHI:.0f}$^\circ$ TOA$\approx${zout:.0f} km"
-        ax.set_title(f"{line1}             |{line2}|", fontsize=INFOSIZE*.8)      
+        line2 = fr"⟨SZA⟩={SZA:.0f}$^\circ$ $⟨\phi⟩$={PHI:.0f}$^\circ$ TOA$\approx${zout:.0f} km"
+        ax.set_title(f"{line1}             {line2}", fontsize=INFOSIZE*.8)       
         plt.figtext(0.001, 0.004, baseline_str, fontsize=FONTSIZE*0.45)
         
 
@@ -1459,7 +1459,7 @@ class Scene:
             #   Scene2 = librad
             #   Scene3 = ACMRT
             #   Scene4 = librad2
-            title='Solar TOA flux' #+ f' - Atmosphere {atmosphere} (ACM-COM)'
+            title='SW TOA flux' #+ f' - Atmosphere {atmosphere} (ACM-COM)'
             cblabel='BMA_FLX' #: solar_combined_top_of_atmosphere_flux'
                 
 
@@ -1600,7 +1600,7 @@ class Scene:
 
 
         elif plot_type=='thermal_both':
-            title='Thermal TOA flux' #+ f' - Atmosphere {atmosphere} (ACM-COM)'
+            title='LW TOA flux' #+ f' - Atmosphere {atmosphere} (ACM-COM)'
             cblabel='BMA_FLX' #: thermal_combined_top_of_atmosphere_flux'
 
             # ---------- BG: Get additional data to plot (twin or stacked-axis) ----------------
@@ -1740,27 +1740,27 @@ class Scene:
         # BG: made changes to this branch
         elif plot_type=='librad_solar_flx_diff':  
             if 'disort_pseudospherical' in Scene2.fn and 'montecarlo' in self.fn:
-                label = '[MYSTIC - DISORT] (ps)'
+                label = '[3D - 1D] (ps)'
             elif 'montecarlo' in Scene2.fn and 'disort_pseudospherical' in self.fn:
                 label = 'DISORT (ps) - MYSTIC'
             elif 'disort' in Scene2.fn and 'montecarlo' in self.fn:
                 label = '[MYSTIC - DISORT]'
                 cblabel = r"$F_{\mathrm{3D}} - F_{\mathrm{1D}}$"
             elif 'montecarlo' in Scene2.fn and 'disort' in self.fn:
-                label = '[DISORT - MYSTIC]'
+                label = '[1D - 3D]'
                 cblabel = r"$F_{\mathrm{1D}} - F_{\mathrm{3D}}$"
             # ------- Sensitivity analysis specs ------------------
             elif 'SmallBuffer' in self.fn:
-                label = 'MYSTIC - 3D Buffer Size Sensitivity'
+                label = '3D Buffer Size Sensitivity'
                 cblabel = r"$F_{\mathrm{SmallBuffer}} - F_{\mathrm{LargeBuffer}}$"
             elif 'FullBuffer' in self.fn:
-                label = 'MYSTIC - 3D Buffer Size Sensitivity'
+                label = '3D Buffer Size Sensitivity'
                 cblabel = r"$F_{\mathrm{LargeBuffer}} - F_{\mathrm{SmallBuffer}}$"
             elif 'GHM' in self.fn or 'RA' in self.fn or 'SC' in self.fn:
                 if 'montecarlo' in self.fn:
-                    label = 'MYSTIC - '     
+                    label = '3D - '     
                 else:
-                    label = 'DISORT - ' 
+                    label = '1D - ' 
                 if 'RA' in self.fn:
                     label += 'Ice-Habit Sensitivity [RA vs GHM]' 
                     cblabel = r"$F_{\mathrm{RA}} - F_{\mathrm{GHM}}$"
@@ -1784,7 +1784,7 @@ class Scene:
             # ------------------------------------------------------------------------
 
             title = ''
-            title += 'Solar TOA Flux Difference'   
+            title += 'SW TOA Flux Difference'   
             title += ' - ' + label
             
         
@@ -1860,9 +1860,9 @@ class Scene:
             elif 'montecarlo' in Scene2.fn and 'disort_pseudospherical' in self.fn:
                 cblabel = 'DISORT (ps) - MYSTIC'
             elif 'disort' in Scene2.fn and 'montecarlo' in self.fn:
-                cblabel = 'MYSTIC - DISORT'
+                cblabel = '3D - 1D'
             elif 'montecarlo' in Scene2.fn and 'disort' in self.fn:
-                cblabel = 'DISORT - MYSTIC'
+                cblabel = '1D - 3d'
             
             # ------- Sensitivity analysis specs ------------------
             elif 'SmallBuffer' in self.fn:
@@ -1870,9 +1870,9 @@ class Scene:
                 cblabel = r"$F_{\mathrm{SmallBuffer}} - F_{\mathrm{LargeBuffer}}$"
             elif 'GHM' in self.fn or 'RA' in self.fn or 'SC' in self.fn:
                 if 'montecarlo' in self.fn:
-                    label = 'MYSTIC - '     
+                    label = '3D - '     
                 else:
-                    label = 'DISORT - ' 
+                    label = '1D - ' 
 
                 if 'RA' in self.fn:
                     label += 'Ice-Habit Sensitivity [RA vs GHM]' 
@@ -1881,7 +1881,7 @@ class Scene:
                     label += 'Ice-Habit Sensitivity [SC vs GHM]' 
                     cblabel = r"$F_{\mathrm{SC}} - F_{\mathrm{GHM}}$"
             elif 'FullBuffer' in self.fn:
-                label = 'MYSTIC - 3D Buffer Size Sensitivity'
+                label = '3D Buffer Size Sensitivity'
                 cblabel = r"$F_{\mathrm{LargeBuffer}} - F_{\mathrm{SmallBuffer}}$"
             # -------------------------------
             else:
@@ -1892,7 +1892,7 @@ class Scene:
 
             title = ''
             title += label
-            title += ' - Thermal TOA Flux Difference'   
+            title += ' - LW TOA Flux Difference'   
 
             # ---------- BG: Get additional data to plot (twin or stacked-axis) ----------------
             if quantity_list:
@@ -1975,7 +1975,7 @@ class Scene:
 
         # BG: created by me
         elif plot_type=='solar_flx_ratio':
-            title='Solar TOA flux Rel.Err.' #ratio'    
+            title='SW TOA flux Rel.Err.' #ratio'    
             if 'montecarlo' in Scene2.fn:
                 cblabel = 'MYSTIC / BMA_FLX '
                 label = 'MYSTIC / BMA_FLX, averaged'
@@ -2041,7 +2041,7 @@ class Scene:
 
         # BG: created by me
         elif plot_type=='thermal_flx_ratio':
-            title='Thermal TOA flux ratio'    
+            title='LW TOA flux ratio'    
             if 'montecarlo' in Scene2.fn:
                 cblabel = 'MYSTIC / BMA_FLX '
                 label = 'MYSTIC / BMA_FLX, averaged'
@@ -2113,7 +2113,7 @@ class Scene:
                 print("BG: error, correct files?")
             
             title = ''
-            title += 'Solar TOA flux difference - '  
+            title += 'SW TOA flux difference - '  
             title +=  label 
 
             # ---------- BG: Get additional data to plot (twin or stacked-axis) ----------------
@@ -2221,7 +2221,7 @@ class Scene:
                 print("BG: error, correct files?")
             
             title = ''
-            title += 'Thermal TOA flux difference - '  
+            title += 'LW TOA flux difference - '  
             title +=  label 
 
 
@@ -2297,7 +2297,7 @@ class Scene:
 
         #BG: created by me
         elif plot_type=='solar_flx_diff_histogram':
-            title='Solar TOA flux difference'    
+            title='SW TOA flux difference'    
             if 'montecarlo' in Scene2.fn:
                 cblabel = 'MYSTIC - BMA_FLX '
                 # label = 'MYSTIC - BMA_FLX, averaged'
@@ -2369,7 +2369,7 @@ class Scene:
 
         #BG: created by me
         elif plot_type=='thermal_flx_diff_histogram':
-            title='Thermal TOA flux difference'    
+            title='LW TOA flux difference'    
             if 'montecarlo' in Scene2.fn:
                 cblabel = 'MYSTIC - BMA_FLX '
                 # label = 'MYSTIC - BMA_FLX, averaged'
@@ -2470,7 +2470,7 @@ class Scene:
             # ------------------------------------------------¨
             
             title += ylabel
-            title += ' - Solar TOA Flux'   
+            title += ' - SW TOA Flux'   
         
             # ax.set_aspect("equal", adjustable="box")
 
@@ -2529,7 +2529,7 @@ class Scene:
             return
 
         elif plot_type == 'solar_earthCARE_flx_rel_err':
-            title='Solar TOA flux relative error     [  ACM_RT 1D/3D vs BMA_FLX  ] '    
+            title='SW TOA flux relative error     [  ACM_RT 1D/3D vs BMA_FLX  ] '    
             cblabel = 'ACM_RT 1D vs BMA_FLX'
             label = 'ACM_RT 3D vs BMA_FLX'
             itoa=0
@@ -2614,7 +2614,7 @@ class Scene:
 
 
         elif plot_type == 'thermal_earthCARE_flx_rel_err':
-            title='Thermal TOA flux relative error     [  ACM_RT 1D/3D vs BMA_FLX  ] '   
+            title='LW TOA flux relative error     [  ACM_RT 1D/3D vs BMA_FLX  ] '   
             cblabel = 'ACM_RT 1D vs BMA_FLX'
             label = 'ACM_RT 3D vs BMA_FLX'
             itoa=0
@@ -2903,8 +2903,8 @@ class Scene:
 
         fig.suptitle(title, fontsize=FONTSIZE, y=0.99, fontweight='bold')
         line1 = f"{self.Name} - {date} {time} (UTC)"
-        line2 = fr"SZA={SZA:.0f}$^\circ$ $\phi$={PHI:.0f}$^\circ$ TOA$\approx${zout:.0f} km"
-        ax.set_title(f"{line1}             |{line2}|", fontsize=INFOSIZE*.8)      
+        line2 = fr"⟨SZA⟩={SZA:.0f}$^\circ$ $⟨\phi⟩$={PHI:.0f}$^\circ$ TOA$\approx${zout:.0f} km"
+        ax.set_title(f"{line1}             {line2}", fontsize=INFOSIZE*.8)            
         plt.figtext(0.001, 0.004, baseline_str, fontsize=FONTSIZE*0.45)
         
 
@@ -2946,25 +2946,29 @@ class Scene:
         cmap = plt.get_cmap('viridis')  # 'viridis' 'inferno'     cmap = plt.get_cmap('jet')
         xmin = self.latitude.min() #-90 #
         xmax = self.latitude.max() #90 #
+
+        SZA, PHI, zout = get_property(BMAFLX, ACMCOM, statistic='mean')
         
         title = ''
         pl_list = []
         if plot_type == 'all_levels_solar':
             z = ACMCOM.height_level / 1000.0  # [km]¨
 
-            ix_center = self.solar_eup.shape[1] // 2
-            iy_center = self.solar_eup.shape[2] // 2
-
-            data = self.solar_eup[:, ix_center, iy_center, :]   # (along_track, height_level)
-            data = data.T                                       # (height_level, along_track)
+            data = self.solar_eup   # (along_track, height_level)
+            data = data.T           # (height_level, along_track)
             
             if 'disort' in self.fn: label = '[DISORT]'
             elif 'montecarlo' in self.fn: label = '[MYSTIC]'
             else: label= 'something went wrong';clabel=''
 
-            title += "Solar Upward Flux"
+            title += "SW upward Flux"
             title += ' - ' + label
         
+            # Print out calculated STDs
+            if 'montecarlo' in self.fn:
+                data_std = np.nanmean(self.solar_eup_std[data.T > 0])
+                print(f'Mean STD = {data_std:.2f}  W/m2')
+
         elif plot_type == 'all_levels_solar_diff':
             z = ACMCOM.height_level / 1000.0  # [km]
             data = self.solar_eup.T - Scene2.solar_eup.T
@@ -2977,7 +2981,7 @@ class Scene:
             else: label= 'something went wrong';clabel=''
 
             cblabel = r"$\Delta F_{\mathrm{TOA}}^{\uparrow}$ [W/m$^2$]"
-            title += "Solar Upward Flux Difference"
+            title += "SW upward Flux Difference"
             title += ' - ' + label
 
 
@@ -3040,8 +3044,10 @@ class Scene:
         ax.yaxis.set_minor_locator(AutoMinorLocator())
         ax.tick_params(axis='both', which='major', labelsize=INFOSIZE*.8)
         ax.tick_params(axis='both', which='minor', labelsize=INFOSIZE*.8)
-        fig.suptitle(title, fontsize=FONTSIZE, y=0.98, fontweight='bold')
-        ax.set_title(f"{self.Name} - {date}  {time} (UTC)", fontsize=INFOSIZE)
+        fig.suptitle(title, fontsize=FONTSIZE, y=0.99, fontweight='bold')
+        line1 = f"{self.Name} - {date} {time} (UTC)"
+        line2 = fr"⟨SZA⟩={SZA:.0f}$^\circ$ $⟨\phi⟩$={PHI:.0f}$^\circ$ TOA$\approx${zout:.0f} km"
+        ax.set_title(f"{line1}             {line2}", fontsize=INFOSIZE*.8)      
         plt.figtext(0.001, 0.004, baseline_str, fontsize=FONTSIZE*0.45)
         # Orbit nr: self.Name
 
@@ -3426,54 +3432,17 @@ class Scene:
         ncf.close()
         
     def WriteNetcdf_all_levels(self, fn, shape=(1,1), verbose=True):
-                        # if verbose:
-                        #     print("Writing libRadtran output to netcdf file: ", fn)
-
-                        # ncf = Dataset(fn, 'w')
-
-                        # along_tracks = self.latitude_active.shape[0]
-                        # nHeightLevels = self.solar_eup.shape[1]
-                        # ncf.createDimension('along_track', along_tracks)
-                        # ncf.createDimension('height_level', nHeightLevels)
-
-                        # latitude = ncf.createVariable('latitude',np.dtype('float').char,('along_track',))
-                        # latitude.units = "degree_north" 
-                        # latitude.long_name = "Latitude"
-                        # latitude[:] = self.latitude_active
-
-                        # # --- Flux variables: 2D (along_track, height_level) ---
-                        # solar_eup = ncf.createVariable('solar_eup', np.dtype('float').char, ('along_track', 'height_level'))
-                        # solar_eup.units = "W m-2"
-                        # solar_eup.long_name = "Solar upward flux"
-                        # solar_eup[:, :] = self.solar_eup
-
-                        # solar_eup_std = ncf.createVariable('solar_eup_std', np.dtype('float').char, ('along_track', 'height_level'))
-                        # solar_eup_std.units = "W m-2"
-                        # solar_eup_std.long_name = "Standard deviation of solar upward flux"
-                        # solar_eup_std[:, :] = self.solar_eup_std
-
-                        # thermal_eup = ncf.createVariable('thermal_eup', np.dtype('float').char, ('along_track', 'height_level'))
-                        # thermal_eup.units = "W m-2"
-                        # thermal_eup.long_name = "Thermal upward flux"
-                        # thermal_eup[:, :] = self.thermal_eup
-
-                        # thermal_eup_std = ncf.createVariable('thermal_eup_std', np.dtype('float').char, ('along_track', 'height_level'))
-                        # thermal_eup_std.units = "W m-2"
-                        # thermal_eup_std.long_name = "Standard deviation of thermal upward flux"
-                        # thermal_eup_std[:, :] = self.thermal_eup_std
-
-                        # ncf.close()
         if verbose:
             print("Writing libRadtran output to netcdf file: ", fn)
 
         ncf = Dataset(fn, 'w')
 
         along_tracks = self.latitude_active.shape[0]
-        nHeightLevels = self.solar_eup.shape[-1]
+        nHeightLevels = self.solar_eup.shape[1]
         ncf.createDimension('along_track', along_tracks)
         ncf.createDimension('height_level', nHeightLevels)
-        ncf.createDimension('Nx', shape[0])
-        ncf.createDimension('Ny', shape[1])
+                        # ncf.createDimension('Nx', shape[0])
+                        # ncf.createDimension('Ny', shape[1])
 
         latitude = ncf.createVariable('latitude',np.dtype('float').char,('along_track',))
         latitude.units = "degree_north" 
@@ -3482,27 +3451,35 @@ class Scene:
 
         # --- Flux variables: 2D (along_track, height_level) ---
         if 'montecarlo' in fn:
-            print('yes correct place')
-            solar_eup = ncf.createVariable('solar_eup', np.dtype('float').char, ('along_track', 'Nx', 'Ny', 'height_level'))
+            ### BG: Explenation ###
+            #   Only take care of center pixel 
+            #   Load as 2D matricies
+            ix_center = self.solar_eup.shape[2] // 2
+            iy_center = self.solar_eup.shape[3] // 2
+
+            # print(f'center pixels for {self.solar_eup.shape} -> ({ix_center}, {iy_center})')
+            # print(solar_eup.shape, self.solar_eup.shape)
+            # print(self.solar_eup[1500, :, ix_center, iy_center])
+
+            solar_eup = ncf.createVariable('solar_eup', np.dtype('float').char, ('along_track', 'height_level'))
             solar_eup.units = "W m-2"
             solar_eup.long_name = "Solar upward flux"
-            solar_eup[:, :, :, :] = self.solar_eup
-            print('\n\nshape of solar_eup: ',self.solar_eup.shape)
+            solar_eup[:, :] = self.solar_eup[:, :, ix_center, iy_center] 
 
-            solar_eup_std = ncf.createVariable('solar_eup_std', np.dtype('float').char, ('along_track', 'Nx', 'Ny', 'height_level'))
+            solar_eup_std = ncf.createVariable('solar_eup_std', np.dtype('float').char, ('along_track', 'height_level'))
             solar_eup_std.units = "W m-2"
             solar_eup_std.long_name = "Standard deviation of solar upward flux"
-            solar_eup_std[:, :, :, :] = self.solar_eup_std
+            solar_eup_std[:, :] = self.solar_eup_std[:, :, ix_center, iy_center] 
 
-            thermal_eup = ncf.createVariable('thermal_eup', np.dtype('float').char, ('along_track', 'Nx', 'Ny', 'height_level'))
+            thermal_eup = ncf.createVariable('thermal_eup', np.dtype('float').char, ('along_track', 'height_level'))
             thermal_eup.units = "W m-2"
             thermal_eup.long_name = "Thermal upward flux"
-            thermal_eup[:, :, :, :] = self.thermal_eup
+            thermal_eup[:, :] = self.thermal_eup[:, :, ix_center, iy_center] 
 
-            thermal_eup_std = ncf.createVariable('thermal_eup_std', np.dtype('float').char, ('along_track', 'Nx', 'Ny', 'height_level'))
+            thermal_eup_std = ncf.createVariable('thermal_eup_std', np.dtype('float').char, ('along_track', 'height_level'))
             thermal_eup_std.units = "W m-2"
             thermal_eup_std.long_name = "Standard deviation of thermal upward flux"
-            thermal_eup_std[:, :, :, :] = self.thermal_eup_std
+            thermal_eup_std[:, :] = self.thermal_eup_std[:, :, ix_center, iy_center] 
         else: 
             solar_eup = ncf.createVariable('solar_eup', np.dtype('float').char, ('along_track', 'height_level'))
             solar_eup.units = "W m-2"
@@ -3633,7 +3610,7 @@ if __name__ == "__main__":
     AssDomainSize       = [(3,3), (11,11)][1]   # Size of assessment domain (across-track, along-track) in libRadtran 3D MC
     want_quality_status = True                 # If want ACM-COM and BMA-FLX quality status
     want_EarthCARE_info = True                  # Sets Scene3 = ACM3D (in PlotLien)
-    want_product2       = True                 # Sets Scene4 = librad2 (in PlotLine)
+    want_product2       = False                 # Sets Scene4 = librad2 (in PlotLine)
     want_average_line   = True                 # Average line of DISORT-flux-values
     want_ps             = False                 # BG: if want DISORT pseudospherical (want_3D overwrite want_ps)
     want_info           = False                 # Prints out SZA, Prints out CF
@@ -3643,7 +3620,7 @@ if __name__ == "__main__":
 
     librad_version2 =  'disort_1D'                  
             # Chose from: 'montecarlo_3D'  'disort_1D'   librad_version
-    additional_spesifications2 =  '_All'
+    additional_spesifications2 =  '_AllLevels_TEST'
             #Chose from: ....
 
 
@@ -3651,7 +3628,7 @@ if __name__ == "__main__":
     if modify_xlim: 
         idx = 0
         lat_ranges = [
-            (16, 22),        
+            (56, 60),        
             (74.27, 74.41), # 6888C
             (80.63, 80.74), # 6888C
             (51.40, 52.00), # 6518D
@@ -3683,7 +3660,8 @@ if __name__ == "__main__":
 
 
 
-    idx_scene = [12]
+    idx_scene = [6, 11]
+    # idx_scene = [5,7]
                                         ################# OLD ########################################################################
     SceneNames = [                      ['Orbit_05378D'],#0           # Marocco - Norway           
                                         ['Orbit_05458F'],             # Chile
@@ -3719,10 +3697,11 @@ if __name__ == "__main__":
     # additional_spesifications += '_TEST'
                 # New mc_sample_grid
     # additional_spesifications += '_TEST_5x5'
-    # additional_spesifications += '_21x21'
+    additional_spesifications += '_21x21'
 
                # All_levels New mc_sample_grid
-    additional_spesifications += '_AllLevels_TEST_5x5'
+    # additional_spesifications += '_AllLevels_TEST'
+    # additional_spesifications += '_AllLevels_TEST_5x5'
     # additional_spesifications += '_AllLevels_TEST_21x21'
 
     
@@ -3730,7 +3709,7 @@ if __name__ == "__main__":
 
 
     
-    fig_index = 22
+    fig_index = 2
     # BG: fig:*both* when simulated in solar & thermal ('*solar,thermal*'-name in RESULT .nc files)
     figname = ['fig:flx_solar',#0                                                   
                'fig:flx_thermal',                                                   
@@ -3863,14 +3842,14 @@ if __name__ == "__main__":
         source_str = 'solar,thermal'
     elif figname == 'fig:all_levels_solar' or figname == 'fig:all_levels_solar_diff':
         plot_all_levels = [figname[len('fig:'):]]
-        if figname == 'fig:all_levels_solar_diff': Product2 = True; additional_spesifications2 = '_all_levels'
-        source_str = 'solar,thermal'
+        if figname == 'fig:all_levels_solar_diff': Product2 = True; additional_spesifications2 = '_AllLevels_TEST'
+        source_str = 'solar' # 'solar,thermal'
         want_cloud_on_plot = True
         idx = 0
         lat_ranges = [
-            (60, 60.5), # 07883D
+            (55  ,    59), # 07883D
             (74.27, 74.41), # 6888C 
-            (74   , 75.5), # 6888C
+            (74   ,  75.5), # 6888C
         ][idx]
     else:
         source_str = ''  # for non-flux figures
@@ -4045,7 +4024,7 @@ if __name__ == "__main__":
         # Extract Baseline ---------------------------   
         parts = ProductFile.split("ECA_EX", 1)
         out = parts[1][:2] if len(parts) > 1 else None
-        if out == 'BA': BA_baseline += ' ACM_RT'
+        if   out == 'BA': BA_baseline += ' ACM_RT'
         elif out == 'AC': AC_baseline += ' ACM_RT'
         elif out == 'BB': BB_baseline += ' ACM_RT'
         # print(out)
@@ -4069,7 +4048,7 @@ if __name__ == "__main__":
         # Extract Baseline ---------------------------   
         parts = ProductFile.split("ECA_EX", 1)
         out = parts[1][:2] if len(parts) > 1 else None
-        if out == 'BA': BA_baseline += ' ALL_3D'
+        if   out == 'BA': BA_baseline += ' ALL_3D'
         elif out == 'AC': AC_baseline += ' ALL_3D'
         elif out == 'BB': BB_baseline += ' ALL_3D'
         # print(out)
@@ -4098,7 +4077,7 @@ if __name__ == "__main__":
         # Extract Baseline ---------------------------   
         parts = ProductFile.split("ECA_EX", 1)
         out = parts[1][:2] if len(parts) > 1 else None
-        if out == 'BA': BA_baseline += ' ' + Product
+        if   out == 'BA': BA_baseline += ' ' + Product
         elif out == 'AC': AC_baseline += ' ' + Product
         elif out == 'BB': BB_baseline += ' ' + Product
         
@@ -4128,7 +4107,7 @@ if __name__ == "__main__":
         # Extract Baseline ---------------------------   
         parts = ProductFile.split("ECA_EX", 1)
         out = parts[1][:2] if len(parts) > 1 else None
-        if out == 'BA': BA_baseline += ' ' + Product
+        if   out == 'BA': BA_baseline += ' ' + Product
         elif out == 'AC': AC_baseline += ' ' + Product
         elif out == 'BB': BB_baseline += ' ' + Product
 
@@ -4143,7 +4122,7 @@ if __name__ == "__main__":
         # Extract Baseline ---------------------------
         parts = ProductFile.split("ECA_EX", 1)
         out = parts[1][:2] if len(parts) > 1 else None
-        if out == 'BA': BA_baseline += ' ' + Product
+        if   out == 'BA': BA_baseline += ' ' + Product
         elif out == 'AC': AC_baseline += ' ' + Product
         elif out == 'BB': BB_baseline += ' ' + Product
 
@@ -4154,6 +4133,7 @@ if __name__ == "__main__":
         # Fix Baseline
         AC_baseline = ", ".join(AC_baseline.split())
         BA_baseline = ", ".join(BA_baseline.split())
+        BB_baseline = ", ".join(BB_baseline.split())
         baseline_str = "Baselines: "
         if AC_baseline != '':   baseline_str += f'AC = ({AC_baseline})  '
         if BA_baseline != '':   baseline_str += f'BA = ({BA_baseline})  '

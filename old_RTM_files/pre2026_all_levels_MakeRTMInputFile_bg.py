@@ -14,7 +14,7 @@ from datetime import datetime, timedelta, timezone
 
 
 #import ReadEarthCAREL2 as ReadEC
-import ReadEC as ReadEC
+import ReadEarthCAREL2_bg as ReadEC
 import UVspec as UVspec
 
 
@@ -81,36 +81,46 @@ def Check3DBufferSize(ACM3D, ia):
 
 def Calc3DBufferSize(ACM3D, ia):
     
-    ################# THIS IS FOR EARTHCARE 3D COMPUITATION DOMAIN ##################
-    #################                      OLD                     ##################
-                        # # See Fig. 3, Qu et al, 2023, AMT.
-                        # n_buffer_fore = ACM3D.number_pixels_along_track_buffer_zone_fore_view[ia]
-                        # n_buffer_back = ACM3D.number_pixels_along_track_buffer_zone_back_view[ia]
-                        # n_buffer = np.max([n_buffer_fore, n_buffer_back])
-                        # n_assess= int(ACM3D.number_pixels_along_track_assessment_domain/2)+1 # Add 1 for safety as int always round down
-                        
-                        # m_buffer = ACM3D.number_pixels_across_track_buffer_zone[ia]                  
-                        # m_assess = ACM3D.number_pixels_across_track_assessment_domain
-                        # # INFO from EarthCARE:
-                        # # fixed values:     m_assess and n_assess 
-                        # # dynamic values:   m_buffer and n_buffer (depend on ia) 
-
-                        # ialongs = np.arange(ia-n_assess-n_buffer, ia+n_assess+n_buffer+1)
-                        # iacrosses = np.arange(ACM3D.nadir_pixel_index-m_buffer-m_assess, ACM3D.nadir_pixel_index+m_buffer+m_assess+1)
-    ################################################################################
-
+    # See Fig. 3, Qu et al, 2023, AMT.
+    n_buffer_fore = ACM3D.number_pixels_along_track_buffer_zone_fore_view[ia]
+    n_buffer_back = ACM3D.number_pixels_along_track_buffer_zone_back_view[ia]
+    n_buffer = np.max([n_buffer_fore, n_buffer_back])
+    n_assess= int(ACM3D.number_pixels_along_track_assessment_domain/2)+1 # Add 1 for safety as int always round down
+    
+    m_buffer = ACM3D.number_pixels_across_track_buffer_zone[ia]                  
+    m_assess = ACM3D.number_pixels_across_track_assessment_domain
+    # INFO:
+    # fixed values:     m_assess and n_assess 
+    # dynamic values:   m_buffer and n_buffer (depend on ia) 
 
 
     # BG: Decide to use my buffer, not dynamic buffer!
-    if which_buffer == 0:   along_dim, across_dim =  0,  0 # ( 1, 1) comp-domain  MCIPA 
-    elif which_buffer == 1: along_dim, across_dim =  2,  2 # ( 5, 5) comp-domain  Test Buffer
-    elif which_buffer == 2: along_dim, across_dim = 10, 10 # (21,21) comp-domain  ~BBR +  5 pixels-buffer
-    elif which_buffer == 3: along_dim, across_dim = 20, 20 # (41,41) comp-domain  ~BBR + 35 pixels-buffer
-
+    if which_buffer == 0:   # MCIPA
+        m_assess = 0; m_buffer = 0 
+        n_assess = 0; n_buffer = 0 
+    elif which_buffer == 1: # MiniBuffer
+        m_assess = 0; m_buffer = 2
+        n_assess = 0; n_buffer = 2
+    elif which_buffer == 2: # SmallBuffer
+        m_assess = 3; m_buffer = 3 
+        n_assess = 3; n_buffer = 3 
+    elif which_buffer == 3: # MediumBuffer
+        m_assess = 0; m_buffer = 8
+        n_assess = 0; n_buffer = 8
+    elif which_buffer == 4: # LargeBuffer
+        m_assess = 5; m_buffer = 5 
+        n_assess = 6; n_buffer = 6         
+    elif which_buffer == 5: # MegaBuffer
+        m_assess = 0; m_buffer = 15
+        n_assess = 0; n_buffer = 15   
+    elif which_buffer == 6: # GigaBuffer
+        m_assess = 0; m_buffer = 20
+        n_assess = 0; n_buffer = 20    
+    
     
 
-    ialongs = np.arange(ia-along_dim, ia+along_dim+1)
-    iacrosses = np.arange(ACM3D.nadir_pixel_index-across_dim, ACM3D.nadir_pixel_index+across_dim+1)
+    ialongs = np.arange(ia-n_assess-n_buffer, ia+n_assess+n_buffer+1)
+    iacrosses = np.arange(ACM3D.nadir_pixel_index-m_buffer-m_assess, ACM3D.nadir_pixel_index+m_buffer+m_assess+1)
     
     Nx = iacrosses.shape[0]
     Ny = ialongs.shape[0]
@@ -362,7 +372,6 @@ def SetRTM(UVS, ia, iacr, ACM3D=None, AMACD=None, ACMCOM=None, ACMRT=None, BMAFL
            wccloud=True, surface=True, aerosol=True, mc_basename_path='', RTdimension = '1D',
            mol_abs_param='kato2', data_dir='', source='solar', SceneName=None):
 
-
     elevation=False
     sza = BMAFLX.solar_zenith_angle[BMAFLX.indlatBMAFLX,1]  # Nadir view is in element one
     phi0 = BMAFLX.solar_azimuth_angle[BMAFLX.indlatBMAFLX,1]  # Nadir view is in element one
@@ -374,6 +383,18 @@ def SetRTM(UVS, ia, iacr, ACM3D=None, AMACD=None, ACMCOM=None, ACMRT=None, BMAFL
     # First some general input
     UVS.inp['data_files_path']=data_dir
 
+    # BG: number of photon-packets injected
+    # mc_photons = '100'        # 1e2
+    # mc_photons = '1000'       # 1e3
+    mc_photons = '10000'      # 1e4
+    # mc_photons = '100000'     # 1e5
+    # mc_photons = '1000000'    # 1e6
+    # mc_photons = '10000000'   # 1e7
+    # mc_photons = '25'
+    # mc_photons = '100'
+    # mc_photons = '400'
+    # mc_photons = '1'
+        
     if RTdimension == '3D':       
         if UVS.inp['rte_solver'] != 'montecarlo':
             print('3D geometry only available with MYSTIC. You specified:', UVS.inp['rte_solver'])
@@ -385,18 +406,14 @@ def SetRTM(UVS, ia, iacr, ACM3D=None, AMACD=None, ACMCOM=None, ACMRT=None, BMAFL
         UVS.inp['mc_basename']=UVS.mc_basename
         # ESO: set randomseed explicitly (for error checking and debugging)
         UVS.inp['mc_randomseed'] = (ia+1)*72341//11
-        
-
         if RTdimension == '3D':  
-            
+            UVS.inp['mc_photons'] = mc_photons
+            # UVS.inp['mc_photons']='5'    
+            # UVS.inp['mc_photons']='25'     
+            # UVS.inp['mc_photons']='100'
+            # UVS.inp['mc_photons']='400'
+            # UVS.inp['mc_photons']='1600'
             Nx, Ny, iacrosses, ialongs = Calc3DBufferSize(ACM3D, ia)  #calculates along and cross track buffer size 
-            # UVS.inp['mc_photons'] = mc_photons * Nx * Ny  # Scale photons with size of 3D domain
-            ############## TESTING #############
-            # Set SAMPLE-GRID
-            UVS.inp['mc_sample_grid']=f'{Nx} {Ny}' # 3D computation domain
-            UVS.inp['mc_reference_to_nn']='' # The sampled pixels correspond to the surface pixels.
-            ####################################
-
             if (Nx > 1) & (Ny > 1):  # BG: if not MCIPA
                 # Check if latitude increase or decrease
                 is_increasing = np.all(np.diff(ACM3D.latitude[:, ia]) > 0)
@@ -440,51 +457,21 @@ def SetRTM(UVS, ia, iacr, ACM3D=None, AMACD=None, ACMCOM=None, ACMRT=None, BMAFL
             UVS.inp['mc_photons'] = '1000'
 
         
-            # UVS.inp['pseudospherical']=''
+    #    UVS.inp['pseudospherical']=''
     UVS.inp['mol_abs_param']=mol_abs_param
     UVS.inp['source']=source
-
-    UVS.inp['output_process']='sum'
-    if 'AllLevels' in additional_spesifications: UVS.inp['zout']='atm_levels'
-    else: UVS.inp['zout']='TOA'
-    UVS.inp['output_user']='sza zout edir eup'
-    UVS.inp['quiet']=''
-
-
     if source=='thermal':
         UVS.inp['wavelength']='4500 100000'   
-        if 'AllLevels' not in additional_spesifications:
-            UVS.inp['mc_backward']=''
-            UVS.inp['mc_backward_output']='eup'
-            mc_photons = int(1e4)
-        else:
-            mc_photons = int(1e2)
-        UVS.inp['mc_photons']=mc_photons 
-        UVS.inp['mc_minphotons']=mc_photons # Note: MC_MINPHOTONS = 1e3 in uvspec.h so need to modify!
-        ####### INFO 21 x 21 grid ################
-        # 1e3 -> 4min per thermal pixel +- 0.4 W/m2   
-        # 1e2 -> 1min per thermal pixel +- 1.3 W/m2       
-        ##########################################
+        UVS.inp['mc_backward']=''
+        UVS.inp['mc_backward_output']='eup'
     else:
-        UVS.inp['wavelength']='250 4000'    # Changes made!
-        mc_photons = int(1e7)
-        if 'AllLevels' in additional_spesifications: mc_photons = int(1e6) #int(1e7) -> way too long time!
-        UVS.inp['mc_photons']=mc_photons 
-        ####### INFO 21 x 21 grid ################
-        # 1e7 -> 2.5min per solar pixel +-  5 W/m2   
-        # 1e6 -> 0.5min per solar pixel +- 15 W/m2       
-        ##########################################
+        UVS.inp['wavelength']='300 4000'    
 
-        # BG Note:
-        # Tried to use 1e8 solar and 1e3 thermal photons for 41x41 grid -> took 1 hour for 1 solar and 1 thermal pixel. Too much! 
-        
-                                        ######### Question! ##############################
-                                        # MYSTIC in solar do not allow for backward mode?
-                                            # UVS.inp['mc_backward']=''  # NEW!!
-                                            # UVS.inp['mc_backward_output']='eup' # NEW!!
-                                        ##################################################
-    
-
+    UVS.inp['output_process']='sum'
+    # UVS.inp['zout']='TOA'
+    UVS.inp['zout']='atm_levels'
+    UVS.inp['output_user']='sza zout edir eup'
+    UVS.inp['quiet']=''
     # ---- Calculate Date -> day_of_year ---- (changes made 14.11.2025)
     ProductFile = os.path.basename(ACMCOM.fn)
     date_num = '20' + ProductFile.split('20', 1)[1].split('T', 1)[0] # Extract Date from ProductFile
@@ -539,6 +526,7 @@ def SetRTM(UVS, ia, iacr, ACM3D=None, AMACD=None, ACMCOM=None, ACMRT=None, BMAFL
                     # print("     surface temperature: ", ACMCOM.surface_temperature[iacr,ia]) 
                     # print("last_T = ", last_T)
                     # print("last_p = ", last_p)
+   
 
     # Add surface at 0 km altitude if not included in profile
     if np.abs(last_h) > 0.0001 and RTdimension == '3D':
@@ -645,11 +633,13 @@ def SetRTM(UVS, ia, iacr, ACM3D=None, AMACD=None, ACMCOM=None, ACMRT=None, BMAFL
             if iwc==0: UVS.status = 'No wc data for latitude: {:d} {:f}'.format(ia, ACMCOM.latitude_active[ia])
 
         elif RTdimension == '3D':       
-                # ialong=0
-                # iacross=0     
-                # Write mystic wc_file, see libRadtran documentation for file format
-                # Nxwc3D=Nx
-                # Nywc3D=Ny
+
+            ialong=0
+            iacross=0
+                    
+            # Write mystic wc_file, see libRadtran documentation for file format
+            Nxwc3D=Nx
+            Nywc3D=Ny
             iz=0
             last_h=99999
             for h,p in zip(ACMCOM.height_level[1:,ia],ACMCOM.pressure_level[1:,ia]):
@@ -660,7 +650,7 @@ def SetRTM(UVS, ia, iacr, ACM3D=None, AMACD=None, ACMCOM=None, ACMRT=None, BMAFL
 
             if np.abs(last_h) > 1e-4 and last_p < 1e+10:
                 iz=iz+1
-
+                
             Nz = iz-1 #ACMCOM.height_level[1:,ia].shape[0]
             flag = 3 # mystic 3D format
             dx = 1.0 # 1 km horizontal resolution
@@ -687,26 +677,14 @@ def SetRTM(UVS, ia, iacr, ACM3D=None, AMACD=None, ACMCOM=None, ACMRT=None, BMAFL
                     iz=iz+1
                 
             f.write('\n')
+
+
             ix=1
             wclines=0
             for iac in iacrosses:
-                iy=1 
+                iy=1
                 for ial in ialongs:
-                    # ############## TEST EDGE EFFECTS ####################
-                    # if '_TEST_edge_effects' in additional_spesifications:
-                    #     if (ix <= edge_buffer) or (ix > Nx - edge_buffer) or (iy <= edge_buffer) or (iy > Ny - edge_buffer):
-                    #         iy=iy+1                   
-                    #         continue
-                    # ####################################################
-
-
                     irec = ACM3D.index_construction[iac, ial]
-
-                    ################################ TESTING ###########################
-                    # irec = ial
-                    ###################################################################
-
-
                     # BG: modification for reduced swat-length
                     if "Orbit_05926C" in SceneName:   irec -= 2700 
                     elif "Orbit_06888C" in SceneName: irec -= 2527 
@@ -717,18 +695,10 @@ def SetRTM(UVS, ia, iacr, ACM3D=None, AMACD=None, ACMCOM=None, ACMRT=None, BMAFL
 
                     hl = ACMCOM.height_level[2:,irec]; hl = hl[::-1]
                     pl = ACMCOM.pressure_level[2:,irec]; pl = pl[::-1]
-                    lwc = ACMCOM.liquid_water_content[1:,irec]; lwc = lwc[::-1]   #ignore the top levels (0=67km,1=62,...3=52km)
-                    reff = ACMCOM.liquid_effective_radius[1:,irec]; reff = reff[::-1]
+                    lwc = ACMCOM.liquid_water_content[3:,irec]; lwc = lwc[::-1]   #ignore the top levels (0=67km,1=62,...3=52km)
+                    reff = ACMCOM.liquid_effective_radius[3:,irec]; reff = reff[::-1]
                     
-                    ############################### TESTING ################################
-                    # if np.any((hl > -1e-4) & (pl < 1e10) & (lwc > 0.0)):
-                    #     print(f"----------------------- Cloudy (liq) pixel {iac}, {ial} ----------- irec = {irec}---------------------\n")
-                    # else: 
-                    #     print(f"-----------------------  Clear (liq) pixel {iac}, {ial} ----------- irec = {irec}---------------------\n")
-                    #########################################################################
-
-
-
+                    
                     # BG: made changes
                     # - iz += 1 for each realistic h > 0 measurement by EarthCARE
                     # - previosly iz += 1 only for realistic h > 0 and wc > 0 (this was the error)
@@ -737,15 +707,7 @@ def SetRTM(UVS, ia, iacr, ACM3D=None, AMACD=None, ACMCOM=None, ACMRT=None, BMAFL
                             if wc>0.0:
                                 if wcreff > 25: wcreff=25.0
                                 elif wcreff < 1.0: wcreff=1.0
-
-                                if ('_TEST_edge_effects' in additional_spesifications) and (
-                                    (ix <= edge_buffer) or (ix > Nx - edge_buffer) or
-                                    (iy <= edge_buffer) or (iy > Ny - edge_buffer)
-                                ):
-                                    # Edge effect test: set wc = 0 in edge buffer zone
-                                    f.write('{:d} {:d} {:d} {:f} {:f}\n'.format(ix, iy, iz, 0.0, wcreff))
-                                else:
-                                    f.write('{:d} {:d} {:d} {:f} {:f}\n'.format(ix, iy, iz, wc, wcreff))
+                                f.write('{:d} {:d} {:d} {:f} {:f}\n'.format(ix, iy, iz, wc, wcreff))
                                     # BG: Explenation:
                                     # -This gets wrtitten if lwc > 0 at altitude h > 0
                                     # if lwv = 0 -> default line at 605 is written to file
@@ -807,12 +769,14 @@ def SetRTM(UVS, ia, iacr, ACM3D=None, AMACD=None, ACMCOM=None, ACMRT=None, BMAFL
             if iic==0: UVS.status = 'No ic data for latitude: {:d} {:f}'.format(ia, ACMCOM.latitude_active[ia])
 
         elif RTdimension == '3D':       
-                # ialong=0
-                # iacross=0
-                # Nx, Ny, iacrosses, ialongs = Calc3DBufferSize(ACM3D, ia)
-                # Write mystic wc_file, see libRadtran documentation for file format
-                # Nxic3D=Nx
-                # Nyic3D=Ny
+            ialong=0
+            iacross=0
+
+            # Nx, Ny, iacrosses, ialongs = Calc3DBufferSize(ACM3D, ia)
+            
+            # Write mystic wc_file, see libRadtran documentation for file format
+            Nxwc3D=Nx
+            Nywc3D=Ny
             iz=0
             last_h=99999
             for h,p in zip(ACMCOM.height_level[1:,ia],ACMCOM.pressure_level[1:,ia]):
@@ -823,7 +787,7 @@ def SetRTM(UVS, ia, iacr, ACM3D=None, AMACD=None, ACMCOM=None, ACMRT=None, BMAFL
 
             if np.abs(last_h) > 1e-4 and last_p < 1e+10:
                 iz=iz+1
-    
+                
             Nz = iz-1 #ACMCOM.height_level[1:,ia].shape[0]
             flag = 3
             dx = 1.0 # 1 km horizontal resolution
@@ -849,27 +813,14 @@ def SetRTM(UVS, ia, iacr, ACM3D=None, AMACD=None, ACMCOM=None, ACMRT=None, BMAFL
                     f.write('{:8.3f} '.format(np.abs(h/1000)) )
                     iz=iz+1                
             f.write('\n')
-             
+                
             ix=1
             iclines=0
+            
             for iac in iacrosses:
-                iy=1 #if not '_TEST_edge_effects' in additional_spesifications else iy_test
+                iy=1
                 for ial in ialongs:
-                    # ############## TEST EDGE EFFECTS ####################
-                    # if '_TEST_edge_effects' in additional_spesifications:
-                    #     if (ix <= edge_buffer) or (ix > Nx - edge_buffer) or (iy <= edge_buffer) or (iy > Ny - edge_buffer):
-                    #         iy=iy+1
-                    #         continue
-                    # ####################################################
-
-
                     irec = ACM3D.index_construction[iac, ial]
-
-                    ################################ TESTING ###########################
-                    # irec = ial
-                    ###################################################################
-
-
                     # BG: modification for reduced swat-length
                     if "Orbit_05926C" in SceneName:   irec -= 2700 
                     elif "Orbit_06888C" in SceneName: irec -= 2527 
@@ -880,18 +831,11 @@ def SetRTM(UVS, ia, iacr, ACM3D=None, AMACD=None, ACMCOM=None, ACMRT=None, BMAFL
 
                     hl = ACMCOM.height_level[2:,irec]; hl = hl[::-1]
                     pl = ACMCOM.pressure_level[2:,irec]; pl = pl[::-1]
-                    iwc = ACMCOM.ice_water_content[1:,irec]; iwc = iwc[::-1]           
-                    reff=ACMCOM.ice_effective_radius[1:,irec]; reff = reff[::-1]      
-
-
-                    ############################### TESTING ################################
-                    # if np.any((hl > -1e-4) & (pl < 1e10) & (iwc > 0.0)):
-                    #     print(f"----------------------- Cloudy (ice) pixel {iac}, {ial} ----------- irec = {irec}---------------------\n")
-                    # else: 
-                    #     print(f"-----------------------  Clear (ice) pixel {iac}, {ial} ----------- irec = {irec}---------------------\n")
-                    #########################################################################
+                    iwc = ACMCOM.ice_water_content[3:,irec]; iwc = iwc[::-1]           
+                    reff=ACMCOM.ice_effective_radius[3:,irec]; reff = reff[::-1]      
                 
-                    # BG: made changes (same as for if wcloud)
+                
+                # BG: made changes (same as for if wcloud)
                     for h,p,ic,icreff in zip(hl, pl, iwc, reff):
                         if h > -1e-4 and p < 1e+10:
                             if ic>0.0 and iz < Nz and not np.isinf(ic):
@@ -899,16 +843,9 @@ def SetRTM(UVS, ia, iacr, ACM3D=None, AMACD=None, ACMCOM=None, ACMRT=None, BMAFL
                                 # baum_v36 for these numbers                            
                                 if icreff > 60: icreff=60.0
                                 elif icreff < 5.0: icreff=5.0
-
-                                if ('_TEST_edge_effects' in additional_spesifications) and (
-                                    (ix <= edge_buffer) or (ix > Nx - edge_buffer) or
-                                    (iy <= edge_buffer) or (iy > Ny - edge_buffer)
-                                ):
-                                    # Edge effect test: set ic = 0 in edge buffer zone
-                                    f.write('{:d} {:d} {:d} {:f} {:f}\n'.format(ix, iy, iz, 0.0, icreff))
-                                else:
-                                    f.write('{:d} {:d} {:d} {:f} {:f}\n'.format(ix, iy, iz, ic, icreff))
+                                f.write('{:d} {:d} {:d} {:f} {:f}\n'.format(ix, iy, iz, ic, icreff))
                                 iclines=iclines+1
+
                             iz=iz+1 # BG: my placement
                     iy=iy+1
                 ix=ix+1
@@ -1325,7 +1262,7 @@ def SetRTM(UVS, ia, iacr, ACM3D=None, AMACD=None, ACMCOM=None, ACMRT=None, BMAFL
 
     # Solar geometry
     # Set solar geometry here to make sure azimuth shift due to 3D geometry is included
-    UVS.inp['sza']= sza[0]
+    UVS.inp['sza']=sza[0]
     UVS.inp['phi0']=phi0  # Azimuth is only needed for 3D, but it does not hurt for 1D.
 
 
@@ -1367,17 +1304,22 @@ if __name__ == "__main__":
         start_time = datetime.now(timezone.utc) 
         print("Run started at", start_time.isoformat())
             
-    idx_source = 0
+    idx_source = 2
     sources = [['solar'], 
               ['thermal'],
               ['solar', 'thermal']][idx_source] 
 
+    idx_scene = [5,8,12]
+    # idx_scene = [4,5,6]
+    # idx_scene = [7,8,11]
+    # idx_scene = [3,4,5,6,7,8]
+    # idx_scene =[3,4,5,6,7,8, 11]
     idx_scene = [3]
-                                            ############# OLD ########################################################################
-    SceneNames = [                          ['Orbit_05378D'],#0           # Marocco - Norway           
-                                            ['Orbit_05458F'],             # Chile
-                                            ['Orbit_05926C'],             # Old Greenland (13.06.2026)
-                                            ##############################################################################################
+                        ################# OLD ########################################################################
+    SceneNames = [      ['Orbit_05378D'],#0           # Marocco - Norway           
+                        ['Orbit_05458F'],             # Chile
+                        ['Orbit_05926C'],             # Old Greenland (13.06.2026)
+                        ##############################################################################################
 
                   ['Orbit_06888C'],#3           # Svalbard (14.08.2025)     
                   ['Orbit_07277C'],             # Svalbard (08.09.2025)
@@ -1388,8 +1330,8 @@ if __name__ == "__main__":
                   ['Orbit_06497E'],#7           # Africa (20.07.2025)                            
                   ['Orbit_06886E'],             # Africa (14.08.2025)                             
 
-                                            ['Orbit_06600C'],#9           # Greenland (27.07.2025)          
-                                            ['Orbit_06662C'],             # Greenland (31.07.2025)   
+                  ['Orbit_06600C'],#9           # Greenland (27.07.2025)          
+                  ['Orbit_06662C'],             # Greenland (31.07.2025)   
 
                   ['Orbit_06331C'],#11          # Greenland (09.07.2025)       
 
@@ -1403,41 +1345,65 @@ if __name__ == "__main__":
     Test    = False
     want_ps = False      # BG: if want DISORT pseudospherical 
     verbose = False
-    want_3D = False       # BG: if want MYSTIC
-
-    
-
-
-    which_buffer = 2
-        # 0: MCIPA   1:Test   2: 21x21   3: 41x41 
-
-    Nx, Ny = 1, 1 # Default Horizontal Computaion-Domain Size 
-    if want_3D:                                                                                             # min / pixel   |     solar-std     |     thermal-std  
-        if   which_buffer == 0 :                  buffer_str = 'MCIPA'
-        elif which_buffer == 1 : Nx, Ny =  5,  5; buffer_str = 'TEST   Buffer (5 x 5)'                      #   1.5         |                   |
-        elif which_buffer == 2 : Nx, Ny = 21, 21; buffer_str = '~BBR +  5 pixels-buffer  (21 x 21)'         #    4          |       ~5-8        |       ~0.5-2
-        elif which_buffer == 3 : Nx, Ny = 41, 41; buffer_str = '~BBR + 35 pixels-buffer  (41 x 41)'         #    5          |       ~17         |       ~1.6
+    want_3D = True       # BG: if want MYSTIC
+                            
+    which_buffer = 4
+        # 0: MCIPA   1:Mini   2: Small   3: Medium   4: Large (Full)   5: Mega   6: Giga
+   
+    if want_3D: 
+        if   which_buffer == 0 : buffer_str = 'MCIPA'
+        elif which_buffer == 1 : buffer_str = 'Mini   Buffer (5 x 5)'
+        elif which_buffer == 2 : buffer_str = 'Small  Buffer (13 x 13)'
+        elif which_buffer == 3 : buffer_str = 'Medium Buffer (17 x 17)'
+        elif which_buffer == 4 : buffer_str = 'Large  Buffer (25 x 21)'
+        elif which_buffer == 5 : buffer_str = 'Mega   Buffer (31 x 31)'
+        elif which_buffer == 6 : buffer_str = 'Giga   Buffer (41 x 41)'
     else:                             buffer_str = ''
-
+    ######### OLD: # want_small_buffer = True    # Use this if want faster execution without much loss of 3D effects ##############
     
-
     # BG: To distinguish minor modifications to .nc files
     additional_spesifications = '' 
     # additional_spesifications += '_TEST'
-
-            # New mc_sample_grid
-    # additional_spesifications += '_TEST_5x5'
-    # additional_spesifications += '_TEST_21x21'
-    # additional_spesifications += '_21x21'
-
-            # All_levels New mc_sample_grid
-    # additional_spesifications += '_AllLevels_TEST'
-    additional_spesifications += '_AllLevels'
-    # additional_spesifications += '_AllLevels_TEST_5x5'
-    # additional_spesifications += '_AllLevels_TEST_21x21'        # SW 1e5: 1.4min/pixel +- 20W/m2       1e6: 2.3min/pixel +-5-8W/m2         1e7: NOT POSIBLE! WAY TOO LONG! min/pixel +-W/m2
-
-
-            
+            # Aerosol-Versions
+    # additional_spesifications += '_AOD(dynamic0.3)'
+    # additional_spesifications += '_AOD(dynamic0.2)'
+    # additional_spesifications += '_AOD(default)'
+    # additional_spesifications += '_AOD(alpha0.8)'
+    # additional_spesifications += '_AOD(alpha0.5)'
+    # additional_spesifications += '_AOD(alpha0.3)'
+    # additional_spesifications += '_AOD(alpha0.2)'
+            # Ice-Habits
+    # additional_spesifications += '_GHM'
+    # additional_spesifications += '_SC'
+    # additional_spesifications += '_RA'
+            # mc_photons
+    # additional_spesifications += '_GHM_mc1'
+    # additional_spesifications += '_GHM_mc5'
+    # additional_spesifications += '_GHM_mc25'
+    # additional_spesifications += '_GHM_mc1e2'
+    # additional_spesifications += '_GHM_mc1e3'
+    # additional_spesifications += '_GHM_mc1e4'
+    # additional_spesifications += '_GHM_mc1e5'
+    # additional_spesifications += '_GHM_mc1e6'
+    # additional_spesifications += '_GHM_mc1e7'
+            # All points 
+    # additional_spesifications += '_All_MCIPA'
+    # additional_spesifications += '_All_MiniBuffer'
+    # additional_spesifications += '_All_SmallBuffer'
+    # additional_spesifications += '_All_MediumBuffer'
+    # additional_spesifications += '_All_FullBuffer'
+    # additional_spesifications += '_All_MegaBuffer'
+    # additional_spesifications += '_All_GigaBuffer'
+    # additional_spesifications += '_All'
+            # 3D-Cloud impact
+    # additional_spesifications += '_wc'           # INFO: large-buffer
+    # additional_spesifications += '_wc_test_atm_0'
+            # NEW-Surface-Version
+    # additional_spesifications += '_wc_test_new_3D_surface'
+    # additional_spesifications += '_All_FullBuffer_test_new_3D_surface'
+    # additional_spesifications += '_TEST_old_thermal_range'
+    # additional_spesifications += '_TEST_new_thermal_range'
+    additional_spesifications += '_all_levels'
 
 
     surface = True      # BG: = False -> default albedo = 0     
@@ -1569,21 +1535,14 @@ if __name__ == "__main__":
         #                                                                                             data file/path includes "libRad" in the name
         #                                                                                             (Or "StandaResolution" is record in ntcdf-file)
                                                                                                 
-
-              
+       
+        
+       
+        shape = (ACMCOM.latitude_active.shape[0], ACMCOM.height_level.shape[0])
+        print('shape ' , shape)
         SceneNamelibRad='libRad'
         libRad = ReadEC.Scene(Name=SceneNamelibRad, verbose=verbose)    
         libRad.latitude_active = ACMCOM.latitude_active                 #tms: ACM_COM has a paramter called latitude_active (latitude under active sensor)
-        if 'montecarlo' in rte_solver:
-            shape = (libRad.latitude_active.shape[0], Nx, Ny)
-            if 'AllLevels' in additional_spesifications:
-                shape = (ACMCOM.latitude_active.shape[0], ACMCOM.height_level.shape[0], Nx, Ny)
-        else: 
-            shape = libRad.latitude_active.shape
-            if 'AllLevels' in additional_spesifications:
-                shape = (ACMCOM.latitude_active.shape[0], ACMCOM.height_level.shape[0])
-
-        # print(shape)
         libRad.solar_eup = np.zeros(shape)       
         libRad.solar_eup_std = np.zeros(shape)
         libRad.thermal_eup = np.zeros(shape)
@@ -1591,65 +1550,39 @@ if __name__ == "__main__":
 
 
 
-
         # --------------------------- Domain for full / test run ------------------------------------------------   
         # Loop over all along_track indices and do RT for each
         start = 150
         end = ACMCOM.latitude_active.shape[0] - 150 # BG: subtract 150 to not get index out of grid
+            
 
+        if 'all_levels' in additional_spesifications:
+            lat = ACMCOM.latitude_active
+            if SceneName == 'Orbit_07883D': # Africa
+                target_start_lat, target_end_lat = 5, 5
+            elif SceneName == 'Orbit_06888C': # USA
+                target_start_lat, target_end_lat = 74,75.5
+           
 
-        # if 'AllLevels' in additional_spesifications:
-        #     lat = ACMCOM.latitude_active
-        #     if SceneName == 'Orbit_07883D': #
-        #         target_start_lat, target_end_lat = 56, 58.5  # 56, 60   # -> 400+ pixels
-        #     elif SceneName == 'Orbit_06888C': # 
-        #         target_start_lat, target_end_lat = 74,75.5
-        #     elif SceneName == 'Orbit_06497E': # Africa
-        #         target_start_lat, target_end_lat = 3, 5
-        #     elif SceneName == 'Orbit_06518D': # USA
-        #         target_start_lat, target_end_lat = 40,42
-        #     elif SceneName == 'Orbit_06331C': # USA
-        #         target_start_lat, target_end_lat = 76,78
+            start, end = int(np.nanargmin(np.abs(lat - target_start_lat))),  int(np.nanargmin(np.abs(lat - target_end_lat)))
+            if start > end: tmp = start; start = end; end = tmp
+            # print(f'Latitudes            = {ACMCOM.latitude_active[start]:.2f} -> {ACMCOM.latitude_active[end]:.2f}')
 
-        #     start, end = int(np.nanargmin(np.abs(lat - target_start_lat))),  int(np.nanargmin(np.abs(lat - target_end_lat)))
-        #     if start > end: tmp = start; start = end; end = tmp
-        #     print(f'Latitudes            = {ACMCOM.latitude_active[start]:.2f} -> {ACMCOM.latitude_active[end]:.2f}')
-
-        
-
-        
 
 
         if Test == False:
             ialongs = (
                 list(range(start, end, 1)) # BG: change 10 -> 1 if want all pixels
             )
-
-            # if 'AllLevels' in additional_spesifications:
-            #     ialongs = list(range(end, end + 200, 2))
-
         else: 
             # ialongs = [int(end/2)] #[300, 600, 900, 1200] #[1000, 2000, 3000, 4000]
     
-            target_lat = 5.01
+            target_lat = 70
             target_idx = int(np.nanargmin(np.abs(ACMCOM.latitude_active - target_lat)))
-            target_idx = 1500
-            # target_idx = start + 1000
             ialongs = [target_idx]
-            # ialongs = list(range(target_idx, target_idx + 5, 1))
-            print(f'Latitude             = {ACMCOM.latitude_active[target_idx]:.2f}   ia={target_idx}')
-
-            ########## TESTING: 
-            indlatBMAFLX = np.unravel_index(np.argmin(np.abs(BMAFLX.latitude - ACMCOM.latitude_active[target_idx]), axis=None), BMAFLX.latitude.shape)
-            BMAFLX_solar_eup = BMAFLX.solar_combined_top_of_atmosphere_flux[indlatBMAFLX]  # Nadir view is in element one
-            BMAFLX_thermal_eup = BMAFLX.thermal_combined_top_of_atmosphere_flux[indlatBMAFLX]  # Nadir view is in element one
-            print(f"BMAFLX_solar_eup   ia={target_idx} = {BMAFLX_solar_eup:.2f} W/m2")
-            print(f"BMAFLX_thermal_eup ia={target_idx} = {BMAFLX_thermal_eup:.2f} W/m2")
-        
+            print(target_idx)
+            print(f'Latitude            = {ACMCOM.latitude_active[target_idx]:.2f}')
         # ----------------------------------------------------------------------------------------------------------
-       
-
-
 
 
 
@@ -1664,7 +1597,7 @@ if __name__ == "__main__":
             if np_mpi == 1:
                 task_index = 0
                 master_only_proc=True
-                # print("master_only_proc", master_only_proc)
+                print("master_only_proc", master_only_proc)
             else: 
                 # Master process
                 task_index = 0
@@ -1690,25 +1623,14 @@ if __name__ == "__main__":
                     # print(f"[MASTER] Received data from rank {status.Get_source()}: {data}")
                     sourceMPI = status.Get_source()
                     idx, r1, r2, r3, r4 = data
-                    if rte_solver == "montecarlo":
-                        if 'AllLevels' in additional_spesifications:
-                            # nlev = r1.shape[-1]
-                            # idx = (idx, slice(None), slice(None), slice(None, nlev))
-                            nlev = r1.shape[0]
-                            idx = (idx, slice(None, nlev), slice(None), slice(None))
-                        else: 
-                            idx = (idx, slice(None), slice(None))
-                    else:
-                        if 'AllLevels' in additional_spesifications:
-                            nlev = r1.shape[0]
-                            idx = (idx, slice(None, nlev))
-                        else:
-                            idx = idx
 
-                    libRad.solar_eup[idx] = r1
-                    libRad.solar_eup_std[idx] = r2
-                    libRad.thermal_eup[idx] = r3
-                    libRad.thermal_eup_std[idx] = r4                
+                    # print(f"shape r1: {r1.shape}")
+                    nlev = r1.shape[0]
+                    libRad.solar_eup[idx, :nlev]       = r1
+                    libRad.solar_eup_std[idx, :nlev]   = r2
+                    libRad.thermal_eup[idx, :nlev]     = r3
+                    libRad.thermal_eup_std[idx, :nlev] = r4
+                                
 
                     if task_index < num_tasks:
                         # print(f"[MASTER] Sending new task {task_index} to rank {sourceMPI}")
@@ -1751,7 +1673,7 @@ if __name__ == "__main__":
         #     if inum % np_mpi != my_rank:
         #         continue
             # print("ia", ia)
-                # print("     Process {} started calculating ia={}".format(my_rank, ia))
+                print("     Process {} started calculating ia={}".format(my_rank, ia))
                 latitude_wanted = ACMCOM.latitude_active[ia]
                 indlatBMAFLX = np.unravel_index(np.argmin(np.abs(BMAFLX.latitude - latitude_wanted), axis=None), BMAFLX.latitude.shape)
                 BMAFLX.indlatBMAFLX=indlatBMAFLX
@@ -1765,9 +1687,6 @@ if __name__ == "__main__":
                 eup_thermal_std = np.nan
                 # ----------------------
                 
-                # BG: try to rather set to nan above!
-                # zout=edir_solar=eup_solar=eup_solar_std=0.0
-                # edir_thermal=eup_thermal=eup_thermal_std=0.0
 
                 BufferOK = Check3DBufferSize(ACM3D, ia)
                 if not BufferOK:
@@ -1814,66 +1733,50 @@ if __name__ == "__main__":
                                     except Exception as e:
                                         print(f"[WORKER {my_rank}] Exception in SingleRun for ia={ia}, source={source}: {e}")
 
-
                                     if UVS.inp['rte_solver']=='montecarlo':
                                         # mc_flx, eup_std = UVspec.ReadMCOut(UVS.mc_basename+'_'+source, mol_abs_param=mol_abs_param) #fn = fn + '.flx.spc'
                                         # ESO: "source" added twice?
                                         # mc_flx, eup_std = UVspec.ReadMCOut(UVS.mc_basename, mol_abs_param=mol_abs_param) #fn = fn + '.flx.spc'  
                                         try:
                                             mc_flx, eup_std = UVspec.ReadMCOut(UVS.mc_basename, mol_abs_param=mol_abs_param) #fn = fn + '.flx.spc'  
-                                            if 'AllLevels' in additional_spesifications: 
-                                                nlev = int(len(mc_flx)/(Nx*Ny))
-                                                # print(mc_flx)
-                                                # print(nlev)
-                                                # mc_flx = mc_flx.reshape(Nx, Ny, nlev)
-                                                # eup_std = eup_std.reshape(Nx, Ny, nlev)
-                                                # TEST NEW SETUP:
-                                                mc_flx = mc_flx.reshape(nlev, Nx, Ny)
-                                                eup_std = eup_std.reshape(nlev, Nx, Ny)
-                                                # print(mc_flx)
-                                                # print(mc_flx.shape)
-                        
-                                            else:
-                                                mc_flx = mc_flx.reshape(Nx, Ny)
-                                                eup_std = eup_std.reshape(Nx, Ny)
-                                              
+                                            # print(f"[WORKER {my_rank}] Finished ReadMCOut for ia={ia}, source={source}")
                                         except (FileNotFoundError, ValueError) as e:
-                                            print(Nx,Ny, mc_flx.shape)
                                             print(f"[WORKER {my_rank}] WARNING: Could not read MC output for ia={ia}, source={source}. Skipping. Error: {e}")
                                             continue  # Go to the next iteration
-                                     
+
+
                                         if source=='solar':
-                                            eup_solar_std=eup_std     
-                                            eup_solar=mc_flx       
+                                            eup_solar_std=eup_std
                                         elif source=='thermal':
                                             eup_thermal_std=eup_std
-                                            eup_thermal=mc_flx 
 
-                              
+                                    # print(f'[WORKER {my_rank}] Still here')
+                                    #print('Tove:', uvspecOutputFile)
+                                    # ESO: Debugging
                                     try:
                                         # print(f"[WORKER {my_rank}] Starting ReadRTOut for ia={ia}, source={source}")
-
                                         sza, zout, edir, eup = UVspec.ReadRTOut(uvspecOutputFile, mol_abs_param=mol_abs_param)
-                                        # print('eup = ', eup)
                                         # print(f"[WORKER {my_rank}] Finished ReadRTOut for ia={ia}, source={source}")
-                                        # if UVS.inp['rte_solver']=='montecarlo':
-                                        #     print(f"                             \n\n ia={ia:4} {source:8}      eup={eup:8.2f}+-{eup_std:4.2f}   \n\n")
-                                        # else:
-                                        #     print(f"                                            [WORKER {my_rank:2}] ia={ia:4}, {source:8}, zout={zout:.1f}, eup={eup:8.2f}")
+                                        if UVS.inp['rte_solver']=='montecarlo':
+                                            print(f"[WORKER {my_rank:2}] ia={ia:4}, {source:8} \n"
+                                                  f"zout={zout} \neup={eup}")
+                                
                                     except ValueError as e:
                                         print("Error [WORKER {}]: could not read file {} with mol_abs_param {}".
                                             format(my_rank, uvspecOutputFile, mol_abs_param))
                                         print(f"Error [WORKER {my_rank}]: ", e)
                                         # pdb.set_trace()
-
-                                    if UVS.inp['rte_solver']!='montecarlo':
-                                        if source=='solar':
-                                            eup_solar=eup
-                                            edir_solar=edir
-                                        elif source=='thermal':
-                                            eup_thermal=eup
+                                    
 
                         
+
+
+                                    if source=='solar':
+                                        eup_solar=eup
+                                        edir_solar=edir
+                                    elif source=='thermal':
+                                        eup_thermal=eup
+
                                     if RTdimension == '3D':
                                         # Remove albedo files, otherwise far too many (hundred of thousands) files are in the folder
                                         if surface: UVS.removefiles( UVS.inp['mc_albedo_type'])
@@ -1893,50 +1796,37 @@ if __name__ == "__main__":
                                 zout=edir_solar=eup_solar=eup_solar_std=0.0
                                 edir_thermal=eup_thermal=eup_thermal_std=0.0
 
-                            if UVS.inp['rte_solver']=='montecarlo':
-                                print(
-                                        f"--------------------------- ia={ia} --------------------------\n"
-                                        # f"   mc_flx ({source}) =\n {mc_flx if 'montecarlo' in rte_solver else eup}\n\n"
-                                        f"  Mean flux ({source}) +- std = {np.mean(mc_flx):.2f} +- {np.mean(eup_std):.2f}\n"
-                                        "--------------------------------------------------------------\n"
-                                    )
-                            else: 
-                                print(
-                                    f"--------------------------- ia={ia} --------------------------\n"
-                                        # f"   mc_flx ({source}) =\n {mc_flx if 'montecarlo' in rte_solver else eup}\n\n"
-                                        f"  Mean flux ({source}) +- std = {np.mean(eup):.2f}\n"
-                                        "--------------------------------------------------------------\n"
-                                    )
+
+
                             if rte_solver=='montecarlo':
                                 if verbose: print(" |--------- OUT", rte_solver, RTdimension, ia, source, latitude_wanted, eup, "---------|\n\n")  # BG: print statemnt
-                                ### Removed 09.01.2026 ###### BG: is these neassesary???? ######
-                                # libRad.solar_eup_std[ia] = eup_solar_std
-                                # libRad.thermal_eup_std[ia] = eup_thermal_std
-                                ########################################
+                                libRad.solar_eup_std[ia,:len(zout)] = eup_solar_std
+                                libRad.thermal_eup_std[ia,:len(zout)] = eup_thermal_std
                             else:
                                 # print('OUT', ia, source, latitude_wanted, sza, zout, edir_solar, eup_solar, eup_thermal)
                                 if verbose: print(" |--------- OUT", rte_solver, RTdimension, ia, source, latitude_wanted, eup, "---------|\n\n")   # BG: print statement
                         except Exception as e:
                             print(f"[WORKER {my_rank}] Unexpected exception for ia={ia}: {e}")
-                
 
-                ### Removed 09.01.2026 ###### BG: is these neassesary???? ######
-                # libRad.solar_eup[ia] = eup_solar
-                # libRad.thermal_eup[ia] = eup_thermal
-                #######################################
 
-                # ESO: Write the results to text file, to avoid redoing the whole simulation
-                # if the job is aborted.
-                if rte_solver=='montecarlo':
-                    if first_iter:
-                        first_iter=False
-                        file_mode= 'w'
-                    else:
-                        file_mode= 'a'
+                            
+                libRad.solar_eup[ia,:len(zout)] = eup_solar
+                libRad.thermal_eup[ia,:len(zout)] = eup_thermal
+
+                # # ESO: Write the results to text file, to avoid redoing the whole simulation
+                # # if the job is aborted.
+                # if rte_solver=='montecarlo':
+                #     if first_iter:
+                #         first_iter=False
+                #         file_mode= 'w'
+                #     else:
+                #         file_mode= 'a'
                         
-                    with open(os.path.join(RTOutNetcdfPath, SceneName + "-" +str(my_rank)),file_mode) as f:
-                        # BG: New
-                        f.write("{:6d} {} {} {} {}\n".format(ia, eup_solar, eup_solar_std, eup_thermal, eup_thermal_std))
+                #         # BG: Need to change this! I THINK!
+                #         # with open(os.path.join(RTOutNetcdfPath, SceneNames[0] + "-" +str(my_rank)),file_mode) as f:
+                #     with open(os.path.join(RTOutNetcdfPath, SceneName + "-" +str(my_rank)),file_mode) as f:
+                #         f.write("{:6d} {:12.5f} {:12.5f} {:12.5f} {:12.5f}\n".format(ia, eup_solar, eup_solar_std, eup_thermal, eup_thermal_std))
+
                 # Send results to root process, unless we run with 1 process
                 if my_rank > 0:
                     try:
@@ -1946,34 +1836,13 @@ if __name__ == "__main__":
                     except Exception as e:
                         print(f"[WORKER {my_rank}] Exception when sending results for ia={ia}: {e}")
                 elif master_only_proc:
-                    if rte_solver == "montecarlo":
-                        if 'AllLevels' in additional_spesifications:
-                            nlev = eup_solar.shape[0]
-                            idx = (ia, slice(None, nlev), slice(None), slice(None))
-                        else: 
-                            idx = (ia, slice(None), slice(None))
-                    else:
-                        if 'AllLevels' in additional_spesifications:
-                            nlev = eup_solar.shape[0]
-                            idx = (ia, slice(None, nlev))
-                        else:
-                            idx = ia
-
-                    libRad.solar_eup_std[idx]   = eup_solar_std
-                    libRad.thermal_eup_std[idx] = eup_thermal_std
-                    libRad.solar_eup[idx]       = eup_solar
-                    libRad.thermal_eup[idx]     = eup_thermal
-
-       
-                    # print(eup_solar[:, 2, 2])
-
+                    libRad.solar_eup_std[ia,:len(zout)] = eup_solar_std
+                    libRad.thermal_eup_std[ia,:len(zout)] = eup_thermal_std
+                    libRad.solar_eup[ia,:len(zout)] = eup_solar
+                    libRad.thermal_eup[ia,:len(zout)] = eup_thermal
                     task_index += 1
                     if task_index > len(ialongs) - 1:
                         break
-
-                    
-
-                    
                     
 
 
@@ -1994,17 +1863,8 @@ if __name__ == "__main__":
 
             # print("[MASTER] Writing NetCDF file...")
             src = ','.join([i for i in sources])
-            if rte_solver == "montecarlo":
-                if 'AllLevels' in additional_spesifications:
-                    libRad.WriteNetcdf_all_levels(RTOutNetcdfPath+'libRad_'+libRad_version+'_'+src+'_'+SceneName + additional_spesifications + '.nc', shape=(Nx,Ny))
-                else: 
-                    libRad.WriteNetcdf_mc_sample_grid(RTOutNetcdfPath+'libRad_'+libRad_version+'_'+src+'_'+SceneName + additional_spesifications + '.nc', shape=(Nx,Ny))
-            else:
-                if 'AllLevels' in additional_spesifications:
-                    libRad.WriteNetcdf_all_levels(RTOutNetcdfPath+'libRad_'+libRad_version+'_'+src+'_'+SceneName + additional_spesifications + '.nc')
-                else: 
-                    libRad.WriteNetcdf(RTOutNetcdfPath+'libRad_'+libRad_version+'_'+src+'_'+SceneName + additional_spesifications + '.nc')
-          
+            libRad.WriteNetcdf_all_levels(RTOutNetcdfPath+'libRad_'+libRad_version+'_'+src+'_'+SceneName + additional_spesifications + '.nc')
+            # print("[MASTER] NetCDF file written.")
 
     if my_rank == 0:
         tt = datetime.now(timezone.utc) - start_time
