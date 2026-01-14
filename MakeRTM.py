@@ -237,24 +237,14 @@ def GetElevation(lat_wanted, lon_wanted, ia, DEMfolder = '/xnilu_wrk2/projects/N
     return elevation
 
 
-def extrapolate_aod(tau_ref, lambda_ref, lambda_target, alpha):
+def extrapolate_aod(tau_ref, factor):
     """
-    Extrapolate Aerosol Optical Depth (AOD) using the Ångström power law.
+    Extrapolate Aerosol Optical Depth (AOD) using the conversion factor
 
-    Parameters
-    ----------
     tau_ref         : Reference AOD at wavelength lambda_ref (unitless).
-    lambda_ref      : Reference wavelength in nanometers (e.g., 355).
-    lambda_target   : Target wavelength in nanometers (e.g., 4500 for 4.5 µm).
-    alpha           : Ångström exponent, typically derived from measured AODs at two wavelengths.
-        - Larger alpha (~1–2)   : fine-mode dominated aerosols.
-        - Smaller alpha (~0–0.5): coarse-mode dominated aerosols.
 
-    Notes
-    -----
-    - The Ångström law assumes a simple power-law dependence of AOD on wavelength:
-        τ(λ) = τ(λ0) * (λ / λ0)^(-α)
-    - To be noted: Extrapolation far into the infrared (e.g., >2000 nm) is highly uncertain
+    Reference wavelength 355nm
+    Target wavelength 4500nm
     """
 
     # Example
@@ -266,7 +256,7 @@ def extrapolate_aod(tau_ref, lambda_ref, lambda_target, alpha):
     # 0.00736  # ~AOD at 4.5 µm
 
 
-    return tau_ref * (lambda_target / lambda_ref) ** (-alpha)
+    return tau_ref * factor 
 
 def aerosol_thermal_impact_bool(ia, ACMCOM):
     aerosol_class = ACMCOM.aerosol_classification[:, ia]
@@ -514,13 +504,16 @@ def SetRTM(UVS, ia, iacr, ACM3D=None, AMACD=None, ACMCOM=None, ACMRT=None, BMAFL
                                                ACMCOM.specific_humidity_layer_mean[:,ia], ACMCOM.volume_mixing_ratio_layer_mean_CO2[:,ia]):
         if h > -0.0001 and p < 1e+10:
             air = 1e-06*scipy.constants.N_A*p/(scipy.constants.R*T)  # in cm-3
+            ############ NOTE: THIS IS A TEST #########
+            h2oppv=h2oppv*1.607  
+            ###############################################
             o3 = air*o3ppv
             o2 = air*o2ppv*1e+6
             h2o = air*h2oppv
             co2 = air*co2ppv
             last_o3ppv=o3ppv
             last_o2ppv=o2ppv
-            last_h2oppv=h2oppv
+            last_h2oppv=h2oppv                 
             last_co2ppv=co2ppv
             last_h = h #- surface_h +100
             # /1000 converts from m to km
@@ -1007,19 +1000,11 @@ def SetRTM(UVS, ia, iacr, ACM3D=None, AMACD=None, ACMCOM=None, ACMRT=None, BMAFL
         if alpha_solar > 10:
             alpha_solar = 1.1
 
-        ###### BG (04.09.2025): Testing smaller alpha -> AOD fall off slower towards LW -> higher AOD(LW)
-        # alpha_thermal = 1.1   # x0.0
-        # alpha_thermal = 0.8   # x0.13
-        # alpha_thermal = 0.5   # x0.32         # Reason try this: some scenes in having too high thermal flux (see OneNote Aerosol)
-        # alpha_thermal = 0.3   # x0.47
-        alpha_thermal = 0.2     # x0.60
-            
+        ###### BG (12.01.2026):
+        # factor = 0.2
+        factor = 0.4
+        # factor = 0.6
 
-            # -------- Explenation: -----------
-            # - Fine mode (combustion, urban, smoke)  ~ 1.3 - 2.0
-            # - Continetioal aerosol (Background)     ~ 0.8 - 1.3
-            # - Coarser mode (dust, sea-salt)         ~ 0.0 - 0.8
-        # ------------------------------------
 
         fill_value_threshold = 1e30
         while ih<nheights:
@@ -1034,7 +1019,7 @@ def SetRTM(UVS, ia, iacr, ACM3D=None, AMACD=None, ACMCOM=None, ACMRT=None, BMAFL
                     if source=='thermal':
                         initial_lmb = 355 # [nm]
                         target_lmb = 4500 # [nm]
-                        tau_aero = extrapolate_aod(tau_aero, initial_lmb, target_lmb, alpha_thermal)
+                        tau_aero = extrapolate_aod(tau_aero, factor)
                     #############################################################################################
                 f.write('{:8.3f} {:10.5f}\n'.format(np.abs(h/1000.), tau_aero))
                 last_h = h/1000.
@@ -1068,10 +1053,10 @@ def SetRTM(UVS, ia, iacr, ACM3D=None, AMACD=None, ACMCOM=None, ACMRT=None, BMAFL
                 # print('AOD(solar) = ', aero_tau_tot)
             ######################################################################################################################################
 
-            ######## BG (03.09.2025): Try extrapolate AOD(lmb=355nm) to 4500nm (first lmb in 'thermal') #####
+            ####### BG (03.09.2025): Try extrapolate AOD(lmb=355nm) to 4500nm (first lmb in 'thermal') #####
             if source=='thermal':
                 # print('Thermal absorbing aerosol present?   ->  ', aerosol_thermal_impact_bool(ia, ACMCOM)) 
-                if aerosol_thermal_impact_bool(ia, ACMCOM): # if detected aerosol which absorbe in 'thermal'-spectrum
+                if aerosol_thermal_impact_bool(ia, ACMCOM): # if detected aerosol which absorbe in 'thermal'-spectrum          #################################### ADD THIS BACK IN!
                     UVS.inp['aerosol_file tau']=aero_tau_file_1D    
                     UVS.inp['aerosol_set_tau_at_wvl 4500']=aero_tau_tot  
                 # print('AOD (thermal) =', aero_tau_tot)
@@ -1372,6 +1357,7 @@ if __name__ == "__main__":
               ['thermal'],
               ['solar', 'thermal']][idx_source] 
 
+    # idx_scene = [3,4,5,6,7,8]
     idx_scene = [3]
                                             ############# OLD ########################################################################
     SceneNames = [                          ['Orbit_05378D'],#0           # Marocco - Norway           
@@ -1403,7 +1389,7 @@ if __name__ == "__main__":
     Test    = False
     want_ps = False      # BG: if want DISORT pseudospherical 
     verbose = False
-    want_3D = False       # BG: if want MYSTIC
+    want_3D = True       # BG: if want MYSTIC
 
     
 
@@ -1424,6 +1410,17 @@ if __name__ == "__main__":
     # BG: To distinguish minor modifications to .nc files
     additional_spesifications = '' 
     # additional_spesifications += '_TEST'
+    # additional_spesifications += '_TEST_new_h2o'
+            # AOD-Models
+    # additional_spesifications += '_AOD(NONE)'
+    # additional_spesifications += '_AOD(default)'
+    # additional_spesifications += '_AOD(abs0.6)'
+    # additional_spesifications += '_AOD(abs0.4)'
+    # additional_spesifications += '_AOD(abs0.2)'
+    # additional_spesifications += '_AOD(0.6)'
+    # additional_spesifications += '_AOD(0.4)'
+    # additional_spesifications += '_AOD(0.2)'
+
 
             # New mc_sample_grid
     # additional_spesifications += '_TEST_5x5'
@@ -1432,9 +1429,10 @@ if __name__ == "__main__":
 
             # All_levels New mc_sample_grid
     # additional_spesifications += '_AllLevels_TEST'
-    additional_spesifications += '_AllLevels'
+    # additional_spesifications += '_AllLevels'
     # additional_spesifications += '_AllLevels_TEST_5x5'
-    # additional_spesifications += '_AllLevels_TEST_21x21'        # SW 1e5: 1.4min/pixel +- 20W/m2       1e6: 2.3min/pixel +-5-8W/m2         1e7: NOT POSIBLE! WAY TOO LONG! min/pixel +-W/m2
+    # additional_spesifications += '_AllLevels_TEST_21x21'       
+    additional_spesifications += '_AllLevels_21x21'         # SW 1e5: 1.4min/pixel +- 20W/m2       1e6 (in use): 2.3min/pixel +-5-8W/m2         1e7: NOT POSIBLE! WAY TOO LONG! min/pixel +-W/m2
 
 
             
