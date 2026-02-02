@@ -6,15 +6,14 @@
 #SBATCH --verbose
 #SBATCH --export=ALL
 #SBATCH --nodes=1
-###SBATCH --ntasks=19
-###SBATCH --ntasks-per-node=19
-#SBATCH --ntasks=11
-#SBATCH --ntasks-per-node=11
+#SBATCH --ntasks=16
+#SBATCH --ntasks-per-node=16
 
 
 ###SBATCH --cpus-per-task=1
 #SBATCH --time=4-10:00:00
-#SBATCH --mem-per-cpu=1400Mb
+###SBATCH --mem-per-cpu=1400Mb
+#SBATCH --mem-per-cpu=6G
 
 #SBATCH --partition=main
 
@@ -76,6 +75,9 @@ srun --unbuffered --mpi=pmix python ./MakeRTM.py
 # srun --unbuffered --mpi=pmix python ./all_levels_MakeRTMInputFile_bg.py
 echo "Finished running Python file at $(date)"
 
+# echo "$SCRATCH/EarthCARE_Real/"
+# Delete large EarthCARE_REAL files
+rm -r $SCRATCH/EarthCARE_Real/
 
 
 

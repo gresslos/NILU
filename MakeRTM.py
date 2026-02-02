@@ -68,9 +68,9 @@ def pdeg2km(p):
     return (p0,p1)
 
 
-def Check3DBufferSize(ACM3D, ia):
+def Check3DBufferSize(ACM3D, ia, iacr):
 
-    Nx, Ny, iacrosses, ialongs = Calc3DBufferSize(ACM3D, ia)
+    Nx, Ny, iacrosses, ialongs = Calc3DBufferSize(ACM3D, ia, iacr)
     if Nx>0 and Ny>0:
         BufferOK=True
     else:
@@ -79,7 +79,7 @@ def Check3DBufferSize(ACM3D, ia):
     return BufferOK
 
 
-def Calc3DBufferSize(ACM3D, ia):
+def Calc3DBufferSize(ACM3D, ia, iacr):
     
     ################# THIS IS FOR EARTHCARE 3D COMPUITATION DOMAIN ##################
     #################                      OLD                     ##################
@@ -110,7 +110,7 @@ def Calc3DBufferSize(ACM3D, ia):
     
 
     ialongs = np.arange(ia-along_dim, ia+along_dim+1)
-    iacrosses = np.arange(ACM3D.nadir_pixel_index-across_dim, ACM3D.nadir_pixel_index+across_dim+1)
+    iacrosses = np.arange(iacr-across_dim, iacr+across_dim+1)
     
     Nx = iacrosses.shape[0]
     Ny = ialongs.shape[0]
@@ -276,6 +276,7 @@ def aerosol_thermal_impact_bool(ia, ACMCOM):
     # Only DUSTY-THINGDS + starpsoheric Ash
     idx_list = [10, 14, 15, 25]
             # 10:Dust
+            # 14:Dusty smoke
             # 15:Dusty mix
             # 25:Stratospheric Ash
         
@@ -379,12 +380,12 @@ def SetRTM(UVS, ia, iacr, ACM3D=None, AMACD=None, ACMCOM=None, ACMRT=None, BMAFL
 
         if RTdimension == '3D':  
             
-            Nx, Ny, iacrosses, ialongs = Calc3DBufferSize(ACM3D, ia)  #calculates along and cross track buffer size 
+            Nx, Ny, iacrosses, ialongs = Calc3DBufferSize(ACM3D, ia, iacr)  #calculates along and cross track buffer size 
             # UVS.inp['mc_photons'] = mc_photons * Nx * Ny  # Scale photons with size of 3D domain
             ############## TESTING #############
             # Set SAMPLE-GRID
             UVS.inp['mc_sample_grid']=f'{Nx} {Ny}' # 3D computation domain
-            UVS.inp['mc_reference_to_nn']='' # The sampled pixels correspond to the surface pixels.
+            UVS.inp['mc_reference_to_nn']='' # The sampled pixels correspond to the surface pixels. Only works with mc_backward
             ####################################
 
             if (Nx > 1) & (Ny > 1):  # BG: if not MCIPA
@@ -437,7 +438,7 @@ def SetRTM(UVS, ia, iacr, ACM3D=None, AMACD=None, ACMCOM=None, ACMRT=None, BMAFL
     UVS.inp['output_process']='sum'
     if 'AllLevels' in additional_spesifications: UVS.inp['zout']='atm_levels'
     else: UVS.inp['zout']='TOA'
-    UVS.inp['output_user']='sza zout edir eup'
+    UVS.inp['output_user']='sza zout edir eup edn'
     UVS.inp['quiet']=''
 
 
@@ -446,18 +447,19 @@ def SetRTM(UVS, ia, iacr, ACM3D=None, AMACD=None, ACMCOM=None, ACMRT=None, BMAFL
         if 'AllLevels' not in additional_spesifications:
             UVS.inp['mc_backward']=''
             UVS.inp['mc_backward_output']='eup'
-            mc_photons = int(1e4)
+            mc_photons = int(1e3)  # BG: Changed from 1e4 to 1e3 at 21.01.26 to reduce computation time!
         else:
-            mc_photons = int(1e2)
+            mc_photons = int(1e2)  
+        UVS.inp['mc_minphotons']=mc_photons # Note: MC_MINPHOTONS = 1e3 in uvspec.h so need to modify if mc_photons < 1e3!
         UVS.inp['mc_photons']=mc_photons 
-        UVS.inp['mc_minphotons']=mc_photons # Note: MC_MINPHOTONS = 1e3 in uvspec.h so need to modify!
+       
         ####### INFO 21 x 21 grid ################
         # 1e3 -> 4min per thermal pixel +- 0.4 W/m2   
         # 1e2 -> 1min per thermal pixel +- 1.3 W/m2       
         ##########################################
     else:
         UVS.inp['wavelength']='250 4000'    # Changes made!
-        mc_photons = int(1e7)
+        mc_photons = int(1e6)   # Note: Change from 1e7 -> 1e6 at 20.01.26 to reduce computation time! 1000 pixels take 1 day for 21x21 grid for 15 Processors!
         if 'AllLevels' in additional_spesifications: mc_photons = int(1e6) #int(1e7) -> way too long time!
         UVS.inp['mc_photons']=mc_photons 
         ####### INFO 21 x 21 grid ################
@@ -710,7 +712,7 @@ def SetRTM(UVS, ia, iacr, ACM3D=None, AMACD=None, ACMCOM=None, ACMRT=None, BMAFL
 
                     hl = ACMCOM.height_level[2:,irec]; hl = hl[::-1]
                     pl = ACMCOM.pressure_level[2:,irec]; pl = pl[::-1]
-                    lwc = ACMCOM.liquid_water_content[1:,irec]; lwc = lwc[::-1]   #ignore the top levels (0=67km,1=62,...3=52km)
+                    lwc = ACMCOM.liquid_water_content[1:,irec]; lwc = lwc[::-1]   #ignore the top level (0=67km,1=62,...3=52km)
                     reff = ACMCOM.liquid_effective_radius[1:,irec]; reff = reff[::-1]
                     
                     ############################### TESTING ################################
@@ -800,12 +802,7 @@ def SetRTM(UVS, ia, iacr, ACM3D=None, AMACD=None, ACMCOM=None, ACMRT=None, BMAFL
             if iic==0: UVS.status = 'No ic data for latitude: {:d} {:f}'.format(ia, ACMCOM.latitude_active[ia])
 
         elif RTdimension == '3D':       
-                # ialong=0
-                # iacross=0
-                # Nx, Ny, iacrosses, ialongs = Calc3DBufferSize(ACM3D, ia)
-                # Write mystic wc_file, see libRadtran documentation for file format
-                # Nxic3D=Nx
-                # Nyic3D=Ny
+                
             iz=0
             last_h=99999
             for h,p in zip(ACMCOM.height_level[1:,ia],ACMCOM.pressure_level[1:,ia]):
@@ -1055,11 +1052,11 @@ def SetRTM(UVS, ia, iacr, ACM3D=None, AMACD=None, ACMCOM=None, ACMRT=None, BMAFL
 
             ####### BG (03.09.2025): Try extrapolate AOD(lmb=355nm) to 4500nm (first lmb in 'thermal') #####
             if source=='thermal':
-                # print('Thermal absorbing aerosol present?   ->  ', aerosol_thermal_impact_bool(ia, ACMCOM)) 
-                if aerosol_thermal_impact_bool(ia, ACMCOM): # if detected aerosol which absorbe in 'thermal'-spectrum          #################################### ADD THIS BACK IN!
+                        # print('Thermal absorbing aerosol present?   ->  ', aerosol_thermal_impact_bool(ia, ACMCOM)) 
+                if aerosol_thermal_impact_bool(ia, ACMCOM): # if detected aerosol which absorbe in 'thermal'-spectrum     
                     UVS.inp['aerosol_file tau']=aero_tau_file_1D    
                     UVS.inp['aerosol_set_tau_at_wvl 4500']=aero_tau_tot  
-                # print('AOD (thermal) =', aero_tau_tot)
+                        # print('AOD (thermal) =', aero_tau_tot)
             ##################################################################################################
 
 
@@ -1357,8 +1354,10 @@ if __name__ == "__main__":
               ['thermal'],
               ['solar', 'thermal']][idx_source] 
 
-    # idx_scene = [3,4,5,6,7,8]
-    idx_scene = [3]
+    idx_scene = [12]
+    # idx_scene = [3,4,5,6,7,8,11,12]
+    # idx_scene = [3,4,5,6]
+    # idx_scene = [7,8,11,12]
                                             ############# OLD ########################################################################
     SceneNames = [                          ['Orbit_05378D'],#0           # Marocco - Norway           
                                             ['Orbit_05458F'],             # Chile
@@ -1410,7 +1409,6 @@ if __name__ == "__main__":
     # BG: To distinguish minor modifications to .nc files
     additional_spesifications = '' 
     # additional_spesifications += '_TEST'
-    # additional_spesifications += '_TEST_new_h2o'
             # AOD-Models
     # additional_spesifications += '_AOD(NONE)'
     # additional_spesifications += '_AOD(default)'
@@ -1429,13 +1427,18 @@ if __name__ == "__main__":
 
             # All_levels New mc_sample_grid
     # additional_spesifications += '_AllLevels_TEST'
+    # additional_spesifications += '_AllLevels_TEST_edn'
     # additional_spesifications += '_AllLevels'
     # additional_spesifications += '_AllLevels_TEST_5x5'
     # additional_spesifications += '_AllLevels_TEST_21x21'       
-    additional_spesifications += '_AllLevels_21x21'         # SW 1e5: 1.4min/pixel +- 20W/m2       1e6 (in use): 2.3min/pixel +-5-8W/m2         1e7: NOT POSIBLE! WAY TOO LONG! min/pixel +-W/m2
+    # additional_spesifications += '_AllLevels_21x21'         # SW 1e5: 1.4min/pixel +- 20W/m2       1e6 (in use): 2.3min/pixel +-5-8W/m2         1e7: NOT POSIBLE! WAY TOO LONG! min/pixel +-W/m2
+    # additional_spesifications += '_AllLevels_21x21_edn' 
+
+    additional_spesifications += '_AllLevels_21x21_edn_edir' 
+    # additional_spesifications += '_AllLevels_edn_edir'  
 
 
-            
+    
 
 
     surface = True      # BG: = False -> default albedo = 0     
@@ -1507,6 +1510,22 @@ if __name__ == "__main__":
 
 
 
+    # #################### ONLY FOR SPESIFIC SURFACE SIMULATIONS ################
+    # WANT_SURFACE_ALL_LEVELS = True
+    # if WANT_SURFACE_ALL_LEVELS:
+    #     additional_spesifications = '_Surface_21x21_AllLevels' if want_3D else '_Surface_AllLevels'
+    #     SceneNames = ['Orbit_05720C']
+    #     station = 'Tromso'
+    #     ial = 4498; iacr = 148
+    #     ia = ACM3D.index_construction[iacr, ial]
+
+    #     ialongs = []
+
+    #     pathL2TestProducts = '/xnilu_wrk2/projects/NEVAR/data/CalVal/Pyranometers/' + station # EarthCARE data
+    #     RTOutNetcdfPath = '../SurfaceRTM/RESULTS/'
+    # ############################################################################
+
+
 
 
 
@@ -1514,7 +1533,7 @@ if __name__ == "__main__":
     for SceneName in SceneNames:
         Product ='ALL_3D_'
         ProductPath = '*'+Product+'*'
-        ProductFile = os.path.join(pathL2TestProducts, SceneName, 'output', ProductPath, '*'+Product+'*.h5')     
+        ProductFile = os.path.join(pathL2TestProducts, SceneName, 'output', ProductPath, '*'+Product+'*.h5') 
         ProductFile = sorted(glob.glob(ProductFile))[0]        #tms: Does it mean that the first file (if several) is selected?
 
         if verbose: print('ProductFile', ProductFile)
@@ -1532,7 +1551,7 @@ if __name__ == "__main__":
 
         Product ='ACM_COM'
         ProductPath = '*'+Product+'*'
-        ProductFile = os.path.join(pathL2TestProducts, SceneName, 'output', ProductPath, '*'+Product+'*.h5')
+        ProductFile = os.path.join(pathL2TestProducts, SceneName, 'output', ProductPath, '*'+Product+'*.h5') 
         ProductFile = sorted(glob.glob(ProductFile))[0]
         if verbose: print('ProductFile', ProductFile)
         ACMCOM = ReadEC.Scene(Name=SceneName, verbose=verbose)        
@@ -1541,7 +1560,7 @@ if __name__ == "__main__":
                 
         Product ='AM__ACD'      #Ångström exponent
         ProductPath = '*'+Product+'*'
-        ProductFile = os.path.join(pathL2TestProducts, SceneName, 'output', ProductPath, '*'+Product+'*.h5')
+        ProductFile = os.path.join(pathL2TestProducts, SceneName, 'output', ProductPath, '*'+Product+'*.h5') 
         ProductFile = sorted(glob.glob(ProductFile))[0]
         if verbose: print('ProductFile', ProductFile)
         AMACD = ReadEC.Scene(Name=SceneName, verbose=verbose)
@@ -1550,7 +1569,7 @@ if __name__ == "__main__":
 
         Product ='ACM_RT_'      #1D and 3D RTM fluxes
         ProductPath = '*'+Product+'*'
-        ProductFile = os.path.join(pathL2TestProducts, SceneName, 'output', ProductPath, '*'+Product+'*.h5')
+        ProductFile = os.path.join(pathL2TestProducts, SceneName, 'output', ProductPath, '*'+Product+'*.h5') 
         ProductFile = sorted(glob.glob(ProductFile))[0]
         if verbose: print('ProductFile', ProductFile)
         ACMRT = ReadEC.Scene(Name=SceneName, verbose=verbose)
@@ -1559,7 +1578,7 @@ if __name__ == "__main__":
          
         Product ='BMA_FLX'      #BBR fluxes
         ProductPath = '*'+Product+'*'
-        ProductFile = os.path.join(pathL2TestProducts, SceneName, 'output', ProductPath, '*'+Product+'*.h5')
+        ProductFile = os.path.join(pathL2TestProducts, SceneName, 'output', ProductPath, '*'+Product+'*.h5') 
         ProductFile = sorted(glob.glob(ProductFile))[0]
         if verbose: print('ProductFile', ProductFile)
         BMAFLX = ReadEC.Scene(Name=SceneName, verbose=verbose)
@@ -1631,7 +1650,7 @@ if __name__ == "__main__":
     
             target_lat = 5.01
             target_idx = int(np.nanargmin(np.abs(ACMCOM.latitude_active - target_lat)))
-            target_idx = 1500
+            target_idx = 601
             # target_idx = start + 1000
             ialongs = [target_idx]
             # ialongs = list(range(target_idx, target_idx + 5, 1))
@@ -1641,8 +1660,8 @@ if __name__ == "__main__":
             indlatBMAFLX = np.unravel_index(np.argmin(np.abs(BMAFLX.latitude - ACMCOM.latitude_active[target_idx]), axis=None), BMAFLX.latitude.shape)
             BMAFLX_solar_eup = BMAFLX.solar_combined_top_of_atmosphere_flux[indlatBMAFLX]  # Nadir view is in element one
             BMAFLX_thermal_eup = BMAFLX.thermal_combined_top_of_atmosphere_flux[indlatBMAFLX]  # Nadir view is in element one
-            print(f"BMAFLX_solar_eup   ia={target_idx} = {BMAFLX_solar_eup:.2f} W/m2")
-            print(f"BMAFLX_thermal_eup ia={target_idx} = {BMAFLX_thermal_eup:.2f} W/m2")
+            print(f"BMAFLX_solar_eup     = {BMAFLX_solar_eup:.2f} W/m2  ia={target_idx}")
+            print(f"BMAFLX_thermal_eup   = {BMAFLX_thermal_eup:.2f} W/m2  ia={target_idx}")
         
         # ----------------------------------------------------------------------------------------------------------
        
@@ -1690,14 +1709,34 @@ if __name__ == "__main__":
                     idx, r1, r2, r3, r4 = data
                     if rte_solver == "montecarlo":
                         if 'AllLevels' in additional_spesifications:
-                            # nlev = r1.shape[-1]
-                            # idx = (idx, slice(None), slice(None), slice(None, nlev))
+                            # --- AllLevels guard: skip if worker returned scalar / no profile ---
+                            if not hasattr(r1, "shape"):
+                                # arrays already initialized with zeros -> nothing to store
+                                if task_index < num_tasks:
+                                    comm.send(task_index, dest=sourceMPI, tag=1)
+                                    task_index += 1
+                                else:
+                                    comm.send(None, dest=sourceMPI, tag=0)
+                                    finished_workers += 1
+                                continue
+                            # -----------------------------------------------------------------------
                             nlev = r1.shape[0]
                             idx = (idx, slice(None, nlev), slice(None), slice(None))
                         else: 
                             idx = (idx, slice(None), slice(None))
                     else:
                         if 'AllLevels' in additional_spesifications:
+                            # --- AllLevels guard: skip if worker returned scalar / no profile ---
+                            if not hasattr(r1, "shape"):
+                                # arrays already initialized with zeros -> nothing to store
+                                if task_index < num_tasks:
+                                    comm.send(task_index, dest=sourceMPI, tag=1)
+                                    task_index += 1
+                                else:
+                                    comm.send(None, dest=sourceMPI, tag=0)
+                                    finished_workers += 1
+                                continue
+                            # -----------------------------------------------------------------------
                             nlev = r1.shape[0]
                             idx = (idx, slice(None, nlev))
                         else:
@@ -1763,11 +1802,9 @@ if __name__ == "__main__":
                 eup_thermal_std = np.nan
                 # ----------------------
                 
-                # BG: try to rather set to nan above!
-                # zout=edir_solar=eup_solar=eup_solar_std=0.0
-                # edir_thermal=eup_thermal=eup_thermal_std=0.0
+            
 
-                BufferOK = Check3DBufferSize(ACM3D, ia)
+                BufferOK = Check3DBufferSize(ACM3D, ia, iacr)
                 if not BufferOK:
                     source='Buffer'
                     # print(f'     [WORKER {my_rank}] WARNING: Not enough 3D buffer for ia = {ia}, source = {source}. Skipping.')
@@ -1818,18 +1855,18 @@ if __name__ == "__main__":
                                         # ESO: "source" added twice?
                                         # mc_flx, eup_std = UVspec.ReadMCOut(UVS.mc_basename, mol_abs_param=mol_abs_param) #fn = fn + '.flx.spc'  
                                         try:
-                                            mc_flx, eup_std = UVspec.ReadMCOut(UVS.mc_basename, mol_abs_param=mol_abs_param) #fn = fn + '.flx.spc'  
-                                            if 'AllLevels' in additional_spesifications: 
+                                            mc_flx, eup_std, mc_flx_dn, edn_std, mc_flx_dir, edir_std = UVspec.ReadMCOut(UVS.mc_basename, mol_abs_param=mol_abs_param) #fn = fn + '.flx.spc'  
+                                            if 'AllLevels' in additional_spesifications:
                                                 nlev = int(len(mc_flx)/(Nx*Ny))
-                                                # print(mc_flx)
-                                                # print(nlev)
-                                                # mc_flx = mc_flx.reshape(Nx, Ny, nlev)
-                                                # eup_std = eup_std.reshape(Nx, Ny, nlev)
-                                                # TEST NEW SETUP:
-                                                mc_flx = mc_flx.reshape(nlev, Nx, Ny)
-                                                eup_std = eup_std.reshape(nlev, Nx, Ny)
-                                                # print(mc_flx)
-                                                # print(mc_flx.shape)
+                                            
+                                                mc_flx      = mc_flx.reshape(nlev, Nx, Ny)
+                                                mc_flx_dn   = mc_flx_dn.reshape(nlev, Nx, Ny)
+                                                mc_flx_dir  = mc_flx_dir.reshape(nlev, Nx, Ny)
+
+                                                eup_std     = eup_std.reshape(nlev, Nx, Ny)
+                                                edn_std     = edn_std.reshape(nlev, Nx, Ny)
+                                                edir_std    = edir_std.reshape(nlev, Nx, Ny)
+                                         
                         
                                             else:
                                                 mc_flx = mc_flx.reshape(Nx, Ny)
@@ -1841,17 +1878,23 @@ if __name__ == "__main__":
                                             continue  # Go to the next iteration
                                      
                                         if source=='solar':
-                                            eup_solar_std=eup_std     
-                                            eup_solar=mc_flx       
+                                            eup_solar_std   = eup_std     
+                                            eup_solar       = mc_flx      
+                                            if '_edn_edir' in additional_spesifications:
+                                                eup_solar_std  = edir_std + edn_std
+                                                eup_solar      = mc_flx_dir + mc_flx_dn
+                                                                                                            # elif '_edn' in additional_spesifications:
+                                                                                                            #     eup_solar_std   = edn_std
+                                                                                                            #     eup_solar       = mc_flx_dn
                                         elif source=='thermal':
-                                            eup_thermal_std=eup_std
-                                            eup_thermal=mc_flx 
+                                            eup_thermal_std = eup_std
+                                            eup_thermal     = mc_flx 
 
                               
                                     try:
                                         # print(f"[WORKER {my_rank}] Starting ReadRTOut for ia={ia}, source={source}")
 
-                                        sza, zout, edir, eup = UVspec.ReadRTOut(uvspecOutputFile, mol_abs_param=mol_abs_param)
+                                        sza, zout, edir, eup, edn = UVspec.ReadRTOut(uvspecOutputFile, mol_abs_param=mol_abs_param)
                                         # print('eup = ', eup)
                                         # print(f"[WORKER {my_rank}] Finished ReadRTOut for ia={ia}, source={source}")
                                         # if UVS.inp['rte_solver']=='montecarlo':
@@ -1864,10 +1907,11 @@ if __name__ == "__main__":
                                         print(f"Error [WORKER {my_rank}]: ", e)
                                         # pdb.set_trace()
 
-                                    if UVS.inp['rte_solver']!='montecarlo':
+                                    if UVS.inp['rte_solver']!='montecarlo': 
                                         if source=='solar':
                                             eup_solar=eup
-                                            edir_solar=edir
+                                            if '_edn_edir' in additional_spesifications:
+                                                eup_solar  = edir + edn
                                         elif source=='thermal':
                                             eup_thermal=eup
 
@@ -1888,23 +1932,18 @@ if __name__ == "__main__":
                                     # print(f'[WORKER {my_rank}] WARNING: UVS.status not OK for ia={ia}, source={source}. Skipping.')
                                     zout=edir=eup=eup_std=0.0
                             else:
-                                zout=edir_solar=eup_solar=eup_solar_std=0.0
+                                zout=eup_solar=eup_solar_std=0.0
                                 edir_thermal=eup_thermal=eup_thermal_std=0.0
 
-                            if UVS.inp['rte_solver']=='montecarlo':
-                                print(
-                                        f"--------------------------- ia={ia} --------------------------\n"
-                                        # f"   mc_flx ({source}) =\n {mc_flx if 'montecarlo' in rte_solver else eup}\n\n"
-                                        f"  Mean flux ({source}) +- std = {np.mean(mc_flx):.2f} +- {np.mean(eup_std):.2f}\n"
-                                        "--------------------------------------------------------------\n"
-                                    )
-                            else: 
-                                print(
-                                    f"--------------------------- ia={ia} --------------------------\n"
-                                        # f"   mc_flx ({source}) =\n {mc_flx if 'montecarlo' in rte_solver else eup}\n\n"
-                                        f"  Mean flux ({source}) +- std = {np.mean(eup):.2f}\n"
-                                        "--------------------------------------------------------------\n"
-                                    )
+
+                            std_str = f"+- {np.mean(eup_std):.2f}" if 'montecarlo' in rte_solver else "None"
+                            eup_str = f"{np.mean(eup_solar):.2f} W/m2" if source=='solar' else f"{np.mean(eup_thermal):.2f} W/m2"
+                            print(
+                                f"--------------------------- ia={ia} --------------------------\n"
+                                f"  Mean flux ({source}) +- std = {eup_str} {std_str}\n"
+                                "--------------------------------------------------------------\n"
+                            )
+
                             if rte_solver=='montecarlo':
                                 if verbose: print(" |--------- OUT", rte_solver, RTdimension, ia, source, latitude_wanted, eup, "---------|\n\n")  # BG: print statemnt
                                 ### Removed 09.01.2026 ###### BG: is these neassesary???? ######
@@ -1912,7 +1951,6 @@ if __name__ == "__main__":
                                 # libRad.thermal_eup_std[ia] = eup_thermal_std
                                 ########################################
                             else:
-                                # print('OUT', ia, source, latitude_wanted, sza, zout, edir_solar, eup_solar, eup_thermal)
                                 if verbose: print(" |--------- OUT", rte_solver, RTdimension, ia, source, latitude_wanted, eup, "---------|\n\n")   # BG: print statement
                         except Exception as e:
                             print(f"[WORKER {my_rank}] Unexpected exception for ia={ia}: {e}")

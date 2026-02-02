@@ -7,9 +7,10 @@ import cartopy.feature as cfeature
 from matplotlib.ticker import AutoMinorLocator, MultipleLocator
 
 import glob
-import ReadEarthCAREL2_bg as ReadEC
+# import ReadEarthCAREL2_bg as ReadEC
+import ReadEC as ReadEC
 
-FONTSIZE=15
+FONTSIZE=14
 INFOSIZE=13
 FIGSIZE=(10,5)
 # default color cycle:
@@ -134,8 +135,8 @@ def plot(versions, orbits, places, values, stds, ylabel, title, show_stds=True, 
     else:                           rotation = 0
     ax.set_xticklabels(versions, rotation=rotation, fontsize=INFOSIZE)
     ax.set_ylabel(ylabel, fontsize=INFOSIZE)
-    ax.set_title(title, fontsize=FONTSIZE, fontweight='bold')
-    
+    fig.suptitle(title, fontsize=FONTSIZE)
+
 
     # --- Nice style adjustments ---
     ax.set_facecolor('#f0f0f0')               # background
@@ -145,7 +146,11 @@ def plot(versions, orbits, places, values, stds, ylabel, title, show_stds=True, 
     for spine in ['top', 'right']: # hide top and right spines
         ax.spines[spine].set_visible(False)
     # -------------------------------
-    ax.legend()
+    ax.legend(# loc='upper left', 
+            framealpha=0.7, 
+            borderaxespad=0.0,                  # space to axes
+            borderpad=0.25, labelspacing=0.25,   # compact box)
+            fontsize=INFOSIZE*.8)
     fig.tight_layout()
     fig.savefig(png_name)
     print(f"Plot saved to {png_name}")
@@ -338,297 +343,6 @@ def plot_correlation(source, versions, orbits, places, values, ylabel, title_spe
 
     return
 
-
-
-################################################################################################################
-def get_instances(SceneName, Product, Product2=False, BMAFLX=False):
-    # Get .nc file
-    ProductPath = ProductPathRTM
-    ProductFile = os.path.join(ProductPath, Product)
-    print('ProductFile1', ProductFile)
-    ProductFile = sorted(glob.glob(ProductFile))[0]  
-    libRad = ReadEC.Scene(Name=SceneName)
-    libRad.ReadEarthCAREh5(ProductFile)
-    libRad.SetExtent()
-    
-    # BG: Find; Baseline, Data, Time
-    BB_baseline, BA_baseline, AC_baseline = '', '', ''
-        
-    # Get ACM-COM 
-    Product ='ACM_COM'
-    ProductPath = '*'+Product+'*'
-    ProductFile = os.path.join(pathL2TestProducts, SceneName, 'output', ProductPath, '*'+Product+'*.h5')
-    ProductFile = sorted(glob.glob(ProductFile))[0]
-    ACMCOM = ReadEC.Scene(Name=SceneName)
-    ACMCOM.ReadEarthCAREh5(ProductFile) #, ACM3D=ACM3D)
-    ACMCOM.SetExtent()
-    # Extract Baseline ---------------------------   
-    parts = ProductFile.split("ECA_EX", 1)
-    out = parts[1][:2] if len(parts) > 1 else None
-    if out == 'BA': BA_baseline += ' ' + Product
-    elif out == 'AC': AC_baseline += ' ' + Product
-    elif out == 'BB': BB_baseline += ' ' + Product
-    # print(out)
-    #---------------------------------------------
-
-    if Product2:      
-        ProductPath = ProductPathRTM
-        ProductFile = os.path.join(ProductPath, Product2)
-        # print('ProductFile2', ProductFile)
-        ProductFile = sorted(glob.glob(ProductFile))[0]
-        libRad2 = ReadEC.Scene(Name=SceneName)
-        libRad2.ReadEarthCAREh5(ProductFile)
-        libRad2.SetExtent()
-    else: libRad2 = False
-
-    # Get BMA-FLX 
-    if BMAFLX:
-        Product ='BMA_FLX'
-        ProductPath = '*'+Product+'*'  
-        ProductFile = os.path.join(pathL2TestProducts, SceneName, 'output', ProductPath, '*'+Product+'*.h5')
-        ProductFile = sorted(glob.glob(ProductFile))[0]
-        BMAFLX = ReadEC.Scene(Name=SceneName)
-        BMAFLX.ReadEarthCAREh5(ProductFile, Resolution='StandardResolution')
-        BMAFLX.SetExtent()
-        # Extract Baseline ---------------------------   
-        parts = ProductFile.split("ECA_EX", 1)
-        out = parts[1][:2] if len(parts) > 1 else None
-        if out == 'BA': BA_baseline += ' ' + Product
-        elif out == 'AC': AC_baseline += ' ' + Product
-        elif out == 'BB': BB_baseline += ' ' + Product
-        # print(out)
-        #---------------------------------------------
-    
-     # Fix Baseline
-    AC_baseline = ", ".join(AC_baseline.split())
-    BA_baseline = ", ".join(BA_baseline.split())
-    baseline_str = "Baselines: "
-    if AC_baseline != '':   baseline_str += f'AC = ({AC_baseline})  '
-    if BA_baseline != '':   baseline_str += f'BA = ({BA_baseline})  '
-    if BB_baseline != '':   baseline_str += f'BB = ({BB_baseline})  '
-        
-
-
-    # Extract Date
-    date_num = '20' + ProductFile.split('20', 1)[1].split('T', 1)[0]
-    date = date_num[6:8] + "." + date_num[4:6] + "." + date_num[0:4]
-
-    # Extract Time
-    first_time_num = ProductFile.split('T')[1].split('Z')[0]
-    second_time_num = ProductFile.split('T')[2].split('Z')[0] 
-    start_time = first_time_num[:2] + ":" + first_time_num[2:4]
-    end_time = second_time_num[:2] + ":" + second_time_num[2:4]
-    time = start_time + '-' + end_time
-
-    info = (date, time, baseline_str)
-
-    return libRad, BMAFLX, ACMCOM, libRad2, info
-
-
-
-
-
-
-
-def get_data(source, spec, data, data_row, stds, stds_row, libRad, libRad2, ACMCOM, BMAFLX, metric='diff', statistics='mean'): 
-    attr_by_source_libRad = {
-        'solar':   'solar_eup',
-        'thermal': 'thermal_eup',
-    }
-    attr_by_source_BMAFLX = {
-        'solar':   'solar_combined_top_of_atmosphere_flux',
-        'thermal': 'thermal_combined_top_of_atmosphere_flux',
-    }
-    attr_libRad = attr_by_source_libRad.get(source)
-    attr_BMAFLX = attr_by_source_BMAFLX.get(source)
-
-    x1 = libRad.latitude
-    data1 = getattr(libRad, attr_libRad)  # dynamic attribute access -> libRad, Solar or Thermal
-    # ----------- Quality-Status (ACMCOM) -----------------
-    quality = ACMCOM.quality_status[:]
-    quality_mask_ACMCOM = np.isin(quality, [0, 1])
-    quality_mask_libRad = quality_mask_ACMCOM & (data1 != 0)
-    
-    # x1 = x1[quality_mask_ACMCOM]
-    # data1 = data1[quality_mask_ACMCOM]
-    x1 = x1[quality_mask_libRad]
-    data1 = data1[quality_mask_libRad]
-
-
-    # print(f'{spec:10} {source:10} flux: min={np.min(data1):.2f}, mean={np.mean(data1):.2f}, max={np.max(data1):.2f}\n')
-    
-    # ------------------------------------------------
-
-    if BMAFLX:
-        x2 = BMAFLX.latitude
-        data2 = getattr(BMAFLX, attr_BMAFLX)  # dynamic attribute access
-
-        # ----------- Quality-Status (BMAFLX) -----------------
-        quality = BMAFLX.quality_status[:]
-        # boolean mask: True where quality is
-        #   0: solar and thermal OK
-        #   1: Thermal OK
-        #   2: Solar OK
-        source_quality_status_idx = 1 if source == 'thermal' else 2
-        quality_mask = np.isin(quality, [0, source_quality_status_idx]) 
-
-        data2 = data2[quality_mask]
-        x2 = x2[quality_mask]
-        # ------------------------------------------------
-
-        # Performe interpolation for comparison
-        fill_value_data1 = 9.96921e+36
-        fill_value_data1 = 0
-        x, data2_interp, data1 = ReadEC.interpolate(x2, data2, fill_value_data1, x1, data1, fill_value_data1) 
-        data2 = data2_interp
-
-    elif libRad2:
-        x2 = libRad2.latitude
-        data2 = getattr(libRad2, attr_libRad)  # dynamic attribute access 
-
-        # ----------- Quality-Status (ACMCOM) -----------------
-        quality_mask_libRad2 = quality_mask_ACMCOM & (data2 != 0)
-        x2 = x2[quality_mask_libRad2]
-        data2 = data2[quality_mask_libRad2]
-        
-        # ------------------------------------------------
-
-        x = x1
-    else: print('Error: select BMAFLX or libRad2')
-
-
-
-    if metric == 'diff': # Calculate differance  
-        value = (data1 - data2) 
-    elif metric == 'only_libRad': # Calculate only libRad
-        value = data1
-
-
-    
-    if statistics == 'mean': # Calculate Mean
-        data_value = np.nanmean(value)
-    elif statistics == 'min': # Calculate Min
-        data_value = np.nanmin(value)
-    elif statistics == 'max': # Calculate Max
-        data_value = np.nanmax(value)
-    elif statistics == 'all_pixels_values':
-        data_value = np.column_stack([value, data2]) # Returns [[libRad, BMA], ...]
-        # data_value = np.vstack(data_value) # shape: (N, 2) -> [:,0]=libRad, [:,1]=BMA-FLX
-
-    std  = np.nanstd(value)
-    # print(f'{source:8}:  <diff> = {data_value:6.2f} pm {std:6.2f} W/m2  (n = {len(value)})')
-
-    global old_spec
-    if not globals().get("old_spec", False):
-        old_spec = spec          # <-- set it on first hit
-    if spec != old_spec:
-        data.append(data_row.copy())
-        stds.append(stds_row.copy())
-        # IMPORTANT: start fresh row
-        data_row.clear()       
-        stds_row.clear()
-
-    # data_row.append(float(data_value))  
-    # stds_row.append(float(std))
-    data_row.append(data_value)
-    stds_row.append(std)
-    
-    old_spec = spec
-
-
-
-
-
-
-
-
-def loop_through_data(source, Product2, SceneNames, librad_type='SWIA', statistics='mean'):
-    if Product2 == True: BMAFLX = False
-    else:                BMAFLX = True
-    SceneNames = [SceneNames[i][0] for i in idx_scene]
-
-    # --Create list of places:---
-    special = {
-        'Orbit_06888C': 'Svalbard',
-        'Orbit_07277C': 'Svalbard',
-        'Orbit_06331C': 'Greenland',
-    }
-    by_suffix = {'C': 'Svalbard', 'D': 'USA', 'E': 'Africa'}
-    places = [ special.get(orbit, by_suffix.get(orbit[-1], 'Unknown')) for orbit in SceneNames ]
-    # ----------------------------
-
-    global old_spec
-    old_spec = None
-    data, data_row, stds, stds_row = [], [], [], []
-    # SWIA-studies:
-    if isinstance(librad_type, list) and isinstance(additional_spesifications, list): 
-        for l_type, spec in zip(librad_type, additional_spesifications):
-            for SceneName in SceneNames:
-                Product = (
-                        'libRad_' + 
-                        version_identifier  + '_' +
-                        librad_version      + '_' +
-                        l_type              + '_' +
-                        source_str          + '_' +
-                        SceneName           + 
-                        spec                + '.nc'
-                    )
-
-                libRad, BMAFLX, ACMCOM, libRad2, _ = get_instances(SceneName, Product, Product2, BMAFLX)
-                get_data(source, l_type, data, data_row, stds, stds_row, libRad, libRad2, ACMCOM, BMAFLX, metric='only_libRad', statistics=statistics) 
-                # Note, changed spec -> l_type to let know how to construct data-array
-
-    # Other studies:
-    elif isinstance(additional_spesifications, list): # Usually the case
-        for spec in additional_spesifications:
-            for SceneName in SceneNames:
-                Product = (
-                        'libRad_' + 
-                        version_identifier  + '_' +
-                        librad_version      + '_' +
-                        librad_type         + '_' +
-                        source_str          + '_' +
-                        SceneName           + 
-                        spec                + '.nc'
-                    )
-                if Product2: 
-                        librad_version2 = 'montecarlo_3D'
-                        # additional_spesifications2 = additional_spesifications2
-                        Product2 = (
-                            'libRad_' + 
-                            version_identifier  + '_' +
-                            librad_version2     + '_' +
-                            librad_type         + '_' +
-                            source_str          + '_' +
-                            SceneName           + 
-                            additional_spesifications2
-                                                + '.nc'
-                        )
-
-                # print(f'ScneName: {SceneName}:')
-                libRad, BMAFLX, ACMCOM, libRad2, _ = get_instances(SceneName, Product, Product2, BMAFLX)
-                if what_to_plot == 'correlation':   metric = 'only_libRad'
-                else:                               metric = 'diff'
-                get_data(source, spec, data, data_row, stds, stds_row, libRad, libRad2, ACMCOM, BMAFLX, metric=metric, statistics=statistics)
-
-   
-    
-    # --- flush the last row ---
-    if data_row and stds_row:
-        data.append(data_row.copy()); data_row.clear()
-        stds.append(stds_row.copy()); stds_row.clear()   
-
-    Scenenames, places = np.asarray(SceneNames), np.asarray(places)
-    if 'correlation' not in what_to_plot:
-        data, stds = np.asarray(data), np.asarray(stds)
-        data, stds = np.transpose(data), np.transpose(stds)
-
-    return SceneNames, places, data, stds
-
-
-
-
-
 def plot_traj_on_globe(SceneNames, vmin=-4, vmax=1.0, cmap_name="coolwarm", title="Title", cblabel="Value"):
     fig = plt.figure(figsize=FIGSIZE)
     cmap = plt.get_cmap(cmap_name)
@@ -662,7 +376,7 @@ def plot_traj_on_globe(SceneNames, vmin=-4, vmax=1.0, cmap_name="coolwarm", titl
                     spec                + '.nc'
                 )
 
-            _, _, ACMCOM, _ = get_instances(SceneName, Product, Product2, BMAFLX)
+            _, _, ACMCOM, _, _ = get_instances(SceneName, Product, Product2, BMAFLX)
 
             x = ACMCOM.longitude; y = ACMCOM.latitude; data = ACMCOM.surface_temperature * 0
             # update local extents
@@ -759,7 +473,8 @@ def plot_traj_on_globe(SceneNames, vmin=-4, vmax=1.0, cmap_name="coolwarm", titl
     
     ax.tick_params(axis='both', which='major', labelsize=INFOSIZE*.8)
     ax.tick_params(axis='both', which='minor', labelsize=INFOSIZE*.8)
-    fig.suptitle(title, fontsize=FONTSIZE, y=0.98, fontweight='bold')  
+    fig.suptitle(title, fontsize=FONTSIZE, y=0.93)  
+        
    
     # Background, grid, spines
     ax.set_facecolor('#f0f0f0')
@@ -781,9 +496,6 @@ def plot_traj_on_globe(SceneNames, vmin=-4, vmax=1.0, cmap_name="coolwarm", titl
     # fig.savefig(png_name)
     fig.savefig(png_name, bbox_inches="tight")
     print(f"Plot saved to {png_name}")
-
-
-
 
 def plot_multi_libRad(libRad_list, additional_spesifications, BMAFLX, ACMCOM, plot_type, pngfile, info, quantity_list):
     x = BMAFLX.latitude
@@ -1214,6 +926,292 @@ def plot_multi_libRad(libRad_list, additional_spesifications, BMAFLX, ACMCOM, pl
 
 
 
+
+################################################################################################################
+def get_instances(SceneName, Product, Product2=False, BMAFLX=False):
+    # Get .nc file
+    ProductPath = ProductPathRTM
+    ProductFile = os.path.join(ProductPath, Product)
+    print('ProductFile1', ProductFile)
+    ProductFile = sorted(glob.glob(ProductFile))[0]  
+    libRad = ReadEC.Scene(Name=SceneName)
+    libRad.ReadEarthCAREh5(ProductFile)
+    libRad.SetExtent()
+    
+    # BG: Find; Baseline, Data, Time
+    BB_baseline, BA_baseline, AC_baseline = '', '', ''
+        
+    # Get ACM-COM 
+    Product ='ACM_COM'
+    ProductPath = '*'+Product+'*'
+    ProductFile = os.path.join(pathL2TestProducts, SceneName, 'output', ProductPath, '*'+Product+'*.h5')
+    ProductFile = sorted(glob.glob(ProductFile))[0]
+    ACMCOM = ReadEC.Scene(Name=SceneName)
+    ACMCOM.ReadEarthCAREh5(ProductFile) #, ACM3D=ACM3D)
+    ACMCOM.SetExtent()
+    # Extract Baseline ---------------------------   
+    parts = ProductFile.split("ECA_EX", 1)
+    out = parts[1][:2] if len(parts) > 1 else None
+    if out == 'BA': BA_baseline += ' ' + Product
+    elif out == 'AC': AC_baseline += ' ' + Product
+    elif out == 'BB': BB_baseline += ' ' + Product
+    # print(out)
+    #---------------------------------------------
+
+    if Product2:      
+        ProductPath = ProductPathRTM
+        ProductFile = os.path.join(ProductPath, Product2)
+        # print('ProductFile2', ProductFile)
+        ProductFile = sorted(glob.glob(ProductFile))[0]
+        libRad2 = ReadEC.Scene(Name=SceneName)
+        libRad2.ReadEarthCAREh5(ProductFile)
+        libRad2.SetExtent()
+    else: libRad2 = False
+
+    # Get BMA-FLX 
+    if BMAFLX:
+        Product ='BMA_FLX'
+        ProductPath = '*'+Product+'*'  
+        ProductFile = os.path.join(pathL2TestProducts, SceneName, 'output', ProductPath, '*'+Product+'*.h5')
+        ProductFile = sorted(glob.glob(ProductFile))[0]
+        BMAFLX = ReadEC.Scene(Name=SceneName)
+        BMAFLX.ReadEarthCAREh5(ProductFile, Resolution='StandardResolution')
+        BMAFLX.SetExtent()
+        # Extract Baseline ---------------------------   
+        parts = ProductFile.split("ECA_EX", 1)
+        out = parts[1][:2] if len(parts) > 1 else None
+        if out == 'BA': BA_baseline += ' ' + Product
+        elif out == 'AC': AC_baseline += ' ' + Product
+        elif out == 'BB': BB_baseline += ' ' + Product
+        # print(out)
+        #---------------------------------------------
+    
+     # Fix Baseline
+    AC_baseline = ", ".join(AC_baseline.split())
+    BA_baseline = ", ".join(BA_baseline.split())
+    baseline_str = "Baselines: "
+    if AC_baseline != '':   baseline_str += f'AC = ({AC_baseline})  '
+    if BA_baseline != '':   baseline_str += f'BA = ({BA_baseline})  '
+    if BB_baseline != '':   baseline_str += f'BB = ({BB_baseline})  '
+        
+
+
+    # Extract Date
+    date_num = '20' + ProductFile.split('20', 1)[1].split('T', 1)[0]
+    date = date_num[6:8] + "." + date_num[4:6] + "." + date_num[0:4]
+
+    # Extract Time
+    first_time_num = ProductFile.split('T')[1].split('Z')[0]
+    second_time_num = ProductFile.split('T')[2].split('Z')[0] 
+    start_time = first_time_num[:2] + ":" + first_time_num[2:4]
+    end_time = second_time_num[:2] + ":" + second_time_num[2:4]
+    time = start_time + '-' + end_time
+
+    info = (date, time, baseline_str)
+
+    return libRad, BMAFLX, ACMCOM, libRad2, info
+
+def get_data(source, spec, data, data_row, stds, stds_row, libRad, libRad2, ACMCOM, BMAFLX, metric='diff', statistics='mean'): 
+    attr_by_source_libRad = {
+        'solar':   'solar_eup',
+        'thermal': 'thermal_eup',
+    }
+    attr_by_source_BMAFLX = {
+        'solar':   'solar_combined_top_of_atmosphere_flux',
+        'thermal': 'thermal_combined_top_of_atmosphere_flux',
+    }
+    attr_libRad = attr_by_source_libRad.get(source)
+    attr_BMAFLX = attr_by_source_BMAFLX.get(source)
+
+    x1 = libRad.latitude
+    data1 = getattr(libRad, attr_libRad)  # dynamic attribute access -> libRad, Solar or Thermal
+    # ----------- Quality-Status (ACMCOM) -----------------
+    if want_quality_status:
+        quality = ACMCOM.quality_status[:]
+        quality_mask_ACMCOM = np.isin(quality, [0, 1])
+        quality_mask_libRad = quality_mask_ACMCOM & (data1 != 0)
+    else:
+        quality_mask_libRad = data1 != 0
+    
+    x1 = x1[quality_mask_libRad]
+    data1 = data1[quality_mask_libRad]
+
+
+    # print(f'{spec:10} {source:10} flux: min={np.min(data1):.2f}, mean={np.mean(data1):.2f}, max={np.max(data1):.2f}\n')
+    
+    # ------------------------------------------------
+
+    if BMAFLX:
+        x2 = BMAFLX.latitude
+        data2 = getattr(BMAFLX, attr_BMAFLX)  # dynamic attribute access
+
+        # ----------- Quality-Status (BMAFLX) -----------------
+        if want_quality_status:
+            quality = BMAFLX.quality_status[:]
+            # boolean mask: True where quality is
+            #   0: solar and thermal OK
+            #   1: Thermal OK
+            #   2: Solar OK
+            source_quality_status_idx = 1 if source == 'thermal' else 2
+            quality_mask = np.isin(quality, [0, source_quality_status_idx]) 
+            data2 = data2[quality_mask]
+            x2 = x2[quality_mask]
+        # ------------------------------------------------
+
+        # Performe interpolation for comparison
+        fill_value_data1 = 9.96921e+36
+        fill_value_data1 = 0
+        x, data2_interp, data1 = ReadEC.interpolate(x2, data2, fill_value_data1, x1, data1, fill_value_data1) 
+        data2 = data2_interp
+
+    elif libRad2:
+        x2 = libRad2.latitude
+        data2 = getattr(libRad2, attr_libRad)  # dynamic attribute access 
+
+        # ----------- Quality-Status (ACMCOM) -----------------
+        if want_quality_status:
+            quality_mask_libRad2 = quality_mask_ACMCOM & (data2 != 0)
+        else:
+            quality_mask_libRad2 = data2 != 0
+        x2 = x2[quality_mask_libRad2]
+        data2 = data2[quality_mask_libRad2]
+        
+        # ------------------------------------------------
+        if want_average_line: data2 = ReadEC.moving_average(data2, w=10)
+        x = x1
+    else: print('Error: select BMAFLX or libRad2')
+
+
+    if want_average_line: data1 = ReadEC.moving_average(data1, w=10)
+
+    if metric == 'diff': # Calculate differance  
+        value = (data1 - data2) 
+    elif metric == 'only_libRad': # Calculate only libRad
+        value = data1
+
+
+    
+    if statistics == 'mean': # Calculate Mean
+        data_value = np.nanmean(value)
+    elif statistics == 'min': # Calculate Min
+        data_value = np.nanmin(value)
+    elif statistics == 'max': # Calculate Max
+        data_value = np.nanmax(value)
+    elif statistics == 'all_pixels_values':
+        data_value = np.column_stack([value, data2]) # Returns [[libRad, BMA], ...]
+        # data_value = np.vstack(data_value) # shape: (N, 2) -> [:,0]=libRad, [:,1]=BMA-FLX
+
+    std  = np.nanstd(value)
+    # print(f'{source:8}:  <diff> = {data_value:6.2f} pm {std:6.2f} W/m2  (n = {len(value)})')
+
+    global old_spec
+    if not globals().get("old_spec", False):
+        old_spec = spec          # <-- set it on first hit
+    if spec != old_spec:
+        data.append(data_row.copy())
+        stds.append(stds_row.copy())
+        # IMPORTANT: start fresh row
+        data_row.clear()       
+        stds_row.clear()
+
+    # data_row.append(float(data_value))  
+    # stds_row.append(float(std))
+    data_row.append(data_value)
+    stds_row.append(std)
+    
+    old_spec = spec
+
+
+def loop_through_data(source, Product2, SceneNames, librad_type='SWIA', statistics='mean'):
+    if Product2 == True: BMAFLX = False
+    else:                BMAFLX = True
+    SceneNames = [SceneNames[i][0] for i in idx_scene]
+
+    # --Create list of places:---
+    special = {
+        'Orbit_06888C': 'Svalbard',
+        'Orbit_07277C': 'Svalbard',
+        'Orbit_06331C': 'Greenland',
+    }
+    by_suffix = {'C': 'Svalbard', 'D': 'USA', 'E': 'Africa'}
+    places = [ special.get(orbit, by_suffix.get(orbit[-1], 'Unknown')) for orbit in SceneNames ]
+    # ----------------------------
+
+    global old_spec
+    old_spec = None
+    data, data_row, stds, stds_row = [], [], [], []
+    # SWIA-studies:
+    if isinstance(librad_type, list) and isinstance(additional_spesifications, list): 
+        for l_type, spec in zip(librad_type, additional_spesifications):
+            for SceneName in SceneNames:
+                Product = (
+                        'libRad_' + 
+                        version_identifier  + '_' +
+                        librad_version      + '_' +
+                        l_type              + '_' +
+                        source_str          + '_' +
+                        SceneName           + 
+                        spec                + '.nc'
+                    )
+
+                libRad, BMAFLX, ACMCOM, libRad2, _ = get_instances(SceneName, Product, Product2, BMAFLX)
+                get_data(source, l_type, data, data_row, stds, stds_row, libRad, libRad2, ACMCOM, BMAFLX, metric='only_libRad', statistics=statistics) 
+                # Note, changed spec -> l_type to let know how to construct data-array
+
+    # Other studies:
+    elif isinstance(additional_spesifications, list): # Usually the case
+        for spec in additional_spesifications:
+            for SceneName in SceneNames:
+                Product = (
+                        'libRad_' + 
+                        version_identifier  + '_' +
+                        librad_version      + '_' +
+                        librad_type         + '_' +
+                        source_str          + '_' +
+                        SceneName           + 
+                        spec                + '.nc'
+                    )
+                if Product2: 
+                        librad_version2 = 'montecarlo_3D'
+                        # additional_spesifications2 = additional_spesifications2
+                        Product2 = (
+                            'libRad_' + 
+                            version_identifier  + '_' +
+                            librad_version2     + '_' +
+                            librad_type         + '_' +
+                            source_str          + '_' +
+                            SceneName           + 
+                            additional_spesifications2
+                                                + '.nc'
+                        )
+
+                # print(f'ScneName: {SceneName}:')
+                libRad, BMAFLX, ACMCOM, libRad2, _ = get_instances(SceneName, Product, Product2, BMAFLX)
+                if what_to_plot == 'correlation':   metric = 'only_libRad'
+                else:                               metric = 'diff'
+                get_data(source, spec, data, data_row, stds, stds_row, libRad, libRad2, ACMCOM, BMAFLX, metric=metric, statistics=statistics)
+
+   
+    
+    # --- flush the last row ---
+    if data_row and stds_row:
+        data.append(data_row.copy()); data_row.clear()
+        stds.append(stds_row.copy()); stds_row.clear()   
+
+    Scenenames, places = np.asarray(SceneNames), np.asarray(places)
+    if 'correlation' not in what_to_plot:
+        data, stds = np.asarray(data), np.asarray(stds)
+        data, stds = np.transpose(data), np.transpose(stds)
+
+    return SceneNames, places, data, stds
+
+
+
+
+
+
+
+
 ###################################################################################################################################
 if __name__ == "__main__":
     # ------ Settings ------
@@ -1250,6 +1248,8 @@ if __name__ == "__main__":
     librad_type                 = 'SWIA'
     source_str                  = 'solar,thermal'
     statistics                  = 'mean'                                            # chose from: {'mean', 'min', 'max'}
+    want_average_line           = True
+    want_quality_status         = True
 
 
 
@@ -1260,7 +1260,7 @@ if __name__ == "__main__":
 
     ##########################
     #### Select verrsion: ####
-    plot_version_idx = 5
+    plot_version_idx = 0
     plot_list = [
     'Ice_habit',    #0
     'thermal_AOD',  #1
@@ -1298,15 +1298,21 @@ if __name__ == "__main__":
     elif what_to_plot == 'thermal_AOD':
         Product2  = False
         show_stds = False
+        want_quality_status = True
         idx_scene = [3,4,5,6,7,8]
-        versions  = ["aerosol_default",r"$\times$ 0.13",r"$\times$ 0.28",r"$\times$ 0.47",r"$\times$ 0.60",r"$\times$ 0.60"+"\nabsorbing",r"$\times$ 0.47"+"\nabsorbing"]
-        # ["aerosol_default","AOD(0.13)","AOD(0.28)","AOD(0.47)","AOD(0.60)","AOD(absorbing-0.60)","AOD(absorbing-0.47)"]
+        
+        
         sources   = ['thermal']
-        librad_version = 'montecarlo_3D'
+        source_str = 'thermal'
+        librad_version = 'disort_1D' #'montecarlo_3D'
 
-        additional_spesifications = ['_AOD(default)', '_AOD(alpha0.8)', '_AOD(alpha0.5)', '_AOD(alpha0.3)', '_AOD(alpha0.2)', '_AOD(dynamic0.2)', '_AOD(dynamic0.3)']
+                    # ["aerosol_default","AOD(0.13)","AOD(0.28)","AOD(0.47)","AOD(0.60)","AOD(absorbing-0.60)","AOD(absorbing-0.47)"]
+                    # additional_spesifications = ['_AOD(default)', '_AOD(alpha0.8)', '_AOD(alpha0.5)', '_AOD(alpha0.3)', '_AOD(alpha0.2)', '_AOD(dynamic0.2)', '_AOD(dynamic0.3)']
+        versions  = ["None", "aerosol_default",r"$\times$ 0.2",r"$\times$ 0.4",r"$\times$ 0.6",r"$\times$ 0.6"+"\nabsorbing",r"$\times$ 0.4"+"\nabsorbing",r"$\times$ 0.2"+"\nabsorbing"]
+        additional_spesifications = ["_AOD(NONE)","_AOD(default)","_AOD(0.2)", "_AOD(0.4)", "_AOD(0.6)","_AOD(abs0.6)", "_AOD(abs0.4)","_AOD(abs0.2)"]
+        
+        titles = ["Thermal aerosol sensitivity - LW TOA flux difference (DISORT − BMA-FLX)"]
 
-        titles      =  ["MYSTIC - Thermal Aerosol Model Sensitivity\nThermal TOA Flux Difference to BMA-FLX (mean values)"]
                         #[r"Aerosol version - Thermal $(F_{\mathrm{TOA}}^{\mathrm{MYSTIC, version}}-F_{\mathrm{TOA}}^{\mathrm{BMA-FLX}})$: mean value"]
         png_names   =  ["Data/figures/aerosol_versions.png"]
 
@@ -1392,19 +1398,18 @@ if __name__ == "__main__":
         png_names = ['Data/figures/correlation' + additional_spesifications[0] + '.png']
     
     elif what_to_plot == 'plot_traj':
-        idx_scene =  [3,4,5,8,11] # [3,4] #[3,4,5,6,7,8]
+        idx_scene = [3,4,5,6,7,8] #  [3,4,5,8,11] # [3,4] #[3,4,5,6,7,8]
         SceneNames = [SceneNames[i][0] for i in idx_scene]
         sources   = ['']
         librad_version = 'montecarlo_3D'
-        additional_spesifications = [['_All_FullBuffer'],['_All_SmallBuffer']][0]
+        additional_spesifications = [['_GHM']][0]
 
         titles = ['Trajectories']
-        png_names = ['Data/figures/trajectories.png']
+        png_names = ['Data/figures/trajectories_Ice_Habit.png']
 
     elif what_to_plot == 'multi_libRad':
         Product2 = False; BMAFLX = True
 
-        want_quality_status = True
         modify_xlim = False
         if modify_xlim: 
             idx = 2
