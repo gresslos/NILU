@@ -6,12 +6,12 @@
 #SBATCH --verbose
 #SBATCH --export=ALL
 #SBATCH --nodes=1
-#SBATCH --ntasks=16
-#SBATCH --ntasks-per-node=16
+#SBATCH --ntasks=40
+#SBATCH --ntasks-per-node=40
 
 
 ###SBATCH --cpus-per-task=1
-#SBATCH --time=4-10:00:00
+#SBATCH --time=3-10:00:00
 ###SBATCH --mem-per-cpu=1400Mb
 #SBATCH --mem-per-cpu=6G
 

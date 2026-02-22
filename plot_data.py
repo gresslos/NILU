@@ -225,9 +225,8 @@ def plot_correlation(source, versions, orbits, places, values, ylabel, title_spe
     xlabel = 'BMA-FLX'
     ylabel = 'MYSTIC' if 'montecarlo' in librad_version else  'DISORT' 
     ylabel_specs = xlabel_specs
-    source_str = 'Solar' if source == 'solar' else 'Thermal'
-    title = ylabel
-    title += f' - {source_str} TOA Flux'
+    source_str = 'SW' if source == 'solar' else 'LW'
+    title = f'{source_str} TOA Flux'
     title += title_spec 
 
     x_part, y_part = [], []
@@ -1025,6 +1024,8 @@ def get_data(source, spec, data, data_row, stds, stds_row, libRad, libRad2, ACMC
 
     x1 = libRad.latitude
     data1 = getattr(libRad, attr_libRad)  # dynamic attribute access -> libRad, Solar or Thermal
+
+    if 'montecarlo' in libRad.fn: data1 = ReadEC.AssDomain(data1, size=(11,11))
     # ----------- Quality-Status (ACMCOM) -----------------
     if want_quality_status:
         quality = ACMCOM.quality_status[:]
@@ -1077,12 +1078,12 @@ def get_data(source, spec, data, data_row, stds, stds_row, libRad, libRad2, ACMC
         data2 = data2[quality_mask_libRad2]
         
         # ------------------------------------------------
-        if want_average_line: data2 = ReadEC.moving_average(data2, w=10)
+        if want_average_line and 'disort' in libRad2.fn: data2 = ReadEC.moving_average(data2, w=10)
         x = x1
     else: print('Error: select BMAFLX or libRad2')
 
 
-    if want_average_line: data1 = ReadEC.moving_average(data1, w=10)
+    if want_average_line and 'disort' in libRad.fn: data1 = ReadEC.moving_average(data1, w=10)
 
     if metric == 'diff': # Calculate differance  
         value = (data1 - data2) 
@@ -1260,7 +1261,7 @@ if __name__ == "__main__":
 
     ##########################
     #### Select verrsion: ####
-    plot_version_idx = 0
+    plot_version_idx = 5
     plot_list = [
     'Ice_habit',    #0
     'thermal_AOD',  #1
@@ -1384,28 +1385,32 @@ if __name__ == "__main__":
         Product2 = False
         show_stds = False
         statistics = 'all_pixels_values'
-        idx_scene =  [5,8,12] #[3,4,5,8,11] #[3,4,5,8,11] # [3,4,5,8,11] # [3,4] #[3,4,5,6,7,8]
-        sources   = ['solar'] # Chose either solar or thermal, not both
+        idx_scene = [3,4,5,6,7,8,12, 11] # [5,8,12] #[3,4,5,8,11] #[3,4,5,8,11] # [3,4,5,8,11] # [3,4] #[3,4,5,6,7,8]
+        sources   = [['solar'],['thermal']][0] # Chose either solar or thermal, not both
         versions = sources
-        librad_version = 'montecarlo_3D' # 'montecarlo_3D' 'disort_1D'
+        librad_version = ['disort_1D', 'montecarlo_3D'][1] 
 
-        idx = 4
-        additional_spesifications = [['_All'],
-                                    ['_All_MCIPA'],['_All_MiniBuffer'],['_All_SmallBuffer'],['_All_MediumBuffer'],['_All_FullBuffer'],['_All_MegaBuffer'], ['_All_GigaBuffer'],
-                                    ['_GHM'],['_SC'],['_RA']][idx]
-        titles = [[' - DISORT'],[' - MCIPA'],[' - Mini Buffer'],[' - Small Buffer'],[' - Medium Buffer'],[' - Large Buffer'],[' - Mega Buffer'],[' - Giga Buffer'],[' - GHM'],[' - SC'],[' - RA']][idx]
+        idx = 1
+        additional_spesifications   = [
+                                    [''],['_21x21'],
+                                    ['_GHM'],['_SC'],['_RA']
+                                    ][idx]
+        titles                      = [
+                                    [' - DISORT'],[' - MYSTIC'],
+                                    [' - GHM'],[' - SC'],[' - RA']
+                                    ][idx]
         # titles = ['']
-        png_names = ['Data/figures/correlation' + additional_spesifications[0] + '.png']
+        png_names = ['Data/figures/correlation_' + sources[0] + additional_spesifications[0] + '.png']
     
     elif what_to_plot == 'plot_traj':
-        idx_scene = [3,4,5,6,7,8] #  [3,4,5,8,11] # [3,4] #[3,4,5,6,7,8]
+        idx_scene = [3,4,5,6,7,8,11,12] #  [3,4,5,8,11] # [3,4] #[3,4,5,6,7,8]
         SceneNames = [SceneNames[i][0] for i in idx_scene]
         sources   = ['']
         librad_version = 'montecarlo_3D'
-        additional_spesifications = [['_GHM']][0]
+        additional_spesifications = [['_21x21']][0]
 
         titles = ['Trajectories']
-        png_names = ['Data/figures/trajectories_Ice_Habit.png']
+        png_names = ['Data/figures/trajectories_all.png']
 
     elif what_to_plot == 'multi_libRad':
         Product2 = False; BMAFLX = True

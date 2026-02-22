@@ -107,8 +107,6 @@ def Calc3DBufferSize(ACM3D, ia, iacr):
     elif which_buffer == 2: along_dim, across_dim = 10, 10 # (21,21) comp-domain  ~BBR +  5 pixels-buffer
     elif which_buffer == 3: along_dim, across_dim = 20, 20 # (41,41) comp-domain  ~BBR + 35 pixels-buffer
 
-    
-
     ialongs = np.arange(ia-along_dim, ia+along_dim+1)
     iacrosses = np.arange(iacr-across_dim, iacr+across_dim+1)
     
@@ -391,19 +389,26 @@ def SetRTM(UVS, ia, iacr, ACM3D=None, AMACD=None, ACMCOM=None, ACMRT=None, BMAFL
             if (Nx > 1) & (Ny > 1):  # BG: if not MCIPA
                 # Check if latitude increase or decrease
                 is_increasing = np.all(np.diff(ACM3D.latitude[:, ia]) > 0)
-                #            print(ACM3D.latitude[:, ia])
-                #            print(is_increasing); exit()
+                ######### BG NEW 09.02.26 #########
+                is_increasing = np.all(np.diff(ACM3D.latitude[iacr, ialongs]) > 0)
+                ####################################
+            
                 # In wc_file x propagates east and y propagates north, hence if latitude
                 # is increasing (ascending node) keep ialongs, but reverse iacrosses.
                 # If latitude is decreasing (descending node), reverse ialongs and
                 # keep iacrosses.
+                
 
                 if is_increasing:
                     iacrosses=iacrosses[::-1]  # reverse: ialong=[1,2,3,4] --> ialong=[4,3,2,1]
                     ialongs=ialongs
+                    # print('Latitude is icreasing -> iacrossed is revered')
+                    # print(f'First latitude = {ACM3D.latitude[151, ialongs[0]]}    Last latitude = {ACM3D.latitude[151, ialongs[-1]]}')
                 else:
                     iacrosses=iacrosses
                     ialongs=ialongs[::-1]
+                    # print('Latitude is decreasing -> ialongs is revered')
+                    # print(f'First latitude = {ACM3D.latitude[151, ialongs[0]]}    Last latitude = {ACM3D.latitude[151, ialongs[-1]]}')
 
                 # 3D wc and ic files are aligned parallel to the meridians, the EartCARE swath is not.
                 # To correct for this perform a solar azimuth angle shift
@@ -425,6 +430,7 @@ def SetRTM(UVS, ia, iacr, ACM3D=None, AMACD=None, ACMCOM=None, ACMRT=None, BMAFL
                     phi0 = phi0-phi0_shift
                 else:
                     phi0 = phi0+phi0_shift
+                
                         
                 #print('phi0', phi0, phi0_shift)
         else:
@@ -461,6 +467,8 @@ def SetRTM(UVS, ia, iacr, ACM3D=None, AMACD=None, ACMCOM=None, ACMRT=None, BMAFL
         UVS.inp['wavelength']='250 4000'    # Changes made!
         mc_photons = int(1e6)   # Note: Change from 1e7 -> 1e6 at 20.01.26 to reduce computation time! 1000 pixels take 1 day for 21x21 grid for 15 Processors!
         if 'AllLevels' in additional_spesifications: mc_photons = int(1e6) #int(1e7) -> way too long time!
+
+        # if 'AllLevels' in additional_spesifications and Test: mc_photons = int(1e6); print(mc_photons) #int(1e7) -> way too long time!
         UVS.inp['mc_photons']=mc_photons 
         ####### INFO 21 x 21 grid ################
         # 1e7 -> 2.5min per solar pixel +-  5 W/m2   
@@ -889,6 +897,7 @@ def SetRTM(UVS, ia, iacr, ACM3D=None, AMACD=None, ACMCOM=None, ACMRT=None, BMAFL
                                 # baum_v36 for these numbers                            
                                 if icreff > 60: icreff=60.0
                                 elif icreff < 5.0: icreff=5.0
+
 
                                 if ('_TEST_edge_effects' in additional_spesifications) and (
                                     (ix <= edge_buffer) or (ix > Nx - edge_buffer) or
@@ -1349,15 +1358,16 @@ if __name__ == "__main__":
         start_time = datetime.now(timezone.utc) 
         print("Run started at", start_time.isoformat())
             
-    idx_source = 0
+    idx_source = 2
     sources = [['solar'], 
               ['thermal'],
               ['solar', 'thermal']][idx_source] 
 
-    idx_scene = [12]
+    # idx_scene = [6, 8, 12]
     # idx_scene = [3,4,5,6,7,8,11,12]
     # idx_scene = [3,4,5,6]
     # idx_scene = [7,8,11,12]
+    idx_scene = [11]
                                             ############# OLD ########################################################################
     SceneNames = [                          ['Orbit_05378D'],#0           # Marocco - Norway           
                                             ['Orbit_05458F'],             # Chile
@@ -1406,6 +1416,9 @@ if __name__ == "__main__":
 
     
 
+
+
+
     # BG: To distinguish minor modifications to .nc files
     additional_spesifications = '' 
     # additional_spesifications += '_TEST'
@@ -1423,19 +1436,17 @@ if __name__ == "__main__":
             # New mc_sample_grid
     # additional_spesifications += '_TEST_5x5'
     # additional_spesifications += '_TEST_21x21'
-    # additional_spesifications += '_21x21'
+    additional_spesifications += '_21x21'
 
             # All_levels New mc_sample_grid
-    # additional_spesifications += '_AllLevels_TEST'
-    # additional_spesifications += '_AllLevels_TEST_edn'
-    # additional_spesifications += '_AllLevels'
-    # additional_spesifications += '_AllLevels_TEST_5x5'
-    # additional_spesifications += '_AllLevels_TEST_21x21'       
-    # additional_spesifications += '_AllLevels_21x21'         # SW 1e5: 1.4min/pixel +- 20W/m2       1e6 (in use): 2.3min/pixel +-5-8W/m2         1e7: NOT POSIBLE! WAY TOO LONG! min/pixel +-W/m2
-    # additional_spesifications += '_AllLevels_21x21_edn' 
-
-    additional_spesifications += '_AllLevels_21x21_edn_edir' 
+    # additional_spesifications += '_AllLevels_TEST_edn_edir'       
+    #        NOTE: 21x21:  SW 1e5: 1.4min/pixel +- 20W/m2       1e6 (in use): 2.3min/pixel +-5-8W/m2         1e7: NOT POSIBLE! WAY TOO LONG! min/pixel +-W/m2
+    # 
+    # additional_spesifications += '_AllLevels_21x21_edn_edir' 
     # additional_spesifications += '_AllLevels_edn_edir'  
+    #
+    # additional_spesifications += '_AllLevels_21x21_eup' 
+    # additional_spesifications += '_AllLevels_eup'  
 
 
     
@@ -1651,7 +1662,10 @@ if __name__ == "__main__":
             target_lat = 5.01
             target_idx = int(np.nanargmin(np.abs(ACMCOM.latitude_active - target_lat)))
             target_idx = 601
+            target_idx = 3032
+            target_idx = 578
             # target_idx = start + 1000
+            # ialongs = [target_idx-5, target_idx, target_idx + 5]
             ialongs = [target_idx]
             # ialongs = list(range(target_idx, target_idx + 5, 1))
             print(f'Latitude             = {ACMCOM.latitude_active[target_idx]:.2f}   ia={target_idx}')
@@ -1721,7 +1735,8 @@ if __name__ == "__main__":
                                 continue
                             # -----------------------------------------------------------------------
                             nlev = r1.shape[0]
-                            idx = (idx, slice(None, nlev), slice(None), slice(None))
+                            # idx = (idx, slice(None, nlev), slice(None), slice(None))
+                            idx = (idx, slice(-nlev, None), slice(None), slice(None))
                         else: 
                             idx = (idx, slice(None), slice(None))
                     else:
@@ -1738,9 +1753,15 @@ if __name__ == "__main__":
                                 continue
                             # -----------------------------------------------------------------------
                             nlev = r1.shape[0]
-                            idx = (idx, slice(None, nlev))
+                            # idx = (idx, slice(None, nlev))
+                            idx = (idx, slice(-nlev, None))
                         else:
                             idx = idx
+
+                    ######################################################################################
+                    ################ BG NOTE ##############################################################
+                    ######## Try to change slice(None, nlev) ->  slice(-nlev, None) ########################
+                    #########################################################################################
 
                     libRad.solar_eup[idx] = r1
                     libRad.solar_eup_std[idx] = r2
@@ -1944,6 +1965,23 @@ if __name__ == "__main__":
                                 "--------------------------------------------------------------\n"
                             )
 
+                            ########################################################################################
+                            ########################################################################################
+                            nlev = eup_solar.shape[0] -1
+                            center_idx = eup_solar.shape[1] //2
+                            
+                            # print(f'\n\n\nLatitude = {ACMCOM.latitude_active[ia]:.2f}   ia={ia}')
+                            # print('\n\n', eup_solar[1,3:-3, center_idx]) # nlev, Nx, Ny
+                                        # print('\n\n', eup_solar[1,center_idx, 3:-3]) # nlev, Nx, Ny
+                                        # print('\n\n', eup_solar[1,:,:])
+                                        # print('\n\n', eup_solar[1,3:-3,3:-3])
+                                        # print('\n\n', eup_solar[nlev,:, center_idx]) # nlev, Nx, Ny
+                                        # print('\n\n', eup_solar[-1,:, center_idx], '\n\n') # nlev, Nx, Ny
+
+                                        # print(eup_solar[:, center_idx,center_idx])
+                            ########################################################################################
+                            ########################################################################################
+
                             if rte_solver=='montecarlo':
                                 if verbose: print(" |--------- OUT", rte_solver, RTdimension, ia, source, latitude_wanted, eup, "---------|\n\n")  # BG: print statemnt
                                 ### Removed 09.01.2026 ###### BG: is these neassesary???? ######
@@ -1985,22 +2023,29 @@ if __name__ == "__main__":
                     if rte_solver == "montecarlo":
                         if 'AllLevels' in additional_spesifications:
                             nlev = eup_solar.shape[0]
-                            idx = (ia, slice(None, nlev), slice(None), slice(None))
+                            # idx = (ia, slice(None, nlev), slice(None), slice(None))
+                            idx = (ia, slice(-nlev, None), slice(None), slice(None))
                         else: 
                             idx = (ia, slice(None), slice(None))
                     else:
                         if 'AllLevels' in additional_spesifications:
                             nlev = eup_solar.shape[0]
-                            idx = (ia, slice(None, nlev))
+                            # idx = (ia, slice(None, nlev))
+                            idx = (ia, slice(-nlev, None))
                         else:
                             idx = ia
+
+                    ######################################################################################
+                    ################ BG NOTE ##############################################################
+                    ######## Try to change slice(None, nlev) ->  slice(-nlev, None) ########################
+                    #########################################################################################
 
                     libRad.solar_eup_std[idx]   = eup_solar_std
                     libRad.thermal_eup_std[idx] = eup_thermal_std
                     libRad.solar_eup[idx]       = eup_solar
                     libRad.thermal_eup[idx]     = eup_thermal
 
-       
+                    print(eup_solar)
                     # print(eup_solar[:, 2, 2])
 
                     task_index += 1

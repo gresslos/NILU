@@ -1111,7 +1111,7 @@ class Scene:
             # plt.figtext(0.56, 0.006, f"{line1}      {line2}", fontsize=INFOSIZE*.7)         
         line1 = f"{self.Name} - {date} {time} (UTC)"
         plt.figtext(0.7, 0.006, f"{line1}", fontsize=INFOSIZE*.7)        
-        plt.figtext(0.001, 0.004, baseline_str, fontsize=FONTSIZE*0.45)
+        plt.figtext(0.001, 0.007, baseline_str, fontsize=FONTSIZE*0.45)
         
 
         # BG: ----- plot-adjustments for nicer looking plots -----------
@@ -1264,7 +1264,7 @@ class Scene:
         line1 = f"{self.Name} - {date} {time} (UTC)"
         line2 = fr"SZA=⟨{SZA_min:.0f}, {SZA_max:.0f}⟩$^\circ$ $⟨\phi⟩$={PHI_mean:.0f}$^\circ$"
         plt.figtext(0.56, 0.006, f"{line1}      {line2}", fontsize=INFOSIZE*.7)         
-        plt.figtext(0.001, 0.004, baseline_str, fontsize=FONTSIZE*0.45)
+        plt.figtext(0.001, 0.007, baseline_str, fontsize=FONTSIZE*0.45)
         
 
         # BG: ----- plot-adjustments for nicer looking plots -----------
@@ -1460,12 +1460,12 @@ class Scene:
             title='Atmospheric and Surface Properties'    
             
             data = self.solar_combined_top_of_atmosphere_flux * np.nan
+            data = ACMCOM.latitude_active * 0
             x = ACMCOM.latitude_active
 
             for quantity in quantity_list:
                 ax2 = add_profile_to_plot(fig, ax, ACMCOM, fsize=fsize, legend_list=pl_list, quantity=quantity, quantity_list=quantity_list, stacked=False)
-                
-           
+          
 
             vmin = 0 #0.0001 #
             vmax = 1
@@ -1479,7 +1479,7 @@ class Scene:
             #   Scene2 = librad
             #   Scene3 = ACMRT
             #   Scene4 = librad2
-            title='SW TOA flux' #+ f' - Atmosphere {atmosphere} (ACM-COM)'
+            title='SW TOA Flux' #+ f' - Atmosphere {atmosphere} (ACM-COM)'
             cblabel='BMA_FLX' #: solar_combined_top_of_atmosphere_flux'
                 
 
@@ -1513,6 +1513,8 @@ class Scene:
 
             data2 = Scene2.solar_eup
             if 'montecarlo' in Scene2.fn: data2 = AssDomain(data2, size=AssDomainSize)
+
+        
             
 
             # ----------- Quality-Status -----------------
@@ -1520,7 +1522,8 @@ class Scene:
                 # BG: modification to only include calculated results with valid quality
                 # Create a combined mask: non-zero and quality 0 or 1
                 quality = ACMCOM.quality_status[:]
-                mask = (data2 != 0) & np.isin(quality, [0, 1])
+                mask = (data2 != 0) & np.isin(quality, [0, 1]) 
+                # print(np.nanmax(data2))
 
                 # Apply the mask to data
                 x2[~mask], data2[~mask] = np.nan, np.nan
@@ -1589,12 +1592,12 @@ class Scene:
                 p,=ax.plot(x3, data3, color='gray', label='ACM_RT 1D', linewidth=2) #, alpha=.8) "flux_up_solar_1d_all_sky, TOA"
                 pl_list.append(p)
 
-                                                # p,=ax.plot(x3, data4, 
-                                                #         color = 'black', marker = 'o', markersize = 3, linestyle = 'None', 
-                                                #         # color='black', marker = 'x', markersize=8, linestyle="None", 
-                                                #         zorder=40, 
-                                                #         label='ACM_RT 3D') # "flux_up_solar_3d_all_sky, TOA"
-                                                # pl_list.append(p) 
+                # p,=ax.plot(x3, data4, 
+                #         color = 'black', marker = 'o', markersize = 3, linestyle = 'None', 
+                #         # color='black', marker = 'x', markersize=8, linestyle="None", 
+                #         zorder=40, 
+                #         label='ACM_RT 3D') # "flux_up_solar_3d_all_sky, TOA"
+                # pl_list.append(p) 
                                             
 
 
@@ -1607,7 +1610,7 @@ class Scene:
 
 
         elif plot_type=='thermal_both':
-            title='LW TOA flux' #+ f' - Atmosphere {atmosphere} (ACM-COM)'
+            title='LW TOA Flux' #+ f' - Atmosphere {atmosphere} (ACM-COM)'
             cblabel='BMA_FLX' #: thermal_combined_top_of_atmosphere_flux'
 
             # ---------- BG: Get additional data to plot (twin or stacked-axis) ----------------
@@ -1660,9 +1663,9 @@ class Scene:
                 # x2, data2 = x2[mask], data2[mask]
             
             RTM_str = 'MYSTIC (3D)' if '3D' in librad_version else 'DISORT (1D)'
-            RTM_str = 'DISORT - AOD(x0.6)'
+            # RTM_str = 'DISORT - AOD(x0.6)'
             p,=ax.plot(x2, data2, color='blue', label=RTM_str,
-                        marker=".", markersize = 3, linestyle="None", 
+                        # marker=".", markersize = 3, linestyle="None", 
                         alpha=.8,
                         linewidth=1.2,
                         zorder=30)
@@ -1687,13 +1690,13 @@ class Scene:
                     x4[~mask], data4[~mask] = np.nan, np.nan
                 # ------------------------------------------------
                 RTM_str = 'MYSTIC (3D)' if '3D' in librad_version2 else 'DISORT (1D)'
-                RTM_str = 'DISORT - AOD(NONE)'
+                # RTM_str = 'DISORT - AOD(NONE)'
                 if want_average_line: 
                     data4 = moving_average(data4, w=w_size)
                     # mask = np.isfinite(data4) & np.isfinite(x4)
                     # x4, data4 = x4[mask], data4[mask]
                 p,=ax.plot(x4, data4, color='#4E9A06', label=RTM_str, alpha=.8, zorder=5,  # color='lightgreen'
-                            marker = '.', markersize = 6, linestyle = 'None', 
+                            # marker = '.', markersize = 6, linestyle = 'None', 
                             )
                 pl_list.append(p)
             if Scene3 != None:
@@ -1716,13 +1719,13 @@ class Scene:
                 p,=ax.plot(x3, data3, color='gray', label='ACM_RT 1D', linewidth=2) #, alpha=.8) "flux_up_solar_1d_all_sky, TOA"
                 pl_list.append(p)
 
-                                                # p,=ax.plot(x3, data4, 
-                                                #         color = 'black', marker = 'o', markersize = 3, linestyle = 'None', 
-                                                #         # color='black', marker = 'x', markersize=8, linestyle="None", 
-                                                #         zorder=8, 
-                                                #         label='ACM_RT 3D') # "flux_up_solar_3d_all_sky, TOA"
-                                                # pl_list.append(p) 
-                
+                # p,=ax.plot(x3, data4, 
+                #         color = 'black', marker = 'o', markersize = 3, linestyle = 'None', 
+                #         # color='black', marker = 'x', markersize=8, linestyle="None", 
+                #         zorder=8, 
+                #         label='ACM_RT 3D') # "flux_up_solar_3d_all_sky, TOA"
+                # pl_list.append(p) 
+
 
             vmin=data.min()#0.0001 #
             vmax=data.max()#4 #
@@ -2885,7 +2888,7 @@ class Scene:
 
         ax.set_xlabel(xlabel + xlabel_specs, fontsize=INFOSIZE)
         ax.set_ylabel(ylabel + ylabel_specs, fontsize=INFOSIZE)
-        if 'ax2' in locals():
+        if 'ax2' in locals() and hasattr(fig, '_ax_bot'):
             fig._ax_bot.set_xlabel(xlabel + xlabel_specs, fontsize=INFOSIZE)
 
         ax.xaxis.set_minor_locator(AutoMinorLocator())
@@ -2893,13 +2896,13 @@ class Scene:
         ax.tick_params(axis='both', which='major', labelsize=INFOSIZE*.8)
         ax.tick_params(axis='both', which='minor', labelsize=INFOSIZE*.8)
  
-        fig.suptitle(title, fontsize=FONTSIZE)
+        fig.suptitle(title, fontsize=FONTSIZE, y =0.93)
             # line1 = f"{self.Name} - {date} {time} (UTC)"
             # line2 = fr"SZA=⟨{SZA_min:.0f}, {SZA_max:.0f}⟩$^\circ$ $⟨\phi⟩$={PHI_mean:.0f}$^\circ$"
             # plt.figtext(0.56, 0.006, f"{line1}      {line2}", fontsize=INFOSIZE*.7)         
         line1 = f"{self.Name} - {date} {time} (UTC)"
         plt.figtext(0.7, 0.006, f"{line1}", fontsize=INFOSIZE*.7)        
-        plt.figtext(0.001, 0.004, baseline_str, fontsize=FONTSIZE*0.45)
+        plt.figtext(0.001, 0.007, baseline_str, fontsize=FONTSIZE*0.45)
         
 
         # BG: ----- plot-adjustments for nicer looking plots -----------
@@ -2935,60 +2938,133 @@ class Scene:
         x = self.latitude
         xlabel = "Latitude"; xlabel_specs = r" [N$^\circ$]"
         ylabel = "Altitude"; ylabel_specs = r" [km]"
-        cblabel = r"$F_{\mathrm{TOA}}^{\uparrow}$ [W/m$^2$]"
+        if        'eup' in self.fn: cblabel = r"$F_{\mathrm{TOA}}^{\uparrow}$ [W/m$^2$]"
+        elif 'edn_edir' in self.fn: cblabel = r"$F_{\mathrm{TOA}}^{\downarrow}$ [W/m$^2$]"
 
         cmap = plt.get_cmap('inferno')
         xmin = self.latitude.min() #-90 #
         xmax = self.latitude.max() #90 #
 
+
         
         title = ''
         pl_list = []
-        if plot_type == 'all_levels_solar':
+        if plot_type == 'all_levels_solar': #############################################################
             z = ACMCOM.height_level / 1000.0  # [km]¨
 
             data = self.solar_eup   # (along_track, height_level)
             data = data.T           # (height_level, along_track)
+            data = np.where(np.nan, data, 0.0)
+
             
-            if 'disort' in self.fn: label = '  [DISORT]'
+            # arr = np.empty_like(data)
+            # for j in range(data.shape[1]):   # loop over along-track
+            #     col = data[:, j]
+            #     is_zero = (col == 0) | (np.isnan(col))
+            #     arr[:, j] = np.concatenate([col[is_zero], col[~is_zero]])
+            # data = arr
+            
+            # ############# TESTING
+            # data = ACMRT.flux_up_solar_1d_all_sky[:,:]
+            # data = np.where(data < 1e30, data, np.nan)
+            # data = data.T
+            # data = data[::-1, :]         # reverse altitude-order     
+
+        
+
+            
+            if       'disort' in self.fn: label = '  [DISORT]'
             elif 'montecarlo' in self.fn: label = '  [MYSTIC]'
             else: label= 'something went wrong';clabel=''
 
-            title += "SW downward Flux"
-            title += label
+            if        'eup' in self.fn: title += "SW Upward Flux"
+            elif 'edn_edir' in self.fn: title += "SW Downward Flux"
+            else: 
+                raise ValueError(
+                    f"Unrecognized flux identifier in filename: {self.fn}. "
+                    "Expected 'eup' or 'edn_edir'."
+                )
         
             # Print out calculated STDs
             if 'montecarlo' in self.fn:
                 data_std = np.nanmean(self.solar_eup_std[data.T > 0])
                 print(f'Mean STD = {data_std:.2f}  W/m2')
 
-        elif plot_type == 'all_levels_solar_diff':
+            ax_list         = [ax]
+            data_list       = [data]
+            cblabel_list    = [cblabel]
+            label_list      = [label]
+            data_diff       = None
+
+        elif plot_type == 'all_levels_solar_diff': #############################################################
             z = ACMCOM.height_level / 1000.0  # [km]
             data = self.solar_eup.T - Scene2.solar_eup.T
             
 
-            if 'disort' in self.fn and 'montecarlo' in Scene2.fn: label = '  [1D - 3D]'
+            if   'disort' in self.fn and 'montecarlo' in Scene2.fn: label = '  [1D - 3D]'
             elif 'disort' in Scene2.fn and 'montecarlo' in self.fn: label = '  [3D - 1D]'
             else: label= 'something went wrong';clabel=''
 
-            cblabel = r"$\Delta F_{\mathrm{TOA}}^{\uparrow}$ [W/m$^2$]"
-            title += "SW downward Flux Difference"
-            title += label
-            cmap = plt.get_cmap('coolwarm')
+            
+            if        'eup' in self.fn: title += "SW Upward Flux Difference";   cblabel = r"$\Delta F_{\mathrm{TOA}}^{\uparrow}$ [W/m$^2$]"
+            elif 'edn_edir' in self.fn: title += "SW Downward Flux Difference"; cblabel = r"$\Delta F_{\mathrm{TOA}}^{\downarrow}$ [W/m$^2$]"
+            else: 
+                raise ValueError(
+                    f"Unrecognized flux identifier in filename: {self.fn}. "
+                    "Expected 'eup' or 'edn_edir'."
+                )
+
+            ax_list         = [ax]
+            data_list       = [data]
+            cblabel_list    = [cblabel]
+            label_list      = [label]
+            data_diff       = None
+        
+        elif plot_type == 'all_levels_solar_subplots': #############################################################
+            fig, axes = plt.subplots(1, 3, figsize=(10,4), sharey=True)
+            ax1, ax2, ax3 = axes
+
+            z = ACMCOM.height_level / 1000.0  # [km]
+
+
+            data1 = self.solar_eup   # (along_track, height_level)
+            data1 = data1.T          # (height_level, along_track)
+
+            data2 = Scene2.solar_eup  
+            data2 = data2.T        
+
+            data_diff = self.solar_eup.T - Scene2.solar_eup.T
+
+
+            if        'eup' in self.fn: title += "SW Upward Flux";   cblabel_diff = r"$\Delta F_{\mathrm{TOA}}^{\uparrow}$ [W/m$^2$]"
+            elif 'edn_edir' in self.fn: title += "SW Downward Flux"; cblabel_diff = r"$\Delta F_{\mathrm{TOA}}^{\downarrow}$ [W/m$^2$]"
+
+            
+            if   'disort' in self.fn and 'montecarlo' in Scene2.fn:  label1 = '  [DISORT]'; label2 = '  [MYSTIC]'; label_diff = '  [1D - 3D]'
+            elif 'disort' in Scene2.fn and 'montecarlo' in self.fn:  label1 = '  [MYSTIC]'; label2 = '  [DISORT]'; label_diff = '  [3D - 1D]'
 
 
 
-        data = data[::-1, :]         # reverse altitude-order
+            ax_list         = [ax1, ax2, ax3]
+            data_list       = [data1, data2, data_diff]
+            cblabel_list    = [cblabel, cblabel, cblabel_diff]
+            label_list      = [label1, label2, label_diff]
+
+            
+        
+
+
+
         #----------------- Add clouds ----------------------
         if want_cloud_on_plot:  
             # 0: clear sky, 1: cloudy sky
-            cloud = (ACMCOM.cloud_flag == 1)         
-            X = np.broadcast_to(x, cloud.shape) 
-            Z = z[:cloud.shape[0], :]    
-            size = 20 if modify_xlim else 1
-            ax.scatter(X[cloud], Z[cloud],
-                    c="white", s=size, alpha=0.3, marker=".",
-                    zorder=10, label='Cloud-Mask')
+            cloud_mask = (ACMCOM.cloud_flag == 1)  
+            # cloud = (ACMCOM.liquid_water_content > 0) & (ACMCOM.liquid_water_content < 1e30)
+            X = np.broadcast_to(x, cloud_mask.shape) 
+            Z = z[:cloud_mask.shape[0], :]    
+
+            size = 10 if modify_xlim else 1
+    
             
         # Set limits -----------------------------
         if modify_xlim:
@@ -3002,45 +3078,93 @@ class Scene:
         SZA_min, SZA_max, PHI_mean, zout = get_property(BMAFLX, ACMCOM, idx=idx)
 
         mask = (x > lat_min) & (x < lat_max)
-        vmin = np.nanmin(data[:,mask])
-        vmax = np.nanmax(data[:,mask])
-        if plot_type == 'all_levels_solar_diff': # normalization of diff-plot
-            vmax = np.max(np.abs([vmin, vmax]))
-            vmin = -vmax
-        # ---------------------------------------
-      
-        im = ax.pcolormesh(x, z, data,
-                shading='auto', cmap=cmap, vmin=vmin, vmax=vmax
-            )
 
-        z = z[1:,:] # (height_level, along-track)
-        h_max = np.nanmax(z[cloud & mask]) + 3      # IMPORTANT NOTE: do not calculate Fluxes above around 40 km!
 
-        # add colorbar with flux label
-        cb = fig.colorbar(im, ax=ax, pad=0.005, extend='both', extendrect=True)
-        cb.set_label(cblabel, size=INFOSIZE*.8)
-        cb.ax.tick_params(labelsize=INFOSIZE * .8)
-        cb.outline.set_visible(False)
-        cb.ax.set_facecolor('#f7f7f7')
 
-        leg = ax.legend(  loc='upper left', 
-                        framealpha=0.9, 
-                        borderaxespad=0.0,                   # space to axes
-                        borderpad=0.25, labelspacing=0.25,   # compact box
-                        markerscale=1.5, # -> increase dot sizes to see on plot
-                        fontsize=INFOSIZE*.8)
-        leg.get_frame().set_facecolor("lightgray")   # light grey background          
 
-        ax.set_xlim(lat_min, lat_max)
-        ax.set_ylim(0, h_max)
-        ax.set_xlabel(xlabel + xlabel_specs, fontsize=INFOSIZE)
-        ax.set_ylabel(ylabel + ylabel_specs, fontsize=INFOSIZE)
-        ax.xaxis.set_minor_locator(AutoMinorLocator())
-        ax.yaxis.set_minor_locator(AutoMinorLocator())
-        ax.tick_params(axis='both', which='major', labelsize=INFOSIZE*.8)
-        ax.tick_params(axis='both', which='minor', labelsize=INFOSIZE*.8)
+
+
+        for i, (ax, data, cblabel, label) in enumerate(zip(ax_list, data_list, cblabel_list, label_list)):
+            data = data[::-1, :]         # reverse altitude-order      
+
+            ########################## PLOTTING #########################################
+            # ---------- BG: Get additional data to plot (twin or stacked-axis) ----------------
+            if quantity_list:
+                add_profile_list = [] # List for ax2-legends
+                for quantity in quantity_list:
+                    ax, ax2 = add_profile_to_plot(fig, ax, ACMCOM, fsize=FONTSIZE, legend_list=add_profile_list, quantity=quantity, quantity_list=quantity_list, stacked=True) # h_max=h_max)
+                if add_profile_list: ax2.legend(handles=add_profile_list, 
+                                                loc='upper right', framealpha=0.7, 
+                                                borderaxespad=0.0,                  # space to axes
+                                                borderpad=0.25, labelspacing=0.25,   # compact box)
+                                                fontsize=INFOSIZE*.8)
+            # ------------------------------------------------------------------------
+
+
+            if want_cloud_on_plot:
+                cloud_plot = np.ma.masked_where(~cloud_mask, cloud_mask)
+                ax.pcolormesh(
+                    x, z[1:,:],cloud_plot,
+                    shading="auto",cmap="gray_r",alpha=0.5,zorder=10,
+                )
+                # Fake scatter for legend: white square
+                ax.scatter([], [], s=10, marker="s", color="white", alpha=0.4, label="Cloud-Mask")
+
+
+            if i != 1:
+                vmin = np.nanmin(data[:,mask])
+                vmax = np.nanmax(data[:,mask])
+            # if plot_type == 'all_levels_solar_diff' or (data[::-1,:] == data_diff).all(): # normalization of diff-plot
+            if plot_type == 'all_levels_solar_diff' or (plot_type == 'all_levels_solar_subplots' and i == 2): # normalization of diff-plot
+                vmax = np.max(np.abs([vmin, vmax]))
+                # vmax = 200
+                vmin = -vmax
+
+                cmap = plt.get_cmap('coolwarm')
+            # ---------------------------------------
+           
+            im = ax.pcolormesh(x, z, data,
+                    shading='auto', cmap=cmap, vmin=vmin, vmax=vmax
+                )
+
+            # (height_level, along-track)
+            h_max = np.nanmax(z[1:,:][cloud_mask & mask]) + 1      # IMPORTANT NOTE: do not calculate Fluxes above around 40 km!
+            # h_max = 12
+            # h_max = 64
+
+            # add colorbar with flux label
+            # add colorbar with flux label
+            if quantity_list: 
+                cax = fig.add_axes([0.8, 0.5, 0.02, 0.38]) # create colorbar axis: [left, bottom, width, height] in figure coordinates
+                cb = fig.colorbar(im, cax=cax, pad=0.005, extend='both', extendrect=True)
+                fig._ax_bot.set_ylim(0, h_max) # set y-limits of twin-axis to match main axis
+            else: 
+                cb = fig.colorbar(im, ax=ax, pad=0.005, extend='both', extendrect=True)
+            cb.set_label(cblabel, size=INFOSIZE*.8)
+            cb.ax.tick_params(labelsize=INFOSIZE * .8)
+            cb.outline.set_visible(False)
+            cb.ax.set_facecolor('#f7f7f7')
+
+            if i == 0:
+                leg = ax.legend(  loc='upper left', 
+                            framealpha=0.9, 
+                            borderaxespad=0.0,                   # space to axes
+                            borderpad=0.25, labelspacing=0.25,   # compact box
+                            markerscale=1.5, # -> increase dot sizes to see on plot
+                            fontsize=INFOSIZE*.8)
+                leg.get_frame().set_facecolor("lightgray")   # light grey background          
+
+            ax.set_xlim(lat_min, lat_max)
+            ax.set_ylim(0, h_max)
+            ax.set_xlabel(xlabel + xlabel_specs, fontsize=INFOSIZE)
+            if i == 0: ax.set_ylabel(ylabel + ylabel_specs, fontsize=INFOSIZE)
+            ax.xaxis.set_minor_locator(AutoMinorLocator())
+            ax.yaxis.set_minor_locator(AutoMinorLocator())
+            ax.tick_params(axis='both', which='major', labelsize=INFOSIZE*.8)
+            ax.tick_params(axis='both', which='minor', labelsize=INFOSIZE*.8)
+            ax.set_title(label, fontsize=INFOSIZE)
         
-        fig.suptitle(title, fontsize=FONTSIZE, y=.93)
+        fig.suptitle(title, fontsize=FONTSIZE)
         line1 = f"{self.Name} - {date} {time} (UTC)"
         if modify_xlim:
             line2 = fr"⟨SZA⟩={SZA_min:.0f}$^\circ$ $⟨\phi⟩$={PHI_mean:.0f}$^\circ$"
@@ -3048,7 +3172,7 @@ class Scene:
             # line2 = fr"SZA=⟨{SZA_min:.0f}, {SZA_max:.0f}⟩$^\circ$ $⟨\phi⟩$={PHI_mean:.0f}$^\circ$"
             line2 = ''
         plt.figtext(0.58, 0.006, f"{line1}      {line2}", fontsize=INFOSIZE*.7)         
-        plt.figtext(0.001, 0.004, baseline_str, fontsize=FONTSIZE*0.45)
+        plt.figtext(0.001, 0.007, baseline_str, fontsize=FONTSIZE*0.45)
         # Orbit nr: self.Name
 
         # BG: ----- plot-adjustments for nicer looking plots -----------
@@ -3608,7 +3732,7 @@ if __name__ == "__main__":
     
     # BG: additional settings
     AssDomainSize       = [(3,3), (11,11)][1]   # Size of assessment domain (across-track, along-track) in libRadtran 3D MC
-    want_quality_status = False                 # If want ACM-COM and BMA-FLX quality status
+    want_quality_status = True                 # If want ACM-COM and BMA-FLX quality status
     want_EarthCARE_info = False                  # Sets Scene3 = ACM3D (in PlotLien)
     want_product2       = True                 # Sets Scene4 = librad2 (in PlotLine)
     want_average_line   = True                  # Average line of DISORT-flux-values
@@ -3625,40 +3749,41 @@ if __name__ == "__main__":
 
     # -------------------- Small hint for modification in .nc-file ---------
     additional_spesifications = '' 
-    # additional_spesifications += '_TEST'
-    # additional_spesifications += '_TEST_new_h2o'
+    # additional_spesifications = '_TEST'
+    # additional_spesifications = '_TEST_new_h2o'
 
                 # AOD-Models
-    # additional_spesifications += '_AOD(NONE)'
-    # additional_spesifications += '_AOD(default)'
-    # additional_spesifications += '_AOD(abs0.6)'
-    # additional_spesifications += '_AOD(abs0.4)'
-    # additional_spesifications += '_AOD(abs0.2)'
-    # additional_spesifications += '_AOD(0.6)'
-    # additional_spesifications += '_AOD(0.4)'
-    # additional_spesifications += '_AOD(0.2)'
+    # additional_spesifications = '_AOD(NONE)'
+    # additional_spesifications = '_AOD(default)'
+    # additional_spesifications = '_AOD(abs0.6)'
+    # additional_spesifications = '_AOD(abs0.4)'
+    # additional_spesifications = '_AOD(abs0.2)'
+    # additional_spesifications = '_AOD(0.6)'
+    # additional_spesifications = '_AOD(0.4)'
+    # additional_spesifications = '_AOD(0.2)'
 
-
-    # additional_spesifications += '_All'
+    # additional_spesifications = '_All'
                 # New mc_sample_grid
-    # additional_spesifications += '_TEST_5x5'
-    # additional_spesifications += '_21x21'
+    # additional_spesifications = '_TEST_5x5'
+    additional_spesifications = '_21x21'
 
                # All_levels New mc_sample_grid
-    # additional_spesifications += '_AllLevels_TEST'
-    # additional_spesifications += '_AllLevels'
-    # additional_spesifications += '_AllLevels_TEST_5x5'
-    # additional_spesifications += '_AllLevels_TEST_21x21'
-    # additional_spesifications += '_AllLevels_21x21'
-    # additional_spesifications += '_AllLevels_21x21_edn'
-    additional_spesifications += '_AllLevels_21x21_edn_edir'
-    # additional_spesifications += '_AllLevels_edn_edir'
-    
+    # additional_spesifications = '_AllLevels_TEST'
+
+    # additional_spesifications = '_AllLevels_21x21_edn_edir'
+    # additional_spesifications = '_AllLevels_edn_edir'
+
+    # additional_spesifications = '_AllLevels_21x21_eup'
+    # additional_spesifications = '_AllLevels_eup'
+
     # ----------------------------------------------------------------------
     librad_version2 =  'disort_1D'                  
             # Chose from: 'montecarlo_3D'  'disort_1D'   librad_version
-    additional_spesifications2 =  '_AllLevels_edn_edir'
-            #Chose from: additional_spesifications, '_All', ...
+    additional_spesifications2 =  '' 
+    # additional_spesifications2 = '_AllLevels_edn_edir'
+    # additional_spesifications2 = '_AllLevels_eup'
+   
+            #Chose from: additional_spesifications, '_AllLevels_edn_edir',  '_AllLevels_eup',  '_All', ...
     # -------------------------------------------------------------------
 
 
@@ -3677,20 +3802,23 @@ if __name__ == "__main__":
     # quantity_list = ['aerosols']
 
 
-    modify_xlim = True
+    modify_xlim = False
     if modify_xlim: 
         idx = 0
         lat_ranges = [
-            (32.5, 38.5), #7883D   
-            (10.5, 13.5), #6886E   
-            (63.6, 65.0), #6907D
-            (40.5, 41.3), #6907D
+            (31.8, 32), #7883D    #0  
+            (39.7, 40.05), #7883D   
 
-            (63.6,   65), #6907D
-            (40.5, 41.3), #6907D
+            (5.0, 5.3),  #6886E      #2
+            (9.8, 10.1), #6886E      
+            (15.9, 16.14),  #6886E   
+            
 
-            (10.5, 13.5), #6886C
-            (32.5, 38.5), #7883D        
+            (40.8, 41.2), #6907D    #5
+            (23.2, 24.2), #6907D    
+          
+
+                
            
         ][idx]
 
@@ -3698,8 +3826,8 @@ if __name__ == "__main__":
 
 
 
-    # idx_scene = [3,4,5,6,7,8, 11, 12]
-    idx_scene = [12]
+    # idx_scene = [3,4,5,6,7,8,11,12]
+    idx_scene = [11]
                                         ################# OLD ########################################################################
     SceneNames = [                      ['Orbit_05378D'],#0           # Marocco - Norway           
                                         ['Orbit_05458F'],             # Chile
@@ -3727,7 +3855,7 @@ if __name__ == "__main__":
 
 
     
-    fig_index = 23
+    fig_index = 2
     # BG: fig:*both* when simulated in solar & thermal ('*solar,thermal*'-name in RESULT .nc files)
     figname = ['fig:flx_solar',#0                                                   
                'fig:flx_thermal',                                                   
@@ -3760,6 +3888,7 @@ if __name__ == "__main__":
 
                'fig:all_levels_solar',#22
                'fig:all_levels_solar_diff',
+               'fig:all_levels_solar_subplots',
                ][fig_index]
 
 
@@ -3859,9 +3988,9 @@ if __name__ == "__main__":
     elif figname == 'fig:plot_info':
         plot_types_flx_geo = ['plot_info']
         source_str = 'solar,thermal'
-    elif figname == 'fig:all_levels_solar' or figname == 'fig:all_levels_solar_diff':
+    elif figname == 'fig:all_levels_solar' or figname == 'fig:all_levels_solar_diff' or figname == 'fig:all_levels_solar_subplots':
         plot_all_levels = [figname[len('fig:'):]]
-        if figname == 'fig:all_levels_solar_diff': Product2 = True
+        if figname == 'fig:all_levels_solar_diff' or figname == 'fig:all_levels_solar_subplots': Product2 = True
         source_str = 'solar' # 'solar,thermal'
         want_cloud_on_plot = True
     else:
@@ -3979,7 +4108,7 @@ if __name__ == "__main__":
         
 
 
-        if len(plot_types_librad)>0 or len(plot_types_flx)>0 or len(plot_all_levels):      
+        if len(plot_types_librad)>0 or len(plot_types_flx)>0 or len(plot_all_levels)>0:      
             ProductPath = ProductPathRTM
             ProductFile = os.path.join(ProductPath, Product)
             print('ProductFile1', ProductFile)

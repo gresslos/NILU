@@ -3,16 +3,61 @@
 ------------ Git Rutine ------
 cd -> to folder
 git status
-git add -A              # or: git add <files/dirs>
+git add <files/dirs>  
 git commit -m "<short note>"
 git push
 
+            If push do not work -> jump back to last commit (do not change working directory): 
+                git branch backup-before-reset
+                git reset --mixed HEAD~1
+            If something wrong happen, just reset with: 
+                git reset --mixed HEAD~1
+
+
+------------ Overall Plan ---------
+- LOOK FOR THIS: 
+
+        --------------------------- ia=578 --------------------------
+        Mean flux (solar) +- std = 641.08 W/m2 +- 35.11
+        --------------------------------------------------------------
+
+
+
+
+
+- Run (with new PHI0)    AllLevels (edn_edir + eup)-6,8,12-Swaths    +     21x21-All-Swaths for MYSTIC    
+- Try to find entrapment!!! look into full swaths
+- Finish plots on Sur-VS-TOA (not include error vs across-track distance yet)
+- Finish overall swaths SW and LW TOA fluxes + Statistics (3D, 1D, ACM-RT 1D  VS BMA-FLX)
+- Finish writing Method (Conducted Analysis) in parallel with simuations
 
 ------------ Short-Term -------
-- Finish Aerosol part in Theory, Method, Appendix 
-    * Note just copy from appendix to Theory and Method, need to merge nicly and fix Appendix!
-- Add new swaths to Buffer-Sensitivity!
-- Optimal across-track dimention where edge-effects negligleble!
+- Finish writing about Surface
+- Metrics: MBE, STD (not write "mean delta_F"!) or write mu (for MSE) and sigma (for STD)
+
+- Finish aerosol appendix after Tove's recoomendations!
+    - include figures!
+    - also make figure over USA in thesis
+    - also make figures for all swath on git!
+- Send mail to Mayer about MSTIC setup and averagin!
+
+- Error to pyranometer vs Across-Track distance to!
+- Make section of Bad SUR -> expect bad TOA for conservation of energy kinda thing!
+
+- Make bird view of clouds over bad meassurements over stations! Maybe can see shadows/disort better! Maybe use AllLevels simulation and 3D-1D! Can see differences better!
+        SIMULATE ALL LEVELS HERE! Myabe can show 3D-1D stuff and 3D-effects why happen? 
+        1D high, 3D LOW -> not cloudy pixel, but shadows from neirby clouds!?
+            * SUR:   Orbit_01690C 4606,152 solar   PYRANOMETER 100    MYSTIC 86     DISORT 197.76
+                TOA: Orbit_01690C 4606,151 solar   PYRANOMETER 165    MYSTIC 170    DISORT 165.81
+            * 
+
+
+----------- Things to NOTE ---------------
+- Remember new quality status in BMA-FLX for BC-baseline! (EarthCARE meeting) (from 18/11/25 for BM-RAD, maybe not BMA-FLX??)
+
+
+
+
 - NOTES FROM ARVE: 
     * MYSTIC and DISORT vs BMAFLX (same figure!)
     * Same y-axis intervall in all plots
@@ -28,7 +73,7 @@ git push
         - Myabe use per 100 km^2 or someting! (like adding 10x10 to buffer!)
         - Maybe not Linear regression is best -> maybe changes non-linear! maybe squared? or exponential?
 
-- Maybe add NIPA for 6886E swath in 3D RT effect!
+
 - Maybe structure main takeway of Master as looking into Buffer-Size Sensitivity (using even smaller buffer on small locations!)
 - 3D RT effect:
     * Run many swaths with IPA, MC LargeBuffer, MC SmallBuffer, MCIPA? 
@@ -50,13 +95,16 @@ git push
 
 
 
-ESM - GCM - Comparison
-- mean diff (libRad - BMAFLX) over 100x10 km areas -> more representable to ESM? -> good comparions?
+
 
 
 ------------ Writing -----------
-- Conseptual Framework of data->results
-- Monte Carlo Noice 
+- Try to romove all "this" & "that" -> Do not write my taughts, -Are 
+- Always include intro-sentence in paragraph! (only fixed in AOD-models section)
+- Write LibRadtran 1.? 2.??+ Need to include version!
+- Go trough all text into ChatGPT and ask if start all paragraph correct (all should start with telling what is found in paragraph on first line)
+- Uncertainties: might be an 1D RTM bias from 1D RTM used to obtain optical propeties from ex. extictoin profile (Japan workshop - cole said!)
+- Future prospect: Can look further into 1D vs 3D RTM for retrival and use 1D vs 3D RTM on those!
 
 
                 
