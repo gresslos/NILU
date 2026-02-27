@@ -535,13 +535,15 @@ def SetRTM(UVS, ia, iacr, ACM3D=None, AMACD=None, ACMCOM=None, ACMRT=None, BMAFL
             # BG: used for setting T at h = 0 (for 3D run) 
             last_T = T; last_p = p
 
+    
+
                     # BG: How to find surface_temperature and surface_altitude
                     # surface_h = min(v for v,p in zip(ACMCOM.height_level[1:,ia], ACMCOM.pressure_level[1:,ia]) if v > 0 and p < 1e10)
                     # print("     surface h = ", surface_h)
-
-                    # print("     surface temperature: ", ACMCOM.surface_temperature[iacr,ia]) 
-                    # print("last_T = ", last_T)
                     # print("last_p = ", last_p)
+
+        
+        
 
     # Add surface at 0 km altitude if not included in profile
     if np.abs(last_h) > 0.0001 and RTdimension == '3D':
@@ -571,8 +573,6 @@ def SetRTM(UVS, ia, iacr, ACM3D=None, AMACD=None, ACMCOM=None, ACMRT=None, BMAFL
     else:
         surface_altitude=0.0001     
         elevation=True
-
-
 
     f.close()
     if iatm==0: UVS.status = 'No atm data for latitude: {:d} {:f}'.format(ia, ACMCOM.latitude_active[ia])
@@ -618,6 +618,14 @@ def SetRTM(UVS, ia, iacr, ACM3D=None, AMACD=None, ACMCOM=None, ACMRT=None, BMAFL
         fch4.close()
         fn2o.close()
     
+
+    
+
+    ########################## BG: new 24.02.26 #######################################
+    # print("     surface temperature: ", ACMCOM.surface_temperature[iacr,ia]) 
+    # print("last_T = ", last_T)
+    if source=='thermal': UVS.inp['sur_temperature']=ACMCOM.surface_temperature[iacr,ia]
+    #######################################################################
 
 
 
@@ -1358,7 +1366,7 @@ if __name__ == "__main__":
         start_time = datetime.now(timezone.utc) 
         print("Run started at", start_time.isoformat())
             
-    idx_source = 2
+    idx_source = 1
     sources = [['solar'], 
               ['thermal'],
               ['solar', 'thermal']][idx_source] 
@@ -1367,7 +1375,7 @@ if __name__ == "__main__":
     # idx_scene = [3,4,5,6,7,8,11,12]
     # idx_scene = [3,4,5,6]
     # idx_scene = [7,8,11,12]
-    idx_scene = [11]
+    idx_scene = [3,4,5,6, 8,11,12]
                                             ############# OLD ########################################################################
     SceneNames = [                          ['Orbit_05378D'],#0           # Marocco - Norway           
                                             ['Orbit_05458F'],             # Chile
@@ -1398,7 +1406,7 @@ if __name__ == "__main__":
     Test    = False
     want_ps = False      # BG: if want DISORT pseudospherical 
     verbose = False
-    want_3D = True       # BG: if want MYSTIC
+    want_3D = False       # BG: if want MYSTIC
 
     
 
@@ -1436,7 +1444,7 @@ if __name__ == "__main__":
             # New mc_sample_grid
     # additional_spesifications += '_TEST_5x5'
     # additional_spesifications += '_TEST_21x21'
-    additional_spesifications += '_21x21'
+    # additional_spesifications += '_21x21'
 
             # All_levels New mc_sample_grid
     # additional_spesifications += '_AllLevels_TEST_edn_edir'       
@@ -1552,7 +1560,11 @@ if __name__ == "__main__":
         ACM3D.ReadEarthCAREh5(ProductFile, verbose=verbose)                              # "Self" refers to the current instance of the class
 
         # Get nadir pixel index
-        iacr = ACM3D.nadir_pixel_index
+        ######################## BG: new 24.02.26 ########################
+        # iacr = ACM3D.nadir_pixel_index  
+        iacr = ACM3D.nadir_pixel_index  - 1 
+        #################################################################
+
         if my_rank == 0:
             print("\n\n\n=================================================================================================================")
             print("Nadir Pixel Index    = ", iacr)
@@ -1663,7 +1675,8 @@ if __name__ == "__main__":
             target_idx = int(np.nanargmin(np.abs(ACMCOM.latitude_active - target_lat)))
             target_idx = 601
             target_idx = 3032
-            target_idx = 578
+            target_idx = 4400
+            target_idx = 200
             # target_idx = start + 1000
             # ialongs = [target_idx-5, target_idx, target_idx + 5]
             ialongs = [target_idx]
@@ -1967,8 +1980,8 @@ if __name__ == "__main__":
 
                             ########################################################################################
                             ########################################################################################
-                            nlev = eup_solar.shape[0] -1
-                            center_idx = eup_solar.shape[1] //2
+                            # nlev = eup_solar.shape[0] -1
+                            # center_idx = eup_solar.shape[1] //2
                             
                             # print(f'\n\n\nLatitude = {ACMCOM.latitude_active[ia]:.2f}   ia={ia}')
                             # print('\n\n', eup_solar[1,3:-3, center_idx]) # nlev, Nx, Ny

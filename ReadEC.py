@@ -154,7 +154,7 @@ def add_profile_to_plot(fig, ax, ACMCOM, fsize, legend_list, quantity=None, quan
                 profile.append(totcol if (totcol < THRESHOLD_lwp) else 0.0)
             else:
                 profile.append(0.0)
-        ylabel = 'LWP [kg/m$^2$]'
+        ylabel = 'LWP [g/m$^2$]'
         color = (0.2, 0.4, 0.8)   # stronger blue
         label = 'LWP'
 
@@ -173,7 +173,7 @@ def add_profile_to_plot(fig, ax, ACMCOM, fsize, legend_list, quantity=None, quan
                 profile.append(totcol if (totcol < THRESHOLD_iwp) else 0.0)
             else:
                 profile.append(0.0)
-        ylabel = 'IWP [kg/m$^2$]'
+        ylabel = 'IWP [g/m$^2$]'
         color = (0.0, 0.6, 0.5)   # greenish teal
         label = 'IWP'
 
@@ -206,13 +206,13 @@ def add_profile_to_plot(fig, ax, ACMCOM, fsize, legend_list, quantity=None, quan
             else:
                 profile[0].append(0.0)
                 profile[1].append(0.0)
-        ylabel = 'IWP & LWP \n [kg/m$^2$]' #'Water Path [kg/m$^2$]'
+        ylabel = 'IWP & LWP \n [g/m$^2$]' #'Water Path [kg/m$^2$]'
         color  =  'black' # (0.1, 0.5, 0.65) # combo LWP and IWP
         label  = 'LWP & IWP'
 
     elif quantity == 'tot_wc': # lat vs altitude
         profile = [[],[]]
-        ylabel = ['IWC [kg/m$^3$]','LWC [kg/m$^3$]'] #'Water content 
+        ylabel = ['IWC [g/m$^3$]','LWC [g/m$^3$]'] #'Water content 
         color  =  'black' 
         label  = 'IWC & LWC'
         iwc = ACMCOM.ice_water_content; lwc = ACMCOM.liquid_water_content
@@ -3319,16 +3319,11 @@ class Scene:
             self.quality_status = SD['quality_status'][()]         
             
         elif 'ACM_COM' in fn:
-            # self.ice_water_content=SD['ice_water_content'][()]*1000 # Convert from kg/m**3 to g/m**3
-            # self.ice_effective_radius=SD['ice_effective_radius'][()]*1e+6 # Convert from m to um
-            # self.liquid_water_content=SD['liquid_water_content'][()]*1000 # Convert from kg/m**3 to g/m**3
-            # self.liquid_effective_radius=SD['liquid_effective_radius'][()]*1e+6 # Convert from m to um
-            # self.aerosol_extinction=SD['aerosol_extinction'][()]*1000 # Convert from /m to /km
-            self.ice_water_content = np.asarray(SD['ice_water_content'][()], dtype=np.float64) * 1000.0
-            self.ice_effective_radius = np.asarray(SD['ice_effective_radius'][()], dtype=np.float64) * 1e6
-            self.liquid_water_content = np.asarray(SD['liquid_water_content'][()], dtype=np.float64) * 1000.0
-            self.liquid_effective_radius = np.asarray(SD['liquid_effective_radius'][()], dtype=np.float64) * 1e6
-            self.aerosol_extinction = np.asarray(SD['aerosol_extinction'][()], dtype=np.float64) * 1000.0
+            self.ice_water_content = np.asarray(SD['ice_water_content'][()], dtype=np.float64) * 1000.0 # Convert from kg/m**3 to g/m**3
+            self.ice_effective_radius = np.asarray(SD['ice_effective_radius'][()], dtype=np.float64) * 1e6 # Convert from m to um
+            self.liquid_water_content = np.asarray(SD['liquid_water_content'][()], dtype=np.float64) * 1000.0 # Convert from kg/m**3 to g/m**3
+            self.liquid_effective_radius = np.asarray(SD['liquid_effective_radius'][()], dtype=np.float64) * 1e6 # Convert from m to um
+            self.aerosol_extinction = np.asarray(SD['aerosol_extinction'][()], dtype=np.float64) * 1000.0 # Convert from /m to /km
             self.cloud_flag = np.asarray(SD['cloud_flag'][()], dtype=np.float64)
 
             self.ice_water_content_units = SD['ice_water_content'].attrs['units']
@@ -3727,14 +3722,14 @@ if __name__ == "__main__":
     # --------------------------------------
 
      
-    want_3D = True      # BG: used in flux plot (DISORT or MYSTIC)
+    want_3D = False      # BG: used in flux plot (DISORT or MYSTIC)
     
     
     # BG: additional settings
     AssDomainSize       = [(3,3), (11,11)][1]   # Size of assessment domain (across-track, along-track) in libRadtran 3D MC
     want_quality_status = True                 # If want ACM-COM and BMA-FLX quality status
-    want_EarthCARE_info = False                  # Sets Scene3 = ACM3D (in PlotLien)
-    want_product2       = True                 # Sets Scene4 = librad2 (in PlotLine)
+    want_EarthCARE_info = True                  # Sets Scene3 = ACM3D (in PlotLien)
+    want_product2       = False                 # Sets Scene4 = librad2 (in PlotLine)
     want_average_line   = True                  # Average line of DISORT-flux-values
     stacked             = True                  # If add quanteties to plot, if should get own figure below
 
@@ -3765,7 +3760,7 @@ if __name__ == "__main__":
     # additional_spesifications = '_All'
                 # New mc_sample_grid
     # additional_spesifications = '_TEST_5x5'
-    additional_spesifications = '_21x21'
+    # additional_spesifications = '_21x21'
 
                # All_levels New mc_sample_grid
     # additional_spesifications = '_AllLevels_TEST'
@@ -3826,8 +3821,8 @@ if __name__ == "__main__":
 
 
 
-    # idx_scene = [3,4,5,6,7,8,11,12]
-    idx_scene = [11]
+    idx_scene = [3,4,5,6,7,8,11,12]
+    # idx_scene = [7]
                                         ################# OLD ########################################################################
     SceneNames = [                      ['Orbit_05378D'],#0           # Marocco - Norway           
                                         ['Orbit_05458F'],             # Chile
@@ -3855,7 +3850,7 @@ if __name__ == "__main__":
 
 
     
-    fig_index = 2
+    fig_index = 1
     # BG: fig:*both* when simulated in solar & thermal ('*solar,thermal*'-name in RESULT .nc files)
     figname = ['fig:flx_solar',#0                                                   
                'fig:flx_thermal',                                                   
